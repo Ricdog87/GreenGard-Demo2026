@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.55;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: #0F1B14;
+    color: #F5F1E8;
+  }
+}
+
+@layer utilities {
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .hairline {
+    @apply border-mist;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-moss;
+  }
+  .price {
+    @apply font-display num;
+  }
+  .h-display {
+    @apply font-display tracking-tight;
+    line-height: 0.95;
+  }
+  .hero-h {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 156px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 5.2em;
+    line-height: 0.85;
+    padding: 0.05em 0.08em 0 0;
+    font-style: italic;
+    color: #1F2A22;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}

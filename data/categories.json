@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bewaesserung",
+    "name": "Bewässerung",
+    "icon": "Droplets",
+    "blurb": "Versenkregner, Tropfschläuche und Sprühdüsen von Rainbird, Hunter, Netafim und Rain.",
+    "abPreis": 12.9,
+    "image": "https://images.unsplash.com/photo-1530983929-9b69cdfdef00?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "steuerung",
+    "name": "Steuerung",
+    "icon": "Cpu",
+    "blurb": "Smart Controller mit WLAN-App, Wetter-API und Multi-Zonen-Programmierung.",
+    "abPreis": 119,
+    "image": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "pumpentechnik",
+    "name": "Pumpentechnik",
+    "icon": "Gauge",
+    "blurb": "Hauswasserwerke, Brunnen- und Tauchpumpen von Pedrollo, Speck und Grundfos.",
+    "abPreis": 219,
+    "image": "https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "beleuchtung",
+    "name": "Beleuchtung",
+    "icon": "Lightbulb",
+    "blurb": "12V-Outdoor-Beleuchtung von In-Lite — sicher, sparsam und blendfrei.",
+    "abPreis": 39,
+    "image": "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "maehroboter",
+    "name": "Mähroboter",
+    "icon": "Bot",
+    "blurb": "Kabellose Mähroboter von Kress und Husqvarna — für 500 bis 5.000 m².",
+    "abPreis": 899,
+    "image": "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "zubehoer",
+    "name": "Zubehör",
+    "icon": "Wrench",
+    "blurb": "Magnetventile, Rohre, Verbinder, Kabel und Erdkabel — passend zu allen Systemen.",
+    "abPreis": 2.9,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80"
+  }
+]

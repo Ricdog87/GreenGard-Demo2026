@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "starter",
+    "name": "Smart-Garden Starter",
+    "tagline": "Für kleine Gärten bis 300 m²",
+    "netPrice": 899,
+    "highlight": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80",
+    "includes": [
+      "Rainbird ESP-RZXe 4 Zonen Steuergerät",
+      "4 × Hunter MP-Rotator Versenkregner",
+      "1 × Rainbird 100-DV Magnetventil-Box (4 Ventile)",
+      "60 m PE-Rohr 25 mm + Verbinder",
+      "Erdkabel & Verteiler",
+      "Hydraulik-Planung als PDF"
+    ],
+    "ideal": "Reihenhausgärten, Vorgärten, klar abgegrenzte Rasenflächen",
+    "controller": "Standard, optional WLAN"
+  },
+  {
+    "slug": "pro",
+    "name": "Smart-Garden Pro",
+    "tagline": "Der Bestseller — bis 800 m²",
+    "netPrice": 2490,
+    "highlight": true,
+    "image": "https://images.unsplash.com/photo-1530983929-9b69cdfdef00?auto=format&fit=crop&w=1200&q=80",
+    "includes": [
+      "Hunter Hydrawise HC 6 Zonen WLAN-Steuergerät",
+      "8 × Hunter I-20 Versenkregner für Rasen",
+      "30 m Netafim Tropfschlauch für Beete",
+      "6 × Rainbird Magnetventile + Jumbo-Box",
+      "120 m PE-Rohr + komplettes Fittingset",
+      "Regensensor und Wetter-API-Anbindung",
+      "Detail-Planung & Übergabe vor Ort"
+    ],
+    "ideal": "Einfamilienhäuser mit Rasen, Beeten und Hochbeeten",
+    "controller": "Hydrawise WLAN mit App und Wetter-Intelligenz"
+  },
+  {
+    "slug": "premium",
+    "name": "Smart-Garden Premium",
+    "tagline": "Komplett-Setup bis 2.000 m²",
+    "netPrice": 4990,
+    "highlight": false,
+    "image": "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1200&q=80",
+    "includes": [
+      "Hunter Hydrawise HC 12 Zonen + Erweiterungs-Modul",
+      "12 × Hunter I-20 + 6 × MP-Rotator",
+      "100 m Netafim Tropfschlauch Techline CV",
+      "Pedrollo PKm 60 Saugpumpe inkl. Anschluss",
+      "Kress KR136E Mähroboter 1.500 m²",
+      "In-Lite SMART Beleuchtungsset (4 Leuchten)",
+      "Komplette Vor-Ort-Installation durch Partner-GaLaBauer"
+    ],
+    "ideal": "Größere Grundstücke, anspruchsvolle Gestaltung, alles aus einer Hand",
+    "controller": "Hydrawise Premium mit Mehrzonen und Mehrgeräte-Verbund"
+  }
+]
