@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+  <rect width="600" height="600" fill="#F5F1E8"/>
+  <g transform="translate(80 270)" stroke="#0F1B14" stroke-width="1.4" fill="#F5F1E8">
+    <rect x="0" y="0" width="100" height="60" rx="6"/>
+    <line x1="20" y1="0" x2="20" y2="60"/>
+    <line x1="80" y1="0" x2="80" y2="60"/>
+    <line x1="100" y1="30" x2="160" y2="30" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <circle cx="200" cy="30" r="28" fill="#F5F1E8"/>
+    <circle cx="200" cy="30" r="12" fill="#0F1B14"/>
+    <circle cx="200" cy="30" r="6" fill="#B87333"/>
+    <line x1="228" y1="30" x2="290" y2="30" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <rect x="290" y="0" width="100" height="60" rx="6"/>
+    <line x1="310" y1="0" x2="310" y2="60"/>
+    <line x1="370" y1="0" x2="370" y2="60"/>
+    <line x1="390" y1="30" x2="440" y2="30" stroke-width="14" stroke-linecap="round" fill="none"/>
+  </g>
+  <g stroke="#5C7A5E" stroke-width="0.4" opacity="0.25" fill="none">
+    <path d="M0 460 H600 M0 480 H600 M0 500 H600"/>
+  </g>
+  <text x="40" y="560" font-family="monospace" font-size="11" letter-spacing="3" fill="#0F1B14" opacity="0.55">ZUBEHÖR · VI</text>
+</svg>

@@ -5,7 +5,7 @@
     "tagline": "Für kleine Gärten bis 300 m²",
     "netPrice": 899,
     "highlight": false,
-    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/img/lifestyle/system-sereno.svg",
     "includes": [
       "Rainbird ESP-RZXe 4 Zonen Steuergerät",
       "4 × Hunter MP-Rotator Versenkregner",
@@ -23,7 +23,7 @@
     "tagline": "Der Bestseller — bis 800 m²",
     "netPrice": 2490,
     "highlight": true,
-    "image": "https://images.unsplash.com/photo-1530983929-9b69cdfdef00?auto=format&fit=crop&w=1200&q=80",
+    "image": "/img/lifestyle/system-cortile.svg",
     "includes": [
       "Hunter Hydrawise HC 6 Zonen WLAN-Steuergerät",
       "8 × Hunter I-20 Versenkregner für Rasen",
@@ -42,7 +42,7 @@
     "tagline": "Komplett-Setup bis 2.000 m²",
     "netPrice": 4990,
     "highlight": false,
-    "image": "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1200&q=80",
+    "image": "/img/lifestyle/system-sovereign.svg",
     "includes": [
       "Hunter Hydrawise HC 12 Zonen + Erweiterungs-Modul",
       "12 × Hunter I-20 + 6 × MP-Rotator",

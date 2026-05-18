@@ -270,7 +270,7 @@ export default function PlanungPage() {
                             slug: `paket-${empf.paketSlug}`,
                             name: paketName,
                             brand: 'Green-Gard',
-                            image: 'https://images.unsplash.com/photo-1530983929-9b69cdfdef00?auto=format&fit=crop&w=800&q=80',
+                            image: `/img/lifestyle/system-${empf.paketSlug === 'starter' ? 'sereno' : empf.paketSlug === 'pro' ? 'cortile' : 'sovereign'}.svg`,
                             netPrice: empf.gesamt,
                           });
                           openDrawer();

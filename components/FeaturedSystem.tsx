@@ -10,7 +10,7 @@ export function FeaturedSystem() {
         <div className="lg:col-span-7 relative">
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1400&q=85"
+              src="/img/lifestyle/kress-mower.svg"
               alt="Kress KR136E Mähroboter"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

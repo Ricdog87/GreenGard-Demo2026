@@ -67,7 +67,7 @@ export default function ManifestPage() {
           <div className="lg:col-span-7">
             <div className="relative aspect-[5/4] overflow-hidden bg-linen">
               <Image
-                src="https://images.unsplash.com/photo-1530983929-9b69cdfdef00?auto=format&fit=crop&w=1800&q=85"
+                src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1800&q=85"
                 alt=""
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
