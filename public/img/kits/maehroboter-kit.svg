@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="km-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F2A22"/>
+      <stop offset="1" stop-color="#0F1B14"/>
+    </linearGradient>
+    <linearGradient id="km-lawn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5C7A5E"/>
+      <stop offset="1" stop-color="#0F1B14"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="650" fill="url(#km-sky)"/>
+  <rect y="650" width="1000" height="600" fill="url(#km-lawn)"/>
+  <g stroke="#5C7A5E" stroke-width="40" opacity="0.4">
+    <line x1="-50" y1="720" x2="1050" y2="720"/>
+    <line x1="-50" y1="790" x2="1050" y2="790" opacity="0.7"/>
+    <line x1="-50" y1="860" x2="1050" y2="860"/>
+    <line x1="-50" y1="930" x2="1050" y2="930" opacity="0.7"/>
+    <line x1="-50" y1="1000" x2="1050" y2="1000"/>
+    <line x1="-50" y1="1070" x2="1050" y2="1070" opacity="0.7"/>
+    <line x1="-50" y1="1140" x2="1050" y2="1140"/>
+    <line x1="-50" y1="1210" x2="1050" y2="1210" opacity="0.7"/>
+  </g>
+  <path d="M100 1200 C 200 900, 400 850, 500 950 C 600 1050, 700 850, 800 900 C 870 935, 900 870, 900 870"
+        fill="none" stroke="#A8E063" stroke-width="3" stroke-dasharray="10 14" opacity="0.85"/>
+  <!-- RTK-Mast mit Signal -->
+  <g opacity="0.75">
+    <line x1="140" y1="700" x2="140" y2="480" stroke="#F5F1E8" stroke-width="3"/>
+    <circle cx="140" cy="470" r="10" fill="#3DA9FC"/>
+    <g stroke="#3DA9FC" stroke-width="1.5" fill="none" opacity="0.7">
+      <path d="M140 430 q40 -30 80 -10"/>
+      <path d="M140 410 q60 -45 120 -15"/>
+    </g>
+  </g>
+  <g transform="translate(500 870)">
+    <ellipse cy="120" rx="200" ry="32" fill="#000" opacity="0.55"/>
+    <rect x="-180" y="-80" width="360" height="140" rx="60" fill="#0A0F0C"/>
+    <rect x="-180" y="-80" width="360" height="140" rx="60" fill="none" stroke="#F5F1E8" stroke-width="1"/>
+    <rect x="-160" y="-60" width="320" height="40" rx="8" fill="#1F2A22" opacity="0.85"/>
+    <circle cx="-120" cy="80" r="34" fill="#0A0F0C" stroke="#F5F1E8" stroke-width="1.2"/>
+    <circle cx="-120" cy="80" r="16" fill="#1F2A22"/>
+    <circle cx="120" cy="80" r="34" fill="#0A0F0C" stroke="#F5F1E8" stroke-width="1.2"/>
+    <circle cx="120" cy="80" r="16" fill="#1F2A22"/>
+    <line x1="-110" y1="-30" x2="110" y2="-30" stroke="#B87333" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="0" cy="0" r="12" fill="#B87333"/>
+  </g>
+</svg>

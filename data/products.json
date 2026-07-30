@@ -1,0 +1,506 @@
+[
+  {
+    "slug": "hunter-i-20-versenkregner",
+    "name": "Hunter I-20 Versenkregner",
+    "brand": "Hunter",
+    "category": "bewaesserung",
+    "shortDesc": "Robuster Getrieberegner mit einstellbarem Sektor und Reichweite 5,2–14 m.",
+    "longDesc": "Der Hunter I-20 ist der bewährte Profi-Standard für mittelgroße Rasenflächen. Selbstreinigender Filter, einstellbarer Sektor von 50° bis 360° und ausziehbare Düse. Werkzeuglose Sektoreinstellung über Schraubendreher.",
+    "netPrice": 27.5,
+    "image": "/img/prod/bewaesserung.svg",
+    "stock": 124,
+    "bestseller": true,
+    "specs": {
+      "Reichweite": "5,2 – 14,0 m",
+      "Sektor": "50° – 360°",
+      "Wurfhöhe": "100 mm",
+      "Anschluss": "3/4'' IG"
+    }
+  },
+  {
+    "slug": "rainbird-3504-pc",
+    "name": "Rainbird 3504-PC Versenkregner",
+    "brand": "Rainbird",
+    "category": "bewaesserung",
+    "shortDesc": "Getrieberegner mit Druckausgleich, ideal für unregelmäßige Wasserdrücke.",
+    "longDesc": "Mit PC-Druckausgleich liefert der Rainbird 3504-PC auch bei wechselndem Druck eine konstante Wurfweite. Ideal für GaLaBau-Anwendungen mit langen Leitungswegen.",
+    "netPrice": 31.9,
+    "image": "/img/prod/bewaesserung.svg",
+    "stock": 86,
+    "specs": {
+      "Reichweite": "6,7 – 10,7 m",
+      "Sektor": "40° – 360°",
+      "Druckausgleich": "ja"
+    }
+  },
+  {
+    "slug": "netafim-tropfschlauch-techline",
+    "name": "Netafim Techline CV Tropfschlauch 16mm",
+    "brand": "Netafim",
+    "category": "bewaesserung",
+    "shortDesc": "Druckkompensierender Tropfschlauch mit Rückflussverhinderer, 100 m Rolle.",
+    "longDesc": "Der Profi-Tropfschlauch für Beete, Hecken und Hochbeete. Druckkompensiert für gleichmäßige Wasserabgabe auf jeder Länge. Mit integriertem Check-Valve gegen Nachtropfen.",
+    "netPrice": 119,
+    "image": "/img/prod/bewaesserung.svg",
+    "stock": 42,
+    "bestseller": true,
+    "specs": {
+      "Länge": "100 m",
+      "Tropferabstand": "33 cm",
+      "Durchfluss": "1,6 l/h",
+      "Druckbereich": "0,4 – 4,0 bar"
+    }
+  },
+  {
+    "slug": "rain-pop-up-spruehduese",
+    "name": "Rain Pro-S Sprühdüsenversenker",
+    "brand": "Rain",
+    "category": "bewaesserung",
+    "shortDesc": "Kompakter Sprühdüsenversenker mit MP-Rotator-kompatibler Düsenaufnahme.",
+    "longDesc": "Für kleinere Rasenflächen, Beetränder und schwer zugängliche Bereiche. Wurfhöhe 100 mm, kompatibel mit allen gängigen MP-Rotator-Düsen.",
+    "netPrice": 12.9,
+    "image": "/img/prod/bewaesserung.svg",
+    "stock": 230,
+    "specs": {
+      "Wurfhöhe": "100 mm",
+      "Anschluss": "1/2'' IG",
+      "Düsenaufnahme": "Standard 1/2''"
+    }
+  },
+  {
+    "slug": "hunter-mp-rotator",
+    "name": "Hunter MP Rotator MP3000",
+    "brand": "Hunter",
+    "category": "bewaesserung",
+    "shortDesc": "Wassersparende Mehrstrahldüse mit -30% Verbrauch gegenüber Standard.",
+    "longDesc": "Die MP Rotator Düse liefert große Tropfen statt Sprühnebel — windstabil und mit deutlich geringerer Niederschlagsrate. Auf jeden Standard-Sprühkörper aufschraubbar.",
+    "netPrice": 14.5,
+    "image": "/img/prod/bewaesserung.svg",
+    "stock": 156,
+    "specs": {
+      "Reichweite": "7,0 – 9,1 m",
+      "Sektor": "90° – 360°"
+    }
+  },
+  {
+    "slug": "rainbird-esp-rzxe-6",
+    "name": "Rainbird ESP-RZXe 6 Stationen Steuergerät",
+    "brand": "Rainbird",
+    "category": "steuerung",
+    "shortDesc": "Outdoor-Steuergerät mit 6 Zonen, WiFi-fähig über LNK-Modul.",
+    "longDesc": "Das ESP-RZXe ist robust, einfach bedienbar und über das optionale LNK WiFi-Modul vollständig App-steuerbar. Mit Sensor-Eingang, Manual-Zone-Funktion und 3 unabhängigen Programmen.",
+    "netPrice": 169,
+    "image": "/img/prod/steuerung.svg",
+    "stock": 38,
+    "bestseller": true,
+    "specs": {
+      "Zonen": "6",
+      "Outdoor": "ja (IP44)",
+      "WLAN": "über LNK-Modul",
+      "Programme": "3 unabhängig"
+    }
+  },
+  {
+    "slug": "hunter-hydrawise-hc-12",
+    "name": "Hunter Hydrawise HC 12 Zonen WLAN",
+    "brand": "Hunter",
+    "category": "steuerung",
+    "shortDesc": "Cloud-Steuergerät mit Wetter-Intelligenz und Verbrauchs-Reporting.",
+    "longDesc": "Hydrawise reduziert Wasserverbrauch durch Wetter-API automatisch um bis zu 50%. App-Steuerung, Push-Alarme, Multi-User-Zugriff. Ideal für Profis, die Anlagen ihrer Kunden remote managen.",
+    "netPrice": 389,
+    "image": "/img/prod/steuerung.svg",
+    "stock": 22,
+    "bestseller": true,
+    "specs": {
+      "Zonen": "12 (erweiterbar auf 54)",
+      "WLAN": "integriert",
+      "App": "Hydrawise iOS/Android",
+      "Wetter": "automatische Anpassung"
+    }
+  },
+  {
+    "slug": "hunter-x2-elite",
+    "name": "Hunter X2 Elite 8 Zonen",
+    "brand": "Hunter",
+    "category": "steuerung",
+    "shortDesc": "Modulares Steuergerät, kompatibel mit Hydrawise-Modul für Smart-Upgrade.",
+    "longDesc": "Robustes Outdoor-Steuergerät, das später mit Hydrawise-Modul zum Smart Controller wird. Solide Lösung für Bauträger und Anlagen, die später erweitert werden sollen.",
+    "netPrice": 219,
+    "image": "/img/prod/steuerung.svg",
+    "stock": 16,
+    "specs": {
+      "Zonen": "8",
+      "Outdoor": "ja",
+      "Erweiterbar": "ja, Hydrawise-Modul optional"
+    }
+  },
+  {
+    "slug": "pedrollo-pkm-60",
+    "name": "Pedrollo PKm 60 Kreiselpumpe",
+    "brand": "Pedrollo",
+    "category": "pumpentechnik",
+    "shortDesc": "Selbstansaugende Kreiselpumpe für Zisterne, Brunnen und Hauswasserwerk.",
+    "longDesc": "Italienische Profi-Pumpe mit hoher Saugfähigkeit und leiser Laufruhe. Geeignet als Hauswasserwerk oder zur Bewässerung aus Zisterne und Brunnen.",
+    "netPrice": 289,
+    "image": "/img/prod/pumpentechnik.svg",
+    "stock": 18,
+    "bestseller": true,
+    "specs": {
+      "Fördermenge": "max. 40 l/min",
+      "Förderhöhe": "max. 38 m",
+      "Leistung": "0,5 kW",
+      "Anschluss": "1''"
+    }
+  },
+  {
+    "slug": "speck-badu-90",
+    "name": "Speck Badu 90/20 Filterpumpe",
+    "brand": "Speck",
+    "category": "pumpentechnik",
+    "shortDesc": "Robuste Filterpumpe für Pool und Bewässerung großer Flächen.",
+    "longDesc": "Made in Germany. Korrosionsbeständig, wartungsarm, mit großem Vorfilter. Hervorragend für Poolfilteranlagen und für Bewässerung aus Zisterne oder offener Quelle.",
+    "netPrice": 499,
+    "image": "/img/prod/pumpentechnik.svg",
+    "stock": 7,
+    "specs": {
+      "Fördermenge": "max. 20 m³/h",
+      "Leistung": "1,1 kW"
+    }
+  },
+  {
+    "slug": "grundfos-scala-1",
+    "name": "Grundfos SCALA1 3-45 Hauswasserwerk",
+    "brand": "Grundfos",
+    "category": "pumpentechnik",
+    "shortDesc": "Vollintegriertes Hauswasserwerk mit App-Steuerung und Trockenlaufschutz.",
+    "longDesc": "Komplettlösung mit Frequenzumformer für konstanten Druck. Leiser Betrieb, App-Steuerung, Trockenlaufschutz. Top-Empfehlung für anspruchsvolle Privatkunden.",
+    "netPrice": 949,
+    "image": "/img/prod/pumpentechnik.svg",
+    "stock": 4,
+    "specs": {
+      "Förderhöhe": "max. 45 m",
+      "Druck": "konstant geregelt",
+      "App": "Grundfos GO Remote"
+    }
+  },
+  {
+    "slug": "pedrollo-top-2",
+    "name": "Pedrollo TOP 2 Tauchpumpe",
+    "brand": "Pedrollo",
+    "category": "pumpentechnik",
+    "shortDesc": "Tauchpumpe für Zisterne mit Schwimmerschalter und Edelstahlgehäuse.",
+    "longDesc": "Zuverlässige Tauchpumpe für Klar- und Schmutzwasser, ideal für Zisterneneinsatz. Mit automatischer Niveauregelung.",
+    "netPrice": 219,
+    "image": "/img/prod/pumpentechnik.svg",
+    "stock": 23,
+    "specs": {
+      "Fördermenge": "max. 200 l/min",
+      "Förderhöhe": "max. 10 m"
+    }
+  },
+  {
+    "slug": "in-lite-fusion",
+    "name": "In-Lite FUSION Wegeleuchte 12V",
+    "brand": "In-Lite",
+    "category": "beleuchtung",
+    "shortDesc": "Schlanke Wegeleuchte aus Aluminium, blendfrei mit warmweißem Licht.",
+    "longDesc": "Premium 12V-Outdoor-Beleuchtung. Steckersystem ohne Elektriker, blendfreies warmweißes Licht, hochwertige Aluminium-Verarbeitung. 5 Jahre Garantie.",
+    "netPrice": 89,
+    "image": "/img/prod/beleuchtung.svg",
+    "stock": 64,
+    "specs": {
+      "Spannung": "12V",
+      "Lichtfarbe": "2700 K warmweiß",
+      "Material": "Aluminium anthrazit",
+      "Schutzart": "IP44"
+    }
+  },
+  {
+    "slug": "in-lite-mini-scope",
+    "name": "In-Lite MINI SCOPE Spot 12V",
+    "brand": "In-Lite",
+    "category": "beleuchtung",
+    "shortDesc": "Kompakter Erdspieß-Spot für Pflanzen, Bäume und Fassaden.",
+    "longDesc": "Klein, präzise, leistungsstark. Perfekt zur Akzentbeleuchtung von Skulpturen, Bäumen und Hauswänden. Mit drehbarem Kopf.",
+    "netPrice": 39,
+    "image": "/img/prod/beleuchtung.svg",
+    "stock": 128,
+    "specs": {
+      "Spannung": "12V",
+      "Leistung": "1,5 W LED",
+      "Schwenkbar": "ja"
+    }
+  },
+  {
+    "slug": "in-lite-startset",
+    "name": "In-Lite Startset SMART 4-teilig",
+    "brand": "In-Lite",
+    "category": "beleuchtung",
+    "shortDesc": "Komplett-Startset: 4 Leuchten, Trafo, Kabel und App-Steuerung.",
+    "longDesc": "Alles dabei für den Einstieg: 4 Leuchten, 50 W Smart-Trafo mit App-Steuerung, 10 m Kabel und Verbinder. In 30 Minuten installiert.",
+    "netPrice": 449,
+    "image": "/img/prod/beleuchtung.svg",
+    "stock": 19,
+    "bestseller": true,
+    "specs": {
+      "Inhalt": "4 Leuchten + Trafo + Kabel",
+      "App": "ja, dimmbar je Zone"
+    }
+  },
+  {
+    "slug": "kress-kr136e",
+    "name": "Kress KR136E Mähroboter 1.500 m²",
+    "brand": "Kress",
+    "category": "maehroboter",
+    "shortDesc": "Robotik-Mäher mit RTK-Navigation, ohne Begrenzungsdraht.",
+    "longDesc": "Die nächste Generation Mähroboter. RTK-Navigation arbeitet zentimetergenau ohne Begrenzungsdraht. Mäht auch komplexe Gärten mit Inseln und schmalen Passagen. Diebstahlschutz mit GPS und SIM-Karte.",
+    "netPrice": 1290,
+    "image": "/img/prod/maehroboter.svg",
+    "stock": 9,
+    "bestseller": true,
+    "specs": {
+      "Fläche": "bis 1.500 m²",
+      "Navigation": "RTK ohne Begrenzungsdraht",
+      "Steigung": "max. 45%",
+      "Geräusch": "53 dB",
+      "Diebstahlschutz": "GPS + SIM"
+    }
+  },
+  {
+    "slug": "kress-kr173e",
+    "name": "Kress KR173E Mähroboter 2.200 m²",
+    "brand": "Kress",
+    "category": "maehroboter",
+    "shortDesc": "Großes Modell der RTK-Serie für Flächen bis 2.200 m².",
+    "longDesc": "Wie der KR136E, aber für größere Gärten. Mit höherer Akkulaufzeit und schnellerer Ladung.",
+    "netPrice": 1690,
+    "image": "/img/prod/maehroboter.svg",
+    "stock": 5,
+    "specs": {
+      "Fläche": "bis 2.200 m²",
+      "Akku": "5,0 Ah Lithium"
+    }
+  },
+  {
+    "slug": "husqvarna-430x-nera",
+    "name": "Husqvarna Automower 430X NERA",
+    "brand": "Husqvarna",
+    "category": "maehroboter",
+    "shortDesc": "Premium-Mähroboter für 3.200 m² mit EPOS-Satellitennavigation.",
+    "longDesc": "Husqvarnas Flaggschiff. EPOS-Technologie navigiert satellitengestützt — keine Begrenzungsdraht-Verlegung mehr nötig. App-Steuerung, virtuelle Zonen, Diebstahlschutz.",
+    "netPrice": 2890,
+    "image": "/img/prod/maehroboter.svg",
+    "stock": 3,
+    "specs": {
+      "Fläche": "bis 3.200 m²",
+      "Navigation": "EPOS Satellit",
+      "Steigung": "max. 45%"
+    }
+  },
+  {
+    "slug": "husqvarna-305",
+    "name": "Husqvarna Automower 305",
+    "brand": "Husqvarna",
+    "category": "maehroboter",
+    "shortDesc": "Einsteigermodell für kleine Gärten bis 600 m².",
+    "longDesc": "Kompakter Mähroboter für kleinere, klar abgegrenzte Rasenflächen. Begrenzungsdraht erforderlich.",
+    "netPrice": 899,
+    "image": "/img/prod/maehroboter.svg",
+    "stock": 14,
+    "specs": {
+      "Fläche": "bis 600 m²"
+    }
+  },
+  {
+    "slug": "beatbot-aquasense-pro",
+    "name": "Beatbot AquaSense Pro Poolroboter",
+    "brand": "Beatbot",
+    "category": "pool",
+    "shortDesc": "Autonomer Poolroboter für Boden, Wand, Wasserlinie und Oberfläche.",
+    "longDesc": "Reinigt in fünf Modi vollautomatisch: Boden, Wände, Wasserlinie, Wasseroberfläche und Wasserklärung. Kabellos mit App-Steuerung, Oberflächen-Parkposition zur einfachen Entnahme und intelligenter Routenplanung.",
+    "netPrice": 1799,
+    "image": "/img/prod/pool.svg",
+    "stock": 6,
+    "bestseller": true,
+    "specs": {
+      "Reinigung": "Boden, Wand, Wasserlinie, Oberfläche",
+      "Akkulaufzeit": "bis 240 min",
+      "Steuerung": "App + Fernbedienung",
+      "Poolgröße": "bis 150 m²"
+    }
+  },
+  {
+    "slug": "beatbot-iskim-ultra",
+    "name": "Beatbot iSkim Ultra Oberflächenreiniger",
+    "brand": "Beatbot",
+    "category": "pool",
+    "shortDesc": "Solarbetriebener Skimmer-Roboter für die Wasseroberfläche.",
+    "longDesc": "Fährt permanent die Wasseroberfläche ab und sammelt Blätter, Pollen und Insekten, bevor sie absinken. Solarunterstützter Betrieb, dockt selbstständig an.",
+    "netPrice": 899,
+    "image": "/img/prod/pool.svg",
+    "stock": 11,
+    "specs": {
+      "Betrieb": "Solar + Akku",
+      "Laufzeit": "bis 35 h",
+      "Poolgröße": "bis 100 m²"
+    }
+  },
+  {
+    "slug": "bayrol-ph-minus-granulat",
+    "name": "Bayrol pH-Minus Granulat 6 kg",
+    "brand": "Bayrol",
+    "category": "pool",
+    "shortDesc": "Senkt den pH-Wert zuverlässig in den Idealbereich 7,0 – 7,4.",
+    "longDesc": "Granulat zur Absenkung des pH-Werts. Ein korrekter pH-Wert ist die Voraussetzung dafür, dass Desinfektion und Algenschutz überhaupt wirken — deshalb immer zuerst den pH einstellen.",
+    "netPrice": 24.9,
+    "image": "/img/prod/pool.svg",
+    "stock": 84,
+    "specs": {
+      "Inhalt": "6 kg",
+      "Dosierung": "100 g / 10 m³ senkt pH um ca. 0,1",
+      "Form": "Granulat"
+    }
+  },
+  {
+    "slug": "bayrol-chlortabletten-200g",
+    "name": "Bayrol Chlortabletten 200 g, 5 kg Eimer",
+    "brand": "Bayrol",
+    "category": "pool",
+    "shortDesc": "Langzeit-Chlortabletten für konstante Desinfektion.",
+    "longDesc": "Langsam löslich, für Dosierschwimmer und Skimmer geeignet. Sorgt über Tage für einen stabilen Chlorwert und damit für hygienisch einwandfreies Poolwasser.",
+    "netPrice": 44.9,
+    "image": "/img/prod/pool.svg",
+    "stock": 57,
+    "bestseller": true,
+    "specs": {
+      "Inhalt": "5 kg (25 Tabletten)",
+      "Tablettengröße": "200 g",
+      "Aktivchlor": "ca. 90%"
+    }
+  },
+  {
+    "slug": "bayrol-algenschutz",
+    "name": "Bayrol Algenschutz flüssig 3 l",
+    "brand": "Bayrol",
+    "category": "pool",
+    "shortDesc": "Vorbeugender Algenschutz, schaumfrei und chlorverträglich.",
+    "longDesc": "Verhindert Algenbildung, bevor sie sichtbar wird. Schaumfreie Formulierung, gut kombinierbar mit Chlor- und Aktivsauerstoff-Pflege.",
+    "netPrice": 29.9,
+    "image": "/img/prod/pool.svg",
+    "stock": 63,
+    "specs": {
+      "Inhalt": "3 l",
+      "Dosierung": "wöchentlich 50 ml / 10 m³",
+      "Schaumbildung": "nein"
+    }
+  },
+  {
+    "slug": "bayrol-pflege-set-start",
+    "name": "Bayrol Pflege-Set Saisonstart",
+    "brand": "Bayrol",
+    "category": "pool",
+    "shortDesc": "Komplettset für die Inbetriebnahme: pH, Chlor, Algenschutz, Teststreifen.",
+    "longDesc": "Alles für den Saisonstart in einer Box: pH-Minus, Chlorgranulat zur Stoßchlorung, Algenschutz, Flockmittel und Teststreifen inklusive Dosieranleitung.",
+    "netPrice": 89,
+    "image": "/img/prod/pool.svg",
+    "stock": 28,
+    "specs": {
+      "Inhalt": "5 Komponenten + Teststreifen",
+      "Reicht für": "Pools bis 40 m³"
+    }
+  },
+  {
+    "slug": "bayrol-teststreifen-quicktest",
+    "name": "Bayrol QuickTest Teststreifen, 50 Stück",
+    "brand": "Bayrol",
+    "category": "pool",
+    "shortDesc": "Messstreifen für pH, freies Chlor und Alkalität in 15 Sekunden.",
+    "longDesc": "Drei Werte gleichzeitig: pH, freies Chlor und Gesamtalkalität. Eintauchen, abtropfen, mit der Farbskala vergleichen — die schnellste Kontrolle vor jeder Dosierung.",
+    "netPrice": 15.9,
+    "image": "/img/prod/pool.svg",
+    "stock": 142,
+    "specs": {
+      "Inhalt": "50 Streifen",
+      "Messwerte": "pH, freies Chlor, Alkalität",
+      "Messdauer": "15 s"
+    }
+  },
+  {
+    "slug": "magnetventil-rainbird-100-dv",
+    "name": "Rainbird 100-DV Magnetventil 1''",
+    "brand": "Rainbird",
+    "category": "zubehoer",
+    "shortDesc": "Robustes 24V-AC-Magnetventil mit Durchflussregelung.",
+    "longDesc": "Der Klassiker für Bewässerungssysteme. Mit Durchflussregelung, manueller Öffnung und 24V-Magnetspule. Lange Lebensdauer auch bei verschmutztem Wasser.",
+    "netPrice": 29.9,
+    "image": "/img/prod/zubehoer.svg",
+    "stock": 312,
+    "bestseller": true,
+    "specs": {
+      "Anschluss": "1'' IG",
+      "Spannung": "24V AC",
+      "Druckbereich": "1,4 – 10,3 bar"
+    }
+  },
+  {
+    "slug": "pe-rohr-25mm",
+    "name": "PE-Rohr 25 mm PN10, 100 m Rolle",
+    "brand": "Rain",
+    "category": "zubehoer",
+    "shortDesc": "Stabiles Polyethylen-Rohr für Hauptleitungen, PN10.",
+    "longDesc": "PE-Rohr für Bewässerungs-Hauptleitungen. UV-stabil, frostfest verlegbar, kompatibel mit Klemmverbindern aller Hersteller.",
+    "netPrice": 79,
+    "image": "/img/prod/zubehoer.svg",
+    "stock": 48,
+    "specs": {
+      "Durchmesser": "25 mm",
+      "Druckklasse": "PN10",
+      "Länge": "100 m"
+    }
+  },
+  {
+    "slug": "kabel-erd-7-adrig",
+    "name": "Erdkabel YMvKas 7-adrig, 50 m",
+    "brand": "Generic",
+    "category": "zubehoer",
+    "shortDesc": "Profi-Erdkabel für bis zu 6 Magnetventile + Common.",
+    "longDesc": "Robustes Erdkabel zur direkten Verlegung im Boden. Für die Signalverdrahtung von Magnetventilen zwischen Steuergerät und Ventilbox.",
+    "netPrice": 89,
+    "image": "/img/prod/zubehoer.svg",
+    "stock": 27,
+    "specs": {
+      "Adern": "7 x 0,8 mm²",
+      "Länge": "50 m"
+    }
+  },
+  {
+    "slug": "klemmverbinder-set",
+    "name": "Klemmverbinder-Sortiment 25 mm",
+    "brand": "Generic",
+    "category": "zubehoer",
+    "shortDesc": "Sortimentbox mit 30 Klemmverbindern, T-Stücken und Endkappen.",
+    "longDesc": "Alles, was man für eine 25-mm-Anlage braucht. Werkzeuglose Montage, dichtheitsgeprüft.",
+    "netPrice": 49,
+    "image": "/img/prod/zubehoer.svg",
+    "stock": 73,
+    "specs": {
+      "Inhalt": "30-tlg.",
+      "System": "25 mm Klemm"
+    }
+  },
+  {
+    "slug": "ventilbox-rainbird-vb-jumbo",
+    "name": "Rainbird VB-Jumbo Ventilbox",
+    "brand": "Rainbird",
+    "category": "zubehoer",
+    "shortDesc": "Große Ventilbox für bis zu 6 Magnetventile, befahrbar.",
+    "longDesc": "Robuste, befahrbare Ventilbox für die Aufnahme von bis zu 6 Magnetventilen. Mit Schraubdeckel und Antrust-Boden.",
+    "netPrice": 39.9,
+    "image": "/img/prod/zubehoer.svg",
+    "stock": 91,
+    "specs": {
+      "Maße": "60 x 43 x 30 cm",
+      "Befahrbar": "ja, PKW"
+    }
+  }
+]

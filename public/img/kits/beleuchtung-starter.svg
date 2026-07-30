@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky-x" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A0F0C"/>
+      <stop offset="0.6" stop-color="#1F2A22"/>
+      <stop offset="1" stop-color="#5C7A5E"/>
+    </linearGradient>
+    <radialGradient id="lamp-x" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#B87333" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#B87333" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#B87333" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky-x)"/>
+  <g opacity="0.85">
+    <rect x="0" y="380" width="500" height="220" fill="#0A0F0C"/>
+    <rect x="500" y="320" width="350" height="280" fill="#0A0F0C"/>
+    <rect x="850" y="400" width="350" height="200" fill="#0A0F0C"/>
+    <g fill="#B87333" opacity="0.85">
+      <rect x="60" y="430" width="50" height="80"/>
+      <rect x="150" y="430" width="50" height="80"/>
+      <rect x="240" y="430" width="50" height="80"/>
+      <rect x="540" y="370" width="60" height="100"/>
+      <rect x="630" y="370" width="60" height="100"/>
+      <rect x="720" y="370" width="60" height="100"/>
+      <rect x="900" y="450" width="60" height="80"/>
+      <rect x="990" y="450" width="60" height="80"/>
+      <rect x="1080" y="450" width="60" height="80"/>
+    </g>
+  </g>
+  <circle cx="150" cy="700" r="110" fill="url(#lamp-x)"/>
+  <circle cx="420" cy="660" r="120" fill="url(#lamp-x)"/>
+  <circle cx="690" cy="710" r="115" fill="url(#lamp-x)"/>
+  <circle cx="960" cy="670" r="120" fill="url(#lamp-x)"/>
+  <g stroke="#F5F1E8" stroke-width="0.6" opacity="0.6" fill="#F5F1E8">
+    <circle cx="150" cy="700" r="4"/>
+    <circle cx="420" cy="660" r="4"/>
+    <circle cx="690" cy="710" r="4"/>
+    <circle cx="960" cy="670" r="4"/>
+  </g>
+</svg>

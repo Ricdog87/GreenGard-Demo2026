@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky-s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D8D4C8"/>
+      <stop offset="1" stop-color="#F5F1E8"/>
+    </linearGradient>
+    <linearGradient id="lawn-s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5C7A5E"/>
+      <stop offset="1" stop-color="#1F2A22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="540" fill="url(#sky-s)"/>
+  <rect y="540" width="1200" height="360" fill="url(#lawn-s)"/>
+  <g fill="#0F1B14" opacity="0.85">
+    <rect x="100" y="380" width="240" height="160"/>
+    <polygon points="100,380 220,300 340,380"/>
+    <rect x="180" y="430" width="40" height="110" fill="#F5F1E8" opacity="0.4"/>
+  </g>
+  <g stroke="#3DA9FC" stroke-width="1" stroke-dasharray="4 6" fill="none" opacity="0.6">
+    <circle cx="520" cy="640" r="70"/>
+    <circle cx="700" cy="700" r="70"/>
+    <circle cx="880" cy="640" r="70"/>
+    <circle cx="1050" cy="700" r="70"/>
+  </g>
+  <g fill="#F5F1E8" opacity="0.9">
+    <circle cx="520" cy="640" r="4"/>
+    <circle cx="700" cy="700" r="4"/>
+    <circle cx="880" cy="640" r="4"/>
+    <circle cx="1050" cy="700" r="4"/>
+  </g>
+</svg>

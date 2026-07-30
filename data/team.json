@@ -1,0 +1,41 @@
+{
+  "_comment": "TODO: echte Namen + Fotos vom Kunden. Bewusst OHNE Rollenbezeichnungen (Kundenwunsch aus dem Termin vom 28.07.2026). E-Mail-Schema v.nachname@green-gard.de.",
+  "members": [
+    {
+      "first": "Jan",
+      "last": "Leifermann",
+      "email": "j.leifermann@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Sina",
+      "last": "Wagner",
+      "email": "s.wagner@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Pascal",
+      "last": "Klotz",
+      "email": "p.klotz@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Miriam",
+      "last": "Sander",
+      "email": "m.sander@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Tobias",
+      "last": "Renz",
+      "email": "t.renz@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Katrin",
+      "last": "Ohlig",
+      "email": "k.ohlig@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}

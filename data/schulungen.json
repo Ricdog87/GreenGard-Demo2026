@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bewaesserung-basis",
+    "roman": "I",
+    "title": "Bewässerung Basis",
+    "duration": "1 Tag · 9:00 – 16:00",
+    "abPreis": 290,
+    "audience": "GaLaBau-Mitarbeitende und Quereinsteiger",
+    "content": [
+      "Hydraulik: Druck, Durchfluss, Rohrdimensionierung",
+      "Regnerauswahl und Niederschlagsspende richtig rechnen",
+      "Zonenaufteilung und Ventilverdrahtung",
+      "Typische Planungsfehler und wie man sie vermeidet"
+    ],
+    "termine": ["12.09.2026", "24.10.2026", "14.11.2026"],
+    "plaetze": 12
+  },
+  {
+    "slug": "smart-control-hydrawise",
+    "roman": "II",
+    "title": "Smart Control & Hydrawise",
+    "duration": "½ Tag · 9:00 – 13:00",
+    "abPreis": 190,
+    "audience": "Betriebe, die Anlagen für Kunden remote betreuen",
+    "content": [
+      "Hydrawise-Account-Struktur für Betriebe mit vielen Anlagen",
+      "Wetter-API, Predictive Watering und Sensorik einbinden",
+      "Alarme, Durchflussüberwachung, Leckerkennung",
+      "Kundenübergabe und Fernwartung als Servicemodell"
+    ],
+    "termine": ["19.09.2026", "07.11.2026"],
+    "plaetze": 10
+  },
+  {
+    "slug": "in-lite-lichtplanung",
+    "roman": "III",
+    "title": "In-Lite Lichtplanung",
+    "duration": "½ Tag · 14:00 – 18:00",
+    "abPreis": 190,
+    "audience": "GaLaBau, Planungsbüros, Architektur",
+    "content": [
+      "Lichtwirkung: Akzent, Orientierung, Blendfreiheit",
+      "12V-Systemaufbau, Trafo-Auslegung, Kabelwege",
+      "Planung mit Positionsskizze und Stückliste",
+      "Praxisteil: Einmessen im Demogarten bei Dämmerung"
+    ],
+    "termine": ["19.09.2026", "17.10.2026", "21.11.2026"],
+    "plaetze": 10
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "_comment": "Kuratierte Highlight-Produkte für die Landing. Reihenfolge = Anzeigereihenfolge. Slugs müssen zu data/products.json passen — Kunde kann hier jederzeit tauschen.",
+  "slugs": [
+    "beatbot-aquasense-pro",
+    "kress-kr136e",
+    "hunter-hydrawise-hc-12"
+  ]
+}

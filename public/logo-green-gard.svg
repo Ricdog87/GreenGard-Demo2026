@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 40" role="img" aria-label="GREEN-GARD">
+  <!-- Platzhalter-Wortmarke: Fraunces-Anmutung als Pfad-freier Text.
+       TODO: echtes Logo-File vom Kunden ersetzen. -->
+  <text x="0" y="27"
+        font-family="Fraunces, Georgia, 'Times New Roman', serif"
+        font-size="27" letter-spacing="1.2" fill="#0A0F0C">GREEN-GARD</text>
+  <line x1="0" y1="35" x2="204" y2="35" stroke="#B87333" stroke-width="1"/>
+  <text x="212" y="34"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="7.5" letter-spacing="1.8" fill="#5C7A5E">WIESBADEN</text>
+</svg>

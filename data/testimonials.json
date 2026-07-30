@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Markus Eichel",
+    "role": "GaLaBau-Meister, Mainz",
+    "quote": "Wir beziehen seit acht Jahren über Green-Gard. Lieferung am nächsten Tag, faire Konditionen, kompetente Ansprechpartner — wenn was klemmt, ist innerhalb von Minuten jemand am Telefon.",
+    "rating": 5,
+    "date": "2026-05-14",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Peter Eberle",
+    "role": "Privatkunde, Wiesbaden",
+    "quote": "Beratung vor Ort war Gold wert. Wir haben statt eines Standard-Sets eine richtig durchdachte Anlage bekommen, die exakt zu unserem Hanggrundstück passt.",
+    "rating": 5,
+    "date": "2026-04-02",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "André Gängel",
+    "role": "Inhaber Gartenbau Gängel, Frankfurt",
+    "quote": "Top Sortiment, vor allem die Pedrollo-Pumpen sind in Deutschland sonst kaum so schnell verfügbar. Wir kaufen Hunter und Rainbird komplett über Green-Gard.",
+    "rating": 5,
+    "date": "2026-03-19",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "André Hildebrandt",
+    "role": "Architekt, Wiesbaden",
+    "quote": "Die Beleuchtungsplanung mit In-Lite war beeindruckend professionell. Visualisierung vorab, Steckersystem ohne Elektriker, das Ergebnis sieht aus wie aus dem Magazin.",
+    "rating": 5,
+    "date": "2026-02-27",
+    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Erik Gremeyer",
+    "role": "Privatkunde, Hofheim",
+    "quote": "Kress-Mähroboter ohne Begrenzungsdraht — funktioniert tatsächlich wie versprochen. Inbetriebnahme war in zwei Stunden erledigt. Empfehlung.",
+    "rating": 5,
+    "date": "2026-06-08",
+    "avatar": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Sabine Kurtz",
+    "role": "Privatkundin, Taunusstein",
+    "quote": "Die Poolpflege-Beratung war ehrlich: Wir haben weniger gekauft als geplant und trotzdem klares Wasser. Der Beatbot nimmt uns die tägliche Handarbeit komplett ab.",
+    "rating": 5,
+    "date": "2026-07-11",
+    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Thomas Brühl",
+    "role": "Installateur, Rüsselsheim",
+    "quote": "Fachlich stark und schnell lieferfähig. Der Bestellprozess per Telefon läuft reibungslos, ein Online-Zugang mit unseren Konditionen wäre der letzte Schliff.",
+    "rating": 4,
+    "date": "2026-06-25",
+    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Nadine Wolters",
+    "role": "Privatkundin, Idstein",
+    "quote": "Die Anlage läuft seit zwei Saisons ohne Störung, die Hydrawise-App spart uns sichtbar Wasser. Ein Stern Abzug nur, weil die Terminfindung im Frühjahr etwas gedauert hat.",
+    "rating": 4,
+    "date": "2026-05-30",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+  }
+]

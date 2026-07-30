@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A0F0C"/>
+      <stop offset="1" stop-color="#1F2A22"/>
+    </linearGradient>
+    <radialGradient id="lamp1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#B87333" stop-opacity="1"/>
+      <stop offset="0.4" stop-color="#B87333" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#B87333" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lamp2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F5F1E8" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#B87333" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#B87333" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg4)"/>
+  <g stroke="#5C7A5E" stroke-width="0.4" opacity="0.25" fill="none">
+    <path d="M0 850 Q300 870 800 845"/>
+    <path d="M0 880 Q400 905 800 875"/>
+    <path d="M0 920 Q300 940 800 915"/>
+  </g>
+  <circle cx="200" cy="380" r="180" fill="url(#lamp1)"/>
+  <circle cx="600" cy="520" r="220" fill="url(#lamp2)"/>
+  <circle cx="450" cy="280" r="120" fill="url(#lamp1)" opacity="0.6"/>
+  <g stroke="#F5F1E8" stroke-width="1" fill="#F5F1E8" opacity="0.9">
+    <line x1="200" y1="380" x2="200" y2="850" stroke-width="0.6" opacity="0.4"/>
+    <circle cx="200" cy="380" r="6"/>
+    <line x1="600" y1="520" x2="600" y2="850" stroke-width="0.6" opacity="0.4"/>
+    <circle cx="600" cy="520" r="8"/>
+    <line x1="450" y1="280" x2="450" y2="850" stroke-width="0.6" opacity="0.3"/>
+    <circle cx="450" cy="280" r="4"/>
+  </g>
+  <text x="60" y="120" font-family="monospace" font-size="11" letter-spacing="3" fill="#F5F1E8" opacity="0.9">IV · BELEUCHTUNG</text>
+</svg>

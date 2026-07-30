@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.55;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: #0f1b14;
+    color: #f5f1e8;
+  }
+}
+
+@layer utilities {
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-moss;
+  }
+  /* Preise: Fraunces mit Tabellenziffern — technische Specs bleiben Mono. */
+  .price {
+    @apply font-display num;
+  }
+  .h-display {
+    @apply font-display tracking-tight;
+    line-height: 0.95;
+  }
+  .hero-h {
+    font-family: var(--font-display);
+    /* Auch die Viewport-Höhe begrenzt: auf 1440×900 muss neben der Headline
+       noch Subline, CTA-Reihe und Scroll-Indikator ins Bild passen. */
+    font-size: clamp(50px, min(8.5vw, 13vh), 156px);
+    line-height: 0.94;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 5.2em;
+    line-height: 0.85;
+    padding: 0.05em 0.08em 0 0;
+    font-style: italic;
+    color: #1f2a22;
+  }
+  /* Horizontaler Snap-Slider (Highlights auf Mobile) */
+  .snap-row {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .snap-row::-webkit-scrollbar {
+    display: none;
+  }
+  .snap-item {
+    scroll-snap-align: start;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* Wer Bewegung reduziert haben will, bekommt keine Loops und keine Ken-Burns-Fahrt. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns,
+  .animate-marquee {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

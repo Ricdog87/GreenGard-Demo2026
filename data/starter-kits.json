@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "bewaesserung-starter",
+    "name": "Bewässerung Starter Kit",
+    "roman": "I",
+    "tagline": "Basis-Set für bis zu 300 m² Rasen",
+    "abPreis": 899,
+    "highlight": false,
+    "image": "/img/kits/bewaesserung-starter.svg",
+    "ideal": "Reihenhausgärten, Vorgärten, klar abgegrenzte Rasenflächen",
+    "components": [
+      "Rainbird ESP-RZXe Steuergerät, 4 Zonen",
+      "4 × Hunter MP-Rotator Versenkregner",
+      "4 × Rainbird 100-DV Magnetventile + Ventilbox",
+      "60 m PE-Rohr 25 mm inkl. Klemmverbinder",
+      "Erdkabel und Verteiler",
+      "Hydraulik-Auslegung als PDF"
+    ],
+    "note": "Reichweiten und Regner-Anzahl hängen vom Wasserdruck ab. Endpreis nach kostenloser Systemplanung."
+  },
+  {
+    "slug": "bewaesserung-komfort",
+    "name": "Bewässerung Komfort Kit",
+    "roman": "II",
+    "tagline": "Smart-Steuerung, Sensorik, bis 800 m²",
+    "abPreis": 2490,
+    "highlight": true,
+    "image": "/img/kits/bewaesserung-komfort.svg",
+    "ideal": "Einfamilienhäuser mit Rasen, Beeten und Hochbeeten",
+    "components": [
+      "Hunter Hydrawise WLAN-Steuergerät, 6 Zonen",
+      "8 × Hunter I-20 Versenkregner für Rasenflächen",
+      "30 m Netafim Techline CV Tropfschlauch für Beete",
+      "6 × Rainbird Magnetventile + VB-Jumbo Ventilbox",
+      "120 m PE-Rohr inkl. komplettem Fittingset",
+      "Regensensor und Wetter-API-Anbindung",
+      "Detailplanung und Übergabe vor Ort"
+    ],
+    "note": "Pumpentechnik je nach Wasserquelle separat. Endpreis nach kostenloser Systemplanung."
+  },
+  {
+    "slug": "beleuchtung-starter",
+    "name": "Beleuchtung Starter Kit",
+    "roman": "III",
+    "tagline": "In-Lite Grundausstattung, 6 Spots",
+    "abPreis": 1190,
+    "highlight": false,
+    "image": "/img/kits/beleuchtung-starter.svg",
+    "ideal": "Wege, Terrassenkanten, Hausfassade und Solitärpflanzen",
+    "components": [
+      "6 × In-Lite MINI SCOPE Spots 12V",
+      "2 × In-Lite FUSION Wegeleuchten",
+      "In-Lite Smart-Trafo 100 W mit App-Steuerung",
+      "30 m Erdkabel inkl. Steckverbinder",
+      "Lichtplanung mit Positionsskizze",
+      "Einmessen und Feinjustierung vor Ort"
+    ],
+    "note": "Anzahl Leuchten je nach Gartenlänge. Endpreis nach kostenloser Systemplanung."
+  },
+  {
+    "slug": "maehroboter-kit",
+    "name": "Mähroboter Kit",
+    "roman": "IV",
+    "tagline": "Kress RTK inkl. Installation",
+    "abPreis": 1890,
+    "highlight": false,
+    "image": "/img/kits/maehroboter-kit.svg",
+    "ideal": "Rasenflächen von 500 bis 2.200 m², auch mit Inseln und Engstellen",
+    "components": [
+      "Kress KR136E Mähroboter, bis 1.500 m²",
+      "RTK-Antenne inkl. Mastmontage",
+      "Einrichtung der Mähzonen und Sperrflächen in der App",
+      "Stromanschluss der Ladestation durch Partnerbetrieb",
+      "Erstinbetriebnahme und Einweisung",
+      "Winterservice im ersten Jahr inklusive"
+    ],
+    "note": "RTK braucht freie Sicht zum Satelliten-Signal. Endpreis nach kostenloser Systemplanung."
+  }
+]

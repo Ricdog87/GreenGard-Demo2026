@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "bewaesserung",
+    "name": "Bewässerung",
+    "roman": "I",
+    "manifest": "Choreografierte Tropfen.",
+    "blurb": "Versenkregner, Tropfschläuche und Sprühdüsen von Rainbird, Hunter, Netafim und Rain.",
+    "abPreis": 12.9,
+    "image": "/img/cat/bewaesserung.svg"
+  },
+  {
+    "slug": "steuerung",
+    "name": "Steuerung",
+    "roman": "II",
+    "manifest": "Wetter wird Code.",
+    "blurb": "Smart Controller mit WLAN-App, Wetter-API und Multi-Zonen-Programmierung.",
+    "abPreis": 119,
+    "image": "/img/cat/steuerung.svg"
+  },
+  {
+    "slug": "pumpentechnik",
+    "name": "Pumpentechnik",
+    "roman": "III",
+    "manifest": "Stiller Druck.",
+    "blurb": "Hauswasserwerke, Brunnen- und Tauchpumpen von Pedrollo, Speck und Grundfos.",
+    "abPreis": 219,
+    "image": "/img/cat/pumpentechnik.svg"
+  },
+  {
+    "slug": "beleuchtung",
+    "name": "Beleuchtung",
+    "roman": "IV",
+    "manifest": "Licht als Material.",
+    "blurb": "12V-Outdoor-Beleuchtung von In-Lite — sicher, sparsam und blendfrei.",
+    "abPreis": 39,
+    "image": "/img/cat/beleuchtung.svg"
+  },
+  {
+    "slug": "maehroboter",
+    "name": "Robotik",
+    "roman": "V",
+    "manifest": "Autonome Hingabe.",
+    "blurb": "Kabellose Mähroboter von Kress und Husqvarna — für 500 bis 5.000 m².",
+    "abPreis": 899,
+    "image": "/img/cat/maehroboter.svg"
+  },
+  {
+    "slug": "pool",
+    "name": "Pool",
+    "roman": "VI",
+    "manifest": "Gepflegtes Wasser.",
+    "blurb": "Wasserpflege von Bayrol und autonome Poolroboter von Beatbot — klares Wasser ohne Aufwand.",
+    "abPreis": 15.9,
+    "image": "/img/cat/pool.svg"
+  },
+  {
+    "slug": "zubehoer",
+    "name": "Zubehör",
+    "roman": "VII",
+    "manifest": "Stille Schaltzentrale.",
+    "blurb": "Magnetventile, Rohre, Verbinder, Kabel und Erdkabel — passend zu allen Systemen.",
+    "abPreis": 2.9,
+    "image": "/img/cat/zubehoer.svg"
+  }
+]
