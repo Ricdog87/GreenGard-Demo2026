@@ -8,7 +8,7 @@ export function CategoryGrid() {
   return (
     <section className="border-t border-mist py-28 md:py-40">
       <div className="container">
-        <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div data-reveal className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Eyebrow number="02">Disziplinen</Eyebrow>
             <h2 className="h-display mt-6 text-4xl md:text-6xl">
@@ -32,6 +32,7 @@ export function CategoryGrid() {
                 key={c.slug}
                 href={`/produkte?cat=${c.slug}`}
                 data-cursor="view"
+                data-reveal
                 className={cn('group block', isWide && 'sm:col-span-2')}
               >
                 <div

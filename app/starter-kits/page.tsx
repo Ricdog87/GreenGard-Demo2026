@@ -67,7 +67,7 @@ export default function StarterKitsPage() {
       <section className="bg-paper py-20 md:py-32">
         <div className="container">
           <Eyebrow number="B">Starter Kits</Eyebrow>
-          <h1 className="h-display mt-6 max-w-4xl text-balance text-5xl md:text-7xl lg:text-8xl">
+          <h1 data-reveal className="h-display mt-6 max-w-4xl text-balance text-5xl md:text-7xl lg:text-8xl">
             Vier Kits. <em className="italic">Ein Ausgangspunkt.</em>
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70">
@@ -87,7 +87,7 @@ export default function StarterKitsPage() {
       </section>
 
       <section className="py-12">
-        <div className="container grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+        <div data-reveal-group className="container grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
           {list.map((k) => (
             <KitCard key={k.slug} kit={k} />
           ))}
@@ -185,13 +185,10 @@ export default function StarterKitsPage() {
               </div>
             </div>
             <div className={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={k.image}
-                alt={k.name}
-                className="w-full object-cover"
-                data-cursor="view"
-              />
+              <div className="overflow-hidden" data-cursor="view">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={k.image} alt={k.name} className="w-full object-cover" data-parallax="5" />
+              </div>
             </div>
           </div>
         </section>

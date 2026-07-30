@@ -55,7 +55,7 @@ export function TestimonialSlider() {
   return (
     <section className="bg-bark py-28 text-linen md:py-36">
       <div className="container">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div data-reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Eyebrow number="07" className="text-linen/70 [&>span:first-child]:bg-linen/30">
               Stimmen
@@ -99,7 +99,7 @@ export function TestimonialSlider() {
         </div>
 
         {t ? (
-          <div className="mt-16 grid items-center gap-10 lg:grid-cols-12">
+          <div data-reveal className="mt-16 grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-3">
               <AnimatePresence mode="wait">
                 <motion.div

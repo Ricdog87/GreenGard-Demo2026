@@ -92,6 +92,7 @@ export default function ProfiPage() {
             alt=""
             fill
             sizes="100vw"
+            data-parallax="8"
             className="object-cover grayscale"
           />
         </div>
@@ -117,7 +118,7 @@ export default function ProfiPage() {
           <h2 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
             Vier <em className="italic">Vorteile</em>.
           </h2>
-          <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div data-reveal-group className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {USPS.map((u) => (
               <div key={u.title} className="border-t border-mist pt-6">
                 <u.icon className="h-5 w-5 text-forest" />

@@ -33,7 +33,7 @@ export default function LandingPage() {
 
       <section className="border-t border-mist py-28 md:py-40">
         <div className="container">
-          <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div data-reveal className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <Eyebrow number="04b">Starter Kits</Eyebrow>
               <h2 className="h-display mt-6 text-4xl md:text-6xl">
@@ -48,7 +48,7 @@ export default function LandingPage() {
               kostenlose Systemplanung.
             </p>
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div data-reveal-group className="grid gap-6 lg:grid-cols-3">
             {teaserKits.map((k) => (
               <KitCard key={k.slug} kit={k} />
             ))}

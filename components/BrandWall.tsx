@@ -18,10 +18,12 @@ export function BrandWall() {
   return (
     <section className="overflow-hidden border-t border-mist bg-paper py-24 md:py-32">
       <div className="container">
+        <div data-reveal>
         <Eyebrow number="05">Partner</Eyebrow>
         <h2 className="h-display mt-6 max-w-2xl text-4xl md:text-5xl">
           Wir wählen <em className="italic">streng</em>.
         </h2>
+        </div>
       </div>
 
       <div className="mt-16 overflow-hidden" aria-hidden>

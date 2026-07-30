@@ -16,7 +16,7 @@ export function Highlights() {
   return (
     <section className="border-t border-mist bg-linen py-24 md:py-32">
       <div className="container">
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div data-reveal className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Eyebrow number="03">Highlights</Eyebrow>
             <h2 className="h-display mt-6 text-4xl md:text-6xl">
@@ -35,7 +35,7 @@ export function Highlights() {
 
       {/* Mobile: horizontal scrollbar mit Snap. Ab lg: klassisches Dreier-Raster.
           Kein negatives Margin — das würde auf 375px den Body überbreit machen. */}
-      <div className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1320px] lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
+      <div data-reveal-group="x" className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1320px] lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
         {items.map((p) => (
           <article
             key={p.slug}

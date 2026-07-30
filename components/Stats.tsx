@@ -62,11 +62,13 @@ export function Stats() {
   return (
     <section className="border-t border-mist bg-paper py-24 md:py-32">
       <div className="container">
+        <div data-reveal>
         <Eyebrow number="06">Kennzahlen</Eyebrow>
         <h2 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
           Konsequent, seit <em className="italic">{CONTACT.foundedYear}</em>.
         </h2>
-        <div className="mt-16 grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-16">
+        </div>
+        <div data-reveal-group className="mt-16 grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-16">
           {STATS.map((s) => (
             <div key={s.label} className="border-t border-mist pt-6">
               <span className="font-display text-6xl tracking-tightest md:text-7xl">

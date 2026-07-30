@@ -14,12 +14,13 @@ export function FeaturedSystem() {
               alt="Kress KR136E Mähroboter auf gemähter Rasenfläche"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
+              data-parallax="6"
               className="object-cover"
               data-cursor="view"
             />
           </div>
         </div>
-        <div className="lg:col-span-5">
+        <div data-reveal-group className="lg:col-span-5">
           <Eyebrow number="V" className="text-linen/70 [&>span:first-child]:bg-linen/30">
             Im Fokus
           </Eyebrow>

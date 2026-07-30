@@ -42,7 +42,7 @@ export function FAQ() {
   return (
     <section className="border-t border-mist py-24 md:py-32">
       <div className="container grid grid-cols-1 gap-12 md:grid-cols-12">
-        <div className="md:col-span-4">
+        <div data-reveal className="md:col-span-4">
           <Eyebrow number="09">Fragen</Eyebrow>
           <h2 className="h-display mt-6 text-4xl md:text-5xl">
             Häufig <em className="italic">gefragt</em>.
@@ -56,7 +56,7 @@ export function FAQ() {
             </a>
           </p>
         </div>
-        <div className="md:col-span-8">
+        <div data-reveal className="md:col-span-8">
           <Accordion type="single" collapsible className="border-b border-mist">
             {ITEMS.map((it, i) => (
               <AccordionItem key={i} value={`item-${i}`}>

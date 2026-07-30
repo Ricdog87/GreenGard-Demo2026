@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
+import { PullQuote } from '@/components/PullQuote';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/lib/contact';
 import { team } from '@/lib/data';
@@ -43,16 +44,9 @@ export default function WarumGreenGardPage() {
         </p>
       </section>
 
-      <section className="border-y border-mist bg-linen py-32 md:py-40">
-        <div className="container">
-          <blockquote className="font-display mx-auto max-w-5xl text-balance text-center text-4xl italic leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-            „Wir verkaufen keine Regner. Wir verkaufen die Ruhe eines Gartens, der sich um sich selbst kümmert.“
-          </blockquote>
-          <p className="font-mono mt-10 text-center text-[11px] uppercase tracking-[0.18em] text-moss">
-            — Jan Leifermann
-          </p>
-        </div>
-      </section>
+      <PullQuote attribution="Jan Leifermann">
+        Wir verkaufen keine Regner. Wir verkaufen die Ruhe eines Gartens, der sich um sich selbst kümmert.
+      </PullQuote>
 
       <section className="container max-w-3xl py-24 md:py-32">
         <p className="eyebrow">Kapitel II · Auswahl</p>
@@ -81,6 +75,7 @@ export default function WarumGreenGardPage() {
                 alt="Versenkregner auf gepflegtem Rasen im Abendlicht"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
+                data-parallax="7"
                 className="object-cover"
                 data-cursor="view"
               />
@@ -126,7 +121,7 @@ export default function WarumGreenGardPage() {
           </p>
 
           {/* TODO: echte Namen + Fotos vom Kunden. */}
-          <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3">
+          <div data-reveal-group className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3">
             {team.map((m) => (
               <div key={m.email} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden bg-paper">

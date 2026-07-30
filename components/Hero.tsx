@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { MagneticButton } from '@/components/MagneticButton';
 import { Button } from '@/components/ui/button';
@@ -91,7 +92,7 @@ function HeroMedia() {
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="hero-media object-cover"
         data-cursor="view"
       />
     );
@@ -107,7 +108,7 @@ function HeroMedia() {
       poster="/videos/hero-poster.jpg"
       aria-hidden
       data-cursor="view"
-      className="absolute inset-0 h-full w-full object-cover"
+      className="hero-media absolute inset-0 h-full w-full object-cover"
     >
       <source src="/videos/hero-regner.webm" type="video/webm" />
       <source src="/videos/hero-regner.mp4" type="video/mp4" />
@@ -122,6 +123,7 @@ export function Hero() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (calm) {
@@ -142,6 +144,30 @@ export function Hero() {
         { opacity: 1, y: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out' },
         '-=0.5'
       );
+
+      // Beim Scrollen filmisch verabschieden: Inhalt steigt auf und blendet
+      // aus, das Video zoomt ruhig weiter — an die Scroll-Position gekoppelt.
+      gsap.to('.hero-content', {
+        yPercent: -14,
+        autoAlpha: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '88% top',
+          scrub: true,
+        },
+      });
+      gsap.to('.hero-media', {
+        scale: 1.16,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -158,7 +184,7 @@ export function Hero() {
       {/* Schutz für die Eyebrow-Zeile: der Himmel im Video ist oben sehr hell. */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest/55 to-transparent" />
 
-      <div className="container absolute inset-0 z-10 flex flex-col justify-between py-8 pt-6 md:py-12">
+      <div className="hero-content container absolute inset-0 z-10 flex flex-col justify-between py-8 pt-6 md:py-12">
         <div className="flex items-start justify-between gap-6">
           <p className="hero-reveal font-mono text-[10px] uppercase tracking-[0.22em] text-linen/80">
             Est. {CONTACT.foundedYear} · Wiesbaden

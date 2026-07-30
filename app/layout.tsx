@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
 import { Toaster } from '@/components/ui/toast';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { ScrollFx } from '@/components/ScrollFx';
 import { Grain } from '@/components/Grain';
 import { Cursor } from '@/components/Cursor';
 import { EntryExperience } from '@/components/EntryExperience';
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={`${fraunces.variable} ${interTight.variable} ${mono.variable}`}>
       <body className="min-h-screen bg-paper text-ink antialiased">
         <SmoothScroll />
+        <ScrollFx />
         <Grain />
         <Cursor />
         <EntryExperience />

@@ -13,10 +13,10 @@ export function ManifestIntro() {
           </p>
         </div>
         <div className="md:col-span-7">
-          <h2 className="h-display text-balance text-4xl md:text-6xl lg:text-7xl">
+          <h2 data-reveal className="h-display text-balance text-4xl md:text-6xl lg:text-7xl">
             Wir verkaufen keine Produkte. Wir machen Gärten <em className="italic">luxuriöser</em>.
           </h2>
-          <div className="mt-12 grid gap-8 text-[17px] leading-relaxed text-ink/80 sm:grid-cols-2">
+          <div data-reveal-group className="mt-12 grid gap-8 text-[17px] leading-relaxed text-ink/80 sm:grid-cols-2">
             <p className="dropcap">
               Luxus im Garten heißt nicht mehr Fläche — er heißt mehr Sorglosigkeit. Die Bewässerung läuft im Morgengrauen, der Mähroboter zieht lautlos seine Bahnen, das Poolwasser bleibt von selbst klar, und am Abend setzt das Licht Haus und Bäume in Szene. Ohne dass Sie einen Handgriff tun. Dieses Gefühl ist unser Produkt.
             </p>

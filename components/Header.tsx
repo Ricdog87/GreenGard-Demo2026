@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, ShoppingBag, X } from 'lucide-react';
 import { B2BSwitch } from '@/components/B2BSwitch';
 import { useCart } from '@/store/cart';
@@ -26,13 +26,27 @@ export function Header() {
   const openDrawer = useCart((s) => s.openDrawer);
   const audience = useCart((s) => s.audience);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Dezente Elevation, sobald die Seite in Bewegung ist.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const nav = isProfi(audience)
     ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
     : BASE_NAV;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-mist bg-paper/85 backdrop-blur-md">
+    <header
+      className={cn(
+        'sticky top-0 z-40 border-b border-mist backdrop-blur-md transition-[background-color,box-shadow] duration-300',
+        scrolled ? 'bg-paper/95 shadow-[0_12px_32px_-24px_rgba(10,15,12,0.45)]' : 'bg-paper/85'
+      )}
+    >
       <div className="container flex h-16 items-center justify-between gap-4">
         <Link href="/" data-cursor="hover" aria-label="Green-Gard — zur Startseite">
           {/* TODO: echtes Logo-File vom Kunden ersetzen (public/logo-green-gard.svg). */}

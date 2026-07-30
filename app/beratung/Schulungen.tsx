@@ -58,7 +58,7 @@ export function Schulungen() {
           Planungsbüros. Kleine Gruppen, echte Anlagen, kein Folienvortrag.
         </p>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div data-reveal-group className="mt-14 grid gap-6 lg:grid-cols-3">
           {schulungen.map((s) => (
             <article key={s.slug} className="flex flex-col border border-mist bg-paper p-8">
               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-moss">

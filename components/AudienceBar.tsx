@@ -18,7 +18,7 @@ export function AudienceBar() {
   return (
     <section className="border-b border-mist bg-forest text-linen">
       <div className="container py-5">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div data-reveal className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/60">
             Ansicht: <span className="text-linen">{a.title}</span>
             <button

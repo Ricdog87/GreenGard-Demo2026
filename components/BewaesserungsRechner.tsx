@@ -73,14 +73,14 @@ export function BewaesserungsRechner() {
     <section className="border-t border-mist bg-paper py-24 md:py-32">
       <div className="container">
         <Eyebrow number="04">Planung</Eyebrow>
-        <h2 className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-6xl">
+        <h2 data-reveal className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-6xl">
           Drei Fragen. Ein <em className="italic">ehrlicher</em> Preisrahmen.
         </h2>
 
         {/* min-w-0 an beiden Grid-Items: sonst zieht die intrinsische Breite des
             E-Mail-Felds die Spalte auf 375px+ und die Seite scrollt horizontal. */}
         <div className="mt-16 grid gap-12 lg:grid-cols-12">
-          <div className="min-w-0 space-y-12 lg:col-span-7">
+          <div data-reveal-group className="min-w-0 space-y-12 lg:col-span-7">
             <div>
               <div className="mb-4 flex items-baseline justify-between">
                 <p className="eyebrow">I · Gartenfläche</p>

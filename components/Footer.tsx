@@ -11,7 +11,7 @@ export function Footer() {
         <Eyebrow number="∞" className="text-linen/70 [&>span:first-child]:bg-linen/30">
           Kontakt
         </Eyebrow>
-        <h2 className="h-display mt-6 max-w-3xl text-5xl md:text-7xl">
+        <h2 data-reveal className="h-display mt-6 max-w-3xl text-5xl md:text-7xl">
           Sprechen wir über <span className="italic">Ihren Garten</span>.
         </h2>
 
