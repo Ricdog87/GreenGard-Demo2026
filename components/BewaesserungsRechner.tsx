@@ -74,7 +74,7 @@ export function BewaesserungsRechner() {
       <div className="container">
         <Eyebrow number="04">Planung</Eyebrow>
         <h2 className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-6xl">
-          Drei Fragen — und du weißt, <em className="italic">wo du landest</em>.
+          Drei Fragen. Ein <em className="italic">ehrlicher</em> Preisrahmen.
         </h2>
 
         {/* min-w-0 an beiden Grid-Items: sonst zieht die intrinsische Breite des
@@ -122,7 +122,7 @@ export function BewaesserungsRechner() {
             </div>
 
             <div>
-              <p className="eyebrow mb-4">III · Was bewässern?</p>
+              <p className="eyebrow mb-4">III · Was wird bewässert?</p>
               <div className="flex flex-wrap gap-2">
                 {BEREICHE.map((b) => (
                   <button
@@ -249,7 +249,7 @@ export function BewaesserungsRechner() {
                   <input
                     type="email"
                     required
-                    placeholder="deine@email.de"
+                    placeholder="ihre@email.de"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     aria-label="E-Mail für den Plan"

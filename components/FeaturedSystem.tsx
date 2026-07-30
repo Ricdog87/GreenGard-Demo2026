@@ -24,11 +24,10 @@ export function FeaturedSystem() {
             Im Fokus
           </Eyebrow>
           <h2 className="h-display mt-6 text-5xl md:text-6xl">
-            Autonome <em className="italic">Hingabe</em>.
+            Ihr Rasen mäht sich <em className="italic">selbst</em>.
           </h2>
           <p className="mt-6 max-w-md leading-relaxed text-linen/70">
-            Der Kress KR136E mäht zentimetergenau und ohne Begrenzungsdraht.
-            RTK-Satellitennavigation, 53 dB Geräusch — mehr Komposition als Maschine.
+            Der Kress KR136E arbeitet mit RTK-Satellitennavigation zentimetergenau — ganz ohne Begrenzungsdraht. Mit 53 dB ist er leiser als ein Gespräch. Sie merken nur eines: Der Rasen ist immer gemacht.
           </p>
 
           {/* Technische Zahlen bleiben Mono, Preise laufen in Fraunces. */}

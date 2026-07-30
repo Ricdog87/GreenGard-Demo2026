@@ -17,12 +17,12 @@ const ITEMS = [
     a: 'Weil jeder Garten anders ist. Wasserdruck, Leitungswege, Pumpenbedarf und Gartenschnitt verändern die Stückliste deutlich. Wir nennen deshalb einen belastbaren Richtwert und den Endpreis nach der kostenlosen Systemplanung — statt eines Festpreises, der später korrigiert werden müsste.',
   },
   {
-    q: 'Verlegt ihr selbst — oder braucht man einen GaLaBauer?',
+    q: 'Wer übernimmt die Installation?',
     a: 'Für die Installation empfehlen wir einen unserer Partnerbetriebe. Wer selbst Hand anlegt, bekommt von uns einen vollständigen Verlegeplan und telefonische Unterstützung.',
   },
   {
     q: 'Was kostet die Beratung?',
-    a: 'Die Systemplanung ist kostenfrei. Kommt es zum Auftrag, ist sie ohnehin Teil des Projekts — kommt es nicht dazu, behältst du den Plan trotzdem.',
+    a: 'Die Systemplanung ist kostenfrei. Kommt es zum Auftrag, ist sie ohnehin Teil des Projekts — kommt es nicht dazu, behalten Sie den Plan trotzdem.',
   },
   {
     q: 'Funktioniert ein Mähroboter wirklich ohne Begrenzungsdraht?',
@@ -48,7 +48,7 @@ export function FAQ() {
             Häufig <em className="italic">gefragt</em>.
           </h2>
           <p className="mt-6 max-w-sm text-ink/70">
-            Wenn etwas fehlt, ruf uns einfach an. Wir antworten lieber persönlich.
+            Wenn etwas offenbleibt, rufen Sie uns einfach an — wir antworten lieber persönlich.
           </p>
           <p className="num font-mono mt-6 text-[11px] uppercase tracking-[0.18em]">
             <a href={CONTACT.phoneHref} data-cursor="hover" className="hover:text-bronze">

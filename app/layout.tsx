@@ -32,7 +32,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Green-Gard · Gartentechnik aus Wiesbaden',
   description:
-    'Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik und Poolpflege. Geplant, geliefert und auf Wunsch installiert — seit 2006 aus Wiesbaden.',
+    'Das Upgrade für Ihren Garten: smarte Bewässerung, Gartenbeleuchtung, Mähroboter und Poolpflege. Geplant, geliefert und auf Wunsch installiert — seit 2006 aus Wiesbaden.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -37,7 +37,7 @@ export default function WarumGreenGardPage() {
           Als {CONTACT.company.replace(' GmbH', '')} {CONTACT.foundedYear} mit einer Werkbank,
           einem Telefon und drei Rainbird-Mustern die Geschäftstür aufschloss, war Smart
           Garden noch ein abstraktes Wort. Aber die Idee war schon da: dass Bewässerung
-          kein Baumarkt-Thema sein muss, sondern Handwerk mit Planung davor. Dass ein
+          kein Baumarkt-Thema sein muss, sondern Handwerk, das mit guter Planung beginnt. Dass ein
           Garten Atmosphäre braucht — und dass Technik dabei dienen muss, nicht dominieren.
           Zwei Jahrzehnte später ist der Anspruch unverändert. Nur der Lieferwagen ist neu.
         </p>
@@ -46,8 +46,7 @@ export default function WarumGreenGardPage() {
       <section className="border-y border-mist bg-linen py-32 md:py-40">
         <div className="container">
           <blockquote className="font-display mx-auto max-w-5xl text-balance text-center text-4xl italic leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-            „Wir sind nicht im Geschäft mit Sprinklern. Wir sind im Geschäft mit der Stille,
-            die ein gut geplanter Garten erlaubt.“
+            „Wir verkaufen keine Regner. Wir verkaufen die Ruhe eines Gartens, der sich um sich selbst kümmert.“
           </blockquote>
           <p className="font-mono mt-10 text-center text-[11px] uppercase tracking-[0.18em] text-moss">
             — Jan Leifermann
@@ -103,8 +102,7 @@ export default function WarumGreenGardPage() {
           Mit GaLaBauern auf Augenhöhe.
         </h2>
         <p className="dropcap text-lg leading-[1.7] text-ink/85">
-          Wir haben uns früh entschieden, unseren Partnerbetrieben nicht in den Rücken zu
-          fallen. Wer eine Anlage installieren lässt, soll einen GaLaBauer haben, der mit
+          Wir haben uns früh entschieden, nicht am Handwerk vorbei zu verkaufen. Wer eine Anlage installieren lässt, soll einen GaLaBauer haben, der mit
           unseren Komponenten arbeitet und für sie einsteht. Wir liefern Lager, Schulungen
           und Direktfahrten — sie liefern Hände, Verstand und Verantwortung. Diese
           Arbeitsteilung ist das eigentliche Geschäftsmodell: 450 Projekte pro Jahr laufen
@@ -189,8 +187,7 @@ export default function WarumGreenGardPage() {
             Wenn Sie planen, in den nächsten Jahren etwas Festes anzulegen — sei es der
             erste Smart-Garden oder die Aufrüstung einer bestehenden Anlage — sprechen Sie
             mit uns. Wir empfehlen, was zu Ihrer Situation passt, auch wenn das bedeutet,
-            weniger zu verkaufen. Wir sind Händler, ja. Aber erstens sind wir Gärtner — und
-            das färbt ab.
+            weniger zu verkaufen. Wir sind Händler, ja. Aber vor allem sind wir Gärtner — und das färbt ab.
           </p>
           <p className="font-display mt-12 text-2xl italic text-linen">Jan Leifermann</p>
           <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.18em] text-linen/60">

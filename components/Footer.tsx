@@ -12,7 +12,7 @@ export function Footer() {
           Kontakt
         </Eyebrow>
         <h2 className="h-display mt-6 max-w-3xl text-5xl md:text-7xl">
-          Wir hören gerne <span className="italic">zu</span>.
+          Sprechen wir über <span className="italic">Ihren Garten</span>.
         </h2>
 
         <div className="mt-16 grid grid-cols-1 gap-10 text-sm md:grid-cols-12">

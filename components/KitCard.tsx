@@ -142,8 +142,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
               <p className="eyebrow">Kit anfragen</p>
               <DialogTitle>{kit.name}</DialogTitle>
               <DialogDescription>
-                Wir prüfen, ob das Kit zu deinem Garten passt, und schicken dir eine
-                Einschätzung inklusive Preisrahmen. Kostenfrei und ohne Termin.
+                Wir prüfen, ob das Kit zu Ihrem Garten passt, und senden Ihnen eine Einschätzung inklusive Preisrahmen — kostenfrei und ohne Termin.
               </DialogDescription>
               <form
                 className="mt-2 space-y-4"
@@ -162,7 +161,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                     id={`kit-mail-${kit.slug}`}
                     type="email"
                     required
-                    placeholder="deine@email.de"
+                    placeholder="ihre@email.de"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />

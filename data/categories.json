@@ -3,7 +3,7 @@
     "slug": "bewaesserung",
     "name": "Bewässerung",
     "roman": "I",
-    "manifest": "Choreografierte Tropfen.",
+    "manifest": "Sattes Grün, automatisch.",
     "blurb": "Versenkregner, Tropfschläuche und Sprühdüsen von Rainbird, Hunter, Netafim und Rain.",
     "abPreis": 12.9,
     "image": "/img/cat/bewaesserung.svg"
@@ -12,8 +12,8 @@
     "slug": "steuerung",
     "name": "Steuerung",
     "roman": "II",
-    "manifest": "Wetter wird Code.",
-    "blurb": "Smart Controller mit WLAN-App, Wetter-API und Multi-Zonen-Programmierung.",
+    "manifest": "Ihr Garten denkt mit.",
+    "blurb": "Smarte Steuerungen von Hunter und Rainbird — mit App, Wetterdaten und Zonenprogrammen.",
     "abPreis": 119,
     "image": "/img/cat/steuerung.svg"
   },
@@ -21,7 +21,7 @@
     "slug": "pumpentechnik",
     "name": "Pumpentechnik",
     "roman": "III",
-    "manifest": "Stiller Druck.",
+    "manifest": "Druck, wo er gebraucht wird.",
     "blurb": "Hauswasserwerke, Brunnen- und Tauchpumpen von Pedrollo, Speck und Grundfos.",
     "abPreis": 219,
     "image": "/img/cat/pumpentechnik.svg"
@@ -30,7 +30,7 @@
     "slug": "beleuchtung",
     "name": "Beleuchtung",
     "roman": "IV",
-    "manifest": "Licht als Material.",
+    "manifest": "Der Auftritt nach Sonnenuntergang.",
     "blurb": "12V-Outdoor-Beleuchtung von In-Lite — sicher, sparsam und blendfrei.",
     "abPreis": 39,
     "image": "/img/cat/beleuchtung.svg"
@@ -39,7 +39,7 @@
     "slug": "maehroboter",
     "name": "Robotik",
     "roman": "V",
-    "manifest": "Autonome Hingabe.",
+    "manifest": "Gemäht, bevor Sie aufwachen.",
     "blurb": "Kabellose Mähroboter von Kress und Husqvarna — für 500 bis 5.000 m².",
     "abPreis": 899,
     "image": "/img/cat/maehroboter.svg"
@@ -48,7 +48,7 @@
     "slug": "pool",
     "name": "Pool",
     "roman": "VI",
-    "manifest": "Gepflegtes Wasser.",
+    "manifest": "Klares Wasser, ohne Aufwand.",
     "blurb": "Wasserpflege von Bayrol und autonome Poolroboter von Beatbot — klares Wasser ohne Aufwand.",
     "abPreis": 15.9,
     "image": "/img/cat/pool.svg"
@@ -57,7 +57,7 @@
     "slug": "zubehoer",
     "name": "Zubehör",
     "roman": "VII",
-    "manifest": "Stille Schaltzentrale.",
+    "manifest": "Die Technik hinter der Technik.",
     "blurb": "Magnetventile, Rohre, Verbinder, Kabel und Erdkabel — passend zu allen Systemen.",
     "abPreis": 2.9,
     "image": "/img/cat/zubehoer.svg"

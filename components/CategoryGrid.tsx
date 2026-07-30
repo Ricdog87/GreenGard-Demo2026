@@ -18,8 +18,7 @@ export function CategoryGrid() {
             </h2>
           </div>
           <p className="max-w-md text-ink/70">
-            Jede Disziplin wird einzeln geplant und beherrscht — und im System
-            zusammengeführt. Was du siehst, ist immer das Ergebnis.
+            Jede Disziplin ist für sich ein Upgrade. Zusammen ergeben sie einen Garten, der sich um sich selbst kümmert.
           </p>
         </div>
 

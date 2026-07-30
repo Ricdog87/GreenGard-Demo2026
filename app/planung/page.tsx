@@ -82,7 +82,7 @@ export default function PlanungPage() {
             {step === 0 && (
               <>
                 <h1 className="h-display text-5xl md:text-7xl">
-                  Wie groß ist <em className="italic">dein Garten</em>?
+                  Wie groß ist <em className="italic">Ihr Garten</em>?
                 </h1>
                 <p className="mt-6 max-w-xl text-ink/70">
                   Die Gesamtfläche genügt als Startwert — wir leiten daraus Regnerzahl,
@@ -345,7 +345,7 @@ export default function PlanungPage() {
                       Nächster Schritt
                     </p>
                     <h3 className="font-display mt-3 text-2xl tracking-tight">
-                      Wie möchtest du weitermachen?
+                      Wie möchten Sie fortfahren?
                     </h3>
                     <div className="mt-6 space-y-3">
                       <Button asChild variant="accent" size="lg" className="w-full justify-between">
@@ -390,7 +390,7 @@ export default function PlanungPage() {
                             <input
                               type="email"
                               required
-                              placeholder="deine@email.de"
+                              placeholder="ihre@email.de"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
                               aria-label="E-Mail für den Plan"

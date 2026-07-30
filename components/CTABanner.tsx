@@ -10,7 +10,7 @@ export function CTABanner() {
         <div className="lg:col-span-7">
           <Eyebrow number="08">Profi</Eyebrow>
           <h2 className="h-display mt-6 text-balance text-4xl md:text-6xl">
-            Sie sind <em className="italic">GaLaBauer</em>, Installateur oder Fachhändler?
+            Sie sind <em className="italic">GaLaBauer</em>, Architekt oder Fachhändler?
           </h2>
           <p className="mt-6 max-w-xl text-ink/70">
             Nettopreise, Staffelrabatte ab fünf Stück, Rechnungskauf und Schulungen im

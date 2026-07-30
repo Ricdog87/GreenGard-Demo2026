@@ -14,20 +14,14 @@ export function ManifestIntro() {
         </div>
         <div className="md:col-span-7">
           <h2 className="h-display text-balance text-4xl md:text-6xl lg:text-7xl">
-            Wir verkaufen keine Produkte. Wir planen <em className="italic">Systeme</em>.
+            Wir verkaufen keine Produkte. Wir machen Gärten <em className="italic">luxuriöser</em>.
           </h2>
           <div className="mt-12 grid gap-8 text-[17px] leading-relaxed text-ink/80 sm:grid-cols-2">
             <p className="dropcap">
-              Ein Garten ist mehr als Rasen, Beet und Hecke. Er ist ein Raum, in dem
-              Familien wachsen, Gespräche entstehen und Stille möglich wird. Unsere
-              Aufgabe ist nicht, Komponenten zu liefern — sondern dafür zu sorgen,
-              dass alles, was Technik braucht, unsichtbar bleibt.
+              Luxus im Garten heißt nicht mehr Fläche — er heißt mehr Sorglosigkeit. Die Bewässerung läuft im Morgengrauen, der Mähroboter zieht lautlos seine Bahnen, das Poolwasser bleibt von selbst klar, und am Abend setzt das Licht Haus und Bäume in Szene. Ohne dass Sie einen Handgriff tun. Dieses Gefühl ist unser Produkt.
             </p>
             <p>
-              Seit {CONTACT.foundedYear} arbeiten wir mit den weltbesten Herstellern für
-              Bewässerung, Steuerung, Beleuchtung, Robotik und Poolpflege. Wir wählen
-              Komponenten aus, planen Systeme, schulen Handwerker — und stehen für jedes
-              Projekt mit unserem Namen ein.{' '}
+              Seit {CONTACT.foundedYear} rüsten wir Gärten mit den besten Herstellern ihrer Klasse auf: Hunter und Rainbird für die Bewässerung, Kress und Husqvarna für die Robotik, In-Lite für das Licht, Bayrol und Beatbot für den Pool. Wir planen das System, liefern ab Lager und stehen mit unserem Namen für jedes Projekt ein.{' '}
               <Link
                 href="/warum-green-gard"
                 data-cursor="hover"

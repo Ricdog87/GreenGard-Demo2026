@@ -177,7 +177,7 @@ export function ProduktKatalog() {
 
             {filtered.length === 0 ? (
               <p className="py-20 text-center text-ink/60">
-                Keine Artikel entsprechen deiner Auswahl.
+                Keine Artikel entsprechen Ihrer Auswahl.
               </p>
             ) : (
               <div className="grid grid-cols-1 gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">

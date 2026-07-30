@@ -113,8 +113,7 @@ export function BeratungBooking() {
           Systemplanung — <em className="italic">kostenfrei</em>.
         </h1>
         <p className="mt-6 max-w-xl text-ink/70">
-          30 Minuten, vor Ort in Wiesbaden oder per Video. Wir hören zu, stellen Fragen
-          und schicken danach eine erste Skizze mit belastbarem Preisrahmen.
+          30 Minuten, vor Ort in Wiesbaden oder per Video. Wir hören zu, stellen die richtigen Fragen und senden danach eine erste Skizze mit belastbarem Preisrahmen.
         </p>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-12">
@@ -244,7 +243,7 @@ export function BeratungBooking() {
                 <label className="eyebrow mb-2 block" htmlFor="b-email">
                   E-Mail
                 </label>
-                <Input id="b-email" type="email" placeholder="deine@email.de" {...register('email')} />
+                <Input id="b-email" type="email" placeholder="ihre@email.de" {...register('email')} />
                 {errors.email && <p className="mt-1 text-xs text-red-700">{errors.email.message}</p>}
               </div>
               <div>

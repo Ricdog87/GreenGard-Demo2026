@@ -172,8 +172,8 @@ export function Hero() {
           <div className="w-full">
             <HeroHeadline />
             <p className="hero-reveal mt-8 max-w-xl text-base leading-snug text-linen/80 md:text-lg">
-              <span className="italic">Smart Irrigation. Engineered Lighting. Autonomous Mowing.</span>{' '}
-              Seit {CONTACT.foundedYear}.
+              <span className="italic">Smarte Bewässerung. Stimmungsvolles Licht. Autonome Mäher. Klares Poolwasser.</span>{' '}
+              Seit {CONTACT.foundedYear} aus Wiesbaden.
             </p>
             <div className="hero-reveal mt-10 flex flex-wrap items-center gap-4">
               <MagneticButton>

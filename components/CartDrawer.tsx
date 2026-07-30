@@ -35,8 +35,7 @@ export function CartDrawer() {
           {items.length === 0 && (
             <div className="py-12 text-center">
               <p className="mb-8 text-base text-ink/60">
-                Einzelprodukte legst du direkt in den Warenkorb. Für ein komplettes System
-                starte mit der Planung — wir rechnen dir das passende Kit.
+                Einzelprodukte landen direkt im Warenkorb. Ein komplettes System planen wir gemeinsam — kostenlos und mit ehrlichem Preisrahmen.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <SheetClose asChild>

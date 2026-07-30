@@ -62,7 +62,7 @@ export default function LandingPage() {
       </section>
 
       <PullQuote attribution="Jan Leifermann · Geschäftsführer">
-        Ein Garten ist kein Projekt. Er ist eine Behauptung.
+        Luxus im Garten ist nicht das, was man sieht. Es ist das, was man nie wieder tun muss.
       </PullQuote>
 
       <FeaturedSystem />

@@ -165,7 +165,7 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
             <div>
               <Eyebrow number="++">Passend dazu</Eyebrow>
               <h2 className="h-display mt-4 text-3xl md:text-5xl">
-                Komplettiere dein <em className="italic">Setup</em>.
+                Ergänzen Sie Ihr <em className="italic">System</em>.
               </h2>
             </div>
             <Link

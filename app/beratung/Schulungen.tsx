@@ -140,7 +140,7 @@ export function Schulungen() {
               </span>
               <DialogTitle>Platz ist reserviert.</DialogTitle>
               <DialogDescription>
-                Wir haben deine Anmeldung für <span className="font-medium">{active?.title}</span> am{' '}
+                Wir haben Ihre Anmeldung für <span className="font-medium">{active?.title}</span> am{' '}
                 <span className="num font-medium">{termin}</span> notiert. Den Zahlungslink
                 senden wir per Mail — erst danach ist der Platz verbindlich gebucht.
                 <span className="font-mono mt-3 block text-[10px] uppercase tracking-[0.18em]">

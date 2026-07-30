@@ -66,8 +66,7 @@ export default function CheckoutPage() {
           Noch <em className="italic">leer</em>.
         </h1>
         <p className="mx-auto mt-6 max-w-md text-ink/70">
-          Einzelprodukte legst du direkt in den Warenkorb. Ein komplettes System planen wir
-          gemeinsam — Starter Kits sind Richtwerte und werden nicht direkt verkauft.
+          Einzelprodukte landen direkt im Warenkorb. Ein komplettes System planen wir gemeinsam — Starter Kits sind Richtwerte und werden nicht direkt verkauft.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Button asChild variant="primary" size="lg">
@@ -126,7 +125,7 @@ export default function CheckoutPage() {
                   <label className="eyebrow mb-2 block" htmlFor="c-email">
                     E-Mail
                   </label>
-                  <Input id="c-email" type="email" placeholder="deine@email.de" {...register('email')} />
+                  <Input id="c-email" type="email" placeholder="ihre@email.de" {...register('email')} />
                   {errors.email && (
                     <p className="mt-1 text-xs text-red-700">{errors.email.message}</p>
                   )}
