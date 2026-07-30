@@ -35,7 +35,9 @@ export function Highlights() {
 
       {/* Mobile: horizontal scrollbar mit Snap. Ab lg: klassisches Dreier-Raster.
           Kein negatives Margin — das würde auf 375px den Body überbreit machen. */}
-      <div data-reveal-group="x" className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1320px] lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
+      {/* max-w exakt wie .container (1280 inkl. Padding) — alles darüber läuft
+          auf 1280-px-Displays aus dem Viewport heraus. */}
+      <div data-reveal-group className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1280px] lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
         {items.map((p) => (
           <article
             key={p.slug}

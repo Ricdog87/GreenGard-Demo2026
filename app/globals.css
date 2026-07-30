@@ -86,3 +86,43 @@
     scroll-behavior: auto;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Druckansicht des Katalogs: Navigation, Overlays und Effekte raus, klebende
+   Spalten lösen, Kapitel nicht mitten in einer Zeile umbrechen.
+   --------------------------------------------------------------------------- */
+@media print {
+  header,
+  footer,
+  [role='dialog'],
+  [aria-label='Katalog-Kapitel'],
+  .print-hide {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+  main {
+    margin: 0;
+  }
+  /* Klebende Spalten und Effekte im Druck neutralisieren */
+  .lg\:sticky,
+  .xl\:sticky {
+    position: static !important;
+  }
+  [data-parallax] {
+    transform: none !important;
+  }
+  section {
+    break-inside: avoid-page;
+  }
+  li,
+  ol > li {
+    break-inside: avoid;
+  }
+  a[href^='/']::after {
+    content: '';
+  }
+}

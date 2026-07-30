@@ -42,7 +42,7 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | 12 | **Bewertungs-Feed** mit Sterne-Filter (Alle / 5★ / 4★), Sterne in Copper, Schnitt „4,9 von 5 · 27 Bewertungen“. |
 | 13 | **Schulungen** auf `/beratung`: drei Kurse mit Terminen, Platzbuchung mit Hinweis auf Zahlungslink. |
 | 14 | **Supabase vorbereitet**: Client mit Graceful Fallback, `supabase/schema.sql`, `/login`. |
-| 16 | **Katalog-Hinweis** auf `/produkte`: tagesaktuelle Preise, kein gedruckter Katalog 2026. |
+| 16 | **Katalog-Hinweis** auf `/produkte`: tagesaktuelle Preise, kein gedruckter Katalog 2026 — stattdessen der digitale Katalog unter `/katalog`. |
 
 ---
 
@@ -51,7 +51,8 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | Route | Inhalt |
 |---|---|
 | `/` | Hero-Video, Haltung, 7 Disziplinen, Highlights, Mini-Kalkulator, Starter-Kit-Teaser, Pull-Quote, Kress im Fokus, Partner-Marquee, Kennzahlen, Bewertungen mit Filter, Profi-CTA, FAQ |
-| `/produkte` | Katalog mit Disziplin-, Hersteller- und Preisfilter, 4 Sortierungen, Katalog-Hinweis · 31 Artikel |
+| `/katalog` | **Digitaler Katalog 2026**: sieben Kapitel als Doppelseiten, mitlaufendes Register, Volltextsuche per ⌘K, Druckansicht · 31 Artikel |
+| `/produkte` | Shop-Ansicht mit Disziplin-, Hersteller- und Preisfilter, 4 Sortierungen, Verweis auf den Katalog · 31 Artikel |
 | `/produkte/[slug]` | Produktdetail mit Staffelrabatt-Anzeige, Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
 | `/starter-kits` | Vier Kits, Vergleichstabelle, Detail-Sections, „ab“-Preise |
 | `/planung` | Vier Schritte (Fläche · Wasserquelle · Bereiche mit m²-Slidern · WLAN) + Ergebnis mit Stückliste |
@@ -71,6 +72,7 @@ Alte Routen (`/kollektion`, `/systeme`, `/atelier`, `/manifest`, `/handwerk`,
 ```
 app/                     Routen (App Router, überwiegend statisch vorgerendert)
 components/              Editorial-Bausteine + components/ui (shadcn-Stil auf Radix)
+components/katalog/      Digitaler Katalog: Kapitel, Register, ⌘K-Suche
 components/AudienceGate  Entry-Fenster: Zielgruppe + Login
 components/AudienceBar   Schnelleinstiege je Zielgruppe unter dem Hero
 components/LoginForm     Anmeldung, genutzt im Fenster und auf /login
@@ -107,6 +109,16 @@ Zuschläge: **Zisterne + 1.000 €** (nur Technik, ohne Zisterne), **Brunnen + 9
 hingewiesen. Angezeigt werden Materialkosten ohne Montage; Privatkunden sehen die
 Werte brutto. Ein automatisierter Test prüft alle Listenwerte gegen die Oberfläche.
 
+**Digitaler Katalog** (`/katalog`): Das Sortiment als Katalog statt als Filterliste —
+sieben Kapitel, jedes mit stehendem Disziplinenbild und Artikelregister
+(laufende Nummer, Marke, technische Kernangabe, Preis). Links läuft das
+Inhaltsverzeichnis mit und hebt das aktuelle Kapitel hervor (IntersectionObserver,
+kein Scroll-Listener); auf schmalen Displays wird daraus eine Fortschrittsleiste.
+Die Volltextsuche öffnet mit **⌘K / Strg+K**, sucht über Name, Marke, Disziplin und
+technische Daten, ist umlauttolerant ("mahroboter" findet Mähroboter) und komplett
+per Tastatur bedienbar. Statt eines PDFs, das beim Erscheinen veraltet, gibt es eine
+Druckansicht der Seite (Print-Styles in `globals.css`).
+
 **Hero-Video:** Original (11,2 MB, 1080p, mit Ton) enthält drei Schnitte. Beide
 harten Cuts sind übergeblendet, das Ende blendet auf den Anfang — ein ruhiger
 7,4-Sekunden-Loop ohne Ton:
@@ -138,6 +150,8 @@ Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 - **Bezugsgröße der Preisliste** — bezieht sich "Gartenfläche" auf das Grundstück oder auf die bewässerte Fläche? Der Kalkulator rechnet mit der bewässerten Fläche
 - **Montagekosten** — die Liste enthält nur Material; für einen Komplettpreis fehlen Stundensätze oder Pauschalen
 - **Markenfreigabe** — Bayrol und Beatbot bestätigen (Schreibweise, Sortimentstiefe, Preise)
+- **Eigenmarke** — Kabel und Klemmverbinder laufen jetzt als „Green-Gard" statt als „Generic"; bitte bestätigen
+- **Katalogdaten** — der Produktkatalog von Jan lag der Session nicht bei. Artikel und Produktfotos daraus füllen `data/products.json` und `public/img/prod/`; die Katalogseite zieht sie automatisch
 - **Starter-Kit-Preise** — belastbare „ab“-Preise und Komponentenlisten von Jan
 - **Schulungen** — Preise, Termine, Teilnehmerzahlen und das Zahlungskonzept (folgt in 2–4 Wochen)
 - **Bewertungen** — Quelle festlegen: Google Reviews API oder ProvenExpert-Embed

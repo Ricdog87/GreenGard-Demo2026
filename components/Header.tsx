@@ -13,10 +13,11 @@ import { cn } from '@/lib/utils';
 // Wer sich im Entry-Fenster als GaLaBau oder Architekt eingeordnet hat, sieht
 // den Konditionsbereich direkt in der Nav — das ist die "richtige Maske".
 const BASE_NAV = [
+  { href: '/katalog', label: 'Katalog' },
   { href: '/produkte', label: 'Produkte' },
   { href: '/starter-kits', label: 'Starter Kits' },
   { href: '/planung', label: 'Planung' },
-  { href: '/beratung', label: 'Beratung & Schulungen' },
+  { href: '/beratung', label: 'Beratung' },
   { href: '/warum-green-gard', label: 'Warum Green-Gard' },
 ];
 
@@ -54,7 +55,7 @@ export function Header() {
           <img src="/logo-green-gard.svg" alt="Green-Gard" className="h-8 w-auto" />
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex">
+        <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6">
           {nav.map((n) => {
             const active = pathname?.startsWith(n.href);
             return (
@@ -63,7 +64,7 @@ export function Header() {
                 href={n.href}
                 data-cursor="hover"
                 className={cn(
-                  'font-mono text-[11px] uppercase tracking-[0.18em] transition-colors',
+                  'font-mono whitespace-nowrap text-[11px] uppercase tracking-[0.12em] transition-colors 2xl:tracking-[0.16em]',
                   active ? 'text-ink' : 'text-ink/55 hover:text-ink'
                 )}
               >

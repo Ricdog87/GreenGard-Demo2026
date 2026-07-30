@@ -51,6 +51,11 @@ export function Footer() {
           <div className="md:col-span-3">
             <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">Sortiment</p>
             <ul className="mt-3 space-y-2">
+              <li>
+                <Link href="/katalog" data-cursor="hover" className="transition-colors hover:text-bronze">
+                  Katalog 2026
+                </Link>
+              </li>
               {categories.map((c) => (
                 <li key={c.slug}>
                   <Link

@@ -10,10 +10,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
  * Daten-Attributen — die gesamte Bewegung entsteht hier an einer Stelle:
  *
  *   data-reveal            sanftes Aufsteigen beim Eintritt in den Viewport
- *   data-reveal-group      Kinder gestaffelt nacheinander (optional ="x":
- *                          seitliches Einlaufen, z.B. für horizontale Reihen)
+ *   data-reveal-group      Kinder gestaffelt nacheinander
  *   data-parallax="6"      Bild driftet beim Scrollen (±6 %) und ist dafür
  *                          leicht vergrößert — nur in overflow-hidden-Rahmen!
+ *
+ * Bewusst NUR vertikale Offsets: ein horizontales `x` verschiebt Elemente, die
+ * noch auf ihren Reveal warten, nach rechts aus dem Viewport — das verbreitert
+ * das Dokument und erzeugt einen horizontalen Scrollbalken.
  *
  * Bewusst nur Opacity/Transform (Compositor-only) und `once`-Trigger für
  * Reveals: schnell, ruhig, kein Nachflackern. prefers-reduced-motion
@@ -40,9 +43,9 @@ export function ScrollFx() {
       gsap.utils.toArray<HTMLElement>('[data-reveal-group]').forEach((group) => {
         const items = Array.from(group.children) as HTMLElement[];
         if (items.length === 0) return;
-        const horizontal = group.dataset.revealGroup === 'x';
         gsap.from(items, {
-          ...(horizontal ? { x: 48 } : { y: 34 }),
+          y: 34,
+          scale: 0.985,
           opacity: 0,
           duration: 1,
           ease: 'power3.out',

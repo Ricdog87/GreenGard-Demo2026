@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { brands as ALL_BRANDS, categories, products as productsData } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
@@ -63,7 +64,12 @@ export function ProduktKatalog() {
 
         {/* Katalog-Hinweis (Kundenwunsch) */}
         <p className="font-mono mt-8 border-l-2 border-copper/50 bg-linen/60 py-3 pl-4 text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/60">
-          Aktuelle Preise — tagesaktuell online. Ein gedruckter Katalog erscheint 2026 nicht.
+          Aktuelle Preise — tagesaktuell online. Statt eines gedruckten Katalogs gibt es
+          den{' '}
+          <Link href="/katalog" className="border-b border-copper/60 text-ink hover:text-bronze">
+            digitalen Katalog 2026
+          </Link>
+          .
         </p>
 
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12">
