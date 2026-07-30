@@ -33,7 +33,7 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | 3 | **Entry-Fenster** beim Erstbesuch: **GaLaBau / Architekt · Privat · Händler** plus Login für bestehende Profi-Zugänge. Die Auswahl steuert Preisansicht, Navigation, Schnelleinstiege und die Vorbelegung im Konditionsformular. Persistiert in localStorage, jederzeit über Header, Schnelleinstiegs-Leiste oder Footer wechselbar. |
 | 4 | **Logo** als SVG-Wortmarke im Header (Platzhalter bis zum Kundenlogo). |
 | 5 | **Starter Kits** statt Festpreis-Pakete: vier Kits mit „ab“-Preis, kein „In den Warenkorb“, CTAs `Planung starten` / `Kit anfragen`. |
-| 6 | **Planung** auf 3 Kernfragen + WLAN reduziert (Mähroboter- und Licht-Add-ons entfernt). Mini-Kalkulator auf der Landing nutzt dieselbe Logik. |
+| 6 | **Planung** auf 3 Kernfragen + WLAN reduziert (Mähroboter- und Licht-Add-ons entfernt). Mini-Kalkulator auf der Landing nutzt dieselbe Logik. Die Preise kommen aus **Jans Liste** (siehe unten). |
 | 7 | **Pool** als siebte Disziplin: Bayrol-Wasserpflege und Beatbot-Roboter, 7 Produkte. |
 | 8 | **Highlights-Section** „Neu im Sortiment“, kuratiert über `data/highlights.json`. |
 | 9 | **Warum Green-Gard**: Gründungsjahr **2006** projektweit, Team-Grid ohne Rollenbezeichnungen mit persönlichen Mailadressen, Rainworks-Section, Brief des Geschäftsführers. |
@@ -82,6 +82,7 @@ lib/data.ts              typisierter Zugriff auf die Daten — der einzige Ort,
                          der beim CMS-Wechsel angefasst werden muss
 lib/pricing.ts           Privat (brutto) / Profi (netto + Staffel)
 lib/konfigurator.ts      Planungslogik, dokumentierte Faustformel
+lib/preise.ts            echte Preisliste: Material nach Fläche + Quelle
 lib/contact.ts           zentrale Kontaktdaten, Gründungsjahr
 lib/supabase.ts          Client + Mock-Fallback
 store/cart.ts            Warenkorb + Preisansicht (localStorage)
@@ -96,6 +97,15 @@ public/img/              Illustrationen für Disziplinen, Produkte, Kits
 JetBrains Mono (Eyebrows, technische Daten). Farben forest / bark / moss / linen /
 paper / bronze / copper / ink / mist. Preise laufen in Fraunces mit Tabellenziffern,
 technische Werte in Mono — die Trennung ist bewusst.
+
+**Preisbasis im Kalkulator** (`lib/preise.ts`): Liste von Jan Leifermann,
+"Gartenfläche.docx" vom 30.07.2026. Materialkosten netto bei Hauswasseranschluss
+von 100 m² (650 €) bis 1.500 m² (4.150 €) — alle 15 Stützpunkte liegen exakt auf
+**400 € + 2,50 €/m²**, deshalb rechnet der Kalkulator mit dieser Formel.
+Zuschläge: **Zisterne + 1.000 €** (nur Technik, ohne Zisterne), **Brunnen + 900 €**
+(ohne Bohrung). Über 1.500 m² wird linear fortgeschrieben und der Nutzer darauf
+hingewiesen. Angezeigt werden Materialkosten ohne Montage; Privatkunden sehen die
+Werte brutto. Ein automatisierter Test prüft alle Listenwerte gegen die Oberfläche.
 
 **Hero-Video:** Original (11,2 MB, 1080p, mit Ton) enthält drei Schnitte. Beide
 harten Cuts sind übergeblendet, das Ende blendet auf den Anfang — ein ruhiger
@@ -124,7 +134,9 @@ Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 - **Logo-Datei** — aktuell SVG-Wortmarke als Platzhalter (`public/logo-green-gard.svg`)
 - **Team** — echte Namen, Fotos und Mailadressen (`data/team.json`, aktuell 6 Platzhalter)
 - **Rainworks** — finaler Text für die Partnerschafts-Section
-- **Rufnummer** — echte Zentralnummer mit Endung -30 (`lib/contact.ts`, aktuell `+49 (0) 611 XXX XX-30`)
+- **Rufnummer** — bestätigen, dass `+49 6122 95895-30` die richtige Sammelnummer ist (abgeleitet aus Jans Durchwahl -34)
+- **Bezugsgröße der Preisliste** — bezieht sich "Gartenfläche" auf das Grundstück oder auf die bewässerte Fläche? Der Kalkulator rechnet mit der bewässerten Fläche
+- **Montagekosten** — die Liste enthält nur Material; für einen Komplettpreis fehlen Stundensätze oder Pauschalen
 - **Markenfreigabe** — Bayrol und Beatbot bestätigen (Schreibweise, Sortimentstiefe, Preise)
 - **Starter-Kit-Preise** — belastbare „ab“-Preise und Komponentenlisten von Jan
 - **Schulungen** — Preise, Termine, Teilnehmerzahlen und das Zahlungskonzept (folgt in 2–4 Wochen)

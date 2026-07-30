@@ -278,7 +278,8 @@ export default function PlanungPage() {
                 <Eyebrow>Empfehlung</Eyebrow>
                 <h1 className="h-display mt-4 text-5xl md:text-7xl">{empf.kitName}</h1>
                 <p className="mt-3 italic text-moss">
-                  {flaeche} m² Grundstück · {QUELLE_LABEL[quelle]} ·{' '}
+                  {empf.bewaesserteFlaeche} m² bewässert von {flaeche} m² Grundstück ·{' '}
+                  {QUELLE_LABEL[quelle]} ·{' '}
                   {bereiche.includes('rasen') && `Rasen ${rasenQm} m²`}
                   {bereiche.length === 2 && ' · '}
                   {bereiche.includes('beete') && `Beete ${beetQm} m²`}
@@ -301,16 +302,33 @@ export default function PlanungPage() {
                           </span>
                         </div>
                       ))}
-                      <div className="flex items-baseline justify-between gap-4 pt-3">
-                        <span className="eyebrow">Richtwert ab</span>
-                        <span className="price text-3xl">
-                          {formatEURRound(priceFor(empf.abPreisGesamt, mode))}
-                        </span>
+                    </div>
+
+                    {/* Kosten nach der Preisliste von Green-Gard */}
+                    <div className="mt-8 border-t border-mist pt-6">
+                      <p className="eyebrow mb-4">Materialkosten</p>
+                      <div className="space-y-3 text-sm">
+                        {empf.kosten.map((k) => (
+                          <div
+                            key={k.label}
+                            className="flex justify-between gap-4 border-b border-mist pb-3"
+                          >
+                            <span>{k.label}</span>
+                            <span className="price whitespace-nowrap text-base">
+                              {formatEURRound(priceFor(k.netto, mode))}
+                            </span>
+                          </div>
+                        ))}
+                        <div className="flex items-baseline justify-between gap-4 pt-3">
+                          <span className="eyebrow">Summe ca.</span>
+                          <span className="price text-3xl">
+                            {formatEURRound(priceFor(empf.gesamtNetto, mode))}
+                          </span>
+                        </div>
+                        <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/50">
+                          {priceLabel(mode)} · {empf.zonen} Zonen · ohne Montage und Erdarbeiten
+                        </p>
                       </div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                        {priceLabel(mode)} · {empf.zonen} Zonen ·{' '}
-                        {empf.zusatz.length > 0 ? 'inkl. Pumpentechnik' : 'ohne Pumpentechnik'}
-                      </p>
                     </div>
 
                     <div className="mt-8 space-y-2 border-l-2 border-copper/50 bg-linen/60 py-4 pl-4 text-sm text-ink/75">
@@ -320,7 +338,9 @@ export default function PlanungPage() {
                     </div>
                   </div>
 
-                  <div className="min-w-0 bg-forest p-8 text-linen lg:col-span-5">
+                  {/* self-start: das Panel soll nicht auf die Höhe der Stückliste
+                      mitwachsen und unten leer stehen. */}
+                  <div className="min-w-0 self-start bg-forest p-8 text-linen lg:col-span-5">
                     <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">
                       Nächster Schritt
                     </p>

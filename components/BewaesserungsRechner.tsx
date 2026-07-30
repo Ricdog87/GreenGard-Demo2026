@@ -59,6 +59,8 @@ export function BewaesserungsRechner() {
     [flaeche, quelle, bereiche, rasenQm, beetQm, steuerung]
   );
 
+  const quellenHinweis = empf.hinweise.find((h) => h.startsWith('Pumpe') || h.includes('nicht enthalten'));
+
   function toggleBereich(v: Flaechentyp) {
     setBereiche((cur) => {
       // Mindestens ein Bereich muss gewählt bleiben.
@@ -173,7 +175,7 @@ export function BewaesserungsRechner() {
           </div>
 
           <motion.div
-            key={empf.kitSlug + empf.abPreisGesamt}
+            key={empf.kitSlug + empf.gesamtNetto}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -182,37 +184,39 @@ export function BewaesserungsRechner() {
             <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">Empfehlung</p>
             <h3 className="font-display mt-3 text-3xl tracking-tight md:text-4xl">{empf.kitName}</h3>
             <p className="mt-2 text-sm italic text-linen/70">
-              ca. {flaeche} m² · {QUELLE_LABEL[quelle]} ·{' '}
+              {empf.bewaesserteFlaeche} m² bewässert · {QUELLE_LABEL[quelle]} ·{' '}
               {steuerung === 'smart' ? 'WLAN-Steuerung' : 'manuelle Steuerung'}
             </p>
 
+            {/* Zahlen nach der Preisliste von Green-Gard: Material nach Fläche
+                plus Zuschlag je Wasserquelle. */}
             <div className="mt-8 space-y-3 border-t border-linen/15 pt-6 text-sm">
-              <div className="flex justify-between gap-4">
-                <span className="text-linen/70">{empf.kitName}</span>
-                <span className="num font-display whitespace-nowrap">
-                  ab {formatEURRound(priceFor(empf.abPreis, mode))}
-                </span>
-              </div>
-              {empf.zusatz.map((z) => (
-                <div key={z.label} className="flex justify-between gap-4">
-                  <span className="text-linen/70">+ {z.label}</span>
+              {empf.kosten.map((k) => (
+                <div key={k.label} className="flex justify-between gap-4">
+                  <span className="text-linen/70">{k.label}</span>
                   <span className="num font-display whitespace-nowrap">
-                    ab {formatEURRound(priceFor(z.abPreis, mode))}
+                    {formatEURRound(priceFor(k.netto, mode))}
                   </span>
                 </div>
               ))}
               <div className="flex items-baseline justify-between border-t border-linen/15 pt-4">
                 <span className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">
-                  Richtwert ab
+                  Materialkosten ca.
                 </span>
                 <span className="num font-display text-3xl">
-                  {formatEURRound(priceFor(empf.abPreisGesamt, mode))}
+                  {formatEURRound(priceFor(empf.gesamtNetto, mode))}
                 </span>
               </div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/50">
-                {priceLabel(mode)} · Endpreis nach kostenloser Systemplanung
+              <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-linen/50">
+                {priceLabel(mode)} · ohne Montage · Endpreis nach kostenloser Systemplanung
               </p>
             </div>
+
+            {quellenHinweis && (
+              <p className="mt-4 border-l-2 border-bronze/60 pl-3 text-xs leading-relaxed text-linen/65">
+                {quellenHinweis}
+              </p>
+            )}
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="accent">

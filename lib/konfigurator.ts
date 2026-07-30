@@ -1,10 +1,17 @@
 // Planungs-Logik (V2, vereinfacht auf Kundenwunsch):
-// nur noch 3 Kernfragen + WLAN-Abfrage. Ergebnis ist ein empfohlenes Starter Kit
-// mit "ab"-Preis plus eine Stückliste als Orientierung — bewusst KEIN Festpreis.
+// nur noch 3 Kernfragen + WLAN-Abfrage.
 //
-// Die Mengen sind eine transparente Faustformel, keine hydraulische Auslegung:
-// die echten Werte kommen aus der kostenlosen Systemplanung (Druck, Leitungswege,
-// Gartenschnitt). Das ist auch genau die Botschaft an den Nutzer.
+// Die Preise kommen aus der echten Liste von Jan Leifermann (siehe lib/preise.ts):
+// Materialkosten nach Fläche, Zuschlag je Wasserquelle. Die Stücklisten-Mengen
+// bleiben eine transparente Faustformel — die verbindliche Auslegung macht die
+// kostenlose Systemplanung.
+
+import {
+  MATERIAL_TABLE_MAX_QM,
+  QUELLE_ZUSCHLAG,
+  materialkostenNetto,
+  ueberListe,
+} from '@/lib/preise';
 
 export type Quelle = 'leitung' | 'zisterne' | 'brunnen';
 export type Flaechentyp = 'rasen' | 'beete';
@@ -24,12 +31,20 @@ export interface Position {
   menge: string;
 }
 
+export interface Kostenzeile {
+  label: string;
+  netto: number;
+  note?: string;
+}
+
 export interface Empfehlung {
   kitSlug: 'bewaesserung-starter' | 'bewaesserung-komfort';
   kitName: string;
-  abPreis: number;
-  zusatz: { label: string; abPreis: number }[];
-  abPreisGesamt: number;
+  /** Bewässerte Fläche, auf die sich die Materialkosten beziehen. */
+  bewaesserteFlaeche: number;
+  /** Materialkosten und Zuschläge — einzeln, damit sie nachvollziehbar bleiben. */
+  kosten: Kostenzeile[];
+  gesamtNetto: number;
   positionen: Position[];
   zonen: number;
   hinweise: string[];
@@ -43,7 +58,7 @@ const LFM_PRO_BEET_QM = 1.2;
 const REGNER_PRO_ZONE = 4;
 
 export const QUELLE_LABEL: Record<Quelle, string> = {
-  leitung: 'Leitungswasser',
+  leitung: 'Hauswasseranschluss',
   zisterne: 'Zisterne',
   brunnen: 'Brunnen',
 };
@@ -71,16 +86,27 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
     ? 'bewaesserung-komfort'
     : 'bewaesserung-starter';
   const kitName = brauchtKomfort ? 'Bewässerung Komfort Kit' : 'Bewässerung Starter Kit';
-  const abPreis = brauchtKomfort ? 2490 : 899;
 
-  const zusatz: { label: string; abPreis: number }[] = [];
-  if (quelle === 'zisterne') {
-    zusatz.push({ label: 'Saugpumpe für Zisterne (Pedrollo)', abPreis: 389 });
+  // --- Kosten nach Jans Liste ---
+  // Jans Liste nennt den Grundbetrag für den Hauswasseranschluss; Zisterne und
+  // Brunnen kommen als Technik-Zuschlag obendrauf. Deshalb steht der Zusatz
+  // "Hauswasseranschluss" nur dort, wo er auch die ganze Wahrheit ist.
+  const kosten: Kostenzeile[] = [
+    {
+      label:
+        quelle === 'leitung'
+          ? `Material für ${bewaesserteFlaeche} m² · Hauswasseranschluss`
+          : `Material für ${bewaesserteFlaeche} m² · Bewässerungstechnik`,
+      netto: materialkostenNetto(bewaesserteFlaeche),
+    },
+  ];
+  const zuschlag = QUELLE_ZUSCHLAG[quelle];
+  if (zuschlag) {
+    kosten.push({ label: zuschlag.label, netto: zuschlag.netto, note: zuschlag.note });
   }
-  if (quelle === 'brunnen') {
-    zusatz.push({ label: 'Brunnenpumpe inkl. Druckregelung (Pedrollo)', abPreis: 489 });
-  }
+  const gesamtNetto = kosten.reduce((s, k) => s + k.netto, 0);
 
+  // --- Stückliste als Orientierung ---
   const positionen: Position[] = [];
   positionen.push({
     label: brauchtKomfort
@@ -108,26 +134,43 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   if (steuerung === 'smart') {
     positionen.push({ label: 'Regensensor + Wetter-API-Anbindung', menge: '1 Set' });
   }
-  for (const z of zusatz) {
-    positionen.push({ label: z.label, menge: '1 Stück' });
+  if (quelle === 'zisterne') {
+    positionen.push({ label: 'Saugpumpe, Filter und Steuerung', menge: '1 Set' });
+  }
+  if (quelle === 'brunnen') {
+    positionen.push({ label: 'Brunnenpumpe mit Druckregelung', menge: '1 Set' });
   }
 
+  // --- Hinweise ---
   const hinweise: string[] = [
-    'Alle Mengen sind Richtwerte. Die verbindliche Auslegung erfolgt in der kostenlosen Systemplanung.',
+    'Angegeben sind Materialkosten. Montage, Erdarbeiten und Inbetriebnahme kommen je nach Projekt hinzu.',
+    'Mengen sind Richtwerte — die verbindliche Auslegung erfolgt in der kostenlosen Systemplanung.',
   ];
-  if (quelle !== 'leitung') {
+  if (zuschlag?.note) {
+    hinweise.push(zuschlag.note);
+  }
+  if (ueberListe(bewaesserteFlaeche)) {
     hinweise.push(
-      'Pumpen werden individuell ausgelegt — Saughöhe, Filterung und Volumenstrom entscheiden über das Modell.'
+      `Über ${MATERIAL_TABLE_MAX_QM.toLocaleString('de-DE')} m² kalkulieren wir individuell — der Richtwert ist linear fortgeschrieben.`
     );
   }
-  if (flaecheQm > 1200) {
-    hinweise.push('Ab etwa 1.200 m² planen wir mehrere Bewässerungskreise und prüfen den Hausanschluss vor Ort.');
+  if (flaecheQm > bewaesserteFlaeche) {
+    hinweise.push(
+      `Berechnet auf die bewässerte Fläche (${bewaesserteFlaeche} m² von ${flaecheQm} m² Grundstück).`
+    );
   }
   if (steuerung === 'manuell') {
     hinweise.push('Das Steuergerät ist später ohne Austausch auf WLAN-Betrieb aufrüstbar.');
   }
 
-  const abPreisGesamt = abPreis + zusatz.reduce((s, z) => s + z.abPreis, 0);
-
-  return { kitSlug, kitName, abPreis, zusatz, abPreisGesamt, positionen, zonen, hinweise };
+  return {
+    kitSlug,
+    kitName,
+    bewaesserteFlaeche,
+    kosten,
+    gesamtNetto,
+    positionen,
+    zonen,
+    hinweise,
+  };
 }
