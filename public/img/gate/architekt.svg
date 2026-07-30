@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="550" fill="#F5F1E8"/>
+  <!-- Planraster -->
+  <g stroke="#0F1B14" stroke-width="0.4" opacity="0.14">
+    <path d="M0 50 H800 M0 100 H800 M0 150 H800 M0 200 H800 M0 250 H800 M0 300 H800 M0 350 H800 M0 400 H800 M0 450 H800 M0 500 H800"/>
+    <path d="M50 0 V550 M100 0 V550 M150 0 V550 M200 0 V550 M250 0 V550 M300 0 V550 M350 0 V550 M400 0 V550 M450 0 V550 M500 0 V550 M550 0 V550 M600 0 V550 M650 0 V550 M700 0 V550 M750 0 V550"/>
+  </g>
+
+  <!-- Grundstücksgrenze -->
+  <rect x="70" y="70" width="660" height="410" fill="none" stroke="#0F1B14" stroke-width="1.6"/>
+
+  <!-- Gebäude -->
+  <g fill="#0F1B14" opacity="0.9">
+    <rect x="110" y="110" width="200" height="130"/>
+  </g>
+  <text x="122" y="270" font-family="monospace" font-size="13" letter-spacing="2" fill="#0F1B14" opacity="0.6">HAUS</text>
+
+  <!-- Terrasse -->
+  <g stroke="#0F1B14" stroke-width="1" fill="none" opacity="0.5">
+    <rect x="110" y="250" width="200" height="70" stroke-dasharray="6 5"/>
+  </g>
+
+  <!-- Bewässerungszonen mit Wurfkreisen -->
+  <g stroke="#3DA9FC" stroke-width="1.2" fill="none">
+    <circle cx="430" cy="180" r="78" stroke-dasharray="5 6"/>
+    <circle cx="580" cy="270" r="78" stroke-dasharray="5 6"/>
+    <circle cx="430" cy="360" r="78" stroke-dasharray="5 6"/>
+    <circle cx="640" cy="410" r="60" stroke-dasharray="5 6" opacity="0.7"/>
+  </g>
+  <g fill="#0F1B14">
+    <circle cx="430" cy="180" r="4.5"/>
+    <circle cx="580" cy="270" r="4.5"/>
+    <circle cx="430" cy="360" r="4.5"/>
+    <circle cx="640" cy="410" r="4.5"/>
+  </g>
+
+  <!-- Leitungsführung -->
+  <path d="M310 320 H400 V180 M400 320 H580 V270 M400 360 H430 M580 360 H640 V410"
+        fill="none" stroke="#0F1B14" stroke-width="1.4" opacity="0.55"/>
+
+  <!-- Maßlinien -->
+  <g stroke="#B87333" stroke-width="1" fill="none">
+    <path d="M70 512 H730"/>
+    <path d="M70 505 V519 M730 505 V519"/>
+  </g>
+  <text x="380" y="536" font-family="monospace" font-size="12" letter-spacing="2" fill="#B87333">28,40 M</text>
+  <g stroke="#B87333" stroke-width="1" fill="none">
+    <path d="M42 70 V480"/>
+    <path d="M35 70 H49 M35 480 H49"/>
+  </g>
+
+  <!-- Zonen-Legende -->
+  <g font-family="monospace" font-size="11" letter-spacing="2" fill="#0F1B14" opacity="0.65">
+    <text x="452" y="185">Z1</text>
+    <text x="602" y="275">Z2</text>
+    <text x="452" y="365">Z3</text>
+    <text x="662" y="415">Z4</text>
+  </g>
+</svg>

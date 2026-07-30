@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="gb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F2A22"/>
+      <stop offset="1" stop-color="#0F1B14"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="550" fill="url(#gb)"/>
+  <g stroke="#5C7A5E" stroke-width="0.4" opacity="0.3" fill="none">
+    <path d="M0 110 H800 M0 190 H800 M0 270 H800 M0 350 H800 M0 430 H800"/>
+    <path d="M160 0 V550 M320 0 V550 M480 0 V550 M640 0 V550"/>
+  </g>
+
+  <!-- Ventilbox mit drei Magnetventilen -->
+  <g transform="translate(90 190)">
+    <rect width="270" height="200" rx="6" fill="#0A0F0C" stroke="#F5F1E8" stroke-width="1.4" opacity="0.95"/>
+    <rect x="18" y="18" width="234" height="30" rx="3" fill="#1F2A22"/>
+    <g stroke="#F5F1E8" stroke-width="1.2" fill="#0F1B14">
+      <rect x="30" y="72" width="60" height="34" rx="4"/>
+      <rect x="105" y="72" width="60" height="34" rx="4"/>
+      <rect x="180" y="72" width="60" height="34" rx="4"/>
+    </g>
+    <g fill="#B87333">
+      <circle cx="60" cy="128" r="5"/>
+      <circle cx="135" cy="128" r="5"/>
+      <circle cx="210" cy="128" r="5"/>
+    </g>
+    <g stroke="#A8E063" stroke-width="1.4" fill="none" opacity="0.85">
+      <path d="M60 133 V170 H210 V133"/>
+      <path d="M135 133 V152"/>
+    </g>
+  </g>
+
+  <!-- PE-Rohr mit Klemmverbinder -->
+  <g transform="translate(410 250)" stroke="#F5F1E8" fill="none" opacity="0.9">
+    <path d="M0 60 H120" stroke-width="26" stroke-linecap="round"/>
+    <circle cx="160" cy="60" r="30" stroke-width="1.6" fill="#0F1B14"/>
+    <circle cx="160" cy="60" r="13" stroke-width="1.2" fill="#1F2A22"/>
+    <path d="M200 60 H310" stroke-width="26" stroke-linecap="round"/>
+    <path d="M0 60 H310" stroke-width="1" stroke-dasharray="4 8" opacity="0.35"/>
+  </g>
+
+  <!-- Kabelbündel -->
+  <g stroke="#5C7A5E" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M420 400 C 480 440, 560 380, 640 420 C 690 445, 730 415, 760 425"/>
+    <path d="M420 420 C 480 460, 560 400, 640 440 C 690 465, 730 435, 760 445" opacity="0.6"/>
+  </g>
+</svg>

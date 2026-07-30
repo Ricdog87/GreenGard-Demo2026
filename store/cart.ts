@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Mode } from '@/lib/pricing';
+import { AUDIENCES, type Audience } from '@/lib/audience';
 
 export interface CartLine {
   slug: string;
@@ -17,9 +18,13 @@ interface CartState {
   /** Preisansicht: privat = brutto, profi = netto + Staffelrabatt. */
   mode: Mode;
   setMode: (m: Mode) => void;
-  /** true, sobald der Nutzer im Entry-Gate gewählt hat (persistiert). */
+  /** Zielgruppe aus dem Entry-Fenster — steuert Navigation und Schnelleinstiege. */
+  audience: Audience;
+  /** true, sobald im Entry-Fenster gewählt wurde (persistiert). */
   audienceChosen: boolean;
-  chooseAudience: (m: Mode) => void;
+  chooseAudience: (a: Audience) => void;
+  /** Setzt die Auswahl zurück, das Entry-Fenster erscheint erneut. */
+  resetAudience: () => void;
 
   items: CartLine[];
   drawerOpen: boolean;
@@ -36,11 +41,16 @@ export const useCart = create<CartState>()(
   persist(
     (set, get) => ({
       mode: 'privat',
+      // Der Header-Switch ändert nur die Preisansicht, nicht die Zielgruppe:
+      // wer als Architekt kommt, will die Bruttopreise sehen können, ohne
+      // seine Navigation zu verlieren.
       setMode: (m) => set({ mode: m }),
+      audience: 'privat',
       audienceChosen: false,
-      // Auswahl aus dem Entry-Gate: setzt Preisansicht und merkt sich, dass das
-      // Gate erledigt ist — dieselbe Logik wie der Header-Switch.
-      chooseAudience: (m) => set({ mode: m, audienceChosen: true }),
+      // Auswahl aus dem Entry-Fenster: Zielgruppe merken und die passende
+      // Preisansicht setzen.
+      chooseAudience: (a) => set({ audience: a, mode: AUDIENCES[a].mode, audienceChosen: true }),
+      resetAudience: () => set({ audienceChosen: false }),
 
       items: [],
       drawerOpen: false,
@@ -71,7 +81,12 @@ export const useCart = create<CartState>()(
     {
       name: 'gg-audience',
       // Warenkorb, Preisansicht und Gate-Status überleben den Reload.
-      partialize: (s) => ({ items: s.items, mode: s.mode, audienceChosen: s.audienceChosen }),
+      partialize: (s) => ({
+        items: s.items,
+        mode: s.mode,
+        audience: s.audience,
+        audienceChosen: s.audienceChosen,
+      }),
       // Wichtig: NICHT automatisch hydrieren. Sonst rendert der Client beim
       // ersten Durchgang schon Profi-Nettopreise, während im statischen HTML
       // Bruttopreise stehen — das ist ein Hydration-Mismatch. Die Rehydration

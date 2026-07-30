@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
+import { ViewSwitchLink } from '@/components/ViewSwitchLink';
 import { CONTACT } from '@/lib/contact';
 import { categories } from '@/lib/data';
 
@@ -107,6 +108,9 @@ export function Footer() {
                 <Link href="/checkout" data-cursor="hover" className="transition-colors hover:text-bronze">
                   Warenkorb
                 </Link>
+              </li>
+              <li>
+                <ViewSwitchLink />
               </li>
             </ul>
             <p className="eyebrow mt-6 text-linen/60 [&>span:first-child]:bg-linen/30">Sozial</p>

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,6 +13,8 @@ import { Input } from '@/components/ui/input';
 import { submitLead, type GewerbeArt } from '@/lib/supabase';
 import { DISCOUNT_TIERS } from '@/lib/pricing';
 import { CONTACT } from '@/lib/contact';
+import { AUDIENCES } from '@/lib/audience';
+import { useCart } from '@/store/cart';
 import { cn } from '@/lib/utils';
 
 const USPS = [
@@ -63,8 +65,17 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function ProfiPage() {
-  const [gewerbe, setGewerbe] = useState<GewerbeArt>('galabau');
+  // Die Gewerbe-Art kommt aus der Auswahl im Entry-Fenster: Händler müssen
+  // nicht noch einmal angeben, was sie schon gesagt haben.
+  const audience = useCart((s) => s.audience);
+  const [gewerbe, setGewerbe] = useState<GewerbeArt>(AUDIENCES[audience].gewerbe);
+  const [touched, setTouched] = useState(false);
   const [done, setDone] = useState(false);
+
+  // Nachziehen, wenn der Store hydriert ist — solange niemand selbst geklickt hat.
+  useEffect(() => {
+    if (!touched) setGewerbe(AUDIENCES[audience].gewerbe);
+  }, [audience, touched]);
 
   const {
     register,
@@ -77,7 +88,7 @@ export default function ProfiPage() {
       <section className="relative overflow-hidden bg-forest text-linen">
         <div className="absolute inset-0 opacity-30">
           <Image
-            src="/img/kits/bewaesserung-komfort.svg"
+            src="/img/gate/galabau.svg"
             alt=""
             fill
             sizes="100vw"
@@ -286,7 +297,10 @@ export default function ProfiPage() {
                         type="button"
                         data-cursor="hover"
                         aria-pressed={gewerbe === g.value}
-                        onClick={() => setGewerbe(g.value)}
+                        onClick={() => {
+                          setTouched(true);
+                          setGewerbe(g.value);
+                        }}
                         className={cn(
                           'border px-5 py-2 text-sm transition-all',
                           gewerbe === g.value

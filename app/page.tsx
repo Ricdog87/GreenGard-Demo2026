@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Hero } from '@/components/Hero';
+import { AudienceBar } from '@/components/AudienceBar';
 import { ManifestIntro } from '@/components/ManifestIntro';
 import { CategoryGrid } from '@/components/CategoryGrid';
 import { Highlights } from '@/components/Highlights';
@@ -24,6 +25,7 @@ export default function LandingPage() {
   return (
     <>
       <Hero />
+      <AudienceBar />
       <ManifestIntro />
       <CategoryGrid />
       <Highlights />

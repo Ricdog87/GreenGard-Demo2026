@@ -4,8 +4,8 @@
 > Stand: V2 nach dem Abstimmungstermin vom 28.07.2026 (Feedback Jan Leifermann).
 
 Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik, **Pool** und Zubehör —
-mit Entry-Gate für Privat- und Profikunden, Starter Kits statt Festpreis-Paketen und
-vereinfachter Planung.
+mit Entry-Fenster für GaLaBau/Architekten, Privatkunden und Händler, Starter Kits
+statt Festpreis-Paketen und vereinfachter Planung.
 
 ---
 
@@ -30,7 +30,7 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 |---|---|
 | 1 | Begriffe und Routen: **Produkte**, **Starter Kits**, **Planung**, **Beratung & Schulungen**, **Warum Green-Gard**, **Warenkorb**. `/profi` ist aus der Hauptnavigation raus. Alle alten Routen leiten per 308 weiter. |
 | 2 | **Hero-Video** vom Kunden (Aufsteiger-Regner): Desktop autoplay/loop/stumm, Mobile nur Poster, `prefers-reduced-motion` respektiert. |
-| 3 | **Entry-Gate** beim Erstbesuch: Privatkunde vs. Handwerker & GaLaBau. Steuert die Preislogik, persistiert in localStorage, Header-Switch bleibt als Wechsel. |
+| 3 | **Entry-Fenster** beim Erstbesuch: **GaLaBau / Architekt · Privat · Händler** plus Login für bestehende Profi-Zugänge. Die Auswahl steuert Preisansicht, Navigation, Schnelleinstiege und die Vorbelegung im Konditionsformular. Persistiert in localStorage, jederzeit über Header, Schnelleinstiegs-Leiste oder Footer wechselbar. |
 | 4 | **Logo** als SVG-Wortmarke im Header (Platzhalter bis zum Kundenlogo). |
 | 5 | **Starter Kits** statt Festpreis-Pakete: vier Kits mit „ab“-Preis, kein „In den Warenkorb“, CTAs `Planung starten` / `Kit anfragen`. |
 | 6 | **Planung** auf 3 Kernfragen + WLAN reduziert (Mähroboter- und Licht-Add-ons entfernt). Mini-Kalkulator auf der Landing nutzt dieselbe Logik. |
@@ -71,8 +71,11 @@ Alte Routen (`/kollektion`, `/systeme`, `/atelier`, `/manifest`, `/handwerk`,
 ```
 app/                     Routen (App Router, überwiegend statisch vorgerendert)
 components/              Editorial-Bausteine + components/ui (shadcn-Stil auf Radix)
-components/AudienceGate  Entry-Gate Privat/Profi
-components/EntryExperience  entscheidet Gate vs. Loader vs. nichts
+components/AudienceGate  Entry-Fenster: Zielgruppe + Login
+components/AudienceBar   Schnelleinstiege je Zielgruppe unter dem Hero
+components/LoginForm     Anmeldung, genutzt im Fenster und auf /login
+components/EntryExperience  entscheidet Fenster vs. Loader vs. nichts
+lib/audience.ts          Zielgruppen: Preisansicht, Nav, Links, Formular
 data/*.json              Produkte, Kategorien, Starter Kits, Highlights,
                          Bewertungen, Team, Schulungen
 lib/data.ts              typisierter Zugriff auf die Daten — der einzige Ort,
@@ -85,6 +88,7 @@ store/cart.ts            Warenkorb + Preisansicht (localStorage)
 store/ui.ts              Entry-Status für den Hero-Reveal
 supabase/schema.sql      leads · profiles · schulung_buchungen inkl. RLS
 public/videos/           web-optimiertes Hero-Video + Poster
+public/img/gate/         Illustrationen der drei Zielgruppen im Entry-Fenster
 public/img/              Illustrationen für Disziplinen, Produkte, Kits
 ```
 
@@ -93,9 +97,10 @@ JetBrains Mono (Eyebrows, technische Daten). Farben forest / bark / moss / linen
 paper / bronze / copper / ink / mist. Preise laufen in Fraunces mit Tabellenziffern,
 technische Werte in Mono — die Trennung ist bewusst.
 
-**Hero-Video:** Original (11,2 MB, 1080p, mit Ton) wurde zu einem nahtlosen Loop
-verarbeitet — Ende auf Anfang übergeblendet, Ton entfernt:
-`hero-regner.mp4` 1,7 MB · `hero-regner.webm` 1,0 MB · `hero-poster.jpg` 98 KB.
+**Hero-Video:** Original (11,2 MB, 1080p, mit Ton) enthält drei Schnitte. Beide
+harten Cuts sind übergeblendet, das Ende blendet auf den Anfang — ein ruhiger
+7,4-Sekunden-Loop ohne Ton:
+`hero-regner.mp4` 1,9 MB · `hero-regner.webm` 1,1 MB · `hero-poster.jpg` 99 KB.
 Das Originalmaterial liegt in `assets-input/` und ist per `.gitignore` ausgenommen.
 Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 
@@ -109,7 +114,7 @@ Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 | **Stripe** | Payment Intent für den Shop-Checkout, Payment Links für Schulungstermine, Webhook-Route. | `app/checkout/page.tsx` (`// TODO: Stripe Payment Intent`), `app/beratung/Schulungen.tsx` |
 | **E-Mail** | Resend anbinden: Lead-Benachrichtigung, Konditionskatalog-PDF, „Plan per Mail“, Terminbestätigungen. | `lib/supabase.ts`, `BewaesserungsRechner`, `app/planung`, `app/beratung` |
 | **CMS** | Produkte, Kits, Bewertungen, Team, Schulungen aus `data/*.json` in ein CMS überführen. | `lib/data.ts` (einziger Umschaltpunkt) |
-| **Auth** | Profi-Freischaltung: USt-ID prüfen, `profiles.freigeschaltet` setzen, nach Login die Preisansicht automatisch auf Profi stellen. | `app/login/page.tsx` |
+| **Auth** | Profi-Freischaltung: USt-ID prüfen, `profiles.freigeschaltet` setzen. Nach echtem Login sollte die Zielgruppe aus dem Profil kommen, statt im Fenster erfragt zu werden. | `components/LoginForm.tsx`, `app/login/page.tsx` |
 | **Analytics** | Plausible oder PostHog inkl. Funnel-Events (Gate-Auswahl → Planung → Kit-Anfrage → Lead). | `app/layout.tsx` |
 | **ICS** | Echte Kalenderdatei statt `alert()` beim Beratungstermin. | `app/beratung/BeratungBooking.tsx` |
 | **SEO** | OG-Bilder, JSON-LD (Product, LocalBusiness), `sitemap.ts`, `robots.ts`, Impressum/Datenschutz/AGB. | `app/` |
@@ -154,8 +159,11 @@ weil beide dieselbe Codebasis nutzen.
 
 ## Sales-Mechaniken (für den Pitch)
 
-1. **Entry-Gate** — trennt Privat und Profi in der ersten Sekunde und macht jede
-   folgende Preisangabe passend, ohne zwei Websites zu pflegen.
+1. **Entry-Fenster mit drei Zielgruppen** — GaLaBau/Architekt, Privat und Händler
+   werden in der ersten Sekunde getrennt. Danach passt alles: Preise (netto oder
+   brutto), Navigation (Konditionen nur für Profis), Schnelleinstiege unter dem
+   Hero und die Gewerbe-Art im Konditionsformular. Eine Website, drei Masken.
+   Wer schon einen Zugang hat, meldet sich direkt im Fenster an.
 2. **Hero-Video** — echtes Material des Kunden, keine Stock-Optik.
 3. **Mini-Kalkulator auf der Landing** — drei Fragen, sofort ein Kit mit Preisrahmen.
    Kein Kontaktzwang, kein PDF-Download.

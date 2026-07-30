@@ -6,11 +6,13 @@ import { useState } from 'react';
 import { Menu, ShoppingBag, X } from 'lucide-react';
 import { B2BSwitch } from '@/components/B2BSwitch';
 import { useCart } from '@/store/cart';
+import { isProfi } from '@/lib/audience';
 import { cn } from '@/lib/utils';
 
-// /profi ist bewusst NICHT in der Hauptnavigation (Kundenwunsch) — der Zugang
-// läuft über den Header-Switch, den Footer und das Profi-CTA-Banner.
-const nav = [
+// Für Privatkunden bleibt /profi aus der Hauptnavigation (Kundenwunsch).
+// Wer sich im Entry-Fenster als GaLaBau oder Architekt eingeordnet hat, sieht
+// den Konditionsbereich direkt in der Nav — das ist die "richtige Maske".
+const BASE_NAV = [
   { href: '/produkte', label: 'Produkte' },
   { href: '/starter-kits', label: 'Starter Kits' },
   { href: '/planung', label: 'Planung' },
@@ -22,7 +24,12 @@ export function Header() {
   const pathname = usePathname();
   const count = useCart((s) => s.items.reduce((sum, l) => sum + l.qty, 0));
   const openDrawer = useCart((s) => s.openDrawer);
+  const audience = useCart((s) => s.audience);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const nav = isProfi(audience)
+    ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
+    : BASE_NAV;
 
   return (
     <header className="sticky top-0 z-40 border-b border-mist bg-paper/85 backdrop-blur-md">
@@ -93,12 +100,21 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
+            {!isProfi(audience) && (
+              <Link
+                href="/profi"
+                onClick={() => setMobileOpen(false)}
+                className="font-mono mt-2 py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
+              >
+                Konditionen für Profis →
+              </Link>
+            )}
             <Link
-              href="/profi"
+              href="/login"
               onClick={() => setMobileOpen(false)}
-              className="font-mono mt-2 py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
+              className="font-mono py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
             >
-              Konditionen für Profis →
+              Anmelden →
             </Link>
             <div className="mt-4">
               <B2BSwitch />
