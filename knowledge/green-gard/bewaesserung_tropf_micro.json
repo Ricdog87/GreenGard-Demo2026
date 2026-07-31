@@ -1,0 +1,44 @@
+{
+  "category": "Bewaesserung - Tropf & Mikro",
+  "sections": [
+    {
+      "id": "tropfrohr",
+      "title": "Tropfrohr",
+      "description": "Troepfchenbewaesserungstechnik mit Auslaessen in regelmaessigen Abstaenden (typisch 2-4 l/h).",
+      "products": [
+        {
+          "bestellnummer": "100000030",
+          "hersteller": "Rainworks",
+          "beschreibung": "Tropfrohr 16 mm, Flussrate 2,2 l/h, Tropfabstand 30 cm, 100 m/Rolle",
+          "rabattgruppe": "A",
+          "verpackungseinheit": "Rolle",
+          "preis_ve_eur": 103.59
+        },
+        {
+          "bestellnummer": "101000023",
+          "hersteller": "Rain Bird",
+          "modell": "XFD233350",
+          "beschreibung": "50 m Rolle, Tropferabstand 33 cm",
+          "rabattgruppe": "A",
+          "verpackungseinheit": "Rolle",
+          "preis_ve_eur": 75.37
+        }
+      ]
+    },
+    {
+      "id": "mikrobewaesserung",
+      "title": "Mikrobewaesserung",
+      "description": "Effizientes Bewaessern von Beeten, Hecken und Kuebeln ueber Spruehsysteme oder Troepfchensysteme.",
+      "products": [
+        {
+          "bestellnummer": "102000118",
+          "hersteller": "Netafim",
+          "beschreibung": "Mikroschlauch 3/5 mm Soft PE, grau, 200 m/Rolle",
+          "rabattgruppe": "D",
+          "verpackungseinheit": "Rolle",
+          "preis_ve_eur": 57.25
+        }
+      ]
+    }
+  ]
+}
