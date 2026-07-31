@@ -1,0 +1,16 @@
+{
+  "title": "Green-Gard Katalog 2025/26",
+  "publisher": "GREEN-GARD Technik fuer Gaerten und Gruenflaechen",
+  "version": "04/2025",
+  "source": "Green-Gard-Katalog-2025.pdf",
+  "sections": [
+    {"id": "intro", "title": "Unternehmen & Services", "file": "intro_and_services.md"},
+    {"id": "bew_tropf_micro", "title": "Bewaesserung - Tropf & Mikro", "file": "bewaesserung_tropf_micro.json"},
+    {"id": "bew_rasen_duesen", "title": "Bewaesserung - Rasen & Duesen", "file": "bewaesserung_rasen_duesen.json"},
+    {"id": "zisternen", "title": "Zisternen", "file": "zisternen.json"},
+    {"id": "pumpentechnik", "title": "Pumpentechnik", "file": "pumpentechnik.json"},
+    {"id": "pool_teich", "title": "Pool- und Teichtechnik", "file": "pool_und_teich.json"},
+    {"id": "inlite", "title": "in-lite Beleuchtung", "file": "in-lite_beleuchtung.json"},
+    {"id": "rasenroboter", "title": "Rasenroboter", "file": "rasenroboter.json"}
+  ]
+}
