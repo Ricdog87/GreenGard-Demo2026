@@ -26,8 +26,15 @@ interface CartState {
   /** true, sobald im Entry-Fenster gewählt wurde (persistiert). */
   audienceChosen: boolean;
   chooseAudience: (a: Audience) => void;
-  /** Setzt die Auswahl zurück, das Entry-Fenster erscheint erneut. */
+    /** Setzt die Auswahl zurück, das Entry-Fenster erscheint erneut. */
   resetAudience: () => void;
+  /**
+   * Angemeldeter Profi-Zugang. Steuert Konto-Link und Zugang zum Dashboard.
+   * TODO: durch die Supabase-Session ersetzen, sobald Auth verbunden ist.
+   */
+  eingeloggt: boolean;
+  anmelden: () => void;
+  abmelden: () => void;
 
   items: CartLine[];
   drawerOpen: boolean;
@@ -53,7 +60,11 @@ export const useCart = create<CartState>()(
       // Auswahl aus dem Entry-Fenster: Zielgruppe merken und die passende
       // Preisansicht setzen.
       chooseAudience: (a) => set({ audience: a, mode: AUDIENCES[a].mode, audienceChosen: true }),
-      resetAudience: () => set({ audienceChosen: false }),
+            resetAudience: () => set({ audienceChosen: false }),
+      eingeloggt: false,
+      // Anmeldung schaltet zugleich die Profi-Preisansicht frei.
+      anmelden: () => set({ eingeloggt: true, audience: 'profi', mode: 'profi', audienceChosen: true }),
+      abmelden: () => set({ eingeloggt: false }),
 
       items: [],
       drawerOpen: false,
@@ -87,8 +98,9 @@ export const useCart = create<CartState>()(
       partialize: (s) => ({
         items: s.items,
         mode: s.mode,
-        audience: s.audience,
+                audience: s.audience,
         audienceChosen: s.audienceChosen,
+        eingeloggt: s.eingeloggt,
       }),
       // Wichtig: NICHT automatisch hydrieren. Sonst rendert der Client beim
       // ersten Durchgang schon Profi-Nettopreise, während im statischen HTML

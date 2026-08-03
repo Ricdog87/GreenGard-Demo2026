@@ -122,6 +122,11 @@ export function Footer() {
             <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">Konto</p>
             <ul className="mt-3 space-y-2">
               <li>
+                <Link href="/konto" data-cursor="hover" className="transition-colors hover:text-bronze">
+                  Mein Konto
+                </Link>
+              </li>
+              <li>
                 <Link href="/login" data-cursor="hover" className="transition-colors hover:text-bronze">
                   Anmelden
                 </Link>

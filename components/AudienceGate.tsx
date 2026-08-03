@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, LogIn, X } from 'lucide-react';
 import { LoginForm } from '@/components/LoginForm';
+import { Button } from '@/components/ui/button';
 import { useCart } from '@/store/cart';
 import { useUI } from '@/store/ui';
 import { AUDIENCES, AUDIENCE_ORDER, type Audience } from '@/lib/audience';
@@ -122,8 +123,8 @@ export function AudienceGate({ onDone }: { onDone: () => void }) {
 
             {/* Anmeldung für bestehende Profi-Zugänge */}
             <div className="mx-auto mt-6 w-full max-w-2xl border-t border-mist pt-5 md:mt-8 md:pt-6">
-              {loginOpen ? (
-                <div className="bg-paper p-6">
+                            {loginOpen ? (
+                <div className="border border-forest/25 bg-paper p-6">
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div>
                       <p className="eyebrow">Anmelden</p>
@@ -144,22 +145,32 @@ export function AudienceGate({ onDone }: { onDone: () => void }) {
                   <LoginForm compact onSuccess={close} />
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row">
-                  <p className="text-sm text-ink/70">Sie haben schon einen Profi-Zugang?</p>
-                  <button
-                    type="button"
-                    data-cursor="hover"
+                                // Profis sollen nicht erst eine Zielgruppe wählen müssen: ein Klick
+                // aufs Anmelden bringt sie direkt in ihr Konto.
+                <div className="flex flex-col items-center justify-between gap-4 bg-forest px-6 py-5 text-linen sm:flex-row">
+                  <div className="text-center sm:text-left">
+                    <p className="font-display text-lg tracking-tight">
+                      Sie haben einen Profi-Zugang?
+                    </p>
+                    <p className="mt-0.5 text-sm text-linen/70">
+                      Direkt zu Ihren Einkaufspreisen, Bestellungen und Projekten.
+                    </p>
+                  </div>
+                  <Button
+                    variant="accent"
+                    size="lg"
+                    className="shrink-0"
                     onClick={() => setLoginOpen(true)}
-                    className="font-mono inline-flex items-center gap-2 border-b border-ink/25 pb-0.5 text-[11px] uppercase tracking-[0.18em] transition-colors hover:border-bronze hover:text-bronze"
                   >
-                    <LogIn className="h-3.5 w-3.5" /> Anmelden
-                  </button>
+                    <LogIn className="h-4 w-4" /> Anmelden
+                  </Button>
                 </div>
               )}
             </div>
 
-            <p className="font-mono mt-6 text-center text-[10px] uppercase tracking-[0.18em] text-ink/45">
-              Die Auswahl lässt sich jederzeit oben im Header oder unten im Footer wechseln
+                        <p className="font-mono mt-5 text-center text-[10px] uppercase tracking-[0.18em] text-ink/45">
+              Kein Profi-Zugang nötig — Auswahl treffen und weiter. Änderbar über Header
+              oder Footer.
             </p>
           </div>
         </motion.div>

@@ -25,7 +25,8 @@ export function Header() {
   const pathname = usePathname();
   const count = useCart((s) => s.items.reduce((sum, l) => sum + l.qty, 0));
   const openDrawer = useCart((s) => s.openDrawer);
-  const audience = useCart((s) => s.audience);
+    const audience = useCart((s) => s.audience);
+  const eingeloggt = useCart((s) => s.eingeloggt);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,9 +38,12 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const nav = isProfi(audience)
-    ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
-    : BASE_NAV;
+    // Angemeldete Profis sehen ihr Konto an erster Stelle — dort erledigen sie alles.
+  const nav = eingeloggt
+    ? [{ href: '/konto', label: 'Mein Konto' }, ...BASE_NAV]
+    : isProfi(audience)
+      ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
+      : BASE_NAV;
 
   return (
     <header

@@ -33,7 +33,7 @@ export function LoginForm({
   onSuccess?: () => void;
   className?: string;
 }) {
-  const chooseAudience = useCart((s) => s.chooseAudience);
+    const anmelden = useCart((s) => s.anmelden);
   const [hint, setHint] = useState('');
 
   const {
@@ -45,13 +45,11 @@ export function LoginForm({
   async function onSubmit(values: FormValues) {
     const supabase = getSupabaseClient();
     if (!supabase) {
-      // Demo-Pfad: ohne Supabase-Keys gibt es keine echte Anmeldung. Wir
-      // schalten die Profi-Ansicht frei, damit der Ablauf zeigbar bleibt.
-      chooseAudience('profi');
-      setHint(
-        'Demo-Modus: Es ist noch kein Supabase-Projekt verbunden. Die Profi-Ansicht mit Nettopreisen ist jetzt aktiv.'
-      );
+            // Demo-Pfad: ohne Supabase-Keys gibt es keine echte Prüfung. Wir schalten
+      // den Profi-Zugang frei und gehen ins Konto — der Ablauf bleibt zeigbar.
+      anmelden();
       onSuccess?.();
+      window.location.href = '/konto';
       return;
     }
     const { error } = await supabase.auth.signInWithPassword(values);
@@ -59,8 +57,10 @@ export function LoginForm({
       setHint(error.message);
       return;
     }
+        // TODO: Profil laden (profiles.typ/freigeschaltet) und erst dann freischalten.
+    anmelden();
     onSuccess?.();
-    window.location.href = '/produkte';
+    window.location.href = '/konto';
   }
 
   return (
