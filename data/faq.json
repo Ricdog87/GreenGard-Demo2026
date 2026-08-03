@@ -1,0 +1,1147 @@
+{
+  "_comment": "Learning Center von https://www.green-gard.de/learningcenter, abgerufen 03.08.2026. Fragen und Antworten sind 1:1 uebernommen — Wortlaut, Reihenfolge und auch die Tippfehler des Originals bleiben unveraendert. Die Positionen 5 und 36 fehlen bereits auf der Kundenseite. Das Feld \"kategorie\" ist eine Ergaenzung von uns fuer den Themenfilter und aendert keinen Text. Eintrag 85 traegt auf der Kundenseite versehentlich die Antwort von Eintrag 84 als Frage — siehe OFFENE-PUNKTE.md, Jan muss die richtige Frage nachliefern.",
+  "quelle": "https://www.green-gard.de/learningcenter",
+  "titel": "Learning Center",
+  "untertitel": "Hier finden Sie Antworten auf Ihre Fragen",
+  "eintraege": [
+    {
+      "position": 1,
+      "frage": "Kann bei Green-Gard jeder einkaufen?",
+      "antwort": [
+        "Ja. Egal ob sie privater oder gewerblicher Kunde sind, jeder ist bei uns willkommen."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 2,
+      "frage": "Kann ich Ware auch direkt bei Green-Gard abholen?",
+      "antwort": [
+        "Ja. Die Türen unseres Lagerverkauf stehen Werktags von 08.00 bis 16.30 Uhr für Sie offen."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 3,
+      "frage": "Können Sie die Ware auch liefern?",
+      "antwort": [
+        "Ja. Gerne liefern wir ihr bestelltes Material direkt zu Ihnen - auch auf die Baustelle. Wir versenden entweder mit Paketdienst oder per Direktfahrt innerhalb eines begrenzten Radius rund um Wiesbaden."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 4,
+      "frage": "Wie lange ist die Lieferzeit bei Lagerware?",
+      "antwort": [
+        "Die Lieferzeit beträgt in der Regel 1-3 Werktage."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 6,
+      "frage": "Kann man auch Artikel bestellen die nicht im Katalog sind?",
+      "antwort": [
+        "Ja. Bitte fragen sie individuell an. Wir können fast jeden Artikel der Bewässerungswelt für sie besorgen."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 7,
+      "frage": "Mit welchen Herstellern arbeiten Sie zusammen?",
+      "antwort": [
+        "Sie erhalten bei uns Artikel der namenhaftesten Hersteller aus der Bewässerungsbranche. Beispielsweise Rainbird, Hunter Industries, Rain, Netafim, Pedrollo, Speck, Grundfos u.v.m.",
+        "Im Bereich Rasenmähroboter arbeiten wir eng mit Kress und Husqvarna zusammen. Im Bereich Gartenbeleuchtung arbeiten wir mit In-Lite."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 8,
+      "frage": "Kann ich bei ihnen auf Rechnung kaufen?",
+      "antwort": [
+        "Ja. Nachdem sie bereits Einkäufe bei uns getätigt haben, ist ein Kauf auf Rechnung möglich. Bei Ihrer ersten Bestellung bestehen wir jedoch auf Vorkasse bzw. bei Abholung auf Bar- oder Kartenzahlung."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 9,
+      "frage": "Haben sie samstags geöffnet?",
+      "antwort": [
+        "Ja. Während der Hauptsaison von Mai - September ist unser Lager samstags von 8:00 - 12:00 Uhr geöffnet."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 10,
+      "frage": "Erstellen Sie professionelle Bewässerungspläne für meinen Garten?",
+      "antwort": [
+        "Ja. Green-Gard erstellt ihnen einen individuellen Bewässerungsplan für Ihren Garten mit ihren Voraussetzungen und Gegebenheiten und bietet ihnen dann auch die passenden Bauteile an."
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 11,
+      "frage": "Wie lange dauert eine Bewässerungsplanung für meinen Garten?",
+      "antwort": [
+        "Wenn Sie uns alle für eine Planung notwendigen Informationen zukommen lassen, wird Ihre Planung innerhalb von 1-3 Werktagen erstellt."
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 12,
+      "frage": "Kann ich für eine Beratung auch einfach vorbei kommen?",
+      "antwort": [
+        "Ja. Aber um Wartezeiten zu vermeiden bitten wir Sie vorher einen telefonischen Termin zu vereinbaren.",
+        "So können wir uns besser auf Sie vorbereiten und Ihnen ebenfalls vorab mitteilen was Sie für eine Planung bereits mitbringen können."
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 13,
+      "frage": "Was benötigt Green-Gard für die Planung einer Bewässerungsanlage?",
+      "antwort": [
+        "Green-Gard benötigt eine Skizze Ihres Gartens. Am besten Maßstabsgetreu. Zeichnen Sie alle Rasen- und Beetflächen genau ein. Ebenso Spiel- oder Gartenhäuser. Je detaillierter desto besser.",
+        "Welche Wasserquelle soll für die Bewässerung genutzt werden? Haben Sie bereits eine Zisterne oder einen Brunnen oder soll mit Leitungswasser bewässert werden?",
+        "Falls Sie einen Brunnen oder eine Zisterne besitzen in dem/der bereits eine Pumpe verbaut ist, teilen Sie uns bitte Hersteller und Typ der Pumpe mit.",
+        "Möchten Sie mit Trinkwasser bewässern, messen Sie bitte den vorhandenen Fließdruck. Gehen Sie hierzu wie folgt vor: Drehen Sie Ihren Außenwasserhahn voll auf und füllen einen 10L Wassereimer. Stoppen Sie die Zeit wie lange es dauert den Eimer zu füllen und teilen uns diesen Wert mit.",
+        "Welche Art von Steuergerät ist gewünscht? Ist im Garten kein Stromanschluss vorhanden, muss eine batteriebetriebene Steuerung eingesetzt werden. Soll die Steuerung möglichst einfach und simpel sein? Soll das Steuergerät möglichst viele Funktionen (bspw. WLAN-fähig mit App-Steuerung) besitzen?"
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 14,
+      "frage": "Muss beim Bewässern mit Trinkwasser etwas beachtet werden?",
+      "antwort": [
+        "Ja! Bei einer Bewässerung mit Trinkwasser muss eine Systemtrennung in Form einer Trennstation nach DIN 1988 bzw. DIN EN 1717 vorgenommen werden. Diese verhindert, dass verunreinigtes Wasser aus der Bewässerungsanlage zurück ins Trinkwassernetz gelangt. Eine Systemtrennung ist bei Bewässerung mit Trinkwasser unbedingt vorzunehmen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 15,
+      "frage": "Kann ich eine Bewässerungsanlage selbst verbauen?",
+      "antwort": [
+        "Ja. Eine Bewässerungsanlage zu verbauen ist nicht übermäßig schwer allerdings auch nicht zu unterschätzen. Die Dauer die Sie für ein Bewässerungsprojekt benötigen hängt einerseits vom Umfang der Anlage, aber auch von Ihrem handwerklichen Geschick ab. Gerne stehen wir beratend an Ihrer Seite."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 16,
+      "frage": "Kann Green-Gard mir Bewässerungsanlage einbauen?",
+      "antwort": [
+        "Nein, wir sind ein reines Vertriebs- und Handelshaus und besitzen keine Monteure.",
+        "Gerne unterstützen wir Sie aber bei der Suche nach einem entsprechenden Fachunternehmen aus unserem Netzwerk."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 17,
+      "frage": "Mit welchen Kosten muss ich für eine komplette Bewässerungsanlage rechnen?",
+      "antwort": [
+        "Dies lässt sich leider pauschal nicht beantworten und hängt stark vom Umfang der Anlage und den verbauten Komponenten ab. Gerne beraten wir Sie individuell und geben eine erste Einschätzung ab. Die Beratung kann telefonisch oder persönlich erfolgen."
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 18,
+      "frage": "Mit welchen Kosten muss ich rechnen, wenn ich mir von Green-Gard eine Bewässerungsanlage planen lasse?",
+      "antwort": [
+        "Für einen professionellen Bewässerungsplan mit einem darauf basierenden Angebot berechnen wir 120 Euro. Dieser Betrag kann später mit den Materialien verrechnet werden. Somit ist die Planung kostenlos."
+      ],
+      "kategorie": "planung"
+    },
+    {
+      "position": 19,
+      "frage": "Welche Rasenroboter gibt es bei Green-Gard zu kaufen?",
+      "antwort": [
+        "Bei uns bekommt man alle Rasenroboter Modelle der Marken Husqvarna und Kress."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 20,
+      "frage": "Reparieren sie auch meinen Mähroboter?",
+      "antwort": [
+        "Ja! Wir reparieren alle Mähroboter der Firma Kress und Husqvarna."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 21,
+      "frage": "Installieren sie auch die Angebotenen Mäher?",
+      "antwort": [
+        "Ja! Mit Abstimmung Installieren wir Ihnen gerne den angebotenen Mäher."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 22,
+      "frage": "Kann ich den Mäher auch selbst installieren?",
+      "antwort": [
+        "Ja können Sie. Wir beraten Sie gerne dazu."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 23,
+      "frage": "Bieten sie auch kabellosen Mähroboter an?",
+      "antwort": [
+        "Ja, wir bieten Ihnen gerne auch einen kabellosen Mähroboter an."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 24,
+      "frage": "Muss das Begrenzungskabel unter den Rasen?",
+      "antwort": [
+        "Nein! Man kann das Kabel auch auf dem Rasen verlegen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 25,
+      "frage": "Wie viele Lampen können an einen Transformator angeschlossen werden?",
+      "antwort": [
+        "Das hängt ganz davon ab was für einen Transformator hat und welche leuchten man an den Transformator hängen möchte.",
+        "Denn jede Lampe hat einen unterschiedlichen Stromverbrauch."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 26,
+      "frage": "Wie lange kann man das Kabellegen?",
+      "antwort": [
+        "Dabei kommt es ganz drauf an welches Kabel man gerade verbaut.",
+        "Bei dem 14/2 darf die Gesamtkabellänge von 40m nicht überschritten werden.",
+        "Bei dem 10/2 Kabel darf die gesamtkabellänge von 80m nicht überschritten werden."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 27,
+      "frage": "Wie lange ist die Garantie?",
+      "antwort": [
+        "Wenn alle Komponenten von In-Lite genutzt werden geben wir eine Garantie von 5 Jahren."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 28,
+      "frage": "Wieweit kann ich vom SMAR-HUB 150 entfernt sein um noch eine Verbinddung zu haben?",
+      "antwort": [
+        "In der Regel kann man damit rechnen das man bis zu 15m entfernt von dem Transformator noch eine Verbindung hat.",
+        "Es variiert aber von Garten zu Garten.",
+        "Mit der BRIDGE können Sie Ihre Leuchten von überall aus der Welt steuern."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 29,
+      "frage": "Wie lange ist die Lieferzeit?",
+      "antwort": [
+        "In der Regel liefern wir alles innerhalb von 2 Wochen aus."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 30,
+      "frage": "Wieviel Druck darf meine Pumpe max. für eine Bewässerungsanlage aufbauen?",
+      "antwort": [
+        "Die Pumpe darf max. 10 bar aufbauen da mache Produkte von der Bewässerungsanlage nur für 10 bar ausgelegt sind."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 31,
+      "frage": "Woher weiß meine Pumpe wann sie Wasser fördern muss?",
+      "antwort": [
+        "Durch einen Druckschalter, dieser ist bei machen Pumpen schon integriert. Bei den Pumpen wo er nicht integriert ist muss man ihn dazu kaufen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 32,
+      "frage": "Wie viel Wasser muss mein Pumpe fördern?",
+      "antwort": [
+        "Das kommt ganz darauf an wie viel Wasser die Bewässerungsanlage benötigt."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 33,
+      "frage": "Von welchen Hersteller muss meine Pumpe sein?",
+      "antwort": [
+        "Das ist nicht relevant! Hauptsache der Druck und die Wassermenge reichen für die Bewässerungsanlage."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 34,
+      "frage": "Bis zu wie viel Meter kann eine Saugpumpe mir das Wasser aus einem Brunne ziehen?",
+      "antwort": [
+        "Bis max. 7m."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 35,
+      "frage": "Was sagt mir die LED an meiner Ladestation bei einem Husqvarna Mäher?",
+      "antwort": [
+        "Statusanzeige LED Ladestation:",
+        "Leuchtet Grün: Alles ist in Ordnung",
+        "Blinkt Grün : Signal abgeschaltet durch Eco Modus",
+        "Blinkt Blau : Begrenzungskabel unterbrochen",
+        "Blinkt Rot : F-Signal unterbrochen",
+        "Leuchtet Blau : Schwaches Signal",
+        "Leuchtet Rot : Platine defekt"
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 37,
+      "frage": "Wie funktioniert eine automatische Bewässerung?",
+      "antwort": [
+        "Das Grundprinzip: An den Wasserhahn – oder eine Zisterne mit Pumpe – wird ein Druckminderer mit Filter angeschlossen. Von einem Hauptschlauch (Verlegerohr) führen dann kleine Schläuche (Verteilerrohre) mit Sprühern oder Tropfern direkt zu den Pflanzen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 38,
+      "frage": "Ist Gartenbewässerung noch erlaubt?",
+      "antwort": [
+        "Einschränkungen und Strafen für Rasenbewässerung. Die Bewässerung des Gartens aus der Kaltwasserleitung am Haus ist erlaubt. Ob ein Verbot in Form einer Allgemeinverfügung etwa bei Trockenheit besteht, findet man auf der Website des jeweiligen Kreises heraus."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 39,
+      "frage": "Wann wässert man den Garten am besten mit einer automatischen Bewässerung?",
+      "antwort": [
+        "Die beste Zeit, im Sommer den Garten zu wässern, ist morgens zwischen vier und sechs Uhr. Dann ist der Boden nach der Nacht gut ausgekühlt und das Wasser verdunstet kaum."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 40,
+      "frage": "Wie bewässere ich richtig?",
+      "antwort": [
+        "Grundsätzlich gilt: lieber länger und seltener bewässern, als häufig und kurz. Richtline: Rasen benötigt ca. 25 Liter pro m³ in der Woche."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 41,
+      "frage": "Wie beleuchtet man einen Garten richtig?",
+      "antwort": [
+        "Generell gilt: Objekte und Pflanzen sollten seitlich oder von schräg unten beleuchtet werden. Das betont ihre Form optimal. Denken Sie an Nachtfalter, Glühwürmchen und andere nachtaktive Tiere, die durch die Beleuchtung behindert werden könnten."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 42,
+      "frage": "Wie beleuchte ich einen Baum?",
+      "antwort": [
+        "Für die Beleuchtung von Bäumen eignen sich sowohl Bodeneinbauleuchten wie auch Scheinwerfer und Fluter. Scheinwerfer und Fluter lassen sich mit einem Erdspieß flexibel positionieren, die Leuchten bleiben dabei sichtbar. Wenn der Baum größer wird, kann man den Abstand zum Baum einfach anpassen."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 43,
+      "frage": "Welches Licht ist gemütlich?",
+      "antwort": [
+        "Warmweißes Licht ist immer dann gut geeignet, wenn Gemütlichkeit und Entspannung im Vordergrund stehen. Eine Lampe mit 2.700 bis 3.300 Kelvin ist ideal, denn je niedriger der Kelvinwert, desto rötlicher ist das Licht. Die Lichtfarbe ähnelt einer Kerze oder einem fortschreitenden Sonnenuntergang."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 44,
+      "frage": "Sind alle LED Lampen für den Außenbereich geeignet?",
+      "antwort": [
+        "Ja! LED-Lampen können auch im Freien verwendet werden – vorausgesetzt sie haben mindestens die Schutzart IP44 oder höher."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 45,
+      "frage": "Warum ein 12V System und kein 230V System?",
+      "antwort": [
+        "Durch ein 12V System sparen Sie Strom im Garten. Dazu ist auch ein Sicherheitsfaktor. Da 12V bei weitem nicht so gefährlich ist wie ein 230V System. Mit einem bisschen Handwerklichen Geschick können Sie das 12V System von In-Lite auch selbst Installieren."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 46,
+      "frage": "Was sind die wichtigsten Fragen bei einer Beleuchtung im Garten die ich mir stellen soltte?",
+      "antwort": [
+        "1. Welchen Zweck soll die Beleuchtung erfüllen? Möchten Sie den Garten hervorheben, eine bestimmte Atmosphäre schaffen oder die Sicherheit verbessern?",
+        "2. Welche Bereiche des Gartens sollen beleuchtet werden? Denken Sie an Wege, Terrassen, Pflanzen oder besondere Merkmale wie Teiche oder Skulpturen.",
+        "3. Welche Art von Beleuchtung bevorzugen Sie? Es gibt verschiedene Optionen wie Strahler, Bodeneinbauleuchten, Solarleuchten oder Lichterketten. Jede hat ihre eigenen Vor- und Nachteile.",
+        "4. Wie viel Helligkeit wird benötigt? Überlegen Sie, ob Sie eine helle Beleuchtung für funktionale Zwecke oder eine sanfte, stimmungsvolle Beleuchtung wünschen.",
+        "5. Welche Energiequelle möchten Sie nutzen? Berücksichtigen Sie die Verfügbarkeit von Stromanschlüssen oder die Möglichkeit, solarbetriebene Leuchten zu verwenden.",
+        "6. Wie soll die Beleuchtung gesteuert werden? Möchten Sie eine einfache Ein- und Ausschaltfunktion oder eine ferngesteuerte, programmierbare Beleuchtung?",
+        "7. Welche Art von Wartung ist erforderlich? Denken Sie an die Lebensdauer der Leuchtmittel, die Wetterbeständigkeit der Leuchten und die Zugänglichkeit für eventuelle Reparaturen."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 47,
+      "frage": "Wie lange dauerte es bis meine Bestellung von der Beleuchtung bei mirankommt?",
+      "antwort": [
+        "Die Bestellung wir in ca. 1-3 Tage geleifert."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 48,
+      "frage": "Kann ich mehrere HUBs mit einander verknüpfen?",
+      "antwort": [
+        "Ja das ist kein Problem. Es ist allerdings nur mit dem Smart HUB150 und Smart HUB 300 möglich."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 49,
+      "frage": "Wieviel Strom verbraucht eine LED Leuchte",
+      "antwort": [
+        "Die LED-Glühlampe gilt als energieeffizientestes Leuchtmittel. Die LED-Lampe hat eine durchschnittliche Leistung von ca. 6 - 9 Watt.",
+        "Bei einer Brenndauer von 1.500 h / Jahr und Stromkosten von 28 cent / kwh verursacht eine LED-Lampe mit 6 Watt lediglich 2,50 € Stromkosten pro Jahr."
+      ],
+      "kategorie": "beleuchtung"
+    },
+    {
+      "position": 50,
+      "frage": "Was kostet ein automatischer Rasenmäher?",
+      "antwort": [
+        "Während es einfache Modelle bereits für wenige Hundert Euro zu kaufen gibt, kosten große Ausführungen mit einem leistungsstarken Motor, einer großen Schnittbreite und zusätzlichen Ausstattungsfeatures auch schnell mehrere Tausend Euro. Die Preisspanne bewegt sich also etwa zwischen 500 und 5.000 Euro."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 51,
+      "frage": "Welche Mähroboter brauchen kein Begrenzungskabel?",
+      "antwort": [
+        "Bei Husqvarna sind es die \"Nera\" und bei Kress sind es die \"RTK\" Modelle."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 52,
+      "frage": "Wie tief sollte das Begrenzngskabel eingegraben sein",
+      "antwort": [
+        "Laut Hersteller sollte das Kabel zwischen 5 und 20 cm tief verlegt werden"
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 53,
+      "frage": "Wer ist Marktführer bei Mährobotern?",
+      "antwort": [
+        "Husqvarna ist der Marktführer in diesem Segment."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 54,
+      "frage": "Sind Mähroboter Stromfresser?",
+      "antwort": [
+        "Der Stromverbrauch hält sich dennoch in Grenzen, denn Mähroboter sind sehr energieeffizient: Verbrauchsgünstige Geräte haben 20 bis 25 Watt Motorleistung und verbrauchen pro Monat nur sechs bis acht Kilowattstunden Strom."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 55,
+      "frage": "Sollte ein Mähroboter jeden Tag laufen?",
+      "antwort": [
+        "Die Deutsche Rasengesellschaft hat allerdings ermittelt, dass ein täglicher, mindestens aber 2-tägiger Schnitt, die besten Schnittergebnisse erzielt. Auch Hersteller tätigen Angaben zur empfohlenen Häufigkeit, wie oft der Mähroboter seine Runden ziehen sollte."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 56,
+      "frage": "Wie lange hält ein Mähroboter?",
+      "antwort": [
+        "Die normale Lebensdauer eines Husqvarna Automower bewegt sich zwischen 8 und 12 Jahren."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 57,
+      "frage": "Wo muss die Ladestation vom Mähroboter stehen?",
+      "antwort": [
+        "Die ideale Position für die Ladestation ist an einem schattigen Ort auf ebenem Untergrund auf der Rasenfläche.",
+        "Rechts und Links sollte in ca.1m Abstand kein Hindernis sein."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 58,
+      "frage": "Wer steckt hinter Kress Mähroboter?",
+      "antwort": [
+        "Das Unternehmen bestand von 1928 bis zum 30. April 2018. Die bekannten Fräsmotoren und Sondergeräte werden seitdem von der AMB-ELEKTRIK GmbH am selben Standort weiter produziert. Unter dem Markennamen Kress vertreibt heute die Firma Positec aus der VR China Elektrowerkzeug."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 59,
+      "frage": "Ist Kress Worx?",
+      "antwort": [
+        "Worx ist die DIY-Marke und Kress ist die Fachhandelsmarke. Beides gehört zum Positec Konzern. Wobei Kress eine deutlich bessere Qualität hat."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 60,
+      "frage": "Welcher Automower ist der beste?",
+      "antwort": [
+        "Testsieger im aktuellen Vergleich von Stiftung Warentest ist der Husqvarna Automower 305. Er überzeugte mit einem Top-Mähergebnis, sogar auf steilen Hängen und feuchtem Rasen. In den Teildisziplinen Mähen und Handhabung schneidet der Rasenmähroboter mit „guten“ Bewertungen ab."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 61,
+      "frage": "Wie weit fährt der Husqvarna über das Begrenzungskabel?",
+      "antwort": [
+        "Bei den Rasenrobotern von Husqvarna kann man die Überfahrstrecke zwischen 25 und 50 cm einstellen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 62,
+      "frage": "Wie oft soll ich den Automower reinigen?",
+      "antwort": [
+        "Reinigen Sie Ihren Automower®-Mähroboter und die Ladestation regelmäßig, um die beste Leistung und eine lange Lebensdauer zu erzielen. Neben der regelmäßigen Reinigung wird empfohlen, ihn nach jeder Saison gründlich und professionell bei Ihrem Händler reinigen zu lassen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 63,
+      "frage": "Wie funktioniert Rasenmäher Roboter ohne Begrenzungskabel?",
+      "antwort": [
+        "Ein Mähroboter ohne Begrenzungskabel navigiert je nach Modell mithilfe von GPS, anderen Satellitensystemen, Kameras oder Sensoren. Diese erkennen Bäume, Gegenstände und Hindernisse im Garten ab einer bestimmten Größe und steuern den Roboter gezielt darum herum."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 64,
+      "frage": "Wie funktioniert Kress RTK?",
+      "antwort": [
+        "Die RTKn-Technologie von Kress nutzt das globale Navigationssatellitensystem (GNSS), um eine autonome Geolokalisierung mit einer Genauigkeit von 2 bis 5 Metern zu erhalten, und wendet dann kinematische Echtzeit-Korrekturdaten (RTK) an, um eine Genauigkeit im Zentimeterbereich zu erreichen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 65,
+      "frage": "Muss das Kabel unter der Erde verlegt werden?",
+      "antwort": [
+        "Nein, das Kabel kann auch auf dem Rasen verlegt werden. Hier muss aber darauf geachtet werden das das Kabel flach auf dem Boden auf liegt."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 66,
+      "frage": "Sind Automower®-Mähroboter laut?",
+      "antwort": [
+        "Der Schallpegel des Automower®-Mähroboters ist sehr niedrig, etwa 60 dB, was dem Schallpegel einer leisen Unterhaltung entspricht. Vergleichen zu einem herkömmlichen Benzinrasenmäher oder Aufsitzmäher, die zwischen 95 und 100 dB(A) erzeugen, ist dies deutlich leiser."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 67,
+      "frage": "Muss ich nach dem Mähen den Rasen harken oder Grasschnitt entsorgen?",
+      "antwort": [
+        "Der Grasschnitt vom Husqvarna Automower® Mähroboter ist so fein, dass er nicht aufgesammelt werden muss. Im Gegenteil: Er fällt auf den Boden oder auf Mulch und dient als natürlicher Dünger für Ihren Rasen, was wiederum zu einem üppigen, gesunden und grünen Rasen führt."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 68,
+      "frage": "Muss ich das Begrenzungskabel unterirdisch verlegen?",
+      "antwort": [
+        "Nein, Sie können das Begrenzungskabel mithilfe der mitgelieferten Haken auch oberirdisch verlegen. Nach einigen Wochen ist es eingewachsen und nicht mehr zu sehen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 69,
+      "frage": "Durchfährt der Automower®-Mähroboter auch enge Stellen?",
+      "antwort": [
+        "Ja, der Automower®-Mähroboter durchfährt enge Passagen, je nach Modell bis auf 60 cm Breite."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 70,
+      "frage": "Können Mähroboter auch im Regen mähen?",
+      "antwort": [
+        "Ja. Jedoch ist es empfehlenswert den Mäher bei extremen Witterungsbedingungen, wie z.B sintflutartigen Regenfällen und Sturm ins Trockene zu bringen."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 71,
+      "frage": "Welche Vorteile hat der Zufallsschnitt?",
+      "antwort": [
+        "Beim Mähen mit Zufallsschnitt mit scheinbar zufälligen Richtungswechseln erzielen Sie auf der gesamten Rasenfläche ein teppichähnliches Schnittbild. Diese Strategie gilt schon 25 Jahre lang als zuverlässige Lösung für die gesamte Rasenfläche und hinterlässt keine Spuren"
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 72,
+      "frage": "Funktioniert ein Kabelloser Rasenroboter auch in meinem Garten?",
+      "antwort": [
+        "Das hängt von den Gegebenheiten ab. Sind dichte Bäume mit breiten Kronen vorhanden? Wie hoch sind Hindernisse (Häuser, große Büsche, Garagen usw.)",
+        "Der Mäher benötigt freie Sicht nach oben ( mit ca.160°) zu den Satelliten."
+      ],
+      "kategorie": "maehroboter"
+    },
+    {
+      "position": 73,
+      "frage": "Was für eine Pumpe brauche ich für eine Gartenbewässerung?",
+      "antwort": [
+        "Haben Sie ein umfangreiches oder automatisches Bewässerungssystem und als Wasserressource einen Brunnen, empfiehlt sich eine Tauchdruckpumpe. Möchten Sie stattdessen Ihr Regenwasser aus der Zisterne in eine Regentonne umpumpen, können Sie auch auf eine Tauchpumpe zurückgreifen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 74,
+      "frage": "Was ist der Unterschied zwischen Gartenpumpe und Hauswasserwerk?",
+      "antwort": [
+        "Die Funktionsweise ist ähnlich, aber mit einem großen Unterschied: Die Gartenpumpe lässt sich nur manuell einschalten während das Hauswasserwerk sich automatisch bei Wasserentnahme einschaltet. Damit ist das Hauswasserwerk in vielen Fällen die bequemere Lösung."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 75,
+      "frage": "Wie viel bar für Gartenbewässerung?",
+      "antwort": [
+        "Anlagen zur Gartenbewässerung sollten unbedingt mit sehr leistungsstarken Pumpen ausgerüstet werden, die einen Betriebsdruck von mindestens 3, besser noch 4 bar aufbauen können."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 76,
+      "frage": "Ist es erlaubt Grundwasser abzupumpen?",
+      "antwort": [
+        "Die Entnahme und das Ableiten von Wasser aus oberirdischen Gewässern ist grundsätzlich verboten (§§ 8 und 9 Wasserhaushaltsgesetz) und bedarf der Erlaubnis, soweit nicht im Wasserhaushaltsgesetz eine Ausnahme geregelt ist."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 77,
+      "frage": "Wie viel Druck sollte eine Gartenpumpe haben?",
+      "antwort": [
+        "Allgemein gilt, dass pro Meter senkrechte Saug- und Druckhöhe 0,1 bar benötigt werden. Um die Reibungsverluste in den Leitungen mitzuberücksichtigen, rechnen Sie pro Meter waagerechte Leitung ebenfalls 0,1 bar."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 78,
+      "frage": "Welche Leistung braucht eine Gartenpumpe?",
+      "antwort": [
+        "Die meisten Gartenpumpen haben eine Ansaughöhe von etwa 8 Meter und eine Leistung um die 3000 Watt."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 79,
+      "frage": "Was bedeutet Förderhöhe bei Gartenpumpen?",
+      "antwort": [
+        "Einfach ausgedrückt, ist die Förderhöhe ist die Höhe, auf die eine Pumpe Flüssigkeit nach oben fördern kann. Sie wird in Metern oder Fuß gemessen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 80,
+      "frage": "Welchen Wartungsaufwand haben Speck BADU Pumpen?",
+      "antwort": [
+        "Die Pumpen sind generell wartungsfrei. Um einen gleichbleibenden Förderstrom und eine gute Filtration des Schwimmbadwassers zu gewährleisten, brauchen Sie nur das Saugsieb der Pumpe in regelmäßigen Abständen zu reinigen. Eine schnelle Sichtkontrolle von Zeit zu Zeit – das ist alles."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 81,
+      "frage": "Wie überwintere ich meine Pumpe?",
+      "antwort": [
+        "Ganz einfach: Pumpe entleeren, trocken und frostsicher einlagern. Mit einem Tuch vor Staub schützen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 82,
+      "frage": "Wie nehme ich meine Pumpe wieder in Betrieb, wenn sie länger nicht genutzt wurde?",
+      "antwort": [
+        "Nach längerem Stillstand (z. B. nach dem Winter) prüfen Sie die Pumpe vor dem Einschalten auf Leichtgängigkeit. Drehen Sie dazu die Motorwelle mit einem Schraubendreher leicht durch. Sollte sich der Motor über die Monate festgesetzt haben, lösen Sie so die Blockade. Nur wenn Ihre Pumpe danach immer noch schwergängig bleibt oder ungewöhnliche Geräusche entwickelt, lassen Sie die Pumpe von einem geschulten Fachmann überprüfen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 83,
+      "frage": "Wie stelle ich den richtigen Pumpen- und Gerätetyp fest?",
+      "antwort": [
+        "Jede Pumpe hat eine individuelle Typenbezeichnungen. Sie finden sie in der Regel auf dem Typenschild am Gerätegehäuse. Hier können Sie alle wichtigen Informationen abgelesen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 84,
+      "frage": "Was sind Verschleißteile bei einer Pumpe?",
+      "antwort": [
+        "Verschleißteile sind alle dichtenden und rotierenden Elemente einer Pumpe. Also die Gleitringdichtung, O-Ringe, Flachdichtungen, das Laufrad und die Kugellager. Diese Verschleißteile sind generell von der Gewährleistung ausgenommen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 85,
+      "frage": "Verschleißteile sind alle dichtenden und rotierenden Elemente einer Pumpe. Also die Gleitringdichtung, O-Ringe, Flachdichtungen, das Laufrad und die Kugellager. Diese Verschleißteile sind generell von der Gewährleistung ausgenommen.",
+      "antwort": [
+        "Der Dichtbereich der Gleitringdichtung besteht aus zwei plangeschliffenen, verschleißarmen Flächen (z. B. Ringe aus Siliciumkarbid bzw. Kohle), die durch axiale Kräfte zusammengedrückt werden. Der Gleitring (dynamisch) rotiert mit der Welle, während der Gegenring (statisch) im Gehäuse stationär angeordnet ist. Zwischen den Gleitflächen bildet sich ein dünner Wasserfilm, der zur Schmierung und Kühlung dient. Trockenlauf führt zur sofortigen Zerstörung. Als Nebendichtungen kommen O-Ringe aus verschiedenen Elastomeren zum Einsatz."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 86,
+      "frage": "Was ist eine selbstansaugende Pumpe?",
+      "antwort": [
+        "Eine selbstansaugende Pumpe ist in der Lage, Luft- und Gasanteile mitzufördern. Sie kann die Saugleitung selbsttätig entlüften (Luft evakuieren). Bei der Inbetriebnahme muss die Pumpe erst befüllt werden"
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 87,
+      "frage": "Welche Medien kann ich mit einer Unterwasserpumpe fördern?",
+      "antwort": [
+        "Unterwasserpumpen sind für die Förderung von sauberen, dünnflüssigen, nicht explosiven Medien ohne Feststoffe oder langfaserige Bestandteile bestimmt. Wird ein Medium mit einer von Wasser abweichenden Dichte gefördert, ist wegen des veränderten hydraulischen Leistungsbedarfs eventuell eine andere Motorleistung erforderlich."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 88,
+      "frage": "Was bedeutet Trockenlauf bei Nassläuferpumpen?",
+      "antwort": [
+        "Bei Nassläuferpumpen tritt Trockenlauf auf, wenn sich Luft in der Rotorkammer befindet. In diesem Fall werden die rotierenden Bauteile nicht ausreichend gekühlt und geschmiert. Trockenlauf führt sehr schnell zu bleibenden Schäden an der Pumpe."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 89,
+      "frage": "Was genau ist ein Kühlmantel und wann sollte er für Unterwasserpumpen verwendet werden?",
+      "antwort": [
+        "Ein Kühlmantel, manchmal auch Strömungserzeuger genannt, sorgt dafür, dass immer ausreichend Wasser entlang der Motoroberfläche strömt, um den Motor zu kühlen. Bei einer typischen Brunneninstallation ist die Pumpe von den Brunnenwänden umgeben. Der Motor ist unterhalb der Pumpe angeordnet. Da die Pumpe Wasser von unten ansaugt, strömt das Wasser zwischen den Brunnenwänden und der Oberfläche des Motors nach oben, wodurch der Motor gekühlt wird. Wird die Pumpe jedoch frei im Wasser installiert, fehlen die Brunnenwände, die den Wasserstrom über die Oberfläche des Motors leiten. In diesen Fällen ist ein Kühlmantel erforderlich."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 90,
+      "frage": "Ist ein Trockenlauf auch bei Tauchmotorpumpen möglich?",
+      "antwort": [
+        "Bei einem Trockenlauf der Pumpe kann die Gleitringdichtung und der Motor beschädigt werden. Aus diesem Grund sind die Schwimmerschalter so anzuordnen, dass der Füllstand im Schacht nicht unter den für den Betrieb der Pumpe erforderlichen Mindestfüllstand sinkt. Vor der Erstinbetriebnahme der Pumpe sind deshalb die in der jeweiligen Anwendung herrschenden Bedingungen mit den Angaben in der Betriebsanleitung oder im Datenheft abzugleichen."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 91,
+      "frage": "Wie wird ein Schwimmerschalter montiert?",
+      "antwort": [
+        "Das Kabel des Schwimmerschalters ist so an der Druckleitung anzubringen, dass durch die verbleibende freie Kabellänge ein ausreichender Volumenstrom sichergestellt wird. Dabei ist auch die Schachtgröße zu berücksichtigen. Zusätzlich ist sicherzustellen, dass die Schachttiefe für den erforderlichen Abstand zwischen dem Ein- und Ausschaltniveau des Schwimmerschalters ausreicht und der Abstand zwischen dem Schachtboden und dem Zulauf mindestens 60 cm beträgt."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 92,
+      "frage": "Wie viel bar benötigt man für eine Gartenbewässerung?",
+      "antwort": [
+        "Anlagen zur Gartenbewässerung sollten unbedingt mit sehr leistungsstarken Pumpen ausgerüstet werden, die einen Betriebsdruck von mindestens 3, besser noch 4 bar aufbauen können."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 93,
+      "frage": "Wie pumpt man Wasser aus der Zisterne?",
+      "antwort": [
+        "Tauchdruckpumpen werden direkt in die Zisterne abgelassen. Sie können größere Höhenunterschiede als Saugpumpen überwinden. Beträgt die Entfernung von Haus und Zisterne mehr als 15 m und müssen zusätzliche Höhenmeter überwunden werden, ist eine Tauchpumpe oft die beste Lösung."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 94,
+      "frage": "Welche Pumpen sind selbstansaugend?",
+      "antwort": [
+        "Selbstansaugende Pumpen müssen in der Lage sein, ohne zusätzliche externe Hilfseinrichtungen die Pumpensaugleitung zu entlüften (siehe Entlüftung). Kreiselpumpen mit interner Ansaugstufe wie Wasserstrahlpumpe oder Seitenkanalpumpe gelten ebenfalls als selbstansaugende Pumpe."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 95,
+      "frage": "Wie viel Strom verbraucht eine Gartenpumpe?",
+      "antwort": [
+        "Eine durchschnittliche Brunnenpumpe verbraucht etwa 700 bis 800 Watt Strom, während größere Pumpen bis zu 2000 bis 5000 Watt verbrauchen können. Wenn Sie die Brunnenpumpe 8 Stunden am Tag verwenden, verbraucht sie 6,4 Kilowattstunden pro Tag und 44,8 Kilowattstunden pro Woche."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 96,
+      "frage": "Was macht eine gute Gartenpumpe aus?",
+      "antwort": [
+        "Zu den wichtigsten Kriterien einer Gartenpumpe gehören die Fördermenge und die Leistung. Diese beiden Werte hängen eng zusammen und je höher die Leistung des Motors ist, desto mehr Durchfluss weist eine Pumpe auf. Große Fördermengen sind wichtig, um viel Wasser auf einer großen Fläche wie dem Rasen verteilen zu können."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 97,
+      "frage": "Ist eine Gartenbewässerung noch erlaubt?",
+      "antwort": [
+        "Einschränkungen und Strafen für Rasenbewässerung. Die Bewässerung des Gartens aus der Kaltwasserleitung am Haus ist erlaubt. Ob ein Verbot in Form einer Allgemeinverfügung etwa bei Trockenheit besteht, findet man auf der Website des jeweiligen Kreises heraus."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 98,
+      "frage": "Wie viel Wasser braucht man zur Gartenbewässerung?",
+      "antwort": [
+        "Je nach Bodenbeschaffenheit und abhängig von Aspekten wie der Lage der Rasenfläche (schattig, teilbeschattet, sonnig, Höhenlage) oder den vorherrschenden klimatischen Bedingungen braucht ein Rasen pro Quadratmeter ca. zwischen 10 und 20 Liter Wasser pro Woche im Frühjahr und Herbst."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 99,
+      "frage": "Wie viel kostet eine Stunde Rasen sprengen?",
+      "antwort": [
+        "Ein Kubikmeter sind 1000 Liter. Jeder verbrauchte Liter Trinkwasser für die Rasenbewässerung schlägt also mit etwa 0,4 Cent zu Buche. Lässt man den Rasensprenger eine Stunde lang laufen, dann werden zwischen 600 und 800 Liter Wasser verbraucht. Das kostet zwischen 2,40 Euro und 3,20 Euro."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 100,
+      "frage": "Wie off sollte ich meinen Rasen bei über 30 Grad bewässern?",
+      "antwort": [
+        "Als Faustregel gilt: Bei Temperaturen über 25° Celsius sollten Sie mindestens einmal pro Woche Ihren Rasen gießen – klettert das Thermometer auf über 30°, dann zweimal. Liegen die Temperaturen über 30° Celsius und es regnet über Wochen hinweg nicht, verträgt Ihre Grünfläche auch dreimal Gießen pro Woche."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 101,
+      "frage": "Ist eine Zisterne genehmigungspflichtig?",
+      "antwort": [
+        "Grundsätzlich ist die gesamte Grundstücksentwässerung und somit auch der Bau und der Betrieb von Regenwasserzisternen genehmigungspflichtig. Die Nutzung des Regenwassers aus Zisternen zur Gartenbewässerung ist grundsätzlich zulässig und gebührenfrei."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 102,
+      "frage": "Wie viel Minuten sollte man den Rasen sprengen?",
+      "antwort": [
+        "Sollten die Niederschläge aber ausbleiben, muss der Boden bis in eine Tiefe von mindestens 5cm bewässert werden. Bei trockennen verhältisen sollte der Rasen ca 20 Minuten alle zwei Tage bewässert werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 103,
+      "frage": "Kann man einen Rasen zu viel bewässern?",
+      "antwort": [
+        "Man kann beim Gießen und Bewässern des Rasens auch viel falsch machen. Häufigster Fehler dabei: Zu viel Wasser geben. Denn dringt zu viel Wasser in den Boden ein, presst es die Luft aus den Bodenporen und der Boden über wässert. Dadurch wiederum können die Wurzeln im Boden verfaulen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 104,
+      "frage": "Wie tief muss eine Zisterne eingebaut werden?",
+      "antwort": [
+        "Für den Selbsteinbau empfehlen sich insbesondere flache Kunststoff-Zisternen, weil man bei denen nicht so tief graben muss. Eine Einbautiefe von 60 bis 100 cm unter der Erde sollte man aber schon einhalten, um im Winter Frostschäden am Regenwasserspeicher zu vermeiden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 105,
+      "frage": "Ist eine Tröpfchenbewässerung sinnvoll?",
+      "antwort": [
+        "Die Bewässerung von Pflanzen mittels Tropfschlauch ist sicherlich eine der cleversten Methoden der Wasserversorgung. Der geringe Wasserverbrauch schont die natürlichen Ressourcen und hilft damit auch Geld zu sparen. Eine Tropfbewässerung lässt sich zudem kostengünstig und leicht selbst im Garten installieren."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 106,
+      "frage": "Wie funktioniert die Tropfbewässerung?",
+      "antwort": [
+        "Von der Bewässerungssteuerung aus fließt das Wasser in ein Verteilerrohr und ereicht über Tropfrohre die einzelnen Pflanzen. Tropfer verteilen das Wasser Tropfen für Tropfen an die Pflanzen. Mit der Tropfenverteilung wird die Verschwendung von Wasser durch Verdunstung auf ein Minimum reduziert."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 107,
+      "frage": "Was ist besser Perlschlauch oder Tropfschlauch?",
+      "antwort": [
+        "Perlschlauch oder Tropfschlauch? Der Unterschied zwischen diesen beiden Arten des Bewässerungsschlauches besteht hauptsächlich in der Dosierung des Wassers: Der Perlschlauch gibt durch seine feineren Poren weniger Wasser ab, dafür aber konstant. Ein Tropfschlauch sondert in größeren Abständen einzelne Wassertropfen ab."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 108,
+      "frage": "Wie lange muss ein tropfschlauch laufen?",
+      "antwort": [
+        "Das unterirdische Tropfrohr gibt 2,1l/h/Tropfstelle ( alle 30cm) aus. Man empfiehlt hier jeden 2. Tag für je 45min zu bewässern. Die Verlegung erfolgt in einem Abstand von 30cm ähnlich wie bei einer Fußbodenheizung."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 109,
+      "frage": "Warum Tropfbewässerung?",
+      "antwort": [
+        "Tropfbewässerung ist die effizienteste Methode, um Pflanzen mit Wasser und Nährstoffen zu versorgen. Beides wird direkt in die Wurzelzone der Pflanzen geliefert, in der benötigten Menge und zum richtigen Zeitpunkt. Die Pflanzen bekommen so genau das, was sie brauchen. Das Ergebnis ist ein optimales Pflanzenwachstum."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 110,
+      "frage": "Wie groß sind die Löcher im Tropfschlauch?",
+      "antwort": [
+        "Die Tropfer sind druckregulierend und geben auch bei schwankendem Druck stets die gleichen Wassermengen in die Beete ab. In regelmäßigen Abständen zwei Löcher (3 mm) bohren. Bei Rohren über zwei Meter Länge erst kleinere Löcher bohren, die zum Ende hin größer werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 111,
+      "frage": "Wie viel Druck braucht ein Tropfrohr?",
+      "antwort": [
+        "Für die Bewässerung mit dem Tropfschlauch muss der Wasserdruck im Bereich von 0,8 – 2,5 bar liegen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 112,
+      "frage": "Wie lange darf ein Tropfschlauch sein?",
+      "antwort": [
+        "Standardgrößen liegen für gewöhnlich zwischen 100 Metern und 50 Metern. Der Tropfschlauch lässt sich meist auch im Nachhinein verlängern. Die Gesamtlänge für einen Tropfschlauch sollte jedoch nicht mehr als 100 Meter betragen. So gewährleistet man eine optimale Bewässerung."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 113,
+      "frage": "Wie viel Wasser läuft durch einen tropfschlauch?",
+      "antwort": [
+        "Ein druckgeminderter Tropfschlauch gibt etwa 2 Liter pro Stunde pro Loch an die Erde ab. Das heißt, es reicht aus, wenn die Bewässerung etwa eine halbe Stunde am Tag läuft."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 114,
+      "frage": "Was ist ein Getrieberegner?",
+      "antwort": [
+        "Getrieberegner werden als Versenkregner zur Bewässerung von Rasenflächen in deinem Bewässerungssystem verwendet. Sobald ein Magnetventil der Bewässerungsanlage das Wasser für den jeweiligen Regnerkreis freigibt, steigt der Wasserdruck in der PE-Leitung und der Aufsteiger des Regners fährt nach oben."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 115,
+      "frage": "Wie funktioniert ein Getrieberegner?",
+      "antwort": [
+        "Hunter Getrieberegner arbeiten mit einem „Räderantriebssystem“. Wenn sie sich in Betrieb befinden, dreht sich im Grundgerät des Regners eine kleine, durch Wasser angetriebene Turbine. Dadurch wird eine Reihe von Zahnrädern angetrieben, die die Drehung des Düsendrehkopfes bewirken."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 116,
+      "frage": "Wie stellt man Hunter Regner ein?",
+      "antwort": [
+        "Setzen Sie das Plastikende des Hunter Schlüssels in die Einstellschraube auf dem Getrieberegner ein. Drehen Sie den Düsendrehkopf im Uhrzeigersinn und halten Sie dabei den Düsendrehkopf an seinem rechten Anschlag. Der Schlüssel lässt sich nicht mehr drehen, wenn der maximale Bogen (360°) erreicht ist."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 117,
+      "frage": "Wie funktioniert ein Impulsregner?",
+      "antwort": [
+        "Den künstlichen Regen erzeugt ein federgelagerter Strahltrenner, der aus Metall, Messing, Gusseisen oder Kunststoff sein kann. Wird dieser vom Wasserstrahl getroffen, schwingt er zurück, bis die Federspannung ihn wieder in den Strahl drückt."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 118,
+      "frage": "Wie funktioniert ein Magnetventil?",
+      "antwort": [
+        "In der Ruhestellung verschließt der Kolben eine kleine Öffnung. Ein elektrischer Strom durch die Spule erzeugt ein Magnetfeld. Das Magnetfeld übt eine nach oben gerichtete Kraft auf den Kolben aus, der die Öffnung öffnet. Dies ist das Grundprinzip, nach dem Magnetventile geöffnet und geschlossen werden."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 119,
+      "frage": "Welches Kabel benötigt man für die Installation eines Magnetventils?",
+      "antwort": [
+        "Für den Anschluss der Magnetventile werden mehradrige Kabel eingesetzt. Bei 24 Volt Wechselstrom wird pro Magnetventil ein Anschlusskabel auf Masse gelegt. Das andere Kabel wird als Steuerkabel für das jeweilige Magnetventil verwendet."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 120,
+      "frage": "Was bedeutet NC bei Ventilen?",
+      "antwort": [
+        "Was bedeutet die Bezeichnung NC bzw. NO auf dem Magnetventil? NC = Normally Closed, das Magnetventil ist im Ruhezustand geschlossen. NO = Normally Open, Das Magnetventil ist im Ruhezustand geöffnet."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 121,
+      "frage": "Was sind MPR Düsen?",
+      "antwort": [
+        "MPR ist die Abkürzung für die englischen Vokabeln \"Matched Precipitation Rate\". Übersetzt stehen diese Wörter für \"angepasste Niederschlagsrate\". MPR Düsen sind also darauf ausgerichtet, dass Sie die Bewässerung für einen bestimmten Gartenbereich exakt kontrollieren."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 122,
+      "frage": "Wie funktioniert der Rain Bird Regensensor?",
+      "antwort": [
+        "Der Regensensor der RSD-Serie von Rain Bird schaltet Ihre Sprinkleranlage automatisch ab, wenn es regnet, sodass Sie sich keine Sorgen machen müssen, wenn Sie zu Hause oder unterwegs sind. Der Regensensor der RSD-Serie lässt sich leicht an die meisten Steuergeräte von Bewässerungssystemen anschließen."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 123,
+      "frage": "Welches Bewässerungssystem ist optimal für ein Staudenbeet?",
+      "antwort": [
+        "Für Hecken und Stauden eignet sich der Tropfschlauch, ein brauner, relativ steifer Schlauch, der auf dem Boden liegt. Der Schlauch hat viele kleine Löcher, über die die Hecke bewässert wird. Der Vorteil ist, dass es keine Verdunstung gibt und die empfindlichen Kulturen oben trocken bleiben."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 124,
+      "frage": "Was gibt es für Bewässerungstechniken?",
+      "antwort": [
+        "Die wichtigsten Bewässerungsverfahren sind die Unterflur-, die Oberflächen- und die Tröpfchenbewässerung sowie die Beregnung. Das erforderliche Wasser für die zu bewässernden Flächen stammt aus den natürlich vorkommenden ober- oder unterirdisch stehenden oder fließenden Gewässern."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 125,
+      "frage": "Was haben wir von Hunter auf Lager?",
+      "antwort": [
+        "Wir haben von Hunter alle gängigen Artikel auf Lager. Sollten wir mal einen Artikel nicht auf Lager haben bestellen wir diesen gerne für Sie. Dieser sollte dann auch in wenigen Tage dank unseres Einkaufnetzes da sein."
+      ],
+      "kategorie": "unternehmen"
+    },
+    {
+      "position": 126,
+      "frage": "Git es eine App für Bewässerungscomputer von Hunter?",
+      "antwort": [
+        "Ja! Die Programmierung der Hunter Hydrawise Steuerung gelingt ganz problemlos mit der Hydrawise App auf Ihrem Smartphone oder über Ihren Webbrowser."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 127,
+      "frage": "Was ist Hydrawise?",
+      "antwort": [
+        "Hydrawise ist das weitest entwickelte Bewässerungs Management System um die Steuergeräte Ihrer Kunden umfassend zu überwachen. Programmieren Sie die Geräte von Ihrem Büro aus. Durchfluss- und elektrische Alarme erhalten Sie auf Ihr Smartphone."
+      ],
+      "kategorie": "steuerung"
+    },
+    {
+      "position": 128,
+      "frage": "Welche Rohre benötigt man für eine Gartenbewässerung?",
+      "antwort": [
+        "Der Kunststoff Polyethylen (PE) eignet sich aufgrund seiner Eigenschaften optimal als Wasserleitung für Ihre Bewässerungsanlage. Schwarzes PE-Rohr ist UV-stabil und kann im Garten sowohl oberirdisch als auch unterirdisch verlegt werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 129,
+      "frage": "Warum sollte man Nachts bewässern?",
+      "antwort": [
+        "Für die Pflanzen ist der Abend die bessere Zeit, weil das Wasser während der kühlen Nacht aufgenommen werden kann. Ungünstig ist das Gießen bei heißer Sonne, weil sogleich viel verdunstet und empfindliche Kulturen wie Gurken, Melonen und Paprika den Temperaturunterschied schlecht vertragen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 130,
+      "frage": "Was ist eine Mikrobewässerung?",
+      "antwort": [
+        "Die Mikrobewässerung ist ein bedarfsgerechtes und effizientes Gießen von Beeten, Hecken und Blumenkübeln. Hierbei wird nur ein kleiner ausgewählter Bereich des Bodens – meist direkt an der Pflanze – durch Sprüh- oder Tropfbewässerung bewässert."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 131,
+      "frage": "Welche Pumpe für Gartenbewässerung aus Zisterne?",
+      "antwort": [
+        "Für den Einsatz in einer Zisterne sind Tauchpumpen mit schwimmender Entnahme geeignet. Diese Art der Wasserentnahme sorgt dafür, dass Wasser knapp unterhalb der Wasseroberfläche angesaugt wird, was den Eintrag von an der Oberfläche schwimmenden Schmutzpartikeln verhindert."
+      ],
+      "kategorie": "pumpen"
+    },
+    {
+      "position": 132,
+      "frage": "Wie weit sollte eine Zisterne vom Haus entfernt sein?",
+      "antwort": [
+        "Die Behälter dürfen nicht überbaut werden und können keine Lasten aus Gebäuden bzw. Fundamenten aufnehmen. Der Abstand zu Gebäuden muss mindestens 1,5 m betragen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 133,
+      "frage": "Wie viel spart man durch eine Zisterne?",
+      "antwort": [
+        "Die Zisterne kostet zwar etwas Geld, lohnt sich aber dennoch: Die Vorteile liegen klar auf der Hand. Ein Haushalt mit vier Personen spart dadurch 75.000 Liter Trinkwasser pro Jahr: täglich 33 Liter für die Toilettenspülung, 15 Liter zum Wäschewaschen, 10 Liter für Gartenbewässerung oder den Hausputz."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 134,
+      "frage": "Was passiert wenn die Zisterne leer ist?",
+      "antwort": [
+        "Wenn die Zisterne leer ist, muss in das Regenwassersystem automatisch Trinkwasser eingespeist werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 135,
+      "frage": "Für was darf man Brunnenwasser verwenden?",
+      "antwort": [
+        "Private Brunnen sind besonders im ländlichen Raum noch weit verbreitet und können nicht nur zur Gartenbewässerung oder als Brauchwasser zum Wäschewaschen genutzt, sondern auch zur Trinkwassergewinnung herangezogen werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 136,
+      "frage": "Ist ein Brunnen meldepflichtig?",
+      "antwort": [
+        "Ein Brunnen zur Brauch- und Trinkwassergewinnung muss bei der zuständigen Kommune kostenpflichtig angemeldet werden."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 137,
+      "frage": "Wann muss ein Systemtrenner eingebaut werden?",
+      "antwort": [
+        "Grundsätzlich kommen Systemtrenner wie bei der Bewässerung immer dann zum Einsatz, wenn das Trinkwassernetz mit einem Nichttrinkwassernetz verbunden wird."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 138,
+      "frage": "Wie funktioniert ein Systemtrenner?",
+      "antwort": [
+        "Ein Systemtrenner dient der Sicherung der Trinkwassergüte, indem er verhindert, dass Nichttrinkwasser in das öffentliche Wasserversorgungsnetz zurückfließt. Nichttrinkwasser kann dann zurückfließen, wenn sich innerhalb der Wasserleitungsnetze Druckveränderungen ergeben, die zu einem Flussrichtungswechsel führen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 139,
+      "frage": "Was ist ein Systemtrenner BA?",
+      "antwort": [
+        "Die Systemtrenner Typ BA dienen zum Schutz vor dem Verunreinigungsrisiko durch Wasser der Kategorien 1 bis 4. Für Wasser der Kategorie 5 ist ein hydraulisches Trennbecken einzuplanen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 140,
+      "frage": "Was ist die DIN EN 1717?",
+      "antwort": [
+        "Diese Norm enthält Festlegungen zur Vermeidung von Verunreinigungen des Trinkwassers innerhalb von Grundstücken und Gebäuden sowie allgemeine Anforderungen an Sicherungseinrichtungen zur Vermeidung von Verunreinigungen durch Rückfließen."
+      ],
+      "kategorie": "bewaesserung"
+    },
+    {
+      "position": 141,
+      "frage": "Wie mache ich meine Bewässerung Winterfest?",
+      "antwort": [
+        "Um das restliche Wasser aus der Anlage zu bekommen, wird ein Kompressor an die Zuleitung oder an den dafür vorgesehenen Anschluss an der Magnetverteilung im Ventilkasten angeschlossen. Nachdem der Druck aufgebaut ist wird Station für Station geöffnet und das Wasser mit der Druckluft heraus gedrückt"
+      ],
+      "kategorie": "bewaesserung"
+    }
+  ]
+}

@@ -78,7 +78,7 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | `/produkte/[slug]` | Produktdetail mit Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
 | `/starter-kits` | Vier Kits, Vergleichstabelle, Detail-Sections, „ab“-Preise |
 | `/planung` | **IRRISketch-Planungstool** mit Sechs-Schritte-Ablauf, darunter der Kostenrechner (Fläche · Wasserquelle · Bereiche · WLAN) mit Stückliste |
-| `/learning-center` | Videothek mit Filter, Suche und Dialog-Player — gegen Support-Anrufe |
+| `/learning-center` | Videothek mit Filter, Suche und Dialog-Player, darunter 139 Fragen und Antworten 1:1 von green-gard.de/learningcenter (Rubrikfilter, Volltextsuche, FAQPage-Schema) — gegen Support-Anrufe |
 | `/pflanzenkoelle` | Geschützte Projektseite für den Großkunden: Standortwahl, vollständiges Technikformular, `noindex`, nicht verlinkt |
 | `/beratung` | Terminbuchung mit Ansprechpartner-Auswahl und ICS-Mock + Schulungsbereich |
 | `/warum-green-gard` | Editorial-Lesestrecke, Team mit echten Porträts, Rainworks-Anriss, Brief des Geschäftsführers |

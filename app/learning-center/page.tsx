@@ -3,16 +3,19 @@ import { PhoneCall, Smartphone, Wrench } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { LearningGrid } from '@/components/learning/LearningGrid';
+import { FaqAccordion } from '@/components/learning/FaqAccordion';
 import { CONTACT } from '@/lib/contact';
 import videosJson from '@/data/videos.json';
+import faqJson from '@/data/faq.json';
 
 export const metadata = {
   title: 'Learning Center · Green-Gard',
   description:
-    'Erklärvideos zu Bewässerung, Hydrawise, Pumpentechnik, Gartenbeleuchtung, Mährobotern und Poolpflege — kurz, praxisnah und auf dem Handy an der Baustelle abrufbar.',
+    'Erklärvideos und 139 ausgeschriebene Antworten zu Bewässerung, Hydrawise, Pumpentechnik, Gartenbeleuchtung, Mährobotern und Poolpflege — praxisnah und auf dem Handy an der Baustelle abrufbar.',
 };
 
 const VIDEO_COUNT = videosJson.videos.length;
+const FAQ_COUNT = faqJson.eintraege.length;
 
 const PRINZIPIEN = [
   {
@@ -32,9 +35,29 @@ const PRINZIPIEN = [
   },
 ];
 
+/**
+ * FAQPage-Markup für Google. Die 139 Antworten sind der stärkste SEO-Bestand
+ * des Kunden — ohne dieses Schema tauchen sie in der Suche nicht als Rich
+ * Result auf. Inhalt identisch zur sichtbaren Fassung.
+ */
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqJson.eintraege.map((e) => ({
+    '@type': 'Question',
+    name: e.frage,
+    acceptedAnswer: { '@type': 'Answer', text: e.antwort.join(' ') },
+  })),
+};
+
 export default function LearningCenterPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
+
       <section className="py-16 md:py-24">
         <div className="container">
           <Eyebrow number="L">Learning Center</Eyebrow>
@@ -44,7 +67,11 @@ export default function LearningCenterPage() {
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70">
             <span className="num">{VIDEO_COUNT}</span> Erklärvideos zu den Fragen, die bei uns
             am häufigsten am Telefon landen: Ventil, Zonenplan, Trafo, Vordruck, Kalibrierung.
-            Fünf bis fünfzehn Minuten, ein Thema pro Video, keine Werbung dazwischen.
+            Fünf bis fünfzehn Minuten, ein Thema pro Video, keine Werbung dazwischen. Darunter{' '}
+            <a href="#fragen" data-cursor="hover" className="border-b border-mist hover:border-ink">
+              <span className="num">{FAQ_COUNT}</span> ausgeschriebene Antworten
+            </a>{' '}
+            zum Nachlesen.
           </p>
 
           <div
@@ -63,6 +90,8 @@ export default function LearningCenterPage() {
       </section>
 
       <LearningGrid />
+
+      <FaqAccordion />
 
       <section className="border-t border-mist bg-forest py-24 text-linen md:py-32">
         <div data-reveal className="container grid items-end gap-10 lg:grid-cols-12">
