@@ -4,7 +4,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { PullQuote } from '@/components/PullQuote';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/lib/contact';
-import { team, teamGruppenfoto } from '@/lib/data';
+import { rainworks, team, teamGruppenfoto } from '@/lib/data';
 
 export const metadata = {
   title: 'Warum Green-Gard · Wiesbaden seit 2006',
@@ -163,22 +163,32 @@ export default function WarumGreenGardPage() {
         </div>
       </section>
 
-      {/* Rainworks — Platzhaltertext */}
+      {/* Rainworks — Anriss, der volle Text steht 1:1 auf /rainworks */}
       <section className="container max-w-3xl py-24 md:py-32">
         <p className="eyebrow">Partnerschaft</p>
-        <h2 className="h-display mb-10 mt-6 text-balance text-4xl md:text-5xl">
-          Rainworks.
+        <h2 className="h-display mb-4 mt-6 text-balance text-4xl md:text-5xl">
+          {rainworks.titel}.
         </h2>
-        {/* TODO: Rainworks-Text vom Kunden. */}
-        <p className="text-lg leading-[1.7] text-ink/85">
-          Mit Rainworks verbindet uns eine Partnerschaft, die über den Handel hinausgeht:
-          gemeinsame Projektplanung, abgestimmte Systemauslegung und ein direkter Draht,
-          wenn es auf der Baustelle schnell gehen muss. Für unsere Kunden heißt das:
-          Komponenten, Planung und Ausführung greifen ineinander, ohne dass jemand zwischen
-          zwei Ansprechpartnern vermitteln muss.
+        <p className="h-display mb-10 text-xl italic text-ink/70 md:text-2xl">
+          {rainworks.untertitel}
         </p>
-        <p className="font-mono mt-6 text-[10px] uppercase tracking-[0.16em] text-ink/45">
-          Platzhaltertext · finale Fassung folgt vom Kunden
+        <p className="text-lg leading-[1.7] text-ink/85">{rainworks.mitgliederText}</p>
+        <ul className="mt-8 space-y-3">
+          {rainworks.vorteile.slice(0, 2).map((v) => (
+            <li key={v} className="flex gap-4 leading-[1.65] text-ink/75">
+              <span aria-hidden className="mt-[0.6rem] h-px w-6 shrink-0 bg-moss/60" />
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-10">
+          <Link
+            href="/rainworks"
+            data-cursor="hover"
+            className="border-b border-mist text-lg hover:border-ink"
+          >
+            Die Allianz im Detail →
+          </Link>
         </p>
       </section>
 

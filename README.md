@@ -75,14 +75,15 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | `/` | Hero-Video, Haltung, 7 Disziplinen, Highlights, Mini-Kalkulator, Starter-Kit-Teaser, Pull-Quote, Kress im Fokus, Partner-Marquee, Kennzahlen, Bewertungen mit Filter, Profi-CTA, FAQ |
 | `/katalog` | **Digitaler Katalog 2026**: sieben Kapitel als Doppelseiten, mitlaufendes Register, Volltextsuche per ⌘K, Druckansicht · 31 Artikel |
 | `/produkte` | Shop-Ansicht mit Disziplin-, Hersteller- und Preisfilter, 4 Sortierungen, Verweis auf den Katalog · 31 Artikel |
-| `/produkte/[slug]` | Produktdetail mit Staffelrabatt-Anzeige, Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
+| `/produkte/[slug]` | Produktdetail mit Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
 | `/starter-kits` | Vier Kits, Vergleichstabelle, Detail-Sections, „ab“-Preise |
 | `/planung` | **IRRISketch-Planungstool** mit Sechs-Schritte-Ablauf, darunter der Kostenrechner (Fläche · Wasserquelle · Bereiche · WLAN) mit Stückliste |
 | `/learning-center` | Videothek mit Filter, Suche und Dialog-Player — gegen Support-Anrufe |
 | `/pflanzenkoelle` | Geschützte Projektseite für den Großkunden: Standortwahl, vollständiges Technikformular, `noindex`, nicht verlinkt |
 | `/beratung` | Terminbuchung mit Ansprechpartner-Auswahl und ICS-Mock + Schulungsbereich |
-| `/warum-green-gard` | Editorial-Lesestrecke, Team, Rainworks, Brief des Geschäftsführers |
-| `/profi` | Konditionen, Staffelrabatt-Tabelle, Partner, Lead-Gate für den Konditionskatalog |
+| `/warum-green-gard` | Editorial-Lesestrecke, Team mit echten Porträts, Rainworks-Anriss, Brief des Geschäftsführers |
+| `/rainworks` | Die Rainworks Alliance — Inhalte 1:1 von green-gard.de/rainworks, inkl. Mitgliederkarte und Struktur-Diagramm |
+| `/profi` | Konditionen, Partner, Lead-Gate für den Konditionskatalog (Nachlässe werden individuell vereinbart, nicht angezeigt) |
 | `/checkout` | Adresse, drei Versandarten, vier Zahlarten (Rechnung nur für Profi), MwSt-Aufschlüsselung, Mock-Abschluss |
 | `/login` | Anmeldung, vorbereitet für Supabase Auth |
 
@@ -229,8 +230,9 @@ weil beide dieselbe Codebasis nutzen.
    heiße, warme und kalte Interessenten ab.
 6. **Lead-Gate `/profi`** — Konditionskatalog gegen Firmendaten inkl. Gewerbe-Art,
    damit der Außendienst vorqualifiziert anruft.
-7. **Staffelrabatt sichtbar am Produkt** — der Rabatt erscheint beim Erhöhen der
-   Menge, das ist der stärkste Anreiz zur Bündelung.
+7. **Konditionen nur nach Login** — auf der Seite steht nirgends ein Nachlass.
+   Wer Konditionen sehen will, meldet sich an; das qualifiziert und schützt die
+   individuell vereinbarten Preise.
 8. **Schulungen** — Zusatzumsatz und Kundenbindung: wer geschult ist, kauft
    Komponenten dort, wo er sie kennengelernt hat.
 9. **Highlights-Section** — steuerbare Bühne für margenstarke Neuheiten

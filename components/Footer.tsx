@@ -115,6 +115,11 @@ export function Footer() {
                   Warum Green-Gard
                 </Link>
               </li>
+              <li>
+                <Link href="/rainworks" data-cursor="hover" className="transition-colors hover:text-bronze">
+                  Rainworks
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -1,0 +1,53 @@
+{
+  "_comment": "Inhalte 1:1 von https://www.green-gard.de/rainworks (abgerufen 03.08.2026). Wortlaut unverändert übernommen; einzige Korrektur ist das überzählige Leerzeichen vor dem Doppelpunkt in 'für unsere Kunden :'. Bilder liegen unter public/rainworks/ (Quelle: Cloudinary-Assets 'Rainworkskarte neu' und 'Diagramm Rainworks' der Kundenseite).",
+  "titel": "Rainworks",
+  "untertitel": "Gemeinsam bewegen wir mehr als Wasser",
+  "seitentitel": "Rainworks - Gemeinsam bewegen wir mehr als Wasser",
+  "vorteileTitel": "Green-Gard-Kunden profitieren automatisch von:",
+  "vorteile": [
+    "Besten Lieferkonditionen führender internationaler Hersteller wie K-Rain, Teco, in-lite, Hunter oder Rain Bird",
+    "Vorsprung durch innovative Produkte wie das Wifi-Steuergerät Hunter HC Hydrawise",
+    "Einem ausgewählten Sortiment, das nach Qualitätsprüfung laufend erweitert wird",
+    "Hochqualifizierten Mitarbeitern durch ständige Weiterbildung und Wissensaustausch mit den deutschen und europäischen Partnern auf Tagungen, Messen und Workshops"
+  ],
+  "mitgliederTitel": "Rainworks Mitglieder",
+  "mitgliederText": "Die Mitglieder der Rainworks Alliance sind stabile Unternehmen mit einer wichtigen, meist führenden Rolle auf dem jeweiligen Landesmarkt. Alle Mitgliedsunternehmen verfügen über hochqualifizierte und erfahrene Teams von Fachleuten, die über ein großes technisches Wissen im Bereich der Bewässerung und in der Nähe von Branchen verfügen, die mit schönen und hochwertigen Rasenflächen, Gärten, Parks und Sportplätzen und deren Pflege verbunden sind.",
+  "karte": {
+    "src": "/rainworks/rainworks-karte.jpg",
+    "alt": "Karte der Rainworks Alliance mit den Mitgliedsunternehmen drago, Lühr GmbH, ITTEC, Green-Gard, techno consult und France Arrosage",
+    "mitglieder": ["drago", "Lühr GmbH", "ITTEC", "Green-Gard", "techno consult", "France Arrosage"]
+  },
+  "diagramm": {
+    "src": "/rainworks/rainworks-diagramm.jpg",
+    "alt": "Diagramm der Rainworks Alliance: Austausch mit Industrie, Verbänden, Organisationen, Politik, Bildungseinrichtungen und Forschung — daraus entstehen Vertrieb, Schulung/Ausbildung, Marktstruktur, Marketing und Produktentwicklung",
+    "eingang": [
+      "Industrie",
+      "Verbände",
+      "Organisationen",
+      "Politik",
+      "Bildungseinricht.",
+      "Forschung"
+    ],
+    "ausgang": [
+      "Vertrieb",
+      "Schulung/Ausbild.",
+      "Marktstruktur",
+      "Marketing",
+      "Produktentwickl."
+    ]
+  },
+  "arbeitTitel": "Unsere Arbeit",
+  "arbeitIntro": "Die Mitglieder arbeiten langfristig und systematisch zusammen, was zu höherer Effizienz und Einsparungen führt:",
+  "arbeitPunkte": [
+    "Gegenseitig leichter zu identifizierende Möglichkeiten",
+    "Gegenseitiges leichteres Erkennen von Chancen",
+    "Gegenseitiges leichteres Finden und Testen neuer Produkte",
+    "Gegenseitiges Arbeiten mit Partnern und Lieferanten"
+  ],
+  "ergebnisIntro": "So erreichen wir das Beste für unsere Kunden:",
+  "ergebnisPunkte": [
+    "Informationen und Erfahrungen teilen, sich gegenseitig inspirieren und voneinander lernen – ein intensiver Informationsaustausch",
+    "Gegenseitige Vertretung und Beziehungsmanagement in der Kommunikation mit wichtigen Partnern",
+    "Gegenseitiger Einkauf, wo es effizient ist – insbesondere bei Partnern in Übersee, wo es erhebliche logistische Einsparungen gibt"
+  ]
+}

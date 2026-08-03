@@ -12,6 +12,7 @@ import testimonialsJson from '@/data/testimonials.json';
 import teamJson from '@/data/team.json';
 import schulungenJson from '@/data/schulungen.json';
 import highlightsJson from '@/data/highlights.json';
+import rainworksJson from '@/data/rainworks.json';
 
 export interface Product {
   slug: string;
@@ -108,3 +109,9 @@ export function getHighlightProducts(): Product[] {
 }
 
 export const brands = Array.from(new Set(products.map((p) => p.brand))).sort();
+
+/**
+ * Rainworks-Inhalte, Wortlaut 1:1 von green-gard.de/rainworks.
+ * Bewusst kein Interface mit Literal-Unions — die Datei ist reiner Text.
+ */
+export const rainworks = rainworksJson;

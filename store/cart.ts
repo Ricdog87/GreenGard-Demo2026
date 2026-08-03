@@ -18,7 +18,7 @@ export interface CartLine {
 }
 
 interface CartState {
-  /** Preisansicht: privat = brutto, profi = netto + Staffelrabatt. */
+  /** Preisansicht: privat = brutto, profi = netto. Nachlässe werden nie angezeigt. */
   mode: Mode;
   setMode: (m: Mode) => void;
   /** Zielgruppe aus dem Entry-Fenster — steuert Navigation und Schnelleinstiege. */

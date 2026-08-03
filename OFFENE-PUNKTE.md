@@ -23,7 +23,7 @@ tauschen heißt in fast allen Fällen: eine Datei ersetzen, kein Umbau.
 |---|---|---|
 | B1 | **Teamfotos in Originalauflösung** | Wir haben die sechs Porträts von green-gard.de übernommen (ca. 900 px). Für die großen Kacheln wären die Originaldateien besser. Zwei Bilder sind S/W, vier in Farbe — die Seite zieht sie deshalb einheitlich in Graustufen. Wenn ihr das anders wollt: kurz sagen. |
 | B2 | **Katalog, restliche 7 Abschnitte** | Von acht Abschnitten ist einer als Daten eingepflegt („Bewässerung — Tropf & Mikro", `knowledge/green-gard/`). Der Rest ist im Blätterkatalog sichtbar, aber nicht durchsuchbar. |
-| B3 | **Rainworks-Text** | Platzhalter. Wir haben eine Fassung geschrieben, die inhaltlich stimmen dürfte — bitte gegenlesen oder ersetzen. `app/warum-green-gard/page.tsx` |
+| B3 | ~~Rainworks-Text~~ | **Erledigt.** Wortlaut 1:1 von green-gard.de/rainworks übernommen, eigene Seite unter `/rainworks`, Karte und Struktur-Diagramm inklusive. Offen bleibt nur: Gibt es die beiden Grafiken als Vektor oder in höherer Auflösung? Sie stammen aus dem Web-Export (1600 px). |
 | B4 | **Erklärvideos** (YouTube-IDs) | Learning Center und die geschützte Projektseite zeigen Kacheln ohne Video. Es genügen die YouTube-Links. |
 | B5 | **Schulungen: Termine, Dauer, Preise, Plätze** | Aktuell Beispieldaten. `data/schulungen.json` |
 | B6 | **Freigaben Herstellerlogos** | Hunter, Rainbird, Netafim, Pedrollo, Kress, In-Lite, Bayrol, Beatbot erscheinen als Wortmarken. Falls einer davon eine Freigabe braucht, bitte melden. |
