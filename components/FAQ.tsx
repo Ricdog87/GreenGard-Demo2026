@@ -30,7 +30,7 @@ const ITEMS = [
   },
   {
     q: 'Bekommen Gewerbekunden andere Preise?',
-    a: 'Ja. GaLaBau-Betriebe, Installateure und Fachhandel kaufen zu Nettopreisen mit Staffelrabatt ab fünf Stück je Position, auf Rechnung. Den Konditionskatalog gibt es über die Profi-Seite.',
+        a: 'Ja. GaLaBau-Betriebe, Architekten, Installateure und Fachhandel kaufen zu Nettopreisen auf Rechnung. Die Konditionen vereinbaren wir individuell — je nach Zusammenarbeit und Projektvolumen. Sprechen Sie uns an, wir melden uns persönlich.',
   },
   {
     q: 'Was passiert im Winter?',

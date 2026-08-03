@@ -62,6 +62,8 @@ export interface Testimonial {
 export interface TeamMember {
   first: string;
   last: string;
+  /** Funktion laut green-gard.de — bewusst nicht angezeigt (Kundenwunsch). */
+  rolle?: string;
   email: string;
   photo: string;
 }

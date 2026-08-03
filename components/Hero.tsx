@@ -93,7 +93,7 @@ function HeroMedia() {
         fill
         priority
         sizes="100vw"
-        className="hero-media object-cover"
+        className="hero-media object-cover will-change-transform"
         data-cursor="view"
       />
     );
@@ -109,7 +109,7 @@ function HeroMedia() {
       poster="/videos/hero-poster.jpg"
       aria-hidden
       data-cursor="view"
-      className="hero-media absolute inset-0 h-full w-full object-cover"
+      className="hero-media absolute inset-0 h-full w-full object-cover will-change-transform"
     >
       <source src="/videos/hero-regner.webm" type="video/webm" />
       <source src="/videos/hero-regner.mp4" type="video/mp4" />

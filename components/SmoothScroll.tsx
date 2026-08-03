@@ -17,10 +17,13 @@ export function SmoothScroll() {
 
     gsap.registerPlugin(ScrollTrigger);
 
+        // Kürzere Nachlaufzeit als zuvor (1,15 s): das Scrollen folgt der Hand
+    // direkter, statt spürbar nachzulaufen.
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 1.05,
     });
 
     lenis.on('scroll', ScrollTrigger.update);

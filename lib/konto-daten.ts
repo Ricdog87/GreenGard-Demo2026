@@ -50,8 +50,12 @@ export interface Profikonto {
   firma: string;
   kundennummer: string;
   ansprechpartner: string;
-  /** Zusätzlicher Rabattpunkt auf die Katalog-Rabattgruppe. */
-  konditionsstufe: number;
+  /**
+   * Vereinbarte Einkaufspreise je Bestellnummer (netto). In der Demo hier, in
+   * Produktion aus dem Backend — immer kundenspezifisch, nie als allgemeine
+   * Rabatttabelle. Artikel ohne hinterlegten Preis gelten als "auf Anfrage".
+   */
+  ekPreise: Record<string, number>;
   zahlungsziel: string;
   bestellungen: Bestellung[];
   projekte: Projekt[];
@@ -62,7 +66,12 @@ export const DEMO_KONTO: Profikonto = {
   firma: 'Eichel GaLaBau GmbH',
   kundennummer: '114029',
   ansprechpartner: 'Markus Eichel',
-  konditionsstufe: 0.03,
+  ekPreise: {
+    // TODO: aus Supabase je Konto laden (geplante Tabelle: kundenpreise).
+    '100000030': 74.59,
+    '101000023': 54.27,
+    '102000118': 42.36,
+  },
   zahlungsziel: '30 Tage netto',
   bestellungen: [
     {
@@ -192,6 +201,11 @@ export const PROJEKT_LABEL: Record<ProjektStatus, string> = {
   freigegeben: 'Freigegeben',
   umgesetzt: 'Umgesetzt',
 };
+
+/** Vereinbarter Einkaufspreis, falls für dieses Konto hinterlegt. */
+export function ekPreisFuer(bestellnummer: string): number | null {
+  return DEMO_KONTO.ekPreise[bestellnummer] ?? null;
+}
 
 /** Nettowert einer Bestellung. */
 export function bestellwert(b: Bestellung): number {

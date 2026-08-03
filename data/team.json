@@ -1,41 +1,48 @@
 {
-  "_comment": "TODO: echte Namen + Fotos vom Kunden. Bewusst OHNE Rollenbezeichnungen (Kundenwunsch aus dem Termin vom 28.07.2026). E-Mail-Schema v.nachname@green-gard.de.",
+  "_comment": "Echte Namen, Funktionen und Mailadressen von green-gard.de/team (abgerufen 03.08.2026). Rollen sind hinterlegt, werden aber bewusst NICHT angezeigt (Kundenwunsch aus dem Termin 28.07.2026). TODO: Einzelporträts vom Kunden — auf der alten Seite stehen nur Textblöcke und ein Gruppenfoto, keine Einzelbilder im Markup.",
+  "_gruppenfoto": "https://res.cloudinary.com/chocobrain/image/upload/v1749541717/dmCobSmV/Teamfoto_2025",
   "members": [
     {
-      "first": "Jan",
-      "last": "Leifermann",
-      "email": "j.leifermann@green-gard.de",
+      "first": "Thomas",
+      "last": "Gerhardt",
+      "rolle": "Geschäftsführer",
+      "email": "t.gerhardt@green-gard.de",
       "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
     },
     {
-      "first": "Sina",
-      "last": "Wagner",
-      "email": "s.wagner@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Pascal",
-      "last": "Klotz",
-      "email": "p.klotz@green-gard.de",
+      "first": "Jan",
+      "last": "Leifermann",
+      "rolle": "Vertriebsleiter",
+      "email": "j.leifermann@green-gard.de",
       "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
     },
     {
-      "first": "Miriam",
-      "last": "Sander",
-      "email": "m.sander@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Tobias",
-      "last": "Renz",
-      "email": "t.renz@green-gard.de",
+      "first": "Nicolas",
+      "last": "Ohl",
+      "rolle": "Fachberater Vertrieb",
+      "email": "n.ohl@green-gard.de",
       "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
     },
     {
-      "first": "Katrin",
-      "last": "Ohlig",
-      "email": "k.ohlig@green-gard.de",
+      "first": "Martin",
+      "last": "Dolligkeit",
+      "rolle": "Einkauf",
+      "email": "m.dolligkeit@green-gard.de",
       "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Jakob",
+      "last": "Serti",
+      "rolle": "Lager und Logistik",
+      "email": "j.serti@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "first": "Natascha",
+      "last": "Gerhardt",
+      "rolle": "Assistenz der Geschäftsführung",
+      "email": "n.gerhardt@green-gard.de",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
     }
   ]
 }

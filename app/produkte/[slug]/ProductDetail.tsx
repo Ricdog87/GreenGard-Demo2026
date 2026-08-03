@@ -71,8 +71,8 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
                     {priceLabel(mode)}
                   </span>
                 </div>
-                                <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.18em] text-bronze">
-                  Profi-Staffelrabatt ab 5 Stück im Shop
+                                                <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.18em] text-bronze">
+                  Ihre Konditionen nach Vereinbarung
                 </p>
               </div>
 

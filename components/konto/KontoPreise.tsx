@@ -5,11 +5,9 @@ import { Search } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { DEMO_KONTO } from '@/lib/konto-daten';
+import { DEMO_KONTO, ekPreisFuer } from '@/lib/konto-daten';
 import {
   katalogArtikel,
-  ekPreis,
-  RABATTGRUPPEN,
   ABSCHNITTE_VERFUEGBAR,
   ABSCHNITTE_GESAMT,
   type KatalogArtikel,
@@ -19,9 +17,9 @@ import { formatEUR, cn } from '@/lib/utils';
 /**
  * Persönliche Einkaufspreise.
  *
- * Zeigt den Katalog mit dem Preis, der für dieses Konto gilt: Rabattgruppe des
- * Artikels plus persönliche Konditionsstufe. Die Ersparnis steht daneben, damit
- * der Vorteil ohne Kopfrechnen sichtbar ist.
+ * Zeigt den Katalog mit dem Preis, der für dieses Konto vereinbart ist.
+ * Bewusst ohne Rabattsätze oder Ersparnis-Prozente: Konditionen werden je Kunde
+ * verhandelt und nirgends veröffentlicht — auch nicht als ableitbare Prozentzahl.
  */
 
 /** Umlaute einebnen, damit "Bewasserung" und "Bewässerung" gleich treffen. */
@@ -58,7 +56,6 @@ function prozent(anteil: number): string {
 
 export function KontoPreise() {
   const [query, setQuery] = useState('');
-  const stufe = DEMO_KONTO.konditionsstufe;
 
   const treffer = useMemo(() => {
     const q = normalize(query);
@@ -66,8 +63,6 @@ export function KontoPreise() {
     const terms = q.split(' ').filter(Boolean);
     return INDEX.filter((e) => terms.every((t) => e.haystack.includes(t)));
   }, [query]);
-
-  const gruppen = Object.entries(RABATTGRUPPEN);
 
   return (
     <section className="border-t border-mist bg-paper py-16 md:py-24" data-reveal-group>
@@ -77,23 +72,16 @@ export function KontoPreise() {
           Einkaufspreise, <em className="italic">wie sie für Sie gelten</em>.
         </h2>
 
-        {/* Kondition erklären: Rabattgruppe des Artikels + persönlicher Zusatz. */}
+        {/* Konditionen sind eine Vereinbarung, keine veröffentlichte Staffel. */}
         <div className="mt-8 border border-mist bg-linen p-5 md:p-7" data-reveal>
           <p className="max-w-2xl text-sm text-ink/70">
-            Jeder Artikel gehört einer Rabattgruppe an. Auf diesen Katalograbatt kommt Ihr
-            persönlicher Zusatzrabatt aus der Konditionsvereinbarung. Alle Preise verstehen sich
-            netto zzgl. MwSt., Zahlungsziel {DEMO_KONTO.zahlungsziel}.
+            Hier stehen die Einkaufspreise, die für Ihr Konto vereinbart sind. Alle Preise
+            netto zzgl. MwSt., Zahlungsziel {DEMO_KONTO.zahlungsziel}. Artikel ohne
+            hinterlegten Preis kalkulieren wir auf Anfrage — sprechen Sie uns an.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2">
-            {gruppen.map(([gruppe, satz]) => (
-              <Badge key={gruppe} variant="mist">
-                Gruppe {gruppe} · {prozent(satz)}
-              </Badge>
-            ))}
-            <Badge variant="bronze">Ihr Zusatzrabatt · {prozent(stufe)}</Badge>
-          </div>
           <p className="font-mono mt-4 text-[10px] uppercase tracking-[0.16em] text-ink/45">
-            Kundennummer {DEMO_KONTO.kundennummer} · {DEMO_KONTO.firma}
+            Kundennummer {DEMO_KONTO.kundennummer} · {DEMO_KONTO.firma} · Konditionen laut
+            Vereinbarung
           </p>
         </div>
 
@@ -140,7 +128,7 @@ export function KontoPreise() {
         >
           <table className="w-full min-w-[880px] border-collapse text-left text-sm">
             <caption className="sr-only">
-              Katalogartikel mit Listenpreis, Rabattgruppe und Ihrem Einkaufspreis
+              Katalogartikel mit Listenpreis und Ihrem vereinbarten Einkaufspreis
             </caption>
             <thead>
               <tr className="border-b border-mist bg-linen">
@@ -150,7 +138,6 @@ export function KontoPreise() {
                   'Beschreibung',
                   'VE',
                   'Listenpreis',
-                  'Gruppe',
                   'Ihr EK',
                 ].map((kopf) => (
                   <th
@@ -168,8 +155,8 @@ export function KontoPreise() {
             </thead>
             <tbody>
               {treffer.map(({ artikel }) => {
-                const ek = ekPreis(artikel, stufe);
-                const ersparnis = artikel.preisVE > 0 ? (1 - ek / artikel.preisVE) * 100 : 0;
+                const ek = ekPreisFuer(artikel.bestellnummer);
+                
                 return (
                   <tr key={artikel.bestellnummer} className="border-b border-mist/70 last:border-0">
                     <th
@@ -198,22 +185,21 @@ export function KontoPreise() {
                     <td className="num whitespace-nowrap px-4 py-4 text-right text-ink/50 line-through">
                       {formatEUR(artikel.preisVE)}
                     </td>
-                    <td className="px-4 py-4">
-                      <Badge variant="outline">{artikel.rabattgruppe}</Badge>
-                    </td>
                     <td className="whitespace-nowrap px-4 py-4 text-right">
-                      <span className="price block text-base">{formatEUR(ek)}</span>
-                      <span className="font-mono num block text-[10px] uppercase tracking-[0.14em] text-bronze">
-                        <span className="sr-only">Ersparnis </span>
-                        {`−${ersparnis.toFixed(1).replace('.', ',')} %`}
-                      </span>
+                      {ek === null ? (
+                        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink/50">
+                          auf Anfrage
+                        </span>
+                      ) : (
+                        <span className="price block text-base">{formatEUR(ek)}</span>
+                      )}
                     </td>
                   </tr>
                 );
               })}
               {treffer.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-12 text-center text-sm text-ink/55">
+                  <td colSpan={6} className="px-4 py-12 text-center text-sm text-ink/55">
                     Kein Artikel gefunden. Rufen Sie uns an — wir beschaffen auch, was noch nicht
                     im Katalog steht.
                   </td>

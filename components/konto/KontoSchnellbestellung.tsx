@@ -6,8 +6,8 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { DEMO_KONTO } from '@/lib/konto-daten';
-import { findeArtikel, katalogArtikel, ekPreis, type KatalogArtikel } from '@/lib/katalog-daten';
+import { DEMO_KONTO, ekPreisFuer } from '@/lib/konto-daten';
+import { findeArtikel, katalogArtikel, type KatalogArtikel } from '@/lib/katalog-daten';
 import { useCart } from '@/store/cart';
 import { formatEUR, cn } from '@/lib/utils';
 
@@ -72,7 +72,6 @@ export function KontoSchnellbestellung() {
   const addItem = useCart((s) => s.addItem);
   const openDrawer = useCart((s) => s.openDrawer);
 
-  const stufe = DEMO_KONTO.konditionsstufe;
 
   const aufgeloest: AufgeloesteZeile[] = useMemo(
     () =>
@@ -81,7 +80,8 @@ export function KontoSchnellbestellung() {
         const artikel = leer ? undefined : findeArtikel(z.nummer);
         const gemeldet = Number.parseInt(z.menge, 10);
         const menge = Number.isFinite(gemeldet) && gemeldet > 0 ? gemeldet : 1;
-        const einzelpreis = artikel ? ekPreis(artikel, stufe) : 0;
+        // Preis aus der Konditionsvereinbarung; ohne Hinterlegung Listenpreis.
+        const einzelpreis = artikel ? (ekPreisFuer(artikel.bestellnummer) ?? artikel.preisVE) : 0;
         return {
           zeile: z,
           artikel,
@@ -92,7 +92,7 @@ export function KontoSchnellbestellung() {
           fehler: !leer && !artikel,
         };
       }),
-    [zeilen, stufe]
+    [zeilen]
   );
 
   const gueltige = aufgeloest.filter((a) => a.artikel);
@@ -372,7 +372,7 @@ export function KontoSchnellbestellung() {
                         {art.beschreibung}
                       </span>
                       <Badge variant="mist" className="shrink-0">
-                        {art.rabattgruppe}
+                        {art.verpackungseinheit}
                       </Badge>
                     </button>
                   </li>

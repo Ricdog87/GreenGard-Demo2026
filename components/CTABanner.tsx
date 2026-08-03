@@ -13,8 +13,8 @@ export function CTABanner() {
             Sie sind <em className="italic">GaLaBauer</em>, Architekt oder Fachhändler?
           </h2>
           <p className="mt-6 max-w-xl text-ink/70">
-            Nettopreise, Staffelrabatte ab fünf Stück, Rechnungskauf und Schulungen im
-            eigenen Betrieb. Den vollständigen Konditionskatalog senden wir Ihnen zu.
+                        Nettopreise, Rechnungskauf und Schulungen im eigenen Betrieb. Ihre
+            Konditionen stimmen wir persönlich mit Ihnen ab — sprechen Sie uns an.
           </p>
         </div>
         <div className="flex flex-wrap justify-start gap-4 lg:col-span-5 lg:justify-end">

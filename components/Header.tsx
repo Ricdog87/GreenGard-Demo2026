@@ -48,8 +48,11 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 border-b border-mist backdrop-blur-md transition-[background-color,box-shadow] duration-300',
-        scrolled ? 'bg-paper/95 shadow-[0_12px_32px_-24px_rgba(10,15,12,0.45)]' : 'bg-paper/85'
+                // Kein backdrop-blur: der Weichzeichner müsste bei jedem Scroll-Frame
+        // neu berechnet werden und kostete messbar Bildrate. Beim Scrollen wird
+        // der Grund deckend, ungescrollt bleibt er leicht transparent.
+        'sticky top-0 z-40 border-b border-mist transition-[background-color,box-shadow] duration-300',
+        scrolled ? 'bg-paper shadow-[0_12px_32px_-24px_rgba(10,15,12,0.45)]' : 'bg-paper/92 backdrop-blur-sm'
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4">

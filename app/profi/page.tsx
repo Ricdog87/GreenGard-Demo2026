@@ -11,7 +11,6 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitLead, type GewerbeArt } from '@/lib/supabase';
-import { DISCOUNT_TIERS } from '@/lib/pricing';
 import { CONTACT } from '@/lib/contact';
 import { AUDIENCES } from '@/lib/audience';
 import { useCart } from '@/store/cart';
@@ -21,7 +20,7 @@ const USPS = [
   {
     icon: Percent,
     title: 'Nettopreise',
-    body: 'Alle Preise netto, Staffelrabatt ab fünf Stück je Position — direkt im Shop sichtbar, sobald Sie auf Profi umstellen.',
+    body: 'Alle Preise netto. Ihre persönlichen Konditionen vereinbaren wir individuell und hinterlegen sie in Ihrem Konto.',
   },
   {
     icon: FileText,
@@ -130,42 +129,47 @@ export default function ProfiPage() {
         </div>
       </section>
 
-      <section id="staffelrabatt" className="border-t border-mist bg-linen py-24 md:py-32">
-        <div className="container grid items-end gap-12 lg:grid-cols-12">
+      <section id="konditionen" className="border-t border-mist bg-linen py-24 md:py-32">
+        <div className="container grid items-start gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Eyebrow number="02">Staffelrabatt</Eyebrow>
+            <Eyebrow number="02">Konditionen</Eyebrow>
             <h2 className="h-display mt-6 text-4xl md:text-5xl">
-              Staffelpreise <em className="italic">automatisch</em>.
+              Persönlich <em className="italic">vereinbart</em>.
             </h2>
             <p className="mt-6 text-ink/70">
-              Der Rabatt wird je Position automatisch berechnet, sobald die Preisansicht
-              oben rechts auf Profi steht. Größere Projektmengen kalkulieren wir
-              individuell.
+              Wir veröffentlichen keine Preislisten mit Nachlässen. Ihre Konditionen
+              entstehen aus der Zusammenarbeit — Sortimentsbreite, Projektvolumen und
+              Kooperationsvereinbarung. Deshalb besprechen wir sie mit Ihnen und
+              hinterlegen sie anschließend in Ihrem Konto.
             </p>
           </div>
           <div className="lg:col-span-7">
-            <div className="border border-mist bg-paper">
-              {DISCOUNT_TIERS.map((r, i) => (
-                <div
-                  key={r.range}
-                  className={cn(
-                    'flex items-baseline justify-between p-6',
-                    i !== DISCOUNT_TIERS.length - 1 && 'border-b border-mist'
-                  )}
-                >
-                  <div>
-                    <p className="eyebrow">Stückzahl je Position</p>
-                    <p className="num font-display mt-1 text-2xl tracking-tight">{r.range}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="eyebrow">Rabatt</p>
-                    <p className="num font-display mt-1 text-5xl tracking-tight text-bronze">
-                      −{r.percent}%
-                    </p>
-                  </div>
-                </div>
+            <ol className="border-t border-mist">
+              {[
+                {
+                  titel: 'Sie stellen sich vor',
+                  text: 'Ein kurzes Formular mit Firma und Gewerbe-Art genügt — den Rest klären wir im Gespräch.',
+                },
+                {
+                  titel: 'Wir stimmen die Konditionen ab',
+                  text: 'Je nach Sortiment, Projektvolumen und Zusammenarbeit. Auf Wunsch als Kooperationsvereinbarung.',
+                },
+                {
+                  titel: 'Ihre Preise stehen im Konto',
+                  text: 'Nach der Freischaltung sehen Sie Ihre Einkaufspreise, Bestellhistorie und Projekte — nur Sie.',
+                },
+              ].map((s2, i) => (
+                <li key={s2.titel} className="flex gap-6 border-b border-mist py-6">
+                  <span className="num font-mono pt-1 text-[10px] tracking-[0.16em] text-moss">
+                    0{i + 1}
+                  </span>
+                  <span>
+                    <span className="font-display block text-2xl tracking-tight">{s2.titel}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-ink/70">{s2.text}</span>
+                  </span>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </div>
       </section>
@@ -199,7 +203,8 @@ export default function ProfiPage() {
             </h2>
             <p className="mt-6 text-ink/70">
               Sie erhalten die vollständige Konditionsübersicht als PDF: Nettopreise je
-              Warengruppe, Staffeln, Projektkonditionen und Schulungstermine. Wir melden
+              Warengruppe, Lieferbedingungen und Schulungstermine. Ihre persönlichen
+              Konditionen besprechen wir direkt mit Ihnen. Wir melden
               uns innerhalb von zwei Werktagen persönlich.
             </p>
             <p className="font-mono mt-10 text-[10px] uppercase tracking-[0.18em] text-ink/60">
@@ -226,7 +231,7 @@ export default function ProfiPage() {
                   Wir haben Ihre Anfrage aufgenommen und melden uns innerhalb von zwei
                   Werktagen. In der Zwischenzeit können Sie die Preisansicht oben rechts
                   auf <span className="font-medium">Profi</span> stellen — dann sehen Sie
-                  im Shop bereits Nettopreise inklusive Staffelrabatt.
+                  im Shop bereits Nettopreise.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild variant="primary">

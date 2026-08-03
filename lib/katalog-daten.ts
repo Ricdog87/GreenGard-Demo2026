@@ -68,22 +68,17 @@ export const katalogArtikel: KatalogArtikel[] = SECTION_FILES.flatMap((datei) =>
 );
 
 /**
- * Rabattgruppen des Katalogs. Die Prozentsätze sind eine plausible Annahme —
- * die echten Konditionen hängen am Kundenkonto.
- * TODO: mit Jan abgleichen und je Kunde aus Supabase laden.
+ * Bewusst KEIN Rabattschlüssel in dieser Datei.
+ *
+ * Preisnachlässe werden je Kunde individuell vereinbart (Kooperationsvertrag
+ * bzw. Abstimmung) und dürfen nicht veröffentlicht werden. Eine Prozenttabelle
+ * hier läge im Client-Bundle und wäre für jeden auslesbar — auch wenn sie
+ * nirgends angezeigt würde. Kundenspezifische Einkaufspreise kommen deshalb
+ * ausschließlich aus dem Konto (lib/konto-daten.ts, später aus Supabase).
+ *
+ * Die Rabattgruppe eines Artikels bleibt als Buchstabe erhalten: ein internes
+ * Sortiermerkmal ohne Aussage über die Höhe.
  */
-export const RABATTGRUPPEN: Record<string, number> = {
-  A: 0.25,
-  B: 0.2,
-  C: 0.15,
-  D: 0.1,
-};
-
-/** Einkaufspreis eines Artikels für einen Profi mit gegebener Kondition. */
-export function ekPreis(artikel: KatalogArtikel, aufschlagStufe = 0): number {
-  const rabatt = (RABATTGRUPPEN[artikel.rabattgruppe] ?? 0) + aufschlagStufe;
-  return artikel.preisVE * (1 - Math.min(rabatt, 0.45));
-}
 
 export function findeArtikel(bestellnummer: string): KatalogArtikel | undefined {
   const gesucht = bestellnummer.trim();
