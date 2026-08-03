@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 316" role="img" aria-label="GREEN-GARD — Technik für Gärten und Grünflächen">
+  <!-- Variante mit Claim, für Footer und Druckansicht. Siehe logo-green-gard.svg. -->
+  <g>
+    <path fill="#16A75B" d="M300 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+    <path fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+  </g>
+
+  <text x="10" y="248"
+        font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-weight="800" font-size="118"
+        textLength="740" lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#0B7A45">GREEN-</tspan><tspan fill="#16A75B">GARD</tspan>
+  </text>
+
+  <text x="12" y="298"
+        font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-weight="500" font-size="29" fill="#5C7A5E"
+        textLength="736" lengthAdjust="spacingAndGlyphs">TECHNIK FÜR GÄRTEN UND GRÜNFLÄCHEN</text>
+</svg>

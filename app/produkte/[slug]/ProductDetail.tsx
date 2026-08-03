@@ -2,32 +2,24 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowRight, Minus, Plus, Shield, Truck } from 'lucide-react';
+
+import { ArrowRight, ArrowUpRight, Shield, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Eyebrow } from '@/components/Eyebrow';
 import { ProductCard } from '@/components/ProductCard';
 import { useCart } from '@/store/cart';
-import { priceFor, priceLabel, volumeDiscount } from '@/lib/pricing';
+import { priceFor, priceLabel } from '@/lib/pricing';
+import { SHOP_URL } from '@/lib/links';
 import { formatEUR } from '@/lib/utils';
 import { getCategory, type Product } from '@/lib/data';
+import { CONTACT } from '@/lib/contact';
 
 export function ProductDetail({ product, cross }: { product: Product; cross: Product[] }) {
+    // Die Website informiert, gekauft wird im Shop (Entscheidung 31.07.2026).
   const mode = useCart((s) => s.mode);
-  const addItem = useCart((s) => s.addItem);
-  const openDrawer = useCart((s) => s.openDrawer);
-  const [qty, setQty] = useState(1);
-
   const category = getCategory(product.category);
   const unit = priceFor(product.netPrice, mode);
-  const discount = volumeDiscount(qty, mode);
-  const total = unit * qty * (1 - discount);
-
-  function handleAdd() {
-    addItem({ ...product, qty });
-    openDrawer();
-  }
 
   return (
     <>
@@ -79,35 +71,19 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
                     {priceLabel(mode)}
                   </span>
                 </div>
-                {discount > 0 && (
-                  <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.18em] text-bronze">
-                    − {Math.round(discount * 100)}% Staffelrabatt ab {qty} Stück
-                  </p>
-                )}
+                                <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.18em] text-bronze">
+                  Profi-Staffelrabatt ab 5 Stück im Shop
+                </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="inline-flex items-center border border-mist">
-                  <button
-                    data-cursor="hover"
-                    onClick={() => setQty(Math.max(1, qty - 1))}
-                    className="grid h-12 w-12 place-items-center hover:bg-linen"
-                    aria-label="Menge verringern"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="num font-display min-w-[3ch] px-5 text-center text-lg">{qty}</span>
-                  <button
-                    data-cursor="hover"
-                    onClick={() => setQty(qty + 1)}
-                    className="grid h-12 w-12 place-items-center hover:bg-linen"
-                    aria-label="Menge erhöhen"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
-                <Button onClick={handleAdd} variant="primary" size="lg" className="flex-1">
-                  In den Warenkorb · <span className="price">{formatEUR(total)}</span>
+                            <div className="flex flex-wrap items-center gap-3">
+                <Button asChild variant="primary" size="lg" className="flex-1">
+                  <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+                    Im Shop bestellen <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="/beratung">Beraten lassen</Link>
                 </Button>
               </div>
 
@@ -146,10 +122,10 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
                 </TabsContent>
                 <TabsContent value="ship">
                   <ul className="space-y-3 text-sm text-ink/80">
-                    <li>Versand DHL · 6,90 € (kostenfrei ab 250 €)</li>
-                    <li>Direktfahrt im Großraum Wiesbaden · 19 €</li>
-                    <li>Abholung in Wiesbaden · kostenfrei</li>
-                    <li>Lagerware versendet binnen 24 Stunden.</li>
+                                        <li>Bestellung und Versand laufen über unseren Shop.</li>
+                    <li>Lagerware verlässt unser Haus binnen 24 Stunden.</li>
+                    <li>Abholung in {CONTACT.city} nach Absprache möglich.</li>
+                    <li>Direktfahrt im Großraum {CONTACT.city} auf Anfrage.</li>
                     <li>2 Jahre Garantie, 14 Tage Widerruf.</li>
                   </ul>
                 </TabsContent>
@@ -184,7 +160,7 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
         </section>
       )}
 
-      {/* Sticky Add-to-Cart auf Mobile */}
+            {/* Sticky Shop-Verweis auf Mobile */}
       <div className="fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-mist bg-paper/95 p-3 backdrop-blur lg:hidden">
         <div className="min-w-0 flex-1">
           <p className="font-mono truncate text-[10px] uppercase tracking-[0.18em] text-ink/55">
@@ -192,8 +168,10 @@ export function ProductDetail({ product, cross }: { product: Product; cross: Pro
           </p>
           <p className="price text-lg">{formatEUR(unit)}</p>
         </div>
-        <Button onClick={handleAdd} variant="primary">
-          Warenkorb
+        <Button asChild variant="primary">
+          <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+            Im Shop <ArrowUpRight className="h-4 w-4" />
+          </a>
         </Button>
       </div>
     </>

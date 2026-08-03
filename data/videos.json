@@ -1,0 +1,87 @@
+{
+  "_todo": "PLATZHALTER — alle youtubeId-Werte sind Dummy-IDs. Die echten YouTube-IDs der Erklaervideos liefert Green-Gard (Jan Leifermann, Termin 31.07.2026). Sobald die Liste da ist, nur hier eintragen — am Code ist nichts zu aendern.",
+  "_felder": "category: bewaesserung | steuerung | pumpentechnik | beleuchtung | maehroboter | pool | zubehoer — level: Grundlagen | Praxis | Profi",
+  "videos": [
+    {
+      "slug": "magnetventil-tauschen",
+      "title": "Magnetventil tauschen — in 8 Minuten erklärt",
+      "description": "Ventil undicht oder Zone bleibt trocken? Wir zeigen Schritt für Schritt, wie Sie das Magnetventil ausbauen, die Dichtung prüfen und den Ventilkasten wieder sauber verschließen — ohne die ganze Anlage zu entleeren.",
+      "category": "bewaesserung",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "8:24",
+      "level": "Praxis"
+    },
+    {
+      "slug": "hydrawise-zonen-wetterautomatik",
+      "title": "Hydrawise: Zonen anlegen und Wetterautomatik einrichten",
+      "description": "Zonen benennen, Laufzeiten setzen und die Wetterautomatik so konfigurieren, dass die Anlage bei Regen von selbst aussetzt. Danach richten Sie eine neue Anlage in unter zehn Minuten ein.",
+      "category": "steuerung",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "11:47",
+      "level": "Praxis"
+    },
+    {
+      "slug": "regner-einmessen-duesenwahl",
+      "title": "Regner einmessen: Düsenwahl und Wurfweite ohne trockene Ecken",
+      "description": "Überlappung, Wurfweite und Niederschlagsspende an einem echten Vorgarten erklärt. So vermeiden Sie trockene Ecken und Pfützen bereits bei der Planung.",
+      "category": "bewaesserung",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "6:12",
+      "level": "Grundlagen"
+    },
+    {
+      "slug": "hauswasserwerk-vordruck-entlueften",
+      "title": "Hauswasserwerk: entlüften und Vordruck richtig einstellen",
+      "description": "Vordruck am Membrankessel prüfen, Pumpe entlüften, Druckschalter justieren. Verhindert das ständige Takten — die häufigste Reklamation bei Hauswasserwerken.",
+      "category": "pumpentechnik",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "9:05",
+      "level": "Praxis"
+    },
+    {
+      "slug": "in-lite-trafo-dimensionieren",
+      "title": "In-Lite: Trafo dimensionieren und Spannungsabfall vermeiden",
+      "description": "Trafoleistung, Kabelquerschnitt und Leitungslänge im Zusammenspiel — mit Rechenbeispiel für eine 40-Meter-Zuleitung. Damit die letzte Leuchte genauso hell leuchtet wie die erste.",
+      "category": "beleuchtung",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "12:38",
+      "level": "Profi"
+    },
+    {
+      "slug": "kress-rtk-antenne-ausrichten",
+      "title": "Kress RTK: Antenne setzen und virtuelle Begrenzung anlegen",
+      "description": "Antennenstandort wählen, Empfang prüfen und die Flächen per App aufziehen. Inklusive der Stellen im Garten, an denen RTK erfahrungsgemäß zickt — und was dagegen hilft.",
+      "category": "maehroboter",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "14:20",
+      "level": "Profi"
+    },
+    {
+      "slug": "bayrol-poolmanager-sonden-kalibrieren",
+      "title": "Bayrol Poolmanager: pH- und Redox-Sonde kalibrieren",
+      "description": "Sonden reinigen, mit Pufferlösung kalibrieren und Messwerte auf Plausibilität prüfen. Zwei Mal im Jahr gemacht, erspart es teure Fehldosierungen und trübes Wasser.",
+      "category": "pool",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "7:36",
+      "level": "Praxis"
+    },
+    {
+      "slug": "anlage-winterfest-ausblasen",
+      "title": "Anlage winterfest machen: zonenweise ausblasen mit dem Kompressor",
+      "description": "Welcher Druck, welche Reihenfolge, wie lange je Zone. Der Klassiker gegen Frostschäden an Ventilen, Regnern und Verteilern — in einem Durchgang gezeigt.",
+      "category": "bewaesserung",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "10:03",
+      "level": "Grundlagen"
+    },
+    {
+      "slug": "kabelverbindung-erdreich-verbinder",
+      "title": "Wasserdichte Kabelverbindungen im Erdreich richtig setzen",
+      "description": "Gelverbinder und Kabelklemmen fachgerecht verarbeiten, Zugentlastung inklusive. Die meisten Ventilstörungen im Frühjahr kommen von der Verbindung, nicht vom Ventil.",
+      "category": "zubehoer",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "5:48",
+      "level": "Grundlagen"
+    }
+  ]
+}

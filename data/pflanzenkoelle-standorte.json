@@ -1,0 +1,14 @@
+[
+  { "kst": "850", "ort": "Hamburg", "adressNr": "116087", "ansprechpartner": "Hr. Schöniger" },
+  { "kst": "868", "ort": "Borgsdorf", "adressNr": "116095", "ansprechpartner": "Hr. West" },
+  { "kst": "870", "ort": "Wildau", "adressNr": "116086", "ansprechpartner": "Hr. Jeschcke" },
+  { "kst": "852", "ort": "Dallgow", "adressNr": "116084", "ansprechpartner": "Hr. Hübscher" },
+  { "kst": "869", "ort": "Hoppegarten", "adressNr": "116099", "ansprechpartner": "Hr. Groß" },
+  { "kst": "867", "ort": "Teltow", "adressNr": "116078", "ansprechpartner": "Hr. Krüger" },
+  { "kst": "865", "ort": "Heilbronn", "adressNr": "116083", "ansprechpartner": "Hr. Eckhardt" },
+  { "kst": "872", "ort": "Wiesbaden", "adressNr": "116090", "ansprechpartner": "Hr. Zimmermann" },
+  { "kst": "874", "ort": "Nürnberg", "adressNr": "116089", "ansprechpartner": "Hr. Grazioli" },
+  { "kst": "856", "ort": "Stuttgart", "adressNr": "116102", "ansprechpartner": "Hr. Rolfs" },
+  { "kst": "854", "ort": "München", "adressNr": "116062", "ansprechpartner": "Hr. Kugler" },
+  { "kst": "871", "ort": "Unterhaching", "adressNr": "116092", "ansprechpartner": "Fr. Szabo" }
+]

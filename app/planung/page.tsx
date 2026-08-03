@@ -1,433 +1,181 @@
-'use client';
-
-import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import { ArrowDown, ArrowUpRight, Check, Clock, PencilRuler } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
-import {
-  berechneEmpfehlung,
-  QUELLE_LABEL,
-  type Flaechentyp,
-  type Quelle,
-  type Steuerung,
-} from '@/lib/konfigurator';
-import { useCart } from '@/store/cart';
-import { priceFor, priceLabel } from '@/lib/pricing';
-import { formatEURRound, cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { PlanungRechner } from './PlanungRechner';
+import { IRRISKETCH_URL } from '@/lib/links';
+import { CONTACT } from '@/lib/contact';
 
-// V2: nur noch 3 Kernfragen + WLAN — Mähroboter- und Beleuchtungs-Add-ons sind
-// bewusst raus, die laufen über die eigenen Kits.
-const STEPS = ['Fläche', 'Wasserquelle', 'Bereiche', 'Steuerung', 'Ergebnis'] as const;
+export const metadata = {
+  title: 'Planung · Green-Gard',
+  description:
+    'Zeichnen Sie Ihren Garten selbst — wir legen die Bewässerung darüber. Fertige Planung inklusive Angebot innerhalb von 24 bis 48 Stunden.',
+};
+
+/**
+ * Der Ablauf, wie Jan Leifermann ihn im Termin am 31.07.2026 beschrieben hat.
+ * Reihenfolge und Fristen bewusst unverändert übernommen — das ist das
+ * Verkaufsversprechen, mit dem er beim Kunden arbeitet.
+ */
+const ABLAUF = [
+  {
+    titel: 'Sie zeichnen Ihren Garten',
+    text: 'Grundriss aufnehmen, Rasen, Beete und Hecken einzeichnen — direkt im Browser, ohne Installation.',
+  },
+  {
+    titel: 'Sie geben uns die Eckdaten',
+    text: 'Wasserquelle, verfügbare Wassermenge, gewünschtes Steuergerät. Fotos und vorhandene Pläne hängen Sie einfach an.',
+  },
+  {
+    titel: 'Wir planen die Bewässerung',
+    text: 'Unsere Techniker legen Regner, Rohrführung und Zonen auf Ihre Zeichnung — mit korrekter Hydraulik.',
+  },
+  {
+    titel: 'Sie erhalten Schema und Angebot',
+    text: 'Bewässerungsschema und passendes Angebot kommen per Mail. In der Regel binnen 24 bis 48 Stunden.',
+  },
+  {
+    titel: 'Sie beauftragen',
+    text: 'Passt alles, geben Sie das Angebot frei. Rückfragen entfallen, weil alle Daten schon vorliegen.',
+  },
+  {
+    titel: 'Das Material kommt',
+    text: 'Wenige Tage später steht Ihre Anlage komplett kommissioniert bei Ihnen auf dem Hof.',
+  },
+];
+
+const VORTEILE = [
+  { icon: Clock, wert: '24–48 h', label: 'bis zur fertigen Planung' },
+  { icon: PencilRuler, wert: 'maßstabsgetreu', label: 'statt Skizze auf Papier' },
+  { icon: Check, wert: 'ohne Rückfragen', label: 'alle Daten liegen vor' },
+];
 
 export default function PlanungPage() {
-  const mode = useCart((s) => s.mode);
-
-  const [step, setStep] = useState(0);
-  const [flaeche, setFlaeche] = useState(450);
-  const [quelle, setQuelle] = useState<Quelle>('leitung');
-  const [bereiche, setBereiche] = useState<Flaechentyp[]>(['rasen']);
-  const [rasenQm, setRasenQm] = useState(350);
-  const [beetQm, setBeetQm] = useState(100);
-  const [steuerung, setSteuerung] = useState<Steuerung>('smart');
-  const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
-
-  const empf = useMemo(
-    () => berechneEmpfehlung({ flaecheQm: flaeche, quelle, bereiche, rasenQm, beetQm, steuerung }),
-    [flaeche, quelle, bereiche, rasenQm, beetQm, steuerung]
-  );
-
-  function toggleBereich(v: Flaechentyp) {
-    setBereiche((cur) => {
-      if (cur.includes(v)) return cur.length === 1 ? cur : cur.filter((x) => x !== v);
-      return [...cur, v];
-    });
-  }
-
-  const next = () => setStep((s) => Math.min(STEPS.length - 1, s + 1));
-  const prev = () => setStep((s) => Math.max(0, s - 1));
-
   return (
-    <div className="bg-paper">
-      <div className="border-b border-mist">
-        <div className="container flex items-center justify-between gap-6 py-6 md:py-8">
-          <Eyebrow>
-            Planung · Schritt {step + 1} von {STEPS.length}
-          </Eyebrow>
-          <span className="font-mono hidden text-[11px] uppercase tracking-[0.18em] text-ink/55 md:block">
-            {STEPS[step]}
-          </span>
-        </div>
-        <div className="h-px bg-mist">
-          <div
-            className="h-full bg-forest transition-all duration-500"
-            style={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
-          />
-        </div>
-      </div>
+    <>
+      {/* ---------- Planungstool: der schnellste Weg zur Anlage ---------- */}
+      <section className="relative overflow-hidden bg-forest text-linen">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.14]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #F5F1E8 1px, transparent 1px), linear-gradient(to bottom, #F5F1E8 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-forest/50" />
 
-      <div className="container min-h-[60vh] py-16 md:py-24">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3 }}
-            className="max-w-3xl"
-          >
-            {step === 0 && (
-              <>
-                <h1 className="h-display text-5xl md:text-7xl">
-                  Wie groß ist <em className="italic">Ihr Garten</em>?
-                </h1>
-                <p className="mt-6 max-w-xl text-ink/70">
-                  Die Gesamtfläche genügt als Startwert — wir leiten daraus Regnerzahl,
-                  Zonen und Rohrlängen ab.
-                </p>
-                <div className="mt-16 max-w-xl">
-                  <div className="mb-4 flex items-baseline justify-between">
-                    <span className="eyebrow">Grundstücksfläche</span>
-                    <span className="num font-display text-4xl">{flaeche} m²</span>
-                  </div>
-                  <Slider
-                    value={[flaeche]}
-                    min={50}
-                    max={2000}
-                    step={50}
-                    onValueChange={(v) => {
-                      const val = v[0];
-                      setFlaeche(val);
-                      // Vorbelegung der Teilflächen mitziehen, solange nichts
-                      // manuell justiert wurde.
-                      setRasenQm(Math.round(val * 0.75));
-                      setBeetQm(Math.round(val * 0.25));
-                    }}
-                    aria-label="Grundstücksfläche"
-                  />
-                  <div className="num font-mono mt-3 flex justify-between text-[10px] uppercase tracking-[0.18em] text-ink/50">
-                    <span>50 m²</span>
-                    <span>2.000 m²</span>
-                  </div>
-                </div>
-              </>
-            )}
+        <div className="container relative py-24 md:py-32">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <Eyebrow className="text-linen/70 [&>span:first-child]:bg-linen/30">
+                Planungstool
+              </Eyebrow>
+              <h1 className="hero-h mt-6 max-w-[16ch]">
+                Zeichnen Sie. Wir <em className="italic">planen</em>.
+              </h1>
+              <p className="mt-8 max-w-xl leading-relaxed text-linen/80">
+                Sie skizzieren Ihren Garten maßstabsgetreu im Browser — wir legen die
+                Bewässerung darüber. Das spart beiden Seiten das Nachtelefonieren und
+                bringt Ihre Planung in ein bis zwei Tagen zum Abschluss.
+              </p>
 
-            {step === 1 && (
-              <>
-                <h1 className="h-display text-5xl md:text-7xl">
-                  Woher kommt das <em className="italic">Wasser</em>?
-                </h1>
-                <p className="mt-6 max-w-xl text-ink/70">
-                  Zisterne und Brunnen brauchen eine Pumpe — die legen wir passend zur
-                  Saughöhe und zum Volumenstrom aus.
-                </p>
-                <div className="mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
-                  {(['leitung', 'zisterne', 'brunnen'] as Quelle[]).map((q) => (
-                    <button
-                      key={q}
-                      data-cursor="hover"
-                      onClick={() => setQuelle(q)}
-                      className={cn(
-                        'border p-6 text-left transition-all',
-                        quelle === q
-                          ? 'border-forest bg-forest text-linen'
-                          : 'border-mist hover:border-ink/40'
-                      )}
-                    >
-                      <p className="font-display text-2xl tracking-tight">{QUELLE_LABEL[q]}</p>
-                      <p className={cn('mt-2 text-sm', quelle === q ? 'text-linen/70' : 'text-ink/60')}>
-                        {q === 'leitung' && 'Druck direkt aus dem Hausanschluss.'}
-                        {q === 'zisterne' && 'Regenwasser, saug- oder tauchgepumpt.'}
-                        {q === 'brunnen' && 'Grundwasser über Tiefbrunnen.'}
-                      </p>
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {step === 2 && (
-              <>
-                <h1 className="h-display text-5xl md:text-7xl">
-                  Was soll <em className="italic">bewässert</em> werden?
-                </h1>
-                <p className="mt-6 max-w-xl text-ink/70">
-                  Rasen braucht Regner, Beete brauchen Tropfschlauch. Beides zusammen
-                  läuft über getrennte Zonen.
-                </p>
-                <div className="mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
-                  {(
-                    [
-                      { v: 'rasen' as Flaechentyp, l: 'Rasenfläche' },
-                      { v: 'beete' as Flaechentyp, l: 'Beetfläche' },
-                    ]
-                  ).map((b) => {
-                    const active = bereiche.includes(b.v);
-                    return (
-                      <button
-                        key={b.v}
-                        data-cursor="hover"
-                        onClick={() => toggleBereich(b.v)}
-                        className={cn(
-                          'flex items-center justify-between border p-6 text-left transition-all',
-                          active ? 'border-bronze bg-bronze text-linen' : 'border-mist hover:border-ink/40'
-                        )}
-                      >
-                        <span className="font-display text-2xl tracking-tight">{b.l}</span>
-                        {active && <Check className="h-5 w-5" />}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Je gewähltem Bereich ein eigener m²-Slider */}
-                <div className="mt-12 max-w-xl space-y-10">
-                  {bereiche.includes('rasen') && (
-                    <div>
-                      <div className="mb-3 flex items-baseline justify-between">
-                        <span className="eyebrow">Rasenfläche</span>
-                        <span className="num font-display text-2xl">{rasenQm} m²</span>
-                      </div>
-                      <Slider
-                        value={[rasenQm]}
-                        min={0}
-                        max={2000}
-                        step={10}
-                        onValueChange={(v) => setRasenQm(v[0])}
-                        aria-label="Rasenfläche in Quadratmetern"
-                      />
-                    </div>
-                  )}
-                  {bereiche.includes('beete') && (
-                    <div>
-                      <div className="mb-3 flex items-baseline justify-between">
-                        <span className="eyebrow">Beetfläche</span>
-                        <span className="num font-display text-2xl">{beetQm} m²</span>
-                      </div>
-                      <Slider
-                        value={[beetQm]}
-                        min={0}
-                        max={800}
-                        step={10}
-                        onValueChange={(v) => setBeetQm(v[0])}
-                        aria-label="Beetfläche in Quadratmetern"
-                      />
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
-
-            {step === 3 && (
-              <>
-                <h1 className="h-display text-5xl md:text-7xl">
-                  Steuerung per <em className="italic">WLAN</em>?
-                </h1>
-                <p className="mt-6 max-w-xl text-ink/70">
-                  Smarte Steuergeräte passen die Laufzeit automatisch ans Wetter an und
-                  sparen bis zur Hälfte des Wassers. Manuell ist günstiger — und später
-                  ohne Austausch aufrüstbar.
-                </p>
-                <div className="mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
-                  {(
-                    [
-                      {
-                        v: 'smart' as Steuerung,
-                        t: 'Ja, smart per App',
-                        d: 'Hunter Hydrawise mit Wetter-API und Regensensor.',
-                      },
-                      {
-                        v: 'manuell' as Steuerung,
-                        t: 'Nein, manuell',
-                        d: 'Programmierung direkt am Steuergerät, WLAN-fähig.',
-                      },
-                    ]
-                  ).map((o) => (
-                    <button
-                      key={o.v}
-                      data-cursor="hover"
-                      onClick={() => setSteuerung(o.v)}
-                      className={cn(
-                        'border p-6 text-left transition-all',
-                        steuerung === o.v
-                          ? 'border-forest bg-forest text-linen'
-                          : 'border-mist hover:border-ink/40'
-                      )}
-                    >
-                      <p className="font-display text-2xl tracking-tight">{o.t}</p>
-                      <p
-                        className={cn(
-                          'mt-2 text-sm',
-                          steuerung === o.v ? 'text-linen/70' : 'text-ink/60'
-                        )}
-                      >
-                        {o.d}
-                      </p>
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {step === 4 && (
-              <div>
-                <Eyebrow>Empfehlung</Eyebrow>
-                <h1 className="h-display mt-4 text-5xl md:text-7xl">{empf.kitName}</h1>
-                <p className="mt-3 italic text-moss">
-                  {empf.bewaesserteFlaeche} m² bewässert von {flaeche} m² Grundstück ·{' '}
-                  {QUELLE_LABEL[quelle]} ·{' '}
-                  {bereiche.includes('rasen') && `Rasen ${rasenQm} m²`}
-                  {bereiche.length === 2 && ' · '}
-                  {bereiche.includes('beete') && `Beete ${beetQm} m²`}
-                </p>
-
-                {/* min-w-0: das E-Mail-Feld hat eine intrinsische Mindestbreite,
-                    die sonst die Grid-Spalte über den Viewport hinaus aufzieht. */}
-                <div className="mt-12 grid gap-10 lg:grid-cols-12">
-                  <div className="min-w-0 border-t border-mist pt-6 lg:col-span-7">
-                    <p className="eyebrow mb-4">Stückliste · Orientierung</p>
-                    <div className="space-y-3 text-sm">
-                      {empf.positionen.map((p) => (
-                        <div
-                          key={p.label}
-                          className="flex justify-between gap-4 border-b border-mist pb-3"
-                        >
-                          <span>{p.label}</span>
-                          <span className="num font-mono whitespace-nowrap text-xs uppercase tracking-[0.12em] text-ink/60">
-                            {p.menge}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Kosten nach der Preisliste von Green-Gard */}
-                    <div className="mt-8 border-t border-mist pt-6">
-                      <p className="eyebrow mb-4">Materialkosten</p>
-                      <div className="space-y-3 text-sm">
-                        {empf.kosten.map((k) => (
-                          <div
-                            key={k.label}
-                            className="flex justify-between gap-4 border-b border-mist pb-3"
-                          >
-                            <span>{k.label}</span>
-                            <span className="price whitespace-nowrap text-base">
-                              {formatEURRound(priceFor(k.netto, mode))}
-                            </span>
-                          </div>
-                        ))}
-                        <div className="flex items-baseline justify-between gap-4 pt-3">
-                          <span className="eyebrow">Summe ca.</span>
-                          <span className="price text-3xl">
-                            {formatEURRound(priceFor(empf.gesamtNetto, mode))}
-                          </span>
-                        </div>
-                        <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/50">
-                          {priceLabel(mode)} · {empf.zonen} Zonen · ohne Montage und Erdarbeiten
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 space-y-2 border-l-2 border-copper/50 bg-linen/60 py-4 pl-4 text-sm text-ink/75">
-                      {empf.hinweise.map((h) => (
-                        <p key={h}>{h}</p>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* self-start: das Panel soll nicht auf die Höhe der Stückliste
-                      mitwachsen und unten leer stehen. */}
-                  <div className="min-w-0 self-start bg-forest p-8 text-linen lg:col-span-5">
-                    <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">
-                      Nächster Schritt
-                    </p>
-                    <h3 className="font-display mt-3 text-2xl tracking-tight">
-                      Wie möchten Sie fortfahren?
-                    </h3>
-                    <div className="mt-6 space-y-3">
-                      <Button asChild variant="accent" size="lg" className="w-full justify-between">
-                        <Link href="/beratung">
-                          Termin für Systemplanung <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="lg"
-                        className="w-full justify-between text-linen hover:bg-linen/10"
-                      >
-                        <Link href={`/starter-kits#${empf.kitSlug}`}>
-                          Kit ansehen <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      </Button>
-
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          // TODO: Plan als PDF generieren und über Resend versenden.
-                          console.info('[green-gard mock] Plan per Mail', {
-                            email,
-                            kit: empf.kitSlug,
-                            flaeche,
-                            quelle,
-                            bereiche,
-                            steuerung,
-                          });
-                          setSent(true);
-                        }}
-                        className="mt-2 border-t border-linen/15 pt-4"
-                      >
-                        <p className="font-mono mb-2 text-[11px] uppercase tracking-[0.18em] text-linen/60">
-                          Plan per Mail
-                        </p>
-                        {sent ? (
-                          <p className="text-sm text-bronze">Gesendet an {email}.</p>
-                        ) : (
-                          <div className="flex gap-2">
-                            <input
-                              type="email"
-                              required
-                              placeholder="ihre@email.de"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              aria-label="E-Mail für den Plan"
-                              className="h-10 min-w-0 flex-1 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
-                            />
-                            <button
-                              type="submit"
-                              className="h-10 bg-bronze px-4 text-sm text-linen transition-colors hover:bg-[#9e6228]"
-                            >
-                              Senden
-                            </button>
-                          </div>
-                        )}
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                {/* Öffnet IRRISketch in neuem Tab — jeder Aufruf startet ein neues Projekt. */}
+                <Button asChild variant="accent" size="xl">
+                  <a href={IRRISKETCH_URL} target="_blank" rel="noopener noreferrer">
+                    Garten jetzt zeichnen <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="ghost" size="xl" className="text-linen hover:bg-linen/10">
+                  <a href="#richtwert">
+                    Erst Kosten schätzen <ArrowDown className="h-4 w-4" />
+                  </a>
+                </Button>
               </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
 
-        <div className="mt-16 flex items-center justify-between border-t border-mist pt-8">
-          <Button variant="ghost" onClick={prev} disabled={step === 0}>
-            <ArrowLeft className="h-4 w-4" /> Zurück
-          </Button>
-          {step < STEPS.length - 1 ? (
-            <Button onClick={next} variant="primary" size="lg">
-              Weiter <ArrowRight className="h-4 w-4" />
-            </Button>
-          ) : (
-            <Button onClick={() => setStep(0)} variant="outline">
-              Neu beginnen
-            </Button>
-          )}
+              <p className="font-mono mt-6 text-[10px] uppercase leading-relaxed tracking-[0.18em] text-linen/50">
+                Kostenfrei · ohne Anmeldung · Ergebnis geht direkt an unsere Technik
+              </p>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="grid gap-px bg-linen/15 sm:grid-cols-3 lg:grid-cols-1">
+                {VORTEILE.map((v) => (
+                  <div key={v.label} className="bg-forest p-6">
+                    <v.icon className="h-5 w-5 text-bronze" />
+                    <p className="font-display mt-3 text-2xl tracking-tight">{v.wert}</p>
+                    <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.18em] text-linen/55">
+                      {v.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ---------- Ablauf in sechs Schritten ---------- */}
+      <section className="border-t border-mist bg-paper py-24 md:py-32">
+        <div className="container">
+          <div data-reveal>
+            <Eyebrow number="01">Ablauf</Eyebrow>
+            <h2 className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-6xl">
+              Von der Skizze zur Anlage — in <em className="italic">sechs Schritten</em>.
+            </h2>
+          </div>
+
+          <ol data-reveal-group className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+            {ABLAUF.map((s, i) => (
+              <li key={s.titel} className="border-t border-mist pt-5">
+                <span className="num font-mono text-[10px] uppercase tracking-[0.18em] text-moss">
+                  Schritt {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-display mt-2 text-2xl leading-tight tracking-tight">
+                  {s.titel}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-14 flex flex-wrap items-center gap-4 border-t border-mist pt-10">
+            <Button asChild variant="primary" size="lg">
+              <a href={IRRISKETCH_URL} target="_blank" rel="noopener noreferrer">
+                Planung starten <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </Button>
+            <p className="text-sm text-ink/60">
+              Lieber persönlich?{' '}
+              <Link href="/beratung" data-cursor="hover" className="border-b border-mist hover:border-ink">
+                Termin vereinbaren
+              </Link>{' '}
+              oder anrufen:{' '}
+              <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink">
+                {CONTACT.phoneDisplay}
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Kostenschätzung ---------- */}
+      <section id="richtwert" className="scroll-mt-20 border-t border-mist bg-linen py-16 md:py-20">
+        <div className="container" data-reveal>
+          <Eyebrow number="02">Kostenrahmen</Eyebrow>
+          <h2 className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-5xl">
+            Was kostet das <em className="italic">ungefähr</em>?
+          </h2>
+          <p className="mt-6 max-w-2xl text-ink/70">
+            Vier Fragen genügen für einen belastbaren Materialrichtwert. Die verbindliche
+            Auslegung entsteht anschließend aus Ihrer Zeichnung.
+          </p>
+        </div>
+      </section>
+
+      <PlanungRechner />
+    </>
   );
 }

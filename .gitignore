@@ -11,3 +11,4 @@ next-env.d.ts
 # Original-Videomaterial vom Kunden — nur die web-optimierten Derivate
 # unter public/videos/ landen im Repo.
 assets-input/
+tsconfig.tsbuildinfo

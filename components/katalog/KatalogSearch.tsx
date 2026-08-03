@@ -116,14 +116,14 @@ export function KatalogSearch() {
         type="button"
         data-cursor="hover"
         onClick={() => setOpen(true)}
-        className="group inline-flex items-center gap-3 border border-linen/25 px-4 py-2.5 text-left transition-colors hover:border-linen/60"
+        className="group inline-flex items-center gap-3 border border-ink/20 px-4 py-2.5 text-left transition-colors hover:border-ink/50"
         aria-label="Katalog durchsuchen"
       >
-        <Search className="h-3.5 w-3.5 text-linen/60" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/60 group-hover:text-linen">
+        <Search className="h-3.5 w-3.5 text-ink/50" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/60 group-hover:text-ink">
           Katalog durchsuchen
         </span>
-        <kbd className="font-mono ml-2 hidden border border-linen/25 px-1.5 py-0.5 text-[9px] text-linen/50 sm:inline">
+        <kbd className="font-mono ml-2 hidden border border-ink/20 px-1.5 py-0.5 text-[9px] text-ink/45 sm:inline">
           ⌘K
         </kbd>
       </button>

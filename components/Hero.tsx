@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { MagneticButton } from '@/components/MagneticButton';
 import { Button } from '@/components/ui/button';
 import { useUI } from '@/store/ui';
 import { CONTACT } from '@/lib/contact';
+import { IRRISKETCH_URL } from '@/lib/links';
 
 // Ein Span pro Buchstabe für den GSAP-Reveal — aber jedes Wort bleibt in einem
 // nowrap-Wrapper. Ohne den würde der Umbruch mitten im Wort passieren, weil
@@ -209,8 +210,11 @@ export function Hero() {
                   </Link>
                 </Button>
               </MagneticButton>
+                            {/* Ricardo im Termin: hier gehört das Planungstool hin, nicht der Katalog. */}
               <Button asChild variant="ghost" size="xl" className="text-linen hover:bg-linen/10">
-                <Link href="/produkte">Produkte entdecken</Link>
+                <a href={IRRISKETCH_URL} target="_blank" rel="noopener noreferrer">
+                  Garten selbst zeichnen <ArrowUpRight className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

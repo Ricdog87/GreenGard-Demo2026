@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Plus } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useCart } from '@/store/cart';
+import { SHOP_URL } from '@/lib/links';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEUR } from '@/lib/utils';
 
@@ -19,9 +20,9 @@ export interface ProductCardData {
 }
 
 export function ProductCard({ p }: { p: ProductCardData }) {
+    // Verkauft wird im Shop, nicht hier (Entscheidung 31.07.2026) — die Karte
+  // informiert und verweist weiter.
   const mode = useCart((s) => s.mode);
-  const addItem = useCart((s) => s.addItem);
-  const openDrawer = useCart((s) => s.openDrawer);
 
   return (
     <article className="group flex flex-col">
@@ -61,22 +62,16 @@ export function ProductCard({ p }: { p: ProductCardData }) {
             {priceLabel(mode)}
           </span>
         </div>
-        <button
+                <a
+          href={SHOP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           data-cursor="hover"
-          onClick={() => {
-            addItem({
-              slug: p.slug,
-              name: p.name,
-              brand: p.brand,
-              image: p.image,
-              netPrice: p.netPrice,
-            });
-            openDrawer();
-          }}
+          aria-label={`${p.name} im Shop ansehen`}
           className="font-mono inline-flex shrink-0 items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] transition-colors hover:text-bronze"
         >
-          <Plus className="h-3.5 w-3.5" /> Warenkorb
-        </button>
+          Im Shop <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
       </div>
     </article>
   );

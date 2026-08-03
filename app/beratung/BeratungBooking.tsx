@@ -36,6 +36,20 @@ function buildDates() {
 
 const TIMES = ['09:00', '10:30', '13:00', '14:30', '16:00'];
 
+/**
+ * Themenauswahl aus dem Termin vom 31.07.2026. Intern ist geregelt, wer welches
+ * Thema betreut — nach außen geht jede Anfrage an die zentrale Adresse, damit
+ * niemand auf einen Urlaub oder Außendiensttag wartet.
+ */
+const THEMEN = [
+  'Bewässerung',
+  'Beleuchtung',
+  'Pumpentechnik',
+  'Pool',
+  'Mähroboter',
+  'Etwas anderes',
+] as const;
+
 const schema = z.object({
   name: z.string().min(2, 'Bitte Namen angeben'),
   email: z.string().email('Bitte gültige E-Mail angeben'),
@@ -51,7 +65,8 @@ export function BeratungBooking() {
   const [dates, setDates] = useState<ReturnType<typeof buildDates>>([]);
   const [berater, setBerater] = useState(BERATER[0].email);
   const [date, setDate] = useState('');
-  const [time, setTime] = useState(TIMES[2]);
+    const [time, setTime] = useState(TIMES[2]);
+  const [thema, setThema] = useState<string>(THEMEN[0]);
   const [done, setDone] = useState<FormValues | null>(null);
 
   useEffect(() => {
@@ -213,8 +228,10 @@ export function BeratungBooking() {
           <form
             onSubmit={handleSubmit((values) => {
               // TODO: Termin in Supabase ablegen + Bestätigungsmail (Resend).
-              console.info('[green-gard mock] Beratungstermin', {
+                            // Geht bewusst an die zentrale Adresse — intern wird nach Thema verteilt.
+              console.info('[green-gard mock] Beratungsanfrage an ' + CONTACT.email, {
                 ...values,
+                thema,
                 berater,
                 date,
                 time,
@@ -223,7 +240,30 @@ export function BeratungBooking() {
             })}
             className="space-y-6 border-mist lg:col-span-7 lg:border-l lg:pl-12"
           >
-            <p className="eyebrow">IV · Kontaktdaten</p>
+                        <fieldset>
+              <legend className="eyebrow mb-3">IV · Worum geht es?</legend>
+              <div className="flex flex-wrap gap-2">
+                {THEMEN.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    data-cursor="hover"
+                    aria-pressed={thema === t}
+                    onClick={() => setThema(t)}
+                    className={cn(
+                      'border px-4 py-2 text-sm transition-all',
+                      thema === t
+                        ? 'border-forest bg-forest text-linen'
+                        : 'border-mist hover:border-ink/40'
+                    )}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <p className="eyebrow">V · Kontaktdaten</p>
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label className="eyebrow mb-2 block" htmlFor="b-name">
@@ -267,8 +307,9 @@ export function BeratungBooking() {
             <Button type="submit" variant="primary" size="lg">
               Termin bestätigen →
             </Button>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50">
-              Wir antworten innerhalb von vier Werktagsstunden
+                        <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/50">
+              Ihre Anfrage landet bei {CONTACT.email} — so ist immer jemand dran, auch bei
+              Urlaub oder Außendienst. Antwort innerhalb von vier Werktagsstunden.
             </p>
           </form>
         </div>

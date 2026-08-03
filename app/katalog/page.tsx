@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { KatalogChapter } from '@/components/katalog/KatalogChapter';
 import { KatalogIndex } from '@/components/katalog/KatalogIndex';
 import { KatalogActions } from '@/components/katalog/KatalogActions';
+import { EPaperKatalog } from '@/components/katalog/EPaperKatalog';
 import { brands, categories, products } from '@/lib/data';
 import { CONTACT } from '@/lib/contact';
 
@@ -34,25 +35,24 @@ export default function KatalogPage() {
   return (
     <>
       {/* ---------- Katalogkopf ---------- */}
-      <section className="relative overflow-hidden bg-forest text-linen">
+      <section className="relative overflow-hidden border-b border-mist bg-linen text-ink">
         {/* Feines Raster als technische Anmutung */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.16]"
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
-            backgroundImage:
-              'linear-gradient(to right, #F5F1E8 1px, transparent 1px), linear-gradient(to bottom, #F5F1E8 1px, transparent 1px)',
+                        backgroundImage:
+              'linear-gradient(to right, #0F1B14 1px, transparent 1px), linear-gradient(to bottom, #0F1B14 1px, transparent 1px)',
             backgroundSize: '80px 80px',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-forest/60" />
 
         <div className="container relative py-24 md:py-32">
           <div className="flex flex-wrap items-center justify-between gap-6">
-            <Eyebrow className="text-linen/70 [&>span:first-child]:bg-linen/30">
+                        <Eyebrow>
               {EDITION} · {CONTACT.city}
             </Eyebrow>
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-linen/50">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
               Digital · tagesaktuell · ohne Druckdatum
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function KatalogPage() {
             Der <em className="italic">Katalog</em>.
           </h1>
 
-          <p className="mt-8 max-w-xl leading-relaxed text-linen/80">
+                    <p className="mt-8 max-w-xl leading-relaxed text-ink/70">
             Das komplette Sortiment in sieben Kapiteln — von der Düse bis zum Poolroboter.
             Durchsuchbar in Sekunden, mit Preisen, die immer stimmen, weil sie nicht
             gedruckt sind.
@@ -72,11 +72,11 @@ export default function KatalogPage() {
           </div>
 
           {/* Kennzahlen */}
-          <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-linen/15 pt-8">
+                    <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-mist pt-8">
             {KENNZAHLEN.map((k) => (
               <div key={k.label}>
                 <p className="num font-display text-4xl tracking-tight md:text-5xl">{k.value}</p>
-                <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.18em] text-linen/55">
+                                <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink/55">
                   {k.label}
                 </p>
               </div>
@@ -84,28 +84,28 @@ export default function KatalogPage() {
           </div>
 
           {/* Kapitelübersicht als Sprungmarken */}
-          <div data-reveal-group className="mt-14 grid gap-px border border-linen/15 bg-linen/15 sm:grid-cols-2 lg:grid-cols-4">
+                    <div data-reveal-group className="mt-14 grid gap-px border border-mist bg-mist sm:grid-cols-2 lg:grid-cols-4">
             {chapters.map(({ category, products: items }) => (
               <a
                 key={category.slug}
                 href={`#kapitel-${category.slug}`}
                 data-cursor="hover"
-                className="group flex items-baseline justify-between gap-3 bg-forest p-5 transition-colors hover:bg-bark"
+                                className="group flex items-baseline justify-between gap-3 bg-paper p-5 transition-colors hover:bg-linen"
               >
                 <span>
-                  <span className="font-mono block text-[10px] uppercase tracking-[0.18em] text-linen/45">
+                  <span className="font-mono block text-[10px] uppercase tracking-[0.18em] text-moss">
                     {category.roman}
                   </span>
                   <span className="font-display mt-1 block text-lg tracking-tight transition-colors group-hover:text-bronze">
                     {category.name}
                   </span>
                 </span>
-                <span className="num font-mono text-[10px] text-linen/40">{items.length}</span>
+                                <span className="num font-mono text-[10px] text-ink/40">{items.length}</span>
               </a>
             ))}
           </div>
 
-          <p className="font-mono mt-12 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-linen/50">
+                    <p className="font-mono mt-12 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-ink/45">
             Blättern <ArrowDown className="h-3 w-3" />
           </p>
         </div>
@@ -127,6 +127,9 @@ export default function KatalogPage() {
           </div>
         </div>
       </div>
+
+            {/* ---------- Der gedruckte Katalog zum Blättern ---------- */}
+      <EPaperKatalog />
 
       {/* ---------- Abschluss ---------- */}
       <section className="border-t border-mist bg-linen py-24 md:py-32">

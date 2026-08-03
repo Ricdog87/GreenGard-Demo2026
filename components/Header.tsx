@@ -3,21 +3,21 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Menu, ShoppingBag, X } from 'lucide-react';
+import { ArrowUpRight, Menu, ShoppingBag, X } from 'lucide-react';
 import { B2BSwitch } from '@/components/B2BSwitch';
 import { useCart } from '@/store/cart';
 import { isProfi } from '@/lib/audience';
+import { SHOP_URL } from '@/lib/links';
 import { cn } from '@/lib/utils';
 
 // Für Privatkunden bleibt /profi aus der Hauptnavigation (Kundenwunsch).
 // Wer sich im Entry-Fenster als GaLaBau oder Architekt eingeordnet hat, sieht
 // den Konditionsbereich direkt in der Nav — das ist die "richtige Maske".
 const BASE_NAV = [
-  { href: '/katalog', label: 'Katalog' },
-  { href: '/produkte', label: 'Produkte' },
-  { href: '/starter-kits', label: 'Starter Kits' },
   { href: '/planung', label: 'Planung' },
+  { href: '/katalog', label: 'Katalog' },
   { href: '/beratung', label: 'Beratung' },
+  { href: '/learning-center', label: 'Learning Center' },
   { href: '/warum-green-gard', label: 'Warum Green-Gard' },
 ];
 
@@ -56,7 +56,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6">
-          {nav.map((n) => {
+                    {nav.map((n) => {
             const active = pathname?.startsWith(n.href);
             return (
               <Link
@@ -72,6 +72,16 @@ export function Header() {
               </Link>
             );
           })}
+          {/* Produkte werden im bestehenden Shop verkauft, nicht hier. */}
+          <a
+            href={SHOP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="hover"
+            className="font-mono inline-flex items-center gap-1 whitespace-nowrap text-[11px] uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-bronze 2xl:tracking-[0.16em]"
+          >
+            Shop <ArrowUpRight className="h-3 w-3" />
+          </a>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -80,10 +90,10 @@ export function Header() {
             onClick={openDrawer}
             data-cursor="hover"
             className="relative inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:text-bronze"
-            aria-label="Warenkorb öffnen"
+            aria-label="Gebuchte Schulungen öffnen"
           >
             <ShoppingBag className="h-4 w-4" />
-            <span className="hidden sm:inline">Warenkorb</span>
+                        <span className="hidden sm:inline">Schulungen</span>
             {count > 0 && (
               <span className="num inline-grid h-5 min-w-[20px] place-items-center bg-forest px-1.5 text-[10px] text-linen">
                 {count}
@@ -124,10 +134,19 @@ export function Header() {
                 Konditionen für Profis →
               </Link>
             )}
+                        <a
+              href={SHOP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="font-display flex items-center gap-2 border-b border-mist py-3 text-2xl tracking-tight"
+            >
+              Shop <ArrowUpRight className="h-4 w-4" />
+            </a>
             <Link
               href="/login"
               onClick={() => setMobileOpen(false)}
-              className="font-mono py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
+              className="font-mono mt-2 py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
             >
               Anmelden →
             </Link>

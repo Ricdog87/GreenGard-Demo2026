@@ -8,10 +8,13 @@ import { AUDIENCES, type Audience } from '@/lib/audience';
 export interface CartLine {
   slug: string;
   name: string;
+  /** Anbieter bzw. Art — bei Schulungen schlicht "Schulung". */
   brand: string;
   image: string;
   netPrice: number;
   qty: number;
+  /** Gewählter Schulungstermin. Produkte laufen nicht mehr über den Warenkorb. */
+  termin?: string;
 }
 
 interface CartState {

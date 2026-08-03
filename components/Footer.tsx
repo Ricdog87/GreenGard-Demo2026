@@ -3,6 +3,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { ViewSwitchLink } from '@/components/ViewSwitchLink';
 import { CONTACT } from '@/lib/contact';
 import { categories } from '@/lib/data';
+import { IRRISKETCH_URL, SHOP_URL, SOCIAL } from '@/lib/links';
 
 export function Footer() {
   return (
@@ -78,6 +79,22 @@ export function Footer() {
                   Planung
                 </Link>
               </li>
+                            <li>
+                <a
+                  href={IRRISKETCH_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="transition-colors hover:text-bronze"
+                >
+                  Garten zeichnen
+                </a>
+              </li>
+              <li>
+                <Link href="/learning-center" data-cursor="hover" className="transition-colors hover:text-bronze">
+                  Learning Center
+                </Link>
+              </li>
               <li>
                 <Link href="/starter-kits" data-cursor="hover" className="transition-colors hover:text-bronze">
                   Starter Kits
@@ -109,10 +126,16 @@ export function Footer() {
                   Anmelden
                 </Link>
               </li>
-              <li>
-                <Link href="/checkout" data-cursor="hover" className="transition-colors hover:text-bronze">
-                  Warenkorb
-                </Link>
+                            <li>
+                <a
+                  href={SHOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="transition-colors hover:text-bronze"
+                >
+                  Zum Shop ↗
+                </a>
               </li>
               <li>
                 <ViewSwitchLink />
@@ -120,13 +143,13 @@ export function Footer() {
             </ul>
             <p className="eyebrow mt-6 text-linen/60 [&>span:first-child]:bg-linen/30">Sozial</p>
             <ul className="mt-3 space-y-2">
-              <li>
-                <a href="#" data-cursor="hover" className="hover:text-bronze">
+                            <li>
+                <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" data-cursor="hover" className="hover:text-bronze">
+                <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
                   LinkedIn
                 </a>
               </li>

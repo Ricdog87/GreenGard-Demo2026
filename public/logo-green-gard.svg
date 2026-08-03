@@ -1,11 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 40" role="img" aria-label="GREEN-GARD">
-  <!-- Platzhalter-Wortmarke: Fraunces-Anmutung als Pfad-freier Text.
-       TODO: echtes Logo-File vom Kunden ersetzen. -->
-  <text x="0" y="27"
-        font-family="Fraunces, Georgia, 'Times New Roman', serif"
-        font-size="27" letter-spacing="1.2" fill="#0A0F0C">GREEN-GARD</text>
-  <line x1="0" y1="35" x2="204" y2="35" stroke="#B87333" stroke-width="1"/>
-  <text x="212" y="34"
-        font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="7.5" letter-spacing="1.8" fill="#5C7A5E">WIESBADEN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 262" role="img" aria-label="GREEN-GARD">
+  <!--
+    Green-Gard Wortmarke mit Doppelbogen-Signet, nachgebaut nach der Vorlage des
+    Kunden (31.07.2026): zwei ineinanderlaufende Bögen — links dunkelgrün, rechts
+    heller, der dunkle liegt oben.
+
+    Zwei Eigenheiten, die hier bewusst so gelöst sind:
+    1. Farben als Attribute statt <style>: CSS in einem inline eingebundenen SVG
+       gilt dokumentweit und färbte sonst andere Grafiken mit.
+    2. Ein einziges <text> mit tspans plus textLength: Als <img> geladen kennt
+       das SVG die Webfont der Seite nicht und fällt auf Arial zurück. Zwei
+       getrennt positionierte Textblöcke würden dann kollidieren; textLength
+       zwingt die Wortmarke unabhängig von der Schrift auf dieselbe Breite.
+
+    TODO: durch die Original-Vektordatei ersetzen, sobald sie vorliegt — die
+    Buchstaben sind hier gesetzter Text, keine Pfade.
+  -->
+  <g>
+    <path fill="#16A75B" d="M300 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+    <path fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+  </g>
+
+  <text x="10" y="248"
+        font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-weight="800" font-size="118"
+        textLength="740" lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#0B7A45">GREEN-</tspan><tspan fill="#16A75B">GARD</tspan>
+  </text>
 </svg>

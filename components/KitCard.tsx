@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
+import { SHOP_URL } from '@/lib/links';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -104,12 +105,18 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                 Planung starten <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button
+                        <Button
               variant={dark ? 'ghost' : 'outline'}
               className={dark ? 'text-linen hover:bg-linen/10' : ''}
               onClick={() => setAskOpen(true)}
             >
               Kit anfragen
+            </Button>
+            {/* Gekauft wird im Shop — die Website plant nur (Entscheidung 31.07.2026). */}
+            <Button asChild variant={dark ? 'ghost' : 'link'} className={dark ? 'text-linen/70 hover:bg-linen/10' : 'text-ink/60'}>
+              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+                Im Shop <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
             </Button>
           </div>
         </div>

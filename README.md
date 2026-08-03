@@ -1,11 +1,33 @@
 # Green-Gard — Website-Demo V2
 
-> Editorial-Premium-Demo für die Green-Gard GmbH, Wiesbaden.
-> Stand: V2 nach dem Abstimmungstermin vom 28.07.2026 (Feedback Jan Leifermann).
+> Editorial-Premium-Demo für die Green Gard GmbH, Wiesbaden.
+> Stand: V3 nach dem Termin vom **31.07.2026** mit Jan Leifermann.
+
+**Die Website verkauft keine Produkte — sie erklärt, plant und schult.** Verkauft wird
+im bestehenden Shop. Diese Entscheidung aus dem Termin vom 31.07.2026 trägt die
+gesamte Struktur: Planungstool ganz vorn, Warenkorb ausschließlich für Schulungen,
+Shop als externer Reiter.
+
+---
+
+## Was aus dem Termin vom 31.07.2026 umgesetzt ist
+
+| Entscheidung | Umsetzung |
+|---|---|
+| **Keine Produktverkäufe** — Doppelbestellungen in zwei Systemen vermeiden | Produkt- und Kit-Karten verlinken in den Shop (`SHOP_URL`), kein „In den Warenkorb" mehr, Shop als eigener Reiter in Navigation und Footer |
+| **Warenkorb bleibt für Schulungen** | „Platz buchen" legt Schulung samt Termin in den Warenkorb, Kasse ist auf Teilnehmerdaten und Schulungsort umgestellt (kein Versand) |
+| **Planungstool IRRISketch einbinden** | `/planung` startet mit dem Tool: Sechs-Schritte-Ablauf, 24–48 h Zusage, Button auch im Hero und im Footer. Reiner Link, keine API — jeder Aufruf startet ein neues Projekt |
+| **Learning Center gegen Support-Anrufe** | `/learning-center` mit filter- und durchsuchbarer Videothek, Dialog-Player, für die Baustelle aufs Handy ausgelegt |
+| **Anfragen kategorisieren, zentral an info@** | Themenauswahl (Bewässerung, Beleuchtung, Pumpentechnik, Pool, Mähroboter) auf `/beratung`; alles läuft an die zentrale Adresse statt an Einzelpersonen |
+| **Pflanzenkölle-Sonderseite** | `/pflanzenkoelle` mit Projektformular (12 Filialen inkl. Kostenstelle und Adress-Nr.), `noindex`, nirgends verlinkt — Wettbewerbsschutz |
+| **Logo einbauen** | Doppelbogen-Signet und zweifarbige Wortmarke als SVG, dazu eine Variante mit Claim |
+| **Katalog: 14 MB bremsen die Seite** | Der Preiskatalog 2025/26 liegt als 1000°-Blätterkatalog beim Anbieter und lädt erst auf Klick — nichts davon im Auslieferungspaket |
+| **Katalog war zu dunkel** | Katalogkopf auf Linen umgestellt |
+
+---
 
 Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik, **Pool** und Zubehör —
-mit Entry-Fenster für GaLaBau/Architekten, Privatkunden und Händler, Starter Kits
-statt Festpreis-Paketen und vereinfachter Planung.
+mit Entry-Fenster für GaLaBau/Architekten, Privatkunden und Händler.
 
 ---
 
@@ -55,7 +77,9 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | `/produkte` | Shop-Ansicht mit Disziplin-, Hersteller- und Preisfilter, 4 Sortierungen, Verweis auf den Katalog · 31 Artikel |
 | `/produkte/[slug]` | Produktdetail mit Staffelrabatt-Anzeige, Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
 | `/starter-kits` | Vier Kits, Vergleichstabelle, Detail-Sections, „ab“-Preise |
-| `/planung` | Vier Schritte (Fläche · Wasserquelle · Bereiche mit m²-Slidern · WLAN) + Ergebnis mit Stückliste |
+| `/planung` | **IRRISketch-Planungstool** mit Sechs-Schritte-Ablauf, darunter der Kostenrechner (Fläche · Wasserquelle · Bereiche · WLAN) mit Stückliste |
+| `/learning-center` | Videothek mit Filter, Suche und Dialog-Player — gegen Support-Anrufe |
+| `/pflanzenkoelle` | Geschützte Projektseite für den Großkunden: Standortwahl, vollständiges Technikformular, `noindex`, nicht verlinkt |
 | `/beratung` | Terminbuchung mit Ansprechpartner-Auswahl und ICS-Mock + Schulungsbereich |
 | `/warum-green-gard` | Editorial-Lesestrecke, Team, Rainworks, Brief des Geschäftsführers |
 | `/profi` | Konditionen, Staffelrabatt-Tabelle, Partner, Lead-Gate für den Konditionskatalog |
@@ -86,6 +110,7 @@ lib/pricing.ts           Privat (brutto) / Profi (netto + Staffel)
 lib/konfigurator.ts      Planungslogik, dokumentierte Faustformel
 lib/preise.ts            echte Preisliste: Material nach Fläche + Quelle
 lib/contact.ts           zentrale Kontaktdaten, Gründungsjahr
+lib/links.ts             externe Ziele: IRRISketch, Shop, Blätterkatalog, Social
 lib/supabase.ts          Client + Mock-Fallback
 store/cart.ts            Warenkorb + Preisansicht (localStorage)
 store/ui.ts              Entry-Status für den Hero-Reveal
@@ -147,6 +172,11 @@ Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 - **Team** — echte Namen, Fotos und Mailadressen (`data/team.json`, aktuell 6 Platzhalter)
 - **Rainworks** — finaler Text für die Partnerschafts-Section
 - **Rufnummer** — bestätigen, dass `+49 6122 95895-30` die richtige Sammelnummer ist (abgeleitet aus Jans Durchwahl -34)
+- **Shop-Adresse** — `SHOP_URL` in `lib/links.ts` zeigt vorläufig auf die Hauptdomain
+- **YouTube-IDs** — `data/videos.json` trägt Platzhalter; der Dialog zeigt solange einen Hinweis statt fremder Inhalte
+- **Zuständigkeiten** — welches Thema geht intern an wen (Beleuchtung → Jan, Bewässerung → Nick, …)
+- **Logo-Vektordatei** — die Wortmarke ist derzeit gesetzter Text, keine Pfade
+- **„Luxus"-Wording** — im Termin ausdrücklich zur Disposition gestellt; Alternative wäre die Fachberater-Tonalität aus dem Claim „Technik für Gärten und Grünflächen"
 - **Bezugsgröße der Preisliste** — bezieht sich "Gartenfläche" auf das Grundstück oder auf die bewässerte Fläche? Der Kalkulator rechnet mit der bewässerten Fläche
 - **Montagekosten** — die Liste enthält nur Material; für einen Komplettpreis fehlen Stundensätze oder Pauschalen
 - **Markenfreigabe** — Bayrol und Beatbot bestätigen (Schreibweise, Sortimentstiefe, Preise)
