@@ -85,6 +85,8 @@ export const categories = categoriesJson as unknown as Category[];
 export const starterKits = kitsJson as unknown as StarterKit[];
 export const testimonials = testimonialsJson as unknown as Testimonial[];
 export const team = (teamJson as unknown as { members: TeamMember[] }).members;
+/** Gruppenaufnahme 2025 vom Kunden — Auftakt der Teamsektion. */
+export const teamGruppenfoto = (teamJson as unknown as { _gruppenfoto: string })._gruppenfoto;
 export const schulungen = schulungenJson as unknown as Schulung[];
 
 export function getProduct(slug: string): Product | undefined {

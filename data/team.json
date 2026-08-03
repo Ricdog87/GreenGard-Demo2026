@@ -1,48 +1,48 @@
 {
-  "_comment": "Echte Namen, Funktionen und Mailadressen von green-gard.de/team (abgerufen 03.08.2026). Rollen sind hinterlegt, werden aber bewusst NICHT angezeigt (Kundenwunsch aus dem Termin 28.07.2026). TODO: Einzelporträts vom Kunden — auf der alten Seite stehen nur Textblöcke und ein Gruppenfoto, keine Einzelbilder im Markup.",
-  "_gruppenfoto": "https://res.cloudinary.com/chocobrain/image/upload/v1749541717/dmCobSmV/Teamfoto_2025",
+  "_comment": "Namen, Funktionen, Mailadressen und Porträts von green-gard.de/team (abgerufen 03.08.2026). Reihenfolge wie auf der Kundenseite. Rollen sind hinterlegt, werden aber bewusst NICHT angezeigt (Kundenwunsch aus dem Termin 28.07.2026). Die Porträts liegen lokal unter public/team/ — im Original gemischt (zwei S/W, vier Studio in Farbe), deshalb rendert die Teamsektion sie einheitlich in Graustufen. TODO: Originaldateien in voller Auflösung beim Kunden anfragen.",
+  "_gruppenfoto": "/team/team-2025.jpg",
   "members": [
     {
       "first": "Thomas",
       "last": "Gerhardt",
       "rolle": "Geschäftsführer",
       "email": "t.gerhardt@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Jan",
-      "last": "Leifermann",
-      "rolle": "Vertriebsleiter",
-      "email": "j.leifermann@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Nicolas",
-      "last": "Ohl",
-      "rolle": "Fachberater Vertrieb",
-      "email": "n.ohl@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Martin",
-      "last": "Dolligkeit",
-      "rolle": "Einkauf",
-      "email": "m.dolligkeit@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      "first": "Jakob",
-      "last": "Serti",
-      "rolle": "Lager und Logistik",
-      "email": "j.serti@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
+      "photo": "/team/thomas-gerhardt.jpg"
     },
     {
       "first": "Natascha",
       "last": "Gerhardt",
       "rolle": "Assistenz der Geschäftsführung",
       "email": "n.gerhardt@green-gard.de",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
+      "photo": "/team/natascha-gerhardt.jpg"
+    },
+    {
+      "first": "Jan",
+      "last": "Leifermann",
+      "rolle": "Vertriebsleiter · Beleuchtung (In-Lite)",
+      "email": "j.leifermann@green-gard.de",
+      "photo": "/team/jan-leifermann.jpg"
+    },
+    {
+      "first": "Nicolas",
+      "last": "Ohl",
+      "rolle": "Fachberater Vertrieb · Bewässerung (Hunter Hydrawise)",
+      "email": "n.ohl@green-gard.de",
+      "photo": "/team/nicolas-ohl.jpg"
+    },
+    {
+      "first": "Jakob",
+      "last": "Serti",
+      "rolle": "Lager und Logistik",
+      "email": "j.serti@green-gard.de",
+      "photo": "/team/jakob-serti.jpg"
+    },
+    {
+      "first": "Martin",
+      "last": "Dolligkeit",
+      "rolle": "Einkauf",
+      "email": "m.dolligkeit@green-gard.de",
+      "photo": "/team/martin-dolligkeit.jpg"
     }
   ]
 }

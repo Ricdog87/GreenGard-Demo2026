@@ -4,7 +4,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { PullQuote } from '@/components/PullQuote';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/lib/contact';
-import { team } from '@/lib/data';
+import { team, teamGruppenfoto } from '@/lib/data';
 
 export const metadata = {
   title: 'Warum Green-Gard · Wiesbaden seit 2006',
@@ -120,8 +120,20 @@ export default function WarumGreenGardPage() {
             zuletzt gesprochen haben — oder an {CONTACT.email}.
           </p>
 
-          {/* TODO: echte Namen + Fotos vom Kunden. */}
-          <div data-reveal-group className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3">
+          {/* Gruppenaufnahme 2025 — Originaldatei vom Kunden */}
+          <figure data-reveal className="relative mt-14 aspect-[16/9] overflow-hidden bg-paper">
+            <Image
+              src={teamGruppenfoto}
+              alt="Das Team von Green Gard, Aufnahme 2025"
+              fill
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-cover"
+            />
+          </figure>
+
+          {/* Porträts liegen im Original gemischt vor (S/W und Farbe) — Graustufen
+              vereinheitlicht sie, Farbe kommt beim Hover zurück. */}
+          <div data-reveal-group className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3">
             {team.map((m) => (
               <div key={m.email} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden bg-paper">
@@ -130,7 +142,7 @@ export default function WarumGreenGardPage() {
                     alt={`${m.first} ${m.last}`}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover grayscale transition-transform [transition-duration:1200ms] group-hover:scale-[1.03]"
+                    className="object-cover grayscale transition-[transform,filter] [transition-duration:1200ms] group-hover:scale-[1.03] group-hover:grayscale-0"
                   />
                 </div>
                 <div className="mt-4 border-t border-mist pt-3">

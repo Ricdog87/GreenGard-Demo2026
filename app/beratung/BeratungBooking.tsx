@@ -14,8 +14,16 @@ import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
 import { team } from '@/lib/data';
 
-// Drei Ansprechpartner aus dem Team — bewusst ohne Rollenbezeichnung.
-const BERATER = team.slice(0, 3);
+// Die drei Ansprechpartner, die tatsächlich beraten (Vertrieb, Bewässerung,
+// Geschäftsführung) — bewusst ohne Rollenbezeichnung, Kundenwunsch.
+const BERATER_MAILS = [
+  'j.leifermann@green-gard.de',
+  'n.ohl@green-gard.de',
+  't.gerhardt@green-gard.de',
+];
+const BERATER = BERATER_MAILS.map((mail) => team.find((m) => m.email === mail)).filter(
+  (m): m is (typeof team)[number] => Boolean(m)
+);
 
 /** Mo–Fr, die nächsten zehn Werktage. */
 function buildDates() {
