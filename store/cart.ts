@@ -36,9 +36,11 @@ interface CartState {
   anmelden: () => void;
   abmelden: () => void;
 
-  items: CartLine[];
+    items: CartLine[];
   drawerOpen: boolean;
   toast: { id: number; text: string } | null;
+  /** Kurze Rückmeldung einblenden — auch außerhalb des Warenkorbs. */
+  notify: (text: string) => void;
   openDrawer: () => void;
   closeDrawer: () => void;
   addItem: (item: Omit<CartLine, 'qty'> & { qty?: number }) => void;
@@ -69,6 +71,7 @@ export const useCart = create<CartState>()(
       items: [],
       drawerOpen: false,
       toast: null,
+            notify: (text) => set({ toast: { id: Date.now(), text } }),
       openDrawer: () => set({ drawerOpen: true }),
       closeDrawer: () => set({ drawerOpen: false }),
       addItem: (item) => {
