@@ -12,15 +12,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
+import { PLANUNGSGEBUEHR } from '@/lib/planungspakete';
 import { team } from '@/lib/data';
 
-// Die drei Ansprechpartner, die tatsächlich beraten (Vertrieb, Bewässerung,
-// Geschäftsführung) — bewusst ohne Rollenbezeichnung, Kundenwunsch.
-const BERATER_MAILS = [
-  'j.leifermann@green-gard.de',
-  'n.ohl@green-gard.de',
-  't.gerhardt@green-gard.de',
-];
+// Nur wer tatsächlich berät: Jan (Vertrieb, Beleuchtung) und Nicolas
+// (Bewässerung). Thomas Gerhardt steht hier bewusst NICHT — die Geschäfts-
+// führung übernimmt keine Beratungstermine (Kundenhinweis 05.08.2026).
+const BERATER_MAILS = ['j.leifermann@green-gard.de', 'n.ohl@green-gard.de'];
 const BERATER = BERATER_MAILS.map((mail) => team.find((m) => m.email === mail)).filter(
   (m): m is (typeof team)[number] => Boolean(m)
 );
@@ -132,11 +130,18 @@ export function BeratungBooking() {
     <div className="py-12 md:py-20">
       <div className="container">
         <Eyebrow number="D">Beratung</Eyebrow>
+        {/* „Systemplanung — kostenfrei“ stimmte so nicht: kostenfrei ist das
+            Gespräch, der ausgearbeitete Plan kostet 120 € und wird mit dem
+            Material verrechnet. */}
         <h1 className="h-display mt-6 max-w-3xl text-balance text-5xl md:text-7xl">
-          Systemplanung — <em className="italic">kostenfrei</em>.
+          Beratung — <em className="italic">kostenfrei</em>.
         </h1>
         <p className="mt-6 max-w-xl text-ink/70">
           30 Minuten, vor Ort in Wiesbaden oder per Video. Wir hören zu, stellen die richtigen Fragen und senden danach eine erste Skizze mit belastbarem Preisrahmen.
+        </p>
+        <p className="mt-4 max-w-xl text-sm text-ink/55">
+          Der ausgearbeitete Bewässerungsplan kostet {PLANUNGSGEBUEHR.betrag} € und{' '}
+          {PLANUNGSGEBUEHR.regel}.
         </p>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-12">
