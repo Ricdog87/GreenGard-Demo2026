@@ -3,6 +3,7 @@ import { Hero } from '@/components/Hero';
 import { AudienceBar } from '@/components/AudienceBar';
 import { ManifestIntro } from '@/components/ManifestIntro';
 import { CategoryGrid } from '@/components/CategoryGrid';
+import { AudienceVorteile } from '@/components/AudienceVorteile';
 import { Highlights } from '@/components/Highlights';
 import { BewaesserungsRechner } from '@/components/BewaesserungsRechner';
 import { KitCard } from '@/components/KitCard';
@@ -27,6 +28,7 @@ export default function LandingPage() {
       <Hero />
       <AudienceBar />
       <ManifestIntro />
+      <AudienceVorteile />
       <CategoryGrid />
       <Highlights />
       <BewaesserungsRechner />
@@ -45,7 +47,7 @@ export default function LandingPage() {
             <p className="max-w-md text-ink/70">
               Zusammenstellungen, die sich in hunderten Projekten bewährt haben — als
               Orientierung mit „ab“-Preis. Was am Ende verbaut wird, entscheidet die
-              kostenlose Systemplanung.
+              Systemplanung.
             </p>
           </div>
           <div data-reveal-group className="grid gap-6 lg:grid-cols-3">

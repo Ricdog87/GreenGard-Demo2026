@@ -208,7 +208,7 @@ export function BewaesserungsRechner() {
                 </span>
               </div>
               <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-linen/50">
-                {priceLabel(mode)} · ohne Montage · Endpreis nach kostenloser Systemplanung
+                {priceLabel(mode)} · ohne Montage · Endpreis nach der Systemplanung
               </p>
             </div>
 

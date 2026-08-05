@@ -1,8 +1,9 @@
 'use client';
 
-import { Check, ShoppingBag, Users } from 'lucide-react';
+import { Check, MapPin, ShoppingBag, Users } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
+import { CONTACT } from '@/lib/contact';
 import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
@@ -75,35 +76,63 @@ export function Schulungen() {
                     {priceLabel(mode)} / Person
                   </span>
                 </div>
-                <p className="font-mono mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-ink/55">
-                  <Users className="h-3.5 w-3.5" /> max. <span className="num">{s.plaetze}</span>{' '}
-                  Plätze
-                </p>
+                {s.plaetze > 0 && (
+                  <p className="font-mono mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-ink/55">
+                    <Users className="h-3.5 w-3.5" /> max. <span className="num">{s.plaetze}</span>{' '}
+                    Plätze
+                  </p>
+                )}
+
+                {s.orte && s.orte.length > 0 && (
+                  <p className="font-mono mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-ink/55">
+                    <MapPin className="h-3.5 w-3.5" /> {s.orte.join(' · ')}
+                  </p>
+                )}
 
                 <p className="eyebrow mt-5 mb-2">Termine</p>
-                <div className="flex flex-wrap gap-2">
-                  {s.termine.map((t) => (
-                    <button
-                      key={t}
-                      data-cursor="hover"
-                      onClick={() => inDenWarenkorb(s, t)}
-                      className={cn(
-                        'num border border-mist px-3 py-1.5 text-xs transition-colors',
-                        'hover:border-forest hover:bg-forest hover:text-linen'
-                      )}
+                {/* Solange die echten Termine fehlen, wird nichts erfunden — dann
+                    führt die Karte in die Anfrage statt in den Warenkorb. */}
+                {s.termine.length > 0 ? (
+                  <>
+                    <div className="flex flex-wrap gap-2">
+                      {s.termine.map((t) => (
+                        <button
+                          key={t}
+                          data-cursor="hover"
+                          onClick={() => inDenWarenkorb(s, t)}
+                          className={cn(
+                            'num border border-mist px-3 py-1.5 text-xs transition-colors',
+                            'hover:border-forest hover:bg-forest hover:text-linen'
+                          )}
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                    <Button
+                      variant="primary"
+                      className="mt-6 w-full"
+                      onClick={() => inDenWarenkorb(s, s.termine[0])}
                     >
-                      {t}
-                    </button>
-                  ))}
-                </div>
-
-                <Button
-                  variant="primary"
-                  className="mt-6 w-full"
-                  onClick={() => inDenWarenkorb(s, s.termine[0])}
-                >
-                  <ShoppingBag className="h-4 w-4" /> Platz buchen
-                </Button>
+                      <ShoppingBag className="h-4 w-4" /> Platz buchen
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm text-ink/70">
+                      Termine auf Anfrage — wir melden uns mit den nächsten Terminen zurück.
+                    </p>
+                    <Button asChild variant="primary" className="mt-6 w-full">
+                      <a
+                        href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(
+                          `Schulung: ${s.title}`
+                        )}`}
+                      >
+                        Platz vormerken
+                      </a>
+                    </Button>
+                  </>
+                )}
               </div>
             </article>
           ))}

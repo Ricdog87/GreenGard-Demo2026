@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { PlanungRechner } from './PlanungRechner';
 import { IRRISKETCH_URL } from '@/lib/links';
 import { CONTACT } from '@/lib/contact';
+import { AUSSTATTUNGSSTUFEN, PLANUNGSDAUER, PLANUNGSGEBUEHR } from '@/lib/planungspakete';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Planung · Green-Gard',
@@ -161,10 +163,65 @@ export default function PlanungPage() {
         </div>
       </section>
 
+      {/* ---------- Ausstattungsstufen (Bronze/Silber/Gold vom Kunden) ---------- */}
+      <section className="border-t border-mist py-16 md:py-24">
+        <div className="container">
+          <div data-reveal className="max-w-3xl">
+            <Eyebrow number="02">Ausstattung</Eyebrow>
+            <h2 className="h-display mt-6 text-balance text-4xl md:text-5xl">
+              Sie entscheiden, wie <em className="italic">hochwertig</em> es wird.
+            </h2>
+            <p className="mt-6 text-ink/70">
+              Dieselbe Planung, drei Materialstufen. Der Unterschied liegt in der Steuerung
+              und in der Verteilung — nicht in der Qualität der Auslegung.
+            </p>
+          </div>
+
+          <div data-reveal-group className="mt-12 grid gap-6 md:grid-cols-3">
+            {AUSSTATTUNGSSTUFEN.map((stufe) => (
+              <article
+                key={stufe.id}
+                className={cn(
+                  'flex flex-col border p-8',
+                  stufe.beliebt ? 'border-forest bg-linen' : 'border-mist bg-paper'
+                )}
+              >
+                {stufe.beliebt && (
+                  <span className="font-mono mb-4 self-start bg-forest px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-linen">
+                    Am beliebtesten
+                  </span>
+                )}
+                <h3 className="font-display text-2xl tracking-tight">{stufe.name}</h3>
+                <p className="font-display mt-1 text-sm italic text-moss">{stufe.claim}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/70">{stufe.beschreibung}</p>
+                <ul className="mt-6 flex-1 space-y-2.5 border-t border-mist pt-5 text-sm text-ink/80">
+                  {stufe.merkmale.map((m) => (
+                    <li key={m} className="flex gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-forest" />
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          {/* Die Planungsgebühr stand bisher nirgends — sie gehört sichtbar hierher. */}
+          <div data-reveal className="mt-10 border-l-2 border-copper/50 bg-linen/60 py-4 pl-5">
+            <p className="max-w-3xl text-sm leading-relaxed text-ink/75">
+              <span className="price text-base">{PLANUNGSGEBUEHR.betrag} €</span> für den
+              professionellen Bewässerungsplan samt Angebot — {PLANUNGSGEBUEHR.regel}. Bestellen
+              Sie das Material bei uns, ist die Planung damit kostenlos. Bearbeitungszeit{' '}
+              <span className="num">{PLANUNGSDAUER}</span>, sobald uns alle Angaben vorliegen.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- Kostenschätzung ---------- */}
       <section id="richtwert" className="scroll-mt-20 border-t border-mist bg-linen py-16 md:py-20">
         <div className="container" data-reveal>
-          <Eyebrow number="02">Kostenrahmen</Eyebrow>
+          <Eyebrow number="03">Kostenrahmen</Eyebrow>
           <h2 className="h-display mt-6 max-w-3xl text-balance text-4xl md:text-5xl">
             Was kostet das <em className="italic">ungefähr</em>?
           </h2>

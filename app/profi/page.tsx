@@ -16,6 +16,8 @@ import { AUDIENCES } from '@/lib/audience';
 import { useCart } from '@/store/cart';
 import { cn } from '@/lib/utils';
 
+// Angaben wie auf green-gard.de/galabauer-installateure und im Learning
+// Center: Lieferzeit, Zahlungsregel und Vor-Ort-Hilfe stehen dort konkret.
 const USPS = [
   {
     icon: Percent,
@@ -25,17 +27,17 @@ const USPS = [
   {
     icon: FileText,
     title: 'Rechnungskauf',
-    body: '30 Tage Zahlungsziel für etablierte Betriebe, ohne Vorkasse und ohne Kreditkarte.',
+    body: 'Ab der zweiten Bestellung ist Kauf auf Rechnung möglich. Die erste läuft per Vorkasse, bei Abholung bar oder mit Karte.',
   },
   {
     icon: Truck,
-    title: 'Direktlieferung',
-    body: 'Im Großraum Wiesbaden liefern wir auf Wunsch am selben Tag direkt auf die Baustelle.',
+    title: 'Lieferung auf die Baustelle',
+    body: 'Lagerware in der Regel in 1 – 3 Werktagen — per Paketdienst oder Direktfahrt im Umkreis von Wiesbaden.',
   },
   {
     icon: GraduationCap,
-    title: 'Schulungen',
-    body: 'Hydrawise, Kress-RTK und In-Lite-Lichtplanung — bei uns im Studio oder inhouse in Ihrem Betrieb.',
+    title: 'Vor-Ort-Service',
+    body: 'Auf Wunsch kommen unsere Leute zur Montage dazu. Und was wir nicht führen, besorgen wir über unser Einkaufsnetz.',
   },
 ];
 
@@ -46,13 +48,22 @@ const GEWERBE: { value: GewerbeArt; label: string }[] = [
   { value: 'sonstiges', label: 'Sonstiges' },
 ];
 
-const PARTNER = [
-  'Eichel GaLaBau',
-  'Gartenbau Gängel',
-  'Schmitz & Sohn',
-  'Hofgarten Mainz',
-  'GBK Wiesbaden',
-  'Birkenhof Landschaft',
+/**
+ * Herstellerliste laut Learning Center auf green-gard.de. Vorher standen hier
+ * erfundene Betriebsnamen — teils an echte Kundennamen angelehnt. Referenzen
+ * dürfen nur mit Freigabe genannt werden, Hersteller sind belegbar.
+ */
+const HERSTELLER = [
+  'Rain Bird',
+  'Hunter',
+  'Rain',
+  'Netafim',
+  'Pedrollo',
+  'Speck',
+  'Grundfos',
+  'Kress',
+  'Husqvarna',
+  'In-Lite',
 ];
 
 const schema = z.object({
@@ -176,16 +187,20 @@ export default function ProfiPage() {
 
       <section className="border-t border-mist py-24 md:py-32">
         <div className="container">
-          <Eyebrow number="03">Partner</Eyebrow>
-          <h2 className="h-display mt-6 text-4xl md:text-5xl">
-            Diese Betriebe arbeiten mit uns.
+          <Eyebrow number="03">Hersteller</Eyebrow>
+          <h2 className="h-display mt-6 max-w-3xl text-4xl md:text-5xl">
+            Diese Marken haben wir <em className="italic">am Lager</em>.
           </h2>
+          <p className="mt-6 max-w-2xl text-ink/70">
+            Was Sie hier nicht finden, besorgen wir. Fast jeden Artikel der
+            Bewässerungswelt bekommen wir über unser Einkaufsnetz.
+          </p>
           <div className="mt-12 border-y border-mist py-6">
             <div className="font-display flex flex-wrap gap-x-10 gap-y-4 text-3xl md:text-4xl">
-              {PARTNER.map((p, i) => (
+              {HERSTELLER.map((p, i) => (
                 <span key={p} className="inline-flex items-center gap-10 text-ink/80">
                   {p}
-                  {i !== PARTNER.length - 1 && <span className="text-bronze">·</span>}
+                  {i !== HERSTELLER.length - 1 && <span className="text-bronze">·</span>}
                 </span>
               ))}
             </div>

@@ -16,7 +16,7 @@
       "Erdkabel und Verteiler",
       "Hydraulik-Auslegung als PDF"
     ],
-    "note": "Reichweiten und Regner-Anzahl hängen vom Wasserdruck ab. Endpreis nach kostenloser Systemplanung."
+    "note": "Reichweiten und Regner-Anzahl hängen vom Wasserdruck ab. Endpreis nach der Systemplanung."
   },
   {
     "slug": "bewaesserung-komfort",
@@ -36,7 +36,7 @@
       "Regensensor und Wetter-API-Anbindung",
       "Detailplanung und Übergabe vor Ort"
     ],
-    "note": "Pumpentechnik je nach Wasserquelle separat. Endpreis nach kostenloser Systemplanung."
+    "note": "Pumpentechnik je nach Wasserquelle separat. Endpreis nach der Systemplanung."
   },
   {
     "slug": "beleuchtung-starter",
@@ -55,7 +55,7 @@
       "Lichtplanung mit Positionsskizze",
       "Einmessen und Feinjustierung vor Ort"
     ],
-    "note": "Anzahl Leuchten je nach Gartenlänge. Endpreis nach kostenloser Systemplanung."
+    "note": "Anzahl Leuchten je nach Gartenlänge. Endpreis nach der Systemplanung."
   },
   {
     "slug": "maehroboter-kit",
@@ -74,6 +74,6 @@
       "Erstinbetriebnahme und Einweisung",
       "Winterservice im ersten Jahr inklusive"
     ],
-    "note": "RTK braucht freie Sicht zum Satelliten-Signal. Endpreis nach kostenloser Systemplanung."
+    "note": "RTK braucht freie Sicht zum Satelliten-Signal. Endpreis nach der Systemplanung."
   }
 ]

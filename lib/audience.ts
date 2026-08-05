@@ -27,6 +27,11 @@ export interface AudienceConfig {
   gewerbe: GewerbeArt;
   /** Schnelleinstiege direkt unter dem Hero. */
   links: { href: string; label: string; note: string }[];
+  /**
+   * Leistungsversprechen je Zielgruppe, übernommen von den Partnerseiten auf
+   * green-gard.de (/galabauer-installateure, /privatkunden, /fachhaendler).
+   */
+  vorteile: string[];
 }
 
 export const AUDIENCES: Record<Audience, AudienceConfig> = {
@@ -44,13 +49,21 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
       { href: '/planung', label: 'Systemplanung starten', note: 'Stückliste in vier Schritten' },
       { href: '/produkte', label: 'Sortiment mit Nettopreisen', note: '31 Artikel ab Lager' },
     ],
+    vorteile: [
+      'Vor-Ort-Service: Unsere Leute helfen auf Wunsch bei der Montage',
+      'Finden Sie ein Produkt nicht, besorgen wir es',
+      'Kostenlose Beratung — vor und nach dem Kauf',
+      'Technischer Support und Unterstützung in der Realisierungsplanung',
+      'Erreichbar Mo – Fr von 7:30 bis 17:00 Uhr',
+      'Support auch auf Englisch',
+    ],
   },
   privat: {
     id: 'privat',
     kicker: 'II',
     title: 'Privat',
     claim: 'Lösungen für Ihren Garten',
-    detail: 'Bruttopreise, fertige Starter Kits und kostenlose Planung für Ihr Grundstück.',
+    detail: 'Bruttopreise, fertige Starter Kits und eine Planung, die mit dem Material verrechnet wird.',
     image: '/img/gate/privat.svg',
     mode: 'privat',
     gewerbe: 'sonstiges',
@@ -58,6 +71,14 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
       { href: '/planung', label: 'Bewässerung berechnen', note: 'Drei Fragen, ein Richtpreis' },
       { href: '/starter-kits', label: 'Starter Kits', note: 'ab 899 € inkl. Planung' },
       { href: '/produkte', label: 'Produkte ansehen', note: 'Bewässerung bis Pool' },
+    ],
+    vorteile: [
+      'Fachberatung und Konzeption für Ihr Grundstück',
+      'Erreichbar Mo – Fr von 7:30 bis 17:00 Uhr',
+      'Support auch auf Englisch',
+      'Mehr Zeit für Hobby und Familie',
+      'Nachhaltiger gärtnern mit stromsparender Technik und Beleuchtung',
+      'Hilfestellung und Tipps bei der Umsetzung Ihres Vorhabens',
     ],
   },
   haendler: {
@@ -73,6 +94,14 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
             { href: '/profi', label: 'Händlerkonditionen', note: 'Individuell nach Vereinbarung' },
       { href: '/produkte', label: 'Sortiment und Nettopreise', note: 'Lagerbestand je Artikel' },
       { href: '/beratung#schulungen', label: 'Produktschulungen', note: 'Für Ihr Verkaufsteam' },
+    ],
+    vorteile: [
+      'Langjährige Erfahrung als Handelsunternehmen für Bewässerung, Pumpen, Teich- und Lichttechnik',
+      'Zusammenarbeit mit Landschaftsarchitekten, Fachplanern und regionalen Fachhändlern',
+      'Vor-Ort-Service: Unsere Leute helfen auf Wunsch bei der Montage',
+      'Finden Sie ein Produkt nicht, besorgen wir es',
+      'Betreuung und Beratung vor und nach dem Kauf',
+      'Support auch auf Englisch',
     ],
   },
 };

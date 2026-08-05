@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
 import { ViewSwitchLink } from '@/components/ViewSwitchLink';
-import { CONTACT } from '@/lib/contact';
+import { CONTACT, OEFFNUNG } from '@/lib/contact';
 import { categories } from '@/lib/data';
 import { IRRISKETCH_URL, SHOP_URL, SOCIAL } from '@/lib/links';
 
@@ -44,9 +44,24 @@ export function Footer() {
                 {CONTACT.email}
               </a>
             </p>
-            <p className="font-mono mt-6 text-[11px] uppercase tracking-[0.18em] text-linen/60">
-              {CONTACT.hours}
-            </p>
+            {/* Telefon und Lagerverkauf haben unterschiedliche Zeiten — das
+                stand bisher nirgends und ist für Abholer entscheidend. */}
+            <dl className="mt-6 space-y-2 text-[13px] leading-relaxed text-linen/70">
+              <div>
+                <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/50">
+                  Telefon
+                </dt>
+                <dd className="num">{OEFFNUNG.telefon}</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/50">
+                  Lagerverkauf
+                </dt>
+                <dd className="num">{OEFFNUNG.lager}</dd>
+                <dd className="num text-linen/55">{OEFFNUNG.samstag}</dd>
+              </div>
+            </dl>
+            <p className="mt-4 text-[13px] leading-relaxed text-linen/55">{OEFFNUNG.anfahrt}</p>
           </div>
 
           <div className="md:col-span-3">

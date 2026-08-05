@@ -4,7 +4,7 @@
 // Die Preise kommen aus der echten Liste von Jan Leifermann (siehe lib/preise.ts):
 // Materialkosten nach Fläche, Zuschlag je Wasserquelle. Die Stücklisten-Mengen
 // bleiben eine transparente Faustformel — die verbindliche Auslegung macht die
-// kostenlose Systemplanung.
+// Systemplanung (120 €, wird mit dem Material verrechnet).
 
 import {
   MATERIAL_TABLE_MAX_QM,
@@ -144,7 +144,7 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   // --- Hinweise ---
   const hinweise: string[] = [
     'Angegeben sind Materialkosten. Montage, Erdarbeiten und Inbetriebnahme kommen je nach Projekt hinzu.',
-    'Mengen sind Richtwerte — die verbindliche Auslegung erfolgt in der kostenlosen Systemplanung.',
+    'Mengen sind Richtwerte — die verbindliche Auslegung erfolgt in der Systemplanung.',
   ];
   if (zuschlag?.note) {
     hinweise.push(zuschlag.note);

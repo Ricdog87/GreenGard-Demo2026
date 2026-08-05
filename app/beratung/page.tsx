@@ -1,16 +1,18 @@
 import { BeratungBooking } from './BeratungBooking';
 import { Schulungen } from './Schulungen';
+import { Serviceleistungen } from '@/components/Serviceleistungen';
 
 export const metadata = {
   title: 'Beratung & Schulungen · Green-Gard',
   description:
-    'Kostenlose Systemplanung vereinbaren und Schulungen für GaLaBau, Installateure und Planungsbüros buchen.',
+    'Beratungstermin vereinbaren, Serviceleistungen im Überblick und Fachschulungen für GaLaBau, Installateure und Planungsbüros.',
 };
 
 export default function BeratungPage() {
   return (
     <>
       <BeratungBooking />
+      <Serviceleistungen />
       <Schulungen />
     </>
   );

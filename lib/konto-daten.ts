@@ -62,10 +62,12 @@ export interface Profikonto {
   planungen: Planung[];
 }
 
+// Bewusst ein erfundener Betrieb: Namen echter Kunden (etwa aus den
+// Bewertungen) dürfen nicht als Demo-Konto auftauchen.
 export const DEMO_KONTO: Profikonto = {
-  firma: 'Eichel GaLaBau GmbH',
+  firma: 'Musterbau Garten- und Landschaftsbau GmbH',
   kundennummer: '114029',
-  ansprechpartner: 'Markus Eichel',
+  ansprechpartner: 'Demo-Zugang',
   ekPreise: {
     // TODO: aus Supabase je Konto laden (geplante Tabelle: kundenpreise).
     '100000030': 74.59,

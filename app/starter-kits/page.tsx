@@ -9,7 +9,7 @@ import { starterKits } from '@/lib/data';
 export const metadata = {
   title: 'Starter Kits · Green-Gard',
   description:
-    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit ab-Preis und kostenloser Systemplanung.',
+    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit ab-Preis und passender Systemplanung.',
 };
 
 const COMPARE_ROWS: { label: string; values: string[] }[] = [
@@ -73,7 +73,7 @@ export default function StarterKitsPage() {
           <p className="mt-8 max-w-2xl text-lg text-ink/70">
             Zusammenstellungen, die sich in hunderten Projekten bewährt haben. Wir nennen
             bewusst „ab“-Preise: Wasserdruck, Leitungswege und Gartenschnitt verändern die
-            Stückliste — der Endpreis steht nach der kostenlosen Systemplanung.
+            Stückliste — der Endpreis steht nach der Systemplanung.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button asChild variant="primary" size="lg">
@@ -150,7 +150,7 @@ export default function StarterKitsPage() {
           </div>
 
           <p className="font-mono mt-6 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-            Alle Angaben sind Richtwerte · Endpreis nach kostenloser Systemplanung
+            Alle Angaben sind Richtwerte · Endpreis nach der Systemplanung
           </p>
         </div>
       </section>

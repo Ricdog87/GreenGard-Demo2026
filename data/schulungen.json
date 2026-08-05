@@ -1,50 +1,54 @@
 [
   {
-    "slug": "bewaesserung-basis",
+    "_comment": "Schulungsangebot von green-gard.de/training (abgerufen 03.08.2026). Titel, Zielgruppen, Inhalte und Preise stammen von dort. Die konkreten Termine liegen uns nicht vor — die Kundenseite führt sie auf einzelnen Unterseiten. Deshalb steht hier eine leere Terminliste und die Oberfläche zeigt 'Termine auf Anfrage', statt Datumsangaben zu erfinden. TODO (OFFENE-PUNKTE B5): Termine, Dauer und Platzzahlen von Jan.",
+    "slug": "professionelle-hausgarten-bewaesserung",
     "roman": "I",
-    "title": "Bewässerung Basis",
-    "duration": "1 Tag · 9:00 – 16:00",
-    "abPreis": 290,
-    "audience": "GaLaBau-Mitarbeitende und Quereinsteiger",
+    "title": "Professionelle Hausgarten-Bewässerung",
+    "duration": "Fachschulung · Tagesveranstaltung",
+    "abPreis": 159,
+    "audience": "Garten- und Landschaftsbaubetriebe mit ersten oder ohne Erfahrung in der Bewässerungstechnik",
     "content": [
-      "Hydraulik: Druck, Durchfluss, Rohrdimensionierung",
-      "Regnerauswahl und Niederschlagsspende richtig rechnen",
-      "Zonenaufteilung und Ventilverdrahtung",
-      "Typische Planungsfehler und wie man sie vermeidet"
+      "Vorteile einer Bewässerungsanlage und Verkaufsargumente",
+      "Grundlagen der Planung und Voraussetzungen für den Betrieb",
+      "Anschluss der Wasserzuleitung: Zisterne, Brunnen, Trinkwassernetz",
+      "Aufbau und Vorstellung der relevanten Komponenten"
     ],
-    "termine": ["12.09.2026", "24.10.2026", "14.11.2026"],
-    "plaetze": 12
+    "termine": [],
+    "orte": ["Wiesbaden"],
+    "plaetze": 0
   },
   {
-    "slug": "smart-control-hydrawise",
+    "slug": "expertentraining",
     "roman": "II",
-    "title": "Smart Control & Hydrawise",
-    "duration": "½ Tag · 9:00 – 13:00",
-    "abPreis": 190,
-    "audience": "Betriebe, die Anlagen für Kunden remote betreuen",
+    "title": "Expertentraining",
+    "duration": "Fachschulung · mit Referenten aus Industrie und Forschung",
+    "abPreis": 159,
+    "audience": "Betriebe mit ersten oder erweiterten Erfahrungen, die tiefer einsteigen wollen",
     "content": [
-      "Hydrawise-Account-Struktur für Betriebe mit vielen Anlagen",
-      "Wetter-API, Predictive Watering und Sensorik einbinden",
-      "Alarme, Durchflussüberwachung, Leckerkennung",
-      "Kundenübergabe und Fernwartung als Servicemodell"
+      "Referenten aus Industrie und Forschung mit langjähriger Praxiserfahrung",
+      "Infos direkt vom Hersteller",
+      "Produktneuheiten entdecken",
+      "Praxisnahe Anwendungsbeispiele für die tägliche Arbeit"
     ],
-    "termine": ["19.09.2026", "07.11.2026"],
-    "plaetze": 10
+    "termine": [],
+    "orte": ["bei Köln", "bei Stuttgart", "bei Wiesbaden", "bei München"],
+    "plaetze": 0
   },
   {
-    "slug": "in-lite-lichtplanung",
+    "slug": "inhouse-schulung",
     "roman": "III",
-    "title": "In-Lite Lichtplanung",
-    "duration": "½ Tag · 14:00 – 18:00",
-    "abPreis": 190,
-    "audience": "GaLaBau, Planungsbüros, Architektur",
+    "title": "Schulung im eigenen Betrieb",
+    "duration": "Exklusiv · ab 6 Teilnehmenden",
+    "abPreis": 599,
+    "audience": "Betriebe, die ihr Team geschlossen und zu eigenen Themen schulen wollen",
     "content": [
-      "Lichtwirkung: Akzent, Orientierung, Blendfreiheit",
-      "12V-Systemaufbau, Trafo-Auslegung, Kabelwege",
-      "Planung mit Positionsskizze und Stückliste",
-      "Praxisteil: Einmessen im Demogarten bei Dämmerung"
+      "Ab sechs Personen führen wir die Schulung bei Ihnen vor Ort durch",
+      "Inhalte vollständig auf Ihr Unternehmen abgestimmt",
+      "Exklusiv für Ihren Betrieb, keine gemischte Gruppe",
+      "Zuzüglich Anfahrt und Verpflegung"
     ],
-    "termine": ["19.09.2026", "17.10.2026", "21.11.2026"],
-    "plaetze": 10
+    "termine": [],
+    "orte": ["bei Ihnen vor Ort"],
+    "plaetze": 0
   }
 ]

@@ -34,6 +34,12 @@ export interface Category {
   roman: string;
   manifest: string;
   blurb: string;
+  /** Einleitungssatz der Disziplin — Fassung von green-gard.de. */
+  intro?: string;
+  /** „Unsere Expertise – Ihre Vorteile“ der jeweiligen Kategorieseite. */
+  vorteile?: string[];
+  /** Themenblöcke der Kategorieseite, z. B. Rasen- und Tropfbewässerung. */
+  themen?: { title: string; text: string }[];
   abPreis: number;
   image: string;
 }
@@ -77,7 +83,11 @@ export interface Schulung {
   abPreis: number;
   audience: string;
   content: string[];
+  /** Leer, solange die echten Termine vom Kunden fehlen — dann „auf Anfrage“. */
   termine: string[];
+  /** Veranstaltungsorte laut green-gard.de/training. */
+  orte?: string[];
+  /** 0 = Platzzahl noch nicht bestätigt. */
   plaetze: number;
 }
 

@@ -32,8 +32,10 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Green-Gard · Gartentechnik aus Wiesbaden',
+  // Green Gard ist Handelshaus ohne eigene Monteure — die Seite darf nirgends
+  // versprechen, dass wir selbst einbauen (Learning Center, siehe lib/contact.ts).
   description:
-    'Das Upgrade für Ihren Garten: smarte Bewässerung, Gartenbeleuchtung, Mähroboter und Poolpflege. Geplant, geliefert und auf Wunsch installiert — seit 2006 aus Wiesbaden.',
+    'Das Upgrade für Ihren Garten: smarte Bewässerung, Gartenbeleuchtung, Mähroboter und Poolpflege. Geplant, geliefert und auf Wunsch durch einen Fachbetrieb aus unserem Netzwerk umgesetzt — seit 2006 aus Wiesbaden.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

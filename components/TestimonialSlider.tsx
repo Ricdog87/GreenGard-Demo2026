@@ -10,16 +10,25 @@ import { cn } from '@/lib/utils';
 
 type Filter = 'alle' | '5' | '4';
 
+// Nur Stufen anbieten, für die es auch Stimmen gibt. Die übernommenen
+// Bewertungen von green-gard.de sind aktuell alle 5★ — ein leerer 4★-Filter
+// würde so aussehen, als wären Stimmen versteckt worden.
+const VORHANDENE_STUFEN = new Set(testimonials.map((t) => String(t.rating)));
+
 const FILTERS: { id: Filter; label: string }[] = [
   { id: 'alle', label: 'Alle' },
   { id: '5', label: '5 ★' },
   { id: '4', label: '4 ★' },
-];
+].filter((f) => f.id === 'alle' || VORHANDENE_STUFEN.has(f.id)) as { id: Filter; label: string }[];
 
-// Mock-Durchschnitt für die Demo — echte Zahlen kommen später aus der Quelle.
-// TODO: Google Reviews API oder ProvenExpert-Embed evaluieren.
-const REVIEW_COUNT = 27;
-const REVIEW_AVERAGE = '4,9';
+// Zahlen aus den übernommenen Stimmen — kein geschätzter Durchschnitt mehr.
+// TODO: Google Reviews API oder ProvenExpert-Embed anbinden, dann live.
+const REVIEW_COUNT = testimonials.length;
+const REVIEW_AVERAGE = (
+  testimonials.reduce((s, t) => s + t.rating, 0) / testimonials.length
+)
+  .toFixed(1)
+  .replace('.', ',');
 
 function Stars({ rating, className }: { rating: number; className?: string }) {
   return (

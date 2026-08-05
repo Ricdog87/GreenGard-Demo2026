@@ -14,7 +14,7 @@ const ITEMS = [
   },
   {
     q: 'Warum stehen bei den Starter Kits nur "ab"-Preise?',
-    a: 'Weil jeder Garten anders ist. Wasserdruck, Leitungswege, Pumpenbedarf und Gartenschnitt verändern die Stückliste deutlich. Wir nennen deshalb einen belastbaren Richtwert und den Endpreis nach der kostenlosen Systemplanung — statt eines Festpreises, der später korrigiert werden müsste.',
+    a: 'Weil jeder Garten anders ist. Wasserdruck, Leitungswege, Pumpenbedarf und Gartenschnitt verändern die Stückliste deutlich. Wir nennen deshalb einen belastbaren Richtwert und den Endpreis nach der Systemplanung — statt eines Festpreises, der später korrigiert werden müsste. Die Planung selbst kostet 120 € und wird mit dem Material verrechnet.',
   },
   {
     q: 'Wer übernimmt die Installation?',

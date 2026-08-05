@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { brands as ALL_BRANDS, categories, products as productsData } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
+import { DisziplinSteckbrief } from '@/components/DisziplinSteckbrief';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
@@ -48,6 +49,7 @@ export function ProduktKatalog() {
   }
 
   const filtersActive = Boolean(cat) || brands.length > 0 || priceMax < PRICE_CEILING;
+  const aktiveKategorie = cat ? categories.find((c) => c.slug === cat) : undefined;
 
   return (
     <div className="py-12 md:py-20">
@@ -160,6 +162,8 @@ export function ProduktKatalog() {
           </aside>
 
           <div className="lg:col-span-9">
+            {aktiveKategorie && <DisziplinSteckbrief kategorie={aktiveKategorie} />}
+
             <div className="mb-10 flex flex-col gap-3 border-y border-mist py-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
                 Sortieren

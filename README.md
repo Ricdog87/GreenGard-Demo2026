@@ -61,8 +61,8 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | 9 | **Warum Green-Gard**: Gründungsjahr **2006** projektweit, Team-Grid ohne Rollenbezeichnungen mit persönlichen Mailadressen, Rainworks-Section, Brief des Geschäftsführers. |
 | 10 | **`/profi`** als Lead-Gate für den Konditionskatalog inkl. Gewerbe-Art. |
 | 11 | **Kontaktdaten zentral** in `lib/contact.ts`: eine Rufnummer mit Endung -30, keine Durchwahlen mehr. |
-| 12 | **Bewertungs-Feed** mit Sterne-Filter (Alle / 5★ / 4★), Sterne in Copper, Schnitt „4,9 von 5 · 27 Bewertungen“. |
-| 13 | **Schulungen** auf `/beratung`: drei Kurse mit Terminen, Platzbuchung mit Hinweis auf Zahlungslink. |
+| 12 | **Bewertungs-Feed** mit den echten Stimmen von green-gard.de, Sterne in Copper. Schnitt und Anzahl werden aus den Daten gerechnet; der Sterne-Filter zeigt nur Stufen, die es auch gibt. |
+| 13 | **Schulungen** auf `/beratung`: das echte Angebot von green-gard.de/training (Fachschulung 159 €, Expertentraining an vier Standorten, Schulung im eigenen Betrieb 599 € ab sechs Personen). Solange die Termine fehlen, führt die Karte in die Anfrage statt in den Warenkorb. |
 | 14 | **Supabase vorbereitet**: Client mit Graceful Fallback, `supabase/schema.sql`, `/login`. |
 | 16 | **Katalog-Hinweis** auf `/produkte`: tagesaktuelle Preise, kein gedruckter Katalog 2026 — stattdessen der digitale Katalog unter `/katalog`. |
 
@@ -77,10 +77,10 @@ Mailversand laufen bis zur echten Anbindung in dokumentierte Mock-Zweige
 | `/produkte` | Shop-Ansicht mit Disziplin-, Hersteller- und Preisfilter, 4 Sortierungen, Verweis auf den Katalog · 31 Artikel |
 | `/produkte/[slug]` | Produktdetail mit Technik-Tab, Cross-Sell, Sticky-Warenkorb auf Mobile (statisch vorgerendert) |
 | `/starter-kits` | Vier Kits, Vergleichstabelle, Detail-Sections, „ab“-Preise |
-| `/planung` | **IRRISketch-Planungstool** mit Sechs-Schritte-Ablauf, darunter der Kostenrechner (Fläche · Wasserquelle · Bereiche · WLAN) mit Stückliste |
+| `/planung` | **IRRISketch-Planungstool** mit Sechs-Schritte-Ablauf, den Ausstattungsstufen Bronze/Silber/Gold, der Planungsgebühr (120 €, wird verrechnet) und dem Kostenrechner mit Stückliste |
 | `/learning-center` | Videothek mit Filter, Suche und Dialog-Player, darunter 139 Fragen und Antworten 1:1 von green-gard.de/learningcenter (Rubrikfilter, Volltextsuche, FAQPage-Schema) — gegen Support-Anrufe |
 | `/pflanzenkoelle` | Geschützte Projektseite für den Großkunden: Standortwahl, vollständiges Technikformular, `noindex`, nicht verlinkt |
-| `/beratung` | Terminbuchung mit Ansprechpartner-Auswahl und ICS-Mock + Schulungsbereich |
+| `/beratung` | Terminbuchung mit Ansprechpartner-Auswahl und ICS-Mock, Serviceleistungen (inkl. Winterservice 235 €) und das echte Schulungsangebot |
 | `/warum-green-gard` | Editorial-Lesestrecke, Team mit echten Porträts, Rainworks-Anriss, Brief des Geschäftsführers |
 | `/rainworks` | Die Rainworks Alliance — Inhalte 1:1 von green-gard.de/rainworks, inkl. Mitgliederkarte und Struktur-Diagramm |
 | `/profi` | Konditionen, Partner, Lead-Gate für den Konditionskatalog (Nachlässe werden individuell vereinbart, nicht angezeigt) |
@@ -247,3 +247,39 @@ weil beide dieselbe Codebasis nutzen.
 ---
 
 © 2026 Green-Gard GmbH · Demo, keine Zahlungen, keine echten Datenübertragungen.
+
+---
+
+## Inhalte von green-gard.de
+
+Der Bestand der bestehenden Kundenseite ist übernommen, wo er auf der neuen
+Seite eine Aufgabe hat. Was wo gelandet ist:
+
+| Quelle auf green-gard.de | Ziel in dieser Seite |
+|---|---|
+| `/learningcenter` — 139 Fragen und Antworten | `data/faq.json`, gerendert auf `/learning-center` mit Rubrikfilter, Volltextsuche und FAQPage-Schema. Wortlaut 1:1. |
+| `/rainworks` | Eigene Route `/rainworks`, Wortlaut 1:1, plus Mitgliederkarte und Struktur-Diagramm |
+| `/team` | `data/team.json` und die Teamsektion auf `/warum-green-gard`, Porträts unter `public/team/` |
+| `/bewaesserung`, `/steuerung`, `/pumpentechnik`, `/beleuchtung`, `/maehroboter`, `/zubehoer` | `data/categories.json` (`intro`, `vorteile`, `themen`), sichtbar als Steckbrief auf `/produkte`, sobald eine Disziplin gewählt ist |
+| `/galabauer-installateure`, `/privatkunden`, `/fachhaendler` | `lib/audience.ts` → `vorteile`; die Landing zeigt über `AudienceVorteile` nur das, was für die gewählte Zielgruppe gilt |
+| `/training` | `data/schulungen.json` — Angebot, Zielgruppen, Inhalte und Preise |
+| `/service` und der Winterservice der Mähroboter-Seite | `lib/services.ts`, gerendert auf `/beratung` |
+| `/planungstool` | `lib/planungspakete.ts` — Ausstattungsstufen Bronze/Silber/Gold und die Planungsgebühr |
+| `/hunter`, `/rainbird`, `/inlite`, `/kress` und die Herstellerliste | `lib/marken.ts` — neu geschrieben statt Herstellerbroschüre kopiert, Fakten übernommen |
+| Startseite: Kundenstimmen und Kennzahlen | `data/testimonials.json`, `components/Stats.tsx` |
+| Learning Center: Öffnungszeiten, Lieferzeit, Zahlungsregel | `lib/contact.ts` → `OEFFNUNG`, `LIEFERUNG`, `AUSFUEHRUNG`; sichtbar im Footer und auf `/profi` |
+
+Beim Übertragen korrigiert:
+
+- **„Kostenlose Systemplanung"** stand an sechs Stellen. Laut Learning Center
+  kostet die Planung 120 € und wird mit dem Material verrechnet. Die Seite
+  nennt jetzt beides, statt eine Zusage zu machen, die das erste Angebot bricht.
+- **„Auf Wunsch installiert"** in den Seiten-Metadaten. Green Gard ist
+  Handelshaus ohne eigene Monteure und vermittelt Fachbetriebe.
+- **Lieferung „am selben Tag"** auf `/profi` — real sind 1 – 3 Werktage.
+- **Rechnungskauf „für etablierte Betriebe"** — real ist: erste Bestellung per
+  Vorkasse, danach auf Rechnung.
+- **Erfundene Referenzbetriebe** auf `/profi` und ein Demo-Konto, das den Namen
+  eines echten Bewertungsschreibers trug. Beides ersetzt.
+- **Lagerverkaufszeiten** fehlten ganz. Telefon und Lager haben
+  unterschiedliche Zeiten, dazu die Samstagsöffnung in der Hauptsaison.

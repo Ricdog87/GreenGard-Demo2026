@@ -1,10 +1,28 @@
 [
   {
+    "_comment": "Die Felder intro, vorteile und themen sind von den Kategorieseiten auf green-gard.de übernommen (abgerufen 03.08.2026): 'Unsere Expertise - Ihre Vorteile' sowie die Themenblöcke darunter. Wortlaut leicht geglättet, Aussage unverändert. manifest/blurb/abPreis bleiben unsere Fassung für die Übersicht. Für Pool führt die Kundenseite keine Inhalte — dort steht unser Text.",
     "slug": "bewaesserung",
     "name": "Bewässerung",
     "roman": "I",
     "manifest": "Sattes Grün, automatisch.",
     "blurb": "Versenkregner, Tropfschläuche und Sprühdüsen von Rainbird, Hunter, Netafim und Rain.",
+    "intro": "Bewässerungsplanung und Beratung — lassen Sie Ihre Grünanlagen und Hausgärten professionell bewässern.",
+    "vorteile": [
+      "Intelligente Systeme, die mit Wetterdaten arbeiten",
+      "Markenhersteller: Rainbird, Hunter, Netafim",
+      "Spezialisten, die Ihnen helfen, das richtige System zusammenzustellen",
+      "Ware auf dem neuesten Stand der Technik"
+    ],
+    "themen": [
+      {
+        "title": "Rasenbewässerung",
+        "text": "Mit den passenden Regnern bewässern Sie Ihren Rasen gleichmäßig. Im Sortiment ist für jede Fläche der richtige Regner — ob Hausgarten oder Sportplatz."
+      },
+      {
+        "title": "Tropfbewässerung",
+        "text": "Beete, Hecken und Hochbeete lassen sich gezielt versorgen. Das Tropfrohr wird je nach Typ ober- oder unterirdisch verlegt."
+      }
+    ],
     "abPreis": 12.9,
     "image": "/img/cat/bewaesserung.svg"
   },
@@ -14,6 +32,27 @@
     "roman": "II",
     "manifest": "Ihr Garten denkt mit.",
     "blurb": "Smarte Steuerungen von Hunter und Rainbird — mit App, Wetterdaten und Zonenprogrammen.",
+    "intro": "Bewässerungsanlagen einfach steuern — behalten Sie immer und überall den Überblick.",
+    "vorteile": [
+      "Zuverlässig bewässern, auch bei Stromausfall",
+      "Steuergeräte, die sich praktisch überall installieren lassen",
+      "Wasserdichtes Gehäuse: lange Lebensdauer auch im Ventilkasten",
+      "Akku per USB aufladbar, hält eine ganze Beregnungssaison"
+    ],
+    "themen": [
+      {
+        "title": "230V-Steuerung",
+        "text": "Bewährt und zuverlässig, fest installiert im Innen- oder Außenbereich. Einfache Bedienung, viele Einstell- und Erweiterungsmöglichkeiten — vom kleinen Hausgarten bis zum Fußballfeld."
+      },
+      {
+        "title": "9V-Steuerung",
+        "text": "Batteriebetrieben für Gärten ohne Wechselstromversorgung. Praktisch überall installierbar, die Batterien halten in der Regel eine Beregnungssaison."
+      },
+      {
+        "title": "Digitale Wasseruhr",
+        "text": "Batteriebetriebene Wassertimer für eine oder zwei Stationen. Per App über Bluetooth steuerbar — statt zeitintensiv mit dem Gartenschlauch."
+      }
+    ],
     "abPreis": 119,
     "image": "/img/cat/steuerung.svg"
   },
@@ -23,6 +62,28 @@
     "roman": "III",
     "manifest": "Druck, wo er gebraucht wird.",
     "blurb": "Hauswasserwerke, Brunnen- und Tauchpumpen von Pedrollo, Speck und Grundfos.",
+    "intro": "Pumpentechnik und Lösungen für die Wasserversorgung Ihres Grüns.",
+    "vorteile": [
+      "Installationsbetriebe begleiten wir von der Planung bis zur Ausführung",
+      "Beratung zum Einsatz der richtigen Pumpe samt Systemlösung",
+      "Hilfestellung und Tipps bei der Umsetzung Ihres Vorhabens",
+      "Privatkunden vermitteln wir auf Wunsch professionelle Installationsbetriebe",
+      "Zusammenarbeit mit Grundfos und Pedrollo"
+    ],
+    "themen": [
+      {
+        "title": "Trinkwasser",
+        "text": "Trinkwasser ist zu kostbar, um es zu verschwenden. Wir liefern Systemtrennungen nach den anerkannten Regeln der Technik (DIN 1988, DIN EN 1717) — auch nachträglich installierbar. Bei Neubauten lohnt es sich, die Trennung samt ausreichend dimensionierter Außenleitung gleich mitzuplanen."
+      },
+      {
+        "title": "Grund- und Regenwasser",
+        "text": "Brunnenbohrung und Zisterne senken Trinkwasserverbrauch und Gebühren — teils auch Abwasser- und Versiegelungskosten. Unsere Pumpen fördern aus Brunnen, Regenwassertanks und Zisternen und schalten bei Wassermangel automatisch ab, damit nichts beschädigt wird."
+      },
+      {
+        "title": "Das richtige System",
+        "text": "Von der Beratung über die Pumpenauswahl bis zur Umsetzung. Privatkunden vermitteln wir bei Bedarf Installationsbetriebe und Brunnenbohrer aus der Region."
+      }
+    ],
     "abPreis": 219,
     "image": "/img/cat/pumpentechnik.svg"
   },
@@ -32,6 +93,22 @@
     "roman": "IV",
     "manifest": "Der Auftritt nach Sonnenuntergang.",
     "blurb": "12V-Outdoor-Beleuchtung von In-Lite — sicher, sparsam und blendfrei.",
+    "intro": "Gartenbeleuchtung und Beratung — wir beleuchten Ihren Garten mit aktueller Technik.",
+    "vorteile": [
+      "Energiesparende Beleuchtung durch LED-Technik",
+      "Im Dunkeln gefahrlos durch den Garten",
+      "Technik auf dem neuesten Stand"
+    ],
+    "themen": [
+      {
+        "title": "Energiesparend beleuchten",
+        "text": "LED-Gartenleuchten kommen mit sehr wenig Strom aus und erreichen dabei hohe Leuchtkraft. Über Schalter oder Zeitschaltuhren bestimmen Sie jederzeit selbst, wie viel Licht im Garten laufen soll."
+      },
+      {
+        "title": "Sicherheit im Garten",
+        "text": "Vor allem Wege brauchen sorgfältiges Licht, damit der Garten auch im Dunkeln gefahrlos begehbar ist. Hell erleuchtete Grundstücke werden von Einbrechern eher gemieden; Bewegungsmelder steuern die Leuchten bei Bedarf."
+      }
+    ],
     "abPreis": 39,
     "image": "/img/cat/beleuchtung.svg"
   },
@@ -41,6 +118,25 @@
     "roman": "V",
     "manifest": "Gemäht, bevor Sie aufwachen.",
     "blurb": "Kabellose Mähroboter von Kress und Husqvarna — für 500 bis 5.000 m².",
+    "intro": "Wir beantworten Ihre Fragen und finden den passenden Mähroboter für Ihre Grünfläche.",
+    "vorteile": [
+      "Rasiermesserscharfe Klingen für einen sauberen Schnitt",
+      "Programmierbarer Timer: der Mäher arbeitet, wann Sie wollen",
+      "Robust und wetterfest",
+      "Leise im Betrieb",
+      "Keine Emissionen",
+      "Geringer Energieverbrauch"
+    ],
+    "themen": [
+      {
+        "title": "Mähroboter sparen Zeit",
+        "text": "Der Mähroboter arbeitet bei Tag und Nacht, bei Regen und Sonnenschein. Während Sie die gewonnene Zeit nutzen, entsteht ein gleichmäßig gemähter Rasen."
+      },
+      {
+        "title": "Wir beraten Sie gerne",
+        "text": "Klein und kompakt oder auf große Grundstücke ausgelegt — welche Anforderungen Sie auch haben, unsere Modelle bieten das Paket aus Leistung, Komfort und Innovation."
+      }
+    ],
     "abPreis": 899,
     "image": "/img/cat/maehroboter.svg"
   },
@@ -50,6 +146,13 @@
     "roman": "VI",
     "manifest": "Klares Wasser, ohne Aufwand.",
     "blurb": "Wasserpflege von Bayrol und autonome Poolroboter von Beatbot — klares Wasser ohne Aufwand.",
+    "intro": "Wasserpflege, die planbar bleibt — und nicht zum Hobby wird.",
+    "vorteile": [
+      "Poolchemie von Bayrol: Chlor, pH-Regulierung, Messtechnik",
+      "Kabellose Poolroboter von Beatbot",
+      "Beratung zur passenden Dosierung und Steuerung"
+    ],
+    "themen": [],
     "abPreis": 15.9,
     "image": "/img/cat/pool.svg"
   },
@@ -59,6 +162,16 @@
     "roman": "VII",
     "manifest": "Die Technik hinter der Technik.",
     "blurb": "Magnetventile, Rohre, Verbinder, Kabel und Erdkabel — passend zu allen Systemen.",
+    "intro": "Alles, was an Zubehör für Beregnungsanlagen im privaten, gewerblichen und landwirtschaftlichen Einsatz gebraucht wird.",
+    "vorteile": [
+      "Ventilboxen in verschiedenen Ausführungen und Größen",
+      "Steuerkabel",
+      "Rohre und Fittinge",
+      "Zubehör für Versenkdüsen und Regner",
+      "Wasserzapfstellen und Werkzeuge",
+      "Gewinde, Kupplungen und Filter"
+    ],
+    "themen": [],
     "abPreis": 2.9,
     "image": "/img/cat/zubehoer.svg"
   }
