@@ -7,7 +7,7 @@
     "shortDesc": "Robuster Getrieberegner mit einstellbarem Sektor und Reichweite 5,2–14 m.",
     "longDesc": "Der Hunter I-20 ist der bewährte Profi-Standard für mittelgroße Rasenflächen. Selbstreinigender Filter, einstellbarer Sektor von 50° bis 360° und ausziehbare Düse. Werkzeuglose Sektoreinstellung über Schraubendreher.",
     "netPrice": 27.5,
-    "image": "/img/prod/bewaesserung.svg",
+    "image": "/img/foto/produkt/hunter-i-20-versenkregner.jpg",
     "stock": 124,
     "bestseller": true,
     "specs": {
@@ -25,7 +25,7 @@
     "shortDesc": "Getrieberegner mit Druckausgleich, ideal für unregelmäßige Wasserdrücke.",
     "longDesc": "Mit PC-Druckausgleich liefert der Rainbird 3504-PC auch bei wechselndem Druck eine konstante Wurfweite. Ideal für GaLaBau-Anwendungen mit langen Leitungswegen.",
     "netPrice": 31.9,
-    "image": "/img/prod/bewaesserung.svg",
+    "image": "/img/foto/produkt/rainbird-3504-pc.jpg",
     "stock": 86,
     "specs": {
       "Reichweite": "6,7 – 10,7 m",
@@ -41,7 +41,7 @@
     "shortDesc": "Druckkompensierender Tropfschlauch mit Rückflussverhinderer, 100 m Rolle.",
     "longDesc": "Der Profi-Tropfschlauch für Beete, Hecken und Hochbeete. Druckkompensiert für gleichmäßige Wasserabgabe auf jeder Länge. Mit integriertem Check-Valve gegen Nachtropfen.",
     "netPrice": 119,
-    "image": "/img/prod/bewaesserung.svg",
+    "image": "/img/foto/produkt/netafim-tropfschlauch-techline.jpg",
     "stock": 42,
     "bestseller": true,
     "specs": {
@@ -59,7 +59,7 @@
     "shortDesc": "Kompakter Sprühdüsenversenker mit MP-Rotator-kompatibler Düsenaufnahme.",
     "longDesc": "Für kleinere Rasenflächen, Beetränder und schwer zugängliche Bereiche. Wurfhöhe 100 mm, kompatibel mit allen gängigen MP-Rotator-Düsen.",
     "netPrice": 12.9,
-    "image": "/img/prod/bewaesserung.svg",
+    "image": "/img/foto/produkt/rain-pop-up-spruehduese.jpg",
     "stock": 230,
     "specs": {
       "Wurfhöhe": "100 mm",
@@ -75,7 +75,7 @@
     "shortDesc": "Wassersparende Mehrstrahldüse mit -30% Verbrauch gegenüber Standard.",
     "longDesc": "Die MP Rotator Düse liefert große Tropfen statt Sprühnebel — windstabil und mit deutlich geringerer Niederschlagsrate. Auf jeden Standard-Sprühkörper aufschraubbar.",
     "netPrice": 14.5,
-    "image": "/img/prod/bewaesserung.svg",
+    "image": "/img/foto/produkt/hunter-mp-rotator.jpg",
     "stock": 156,
     "specs": {
       "Reichweite": "7,0 – 9,1 m",
@@ -90,7 +90,7 @@
     "shortDesc": "Outdoor-Steuergerät mit 6 Zonen, WiFi-fähig über LNK-Modul.",
     "longDesc": "Das ESP-RZXe ist robust, einfach bedienbar und über das optionale LNK WiFi-Modul vollständig App-steuerbar. Mit Sensor-Eingang, Manual-Zone-Funktion und 3 unabhängigen Programmen.",
     "netPrice": 169,
-    "image": "/img/prod/steuerung.svg",
+    "image": "/img/foto/produkt/rainbird-esp-rzxe-6.jpg",
     "stock": 38,
     "bestseller": true,
     "specs": {
@@ -108,7 +108,7 @@
     "shortDesc": "Cloud-Steuergerät mit Wetter-Intelligenz und Verbrauchs-Reporting.",
     "longDesc": "Hydrawise reduziert Wasserverbrauch durch Wetter-API automatisch um bis zu 50%. App-Steuerung, Push-Alarme, Multi-User-Zugriff. Ideal für Profis, die Anlagen ihrer Kunden remote managen.",
     "netPrice": 389,
-    "image": "/img/prod/steuerung.svg",
+    "image": "/img/foto/produkt/hunter-hydrawise-hc-12.jpg",
     "stock": 22,
     "bestseller": true,
     "specs": {
@@ -126,7 +126,7 @@
     "shortDesc": "Modulares Steuergerät, kompatibel mit Hydrawise-Modul für Smart-Upgrade.",
     "longDesc": "Robustes Outdoor-Steuergerät, das später mit Hydrawise-Modul zum Smart Controller wird. Solide Lösung für Bauträger und Anlagen, die später erweitert werden sollen.",
     "netPrice": 219,
-    "image": "/img/prod/steuerung.svg",
+    "image": "/img/foto/produkt/hunter-x2-elite.jpg",
     "stock": 16,
     "specs": {
       "Zonen": "8",
@@ -142,7 +142,7 @@
     "shortDesc": "Selbstansaugende Kreiselpumpe für Zisterne, Brunnen und Hauswasserwerk.",
     "longDesc": "Italienische Profi-Pumpe mit hoher Saugfähigkeit und leiser Laufruhe. Geeignet als Hauswasserwerk oder zur Bewässerung aus Zisterne und Brunnen.",
     "netPrice": 289,
-    "image": "/img/prod/pumpentechnik.svg",
+    "image": "/img/foto/produkt/pedrollo-pkm-60.jpg",
     "stock": 18,
     "bestseller": true,
     "specs": {
@@ -175,7 +175,7 @@
     "shortDesc": "Vollintegriertes Hauswasserwerk mit App-Steuerung und Trockenlaufschutz.",
     "longDesc": "Komplettlösung mit Frequenzumformer für konstanten Druck. Leiser Betrieb, App-Steuerung, Trockenlaufschutz. Top-Empfehlung für anspruchsvolle Privatkunden.",
     "netPrice": 949,
-    "image": "/img/prod/pumpentechnik.svg",
+    "image": "/img/foto/produkt/grundfos-scala-1.jpg",
     "stock": 4,
     "specs": {
       "Förderhöhe": "max. 45 m",
@@ -191,7 +191,7 @@
     "shortDesc": "Tauchpumpe für Zisterne mit Schwimmerschalter und Edelstahlgehäuse.",
     "longDesc": "Zuverlässige Tauchpumpe für Klar- und Schmutzwasser, ideal für Zisterneneinsatz. Mit automatischer Niveauregelung.",
     "netPrice": 219,
-    "image": "/img/prod/pumpentechnik.svg",
+    "image": "/img/foto/produkt/pedrollo-top-2.jpg",
     "stock": 23,
     "specs": {
       "Fördermenge": "max. 200 l/min",
@@ -206,7 +206,7 @@
     "shortDesc": "Schlanke Wegeleuchte aus Aluminium, blendfrei mit warmweißem Licht.",
     "longDesc": "Premium 12V-Outdoor-Beleuchtung. Steckersystem ohne Elektriker, blendfreies warmweißes Licht, hochwertige Aluminium-Verarbeitung. 5 Jahre Garantie.",
     "netPrice": 89,
-    "image": "/img/prod/beleuchtung.svg",
+    "image": "/img/foto/produkt/in-lite-fusion.jpg",
     "stock": 64,
     "specs": {
       "Spannung": "12V",
@@ -223,7 +223,7 @@
     "shortDesc": "Kompakter Erdspieß-Spot für Pflanzen, Bäume und Fassaden.",
     "longDesc": "Klein, präzise, leistungsstark. Perfekt zur Akzentbeleuchtung von Skulpturen, Bäumen und Hauswänden. Mit drehbarem Kopf.",
     "netPrice": 39,
-    "image": "/img/prod/beleuchtung.svg",
+    "image": "/img/foto/produkt/in-lite-mini-scope.jpg",
     "stock": 128,
     "specs": {
       "Spannung": "12V",
@@ -239,7 +239,7 @@
     "shortDesc": "Komplett-Startset: 4 Leuchten, Trafo, Kabel und App-Steuerung.",
     "longDesc": "Alles dabei für den Einstieg: 4 Leuchten, 50 W Smart-Trafo mit App-Steuerung, 10 m Kabel und Verbinder. In 30 Minuten installiert.",
     "netPrice": 449,
-    "image": "/img/prod/beleuchtung.svg",
+    "image": "/img/foto/produkt/in-lite-startset.jpg",
     "stock": 19,
     "bestseller": true,
     "specs": {
@@ -255,7 +255,7 @@
     "shortDesc": "Robotik-Mäher mit RTK-Navigation, ohne Begrenzungsdraht.",
     "longDesc": "Die nächste Generation Mähroboter. RTK-Navigation arbeitet zentimetergenau ohne Begrenzungsdraht. Mäht auch komplexe Gärten mit Inseln und schmalen Passagen. Diebstahlschutz mit GPS und SIM-Karte.",
     "netPrice": 1290,
-    "image": "/img/prod/maehroboter.svg",
+    "image": "/img/foto/produkt/kress-kr136e.jpg",
     "stock": 9,
     "bestseller": true,
     "specs": {
@@ -274,7 +274,7 @@
     "shortDesc": "Großes Modell der RTK-Serie für Flächen bis 2.200 m².",
     "longDesc": "Wie der KR136E, aber für größere Gärten. Mit höherer Akkulaufzeit und schnellerer Ladung.",
     "netPrice": 1690,
-    "image": "/img/prod/maehroboter.svg",
+    "image": "/img/foto/produkt/kress-kr173e.jpg",
     "stock": 5,
     "specs": {
       "Fläche": "bis 2.200 m²",
@@ -289,7 +289,7 @@
     "shortDesc": "Premium-Mähroboter für 3.200 m² mit EPOS-Satellitennavigation.",
     "longDesc": "Husqvarnas Flaggschiff. EPOS-Technologie navigiert satellitengestützt — keine Begrenzungsdraht-Verlegung mehr nötig. App-Steuerung, virtuelle Zonen, Diebstahlschutz.",
     "netPrice": 2890,
-    "image": "/img/prod/maehroboter.svg",
+    "image": "/img/foto/produkt/husqvarna-430x-nera.jpg",
     "stock": 3,
     "specs": {
       "Fläche": "bis 3.200 m²",
@@ -305,7 +305,7 @@
     "shortDesc": "Einsteigermodell für kleine Gärten bis 600 m².",
     "longDesc": "Kompakter Mähroboter für kleinere, klar abgegrenzte Rasenflächen. Begrenzungsdraht erforderlich.",
     "netPrice": 899,
-    "image": "/img/prod/maehroboter.svg",
+    "image": "/img/foto/produkt/husqvarna-305.jpg",
     "stock": 14,
     "specs": {
       "Fläche": "bis 600 m²"
@@ -433,7 +433,7 @@
     "shortDesc": "Robustes 24V-AC-Magnetventil mit Durchflussregelung.",
     "longDesc": "Der Klassiker für Bewässerungssysteme. Mit Durchflussregelung, manueller Öffnung und 24V-Magnetspule. Lange Lebensdauer auch bei verschmutztem Wasser.",
     "netPrice": 29.9,
-    "image": "/img/prod/zubehoer.svg",
+    "image": "/img/foto/produkt/magnetventil-rainbird-100-dv.jpg",
     "stock": 312,
     "bestseller": true,
     "specs": {
@@ -450,7 +450,7 @@
     "shortDesc": "Stabiles Polyethylen-Rohr für Hauptleitungen, PN10.",
     "longDesc": "PE-Rohr für Bewässerungs-Hauptleitungen. UV-stabil, frostfest verlegbar, kompatibel mit Klemmverbindern aller Hersteller.",
     "netPrice": 79,
-    "image": "/img/prod/zubehoer.svg",
+    "image": "/img/foto/produkt/pe-rohr-25mm.jpg",
     "stock": 48,
     "specs": {
       "Durchmesser": "25 mm",
@@ -466,7 +466,7 @@
     "shortDesc": "Profi-Erdkabel für bis zu 6 Magnetventile + Common.",
     "longDesc": "Robustes Erdkabel zur direkten Verlegung im Boden. Für die Signalverdrahtung von Magnetventilen zwischen Steuergerät und Ventilbox.",
     "netPrice": 89,
-    "image": "/img/prod/zubehoer.svg",
+    "image": "/img/foto/produkt/kabel-erd-7-adrig.jpg",
     "stock": 27,
     "specs": {
       "Adern": "7 x 0,8 mm²",
@@ -481,7 +481,7 @@
     "shortDesc": "Sortimentbox mit 30 Klemmverbindern, T-Stücken und Endkappen.",
     "longDesc": "Alles, was man für eine 25-mm-Anlage braucht. Werkzeuglose Montage, dichtheitsgeprüft.",
     "netPrice": 49,
-    "image": "/img/prod/zubehoer.svg",
+    "image": "/img/foto/produkt/klemmverbinder-set.jpg",
     "stock": 73,
     "specs": {
       "Inhalt": "30-tlg.",
@@ -496,7 +496,7 @@
     "shortDesc": "Große Ventilbox für bis zu 6 Magnetventile, befahrbar.",
     "longDesc": "Robuste, befahrbare Ventilbox für die Aufnahme von bis zu 6 Magnetventilen. Mit Schraubdeckel und offenem Boden für die Drainage.",
     "netPrice": 39.9,
-    "image": "/img/prod/zubehoer.svg",
+    "image": "/img/foto/produkt/ventilbox-rainbird-vb-jumbo.jpg",
     "stock": 91,
     "specs": {
       "Maße": "60 x 43 x 30 cm",

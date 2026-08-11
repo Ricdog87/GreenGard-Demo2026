@@ -1,6 +1,6 @@
 [
   {
-    "_comment": "Die Felder intro, vorteile und themen sind von den Kategorieseiten auf green-gard.de übernommen (abgerufen 03.08.2026): 'Unsere Expertise - Ihre Vorteile' sowie die Themenblöcke darunter. Wortlaut leicht geglättet, Aussage unverändert. manifest/blurb/abPreis bleiben unsere Fassung für die Übersicht. Für Pool führt die Kundenseite keine Inhalte — dort steht unser Text.",
+    "_comment": "Die Felder intro, vorteile und themen sind von den Kategorieseiten auf green-gard.de übernommen (abgerufen 03.08.2026): 'Unsere Expertise - Ihre Vorteile' sowie die Themenblöcke darunter. Wortlaut leicht geglättet, Aussage unverändert. manifest/blurb/abPreis bleiben unsere Fassung für die Übersicht. Für Pool führt die Kundenseite keine Inhalte — dort steht unser Text. Die Disziplin-Bilder sind Fotos von green-gard.de; wo der Kunde keins hat (Pool), bleibt unsere Illustration.",
     "slug": "bewaesserung",
     "name": "Bewässerung",
     "roman": "I",
@@ -24,7 +24,7 @@
       }
     ],
     "abPreis": 12.9,
-    "image": "/img/cat/bewaesserung.svg"
+    "image": "/img/foto/disziplin/bewaesserung.jpg"
   },
   {
     "slug": "steuerung",
@@ -54,7 +54,7 @@
       }
     ],
     "abPreis": 119,
-    "image": "/img/cat/steuerung.svg"
+    "image": "/img/foto/disziplin/steuerung.jpg"
   },
   {
     "slug": "pumpentechnik",
@@ -85,7 +85,7 @@
       }
     ],
     "abPreis": 219,
-    "image": "/img/cat/pumpentechnik.svg"
+    "image": "/img/foto/disziplin/pumpentechnik.jpg"
   },
   {
     "slug": "beleuchtung",
@@ -110,7 +110,7 @@
       }
     ],
     "abPreis": 39,
-    "image": "/img/cat/beleuchtung.svg"
+    "image": "/img/foto/disziplin/beleuchtung.jpg"
   },
   {
     "slug": "maehroboter",
@@ -138,7 +138,7 @@
       }
     ],
     "abPreis": 899,
-    "image": "/img/cat/maehroboter.svg"
+    "image": "/img/foto/disziplin/maehroboter.jpg"
   },
   {
     "slug": "pool",
@@ -173,6 +173,6 @@
     ],
     "themen": [],
     "abPreis": 2.9,
-    "image": "/img/cat/zubehoer.svg"
+    "image": "/img/foto/disziplin/zubehoer.jpg"
   }
 ]

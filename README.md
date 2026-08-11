@@ -267,6 +267,9 @@ Seite eine Aufgabe hat. Was wo gelandet ist:
 | `/planungstool` | `lib/planungspakete.ts` — Ausstattungsstufen Bronze/Silber/Gold und die Planungsgebühr |
 | `/hunter`, `/rainbird`, `/inlite`, `/kress` und die Herstellerliste | `lib/marken.ts` — neu geschrieben statt Herstellerbroschüre kopiert, Fakten übernommen |
 | Startseite: Kundenstimmen und Kennzahlen | `data/testimonials.json`, `components/Stats.tsx` |
+| Fotos der Kategorieseiten | `public/img/foto/disziplin/` — sechs von sieben Disziplinen (Pool hat der Kunde nicht) |
+| Produktfreisteller aus Katalog- und Markenseiten | `public/img/foto/produkt/` — 23 von 31 Artikeln |
+| Partnerlogos der Startseite | `public/img/foto/marke/`, gerendert unter der Marken-Laufschrift |
 | Learning Center: Öffnungszeiten, Lieferzeit, Zahlungsregel | `lib/contact.ts` → `OEFFNUNG`, `LIEFERUNG`, `AUSFUEHRUNG`; sichtbar im Footer und auf `/profi` |
 
 Beim Übertragen korrigiert:
@@ -283,3 +286,22 @@ Beim Übertragen korrigiert:
   eines echten Bewertungsschreibers trug. Beides ersetzt.
 - **Lagerverkaufszeiten** fehlten ganz. Telefon und Lager haben
   unterschiedliche Zeiten, dazu die Samstagsöffnung in der Hauptsaison.
+
+### Bildbestand
+
+| Stelle | Echtes Kundenfoto | Weiterhin Illustration |
+|---|---|---|
+| Team | 6 Porträts + Gruppenbild | — |
+| Disziplinen | 6 (Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik, Zubehör) | Pool |
+| Produkte | 23 von 31 | Speck BADU, 2 × Beatbot, 5 × Bayrol |
+| Marken | 8 Partnerlogos | — |
+| Rainworks | Karte und Struktur-Diagramm | — |
+| Starter Kits, Entry-Fenster | — | alle |
+
+Die Logodateien des Kunden haben keinen Alphakanal. Statt gegen den weißen
+Grund zu arbeiten, sitzen sie bewusst in gleich großen weißen Kacheln — das
+wirkt ruhiger als acht unterschiedlich große Freisteller.
+
+Bewertungen tragen bewusst **kein** Porträt: die Namen stammen von echten
+Personen, ein Stockfoto daneben wäre eine Behauptung. Die Bühne zeigt Initialen,
+das Feld `avatar` bleibt für echte Fotos vorbereitet.
