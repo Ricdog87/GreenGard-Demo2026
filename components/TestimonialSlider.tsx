@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials } from '@/lib/data';
 import { Eyebrow } from '@/components/Eyebrow';
@@ -29,6 +29,16 @@ const REVIEW_AVERAGE = (
 )
   .toFixed(1)
   .replace('.', ',');
+
+/** „Jens Kahnert-Radon“ → „JK“. */
+function initialen(name: string): string {
+  return name
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+}
 
 function Stars({ rating, className }: { rating: number; className?: string }) {
   return (
@@ -117,14 +127,17 @@ export function TestimonialSlider() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.3 }}
-                  className="relative aspect-[4/5] overflow-hidden bg-forest"
+                  className="relative grid aspect-[4/5] place-items-center overflow-hidden border border-linen/15 bg-forest"
                 >
-                  <Image
-                    src={t.avatar}
-                    alt={t.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 25vw"
-                    className="object-cover grayscale"
+                  {/* Bewusst kein Foto: die Namen sind echt, Stockfotos fremder
+                      Personen daneben wären eine Behauptung. Initialen bis der
+                      Bewertungs-Feed live angebunden ist. */}
+                  <span aria-hidden className="font-display text-7xl tracking-tightest text-linen/25">
+                    {initialen(t.name)}
+                  </span>
+                  <Quote
+                    aria-hidden
+                    className="absolute bottom-5 right-5 h-6 w-6 text-copper/50"
                   />
                 </motion.div>
               </AnimatePresence>

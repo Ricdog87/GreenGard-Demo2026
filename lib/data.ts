@@ -63,7 +63,8 @@ export interface Testimonial {
   quote: string;
   rating: number;
   date: string;
-  avatar: string;
+  /** Bewusst optional: zu echten Namen gehört entweder ein echtes Foto oder keins. */
+  avatar?: string;
 }
 
 export interface TeamMember {
