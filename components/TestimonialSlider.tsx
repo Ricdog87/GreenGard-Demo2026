@@ -55,10 +55,17 @@ function Stars({ rating, className }: { rating: number; className?: string }) {
 export function TestimonialSlider() {
   const [filter, setFilter] = useState<Filter>('alle');
   const [i, setI] = useState(0);
-  // Meeting 12.08.2026: die Stimmen sollen automatisch rotieren. Pausiert,
-  // solange der Zeiger über der Sektion steht, und respektiert
-  // prefers-reduced-motion — dann blättert nur noch der Pfeil.
+  // Meeting 12.08.2026 + Präzisierung: die Stimmen rotieren IMMER von selbst.
+  // Keine Hover-Pause — die Sektion ist viewportbreit, der Zeiger liegt beim
+  // Lesen fast zwangsläufig darauf, und die Rotation stünde dauernd still.
+  // Pausiert wird nur, solange die Tastatur in der Sektion arbeitet (Fokus).
+  // prefers-reduced-motion schaltet nicht die Rotation ab, sondern nur die
+  // Übergangsanimation — der Inhalt wechselt dann ohne Bewegung.
   const [pausiert, setPausiert] = useState(false);
+  const [ohneBewegung, setOhneBewegung] = useState(false);
+  useEffect(() => {
+    setOhneBewegung(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, []);
 
   const list = useMemo(() => {
     if (filter === 'alle') return testimonials;
@@ -76,7 +83,6 @@ export function TestimonialSlider() {
 
   useEffect(() => {
     if (pausiert || len < 2) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => setI((cur) => (cur + 1) % len), 6000);
     return () => window.clearInterval(timer);
   }, [pausiert, len]);
@@ -84,10 +90,6 @@ export function TestimonialSlider() {
   return (
     <section
       className="bg-bark py-16 text-linen md:py-20"
-      // Nur die Maus pausiert: Auf Touch-Geräten gibt es kein "Verlassen" —
-      // ein Tipp würde die Rotation sonst dauerhaft stoppen.
-      onPointerEnter={(e) => e.pointerType === 'mouse' && setPausiert(true)}
-      onPointerLeave={(e) => e.pointerType === 'mouse' && setPausiert(false)}
       onFocusCapture={() => setPausiert(true)}
       onBlurCapture={() => setPausiert(false)}
     >
@@ -144,7 +146,7 @@ export function TestimonialSlider() {
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: ohneBewegung ? 0 : 0.3 }}
                   className="relative grid aspect-[4/5] place-items-center overflow-hidden border border-linen/15 bg-forest"
                 >
                   {/* Bewusst kein Foto: die Namen sind echt, Stockfotos fremder
@@ -168,7 +170,7 @@ export function TestimonialSlider() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
-                  transition={{ duration: 0.35 }}
+                  transition={{ duration: ohneBewegung ? 0 : 0.35 }}
                   className="font-display text-balance text-2xl italic leading-[1.15] md:text-4xl lg:text-5xl"
                 >
                   „{t.quote}“
