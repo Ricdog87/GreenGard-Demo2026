@@ -83,7 +83,7 @@ export function TestimonialSlider() {
 
   return (
     <section
-      className="bg-bark py-28 text-linen md:py-36"
+      className="bg-bark py-16 text-linen md:py-20"
       // Nur die Maus pausiert: Auf Touch-Geräten gibt es kein "Verlassen" —
       // ein Tipp würde die Rotation sonst dauerhaft stoppen.
       onPointerEnter={(e) => e.pointerType === 'mouse' && setPausiert(true)}
@@ -136,7 +136,7 @@ export function TestimonialSlider() {
         </div>
 
         {t ? (
-          <div data-reveal className="mt-16 grid items-center gap-10 lg:grid-cols-12">
+          <div data-reveal className="mt-10 grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-3">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -175,7 +175,7 @@ export function TestimonialSlider() {
                 </motion.blockquote>
               </AnimatePresence>
 
-              <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <Stars rating={t.rating} className="mb-3" />
                   <p className="font-display text-xl tracking-tight">{t.name}</p>
