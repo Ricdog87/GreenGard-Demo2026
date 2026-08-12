@@ -9,6 +9,7 @@
 import faqJson from '@/data/faq.json';
 import { products, categories } from '@/lib/data';
 import { CONTACT, OEFFNUNG, LIEFERUNG, AUSFUEHRUNG } from '@/lib/contact';
+import { SHOP_URL } from '@/lib/links';
 import { PLANUNGSGEBUEHR, PLANUNGSDAUER } from '@/lib/planungspakete';
 import { materialkostenNetto, ueberListe, QUELLE_ZUSCHLAG } from '@/lib/preise';
 
@@ -22,7 +23,9 @@ export interface ProduktTreffer {
   art: 'produkt';
   name: string;
   brand: string;
+  /** Führt in den Shop — Produktdetails leben dort (Meeting 12.08.2026). */
   href: string;
+  extern: true;
   score: number;
 }
 export interface SeitenTreffer {
@@ -132,10 +135,10 @@ const SEITEN: { label: string; note: string; href: string; stichworte: string }[
   { label: 'Beratungstermin buchen', note: '30 Minuten, kostenfrei', href: '/beratung', stichworte: 'beratung termin gespraech besuchen vorbeikommen video beraten' },
   { label: 'Schulungen ansehen', note: 'Fachschulung, Expertentraining, Inhouse', href: '/beratung#schulungen', stichworte: 'schulung training kurs fortbildung expertentraining lernen' },
   { label: 'Learning Center', note: '139 Antworten und Videos', href: '/learning-center', stichworte: 'learning center video anleitung hilfe wissen fragen' },
-  { label: 'Katalog blättern', note: 'Katalog 2026 digital', href: '/katalog', stichworte: 'katalog blaetterkatalog preisliste sortiment' },
-  { label: 'Sortiment ansehen', note: '31 Artikel mit Filter', href: '/produkte', stichworte: 'produkte sortiment artikel kaufen shop bestellen' },
+  { label: 'Katalog blättern', note: 'Blätterausgabe und Download', href: '/katalog', stichworte: 'katalog blaetterkatalog preisliste sortiment' },
+  { label: 'Sortiment ansehen', note: 'Überblick, Preise im Shop', href: '/produkte', stichworte: 'produkte sortiment artikel kaufen shop bestellen' },
   { label: 'Konditionen für Profis', note: 'GaLaBau, Architekten, Händler', href: '/profi', stichworte: 'profi konditionen netto galabau haendler rechnung gewerblich partner' },
-  { label: 'Mein Konto', note: 'EK-Preise, Bestellungen, Projekte', href: '/konto', stichworte: 'konto login anmelden dashboard ek preis bestellung projekt zugang' },
+  { label: 'Mein Konto', note: 'Bestellungen und Projekte', href: '/konto', stichworte: 'konto login anmelden dashboard bestellung projekt zugang' },
   { label: 'Warum Green-Gard', note: 'Team, Geschichte, Rainworks', href: '/warum-green-gard', stichworte: 'team ueber uns geschichte wer seid ihr ansprechpartner mitarbeiter' },
 ];
 
@@ -160,10 +163,10 @@ export const FAKTEN: Fakt[] = [
     titel: 'Öffnungszeiten',
     text: [
       `Telefonisch: ${OEFFNUNG.telefon}.`,
-      `Lagerverkauf: ${OEFFNUNG.lager}. ${OEFFNUNG.samstag}.`,
+      `Lagerverkauf: ${OEFFNUNG.lager}.`,
       OEFFNUNG.anfahrt,
     ],
-    ausloeser: 'offen geoffnet offnungszeit offnungszeiten samstag wochenende uhrzeit erreichbar lager abholen abholung parken anfahrt adresse',
+    ausloeser: 'offen geoffnet offnungszeit offnungszeiten samstag wochenende uhrzeit erreichbar lager abholen abholung parken anfahrt adresse',  // 'samstag' bleibt Auslöser — die Antwort nennt die gültigen Mo-Fr-Zeiten
   },
   {
     id: 'lieferung',
@@ -238,7 +241,8 @@ export function suche(query: string): Treffer[] {
         art: 'produkt',
         name: p.name,
         brand: `${p.brand} · ${KAT_NAME.get(p.category) ?? p.category}`,
-        href: `/produkte/${p.slug}`,
+        href: SHOP_URL,
+        extern: true,
         score,
       });
   }
@@ -308,6 +312,7 @@ export interface RoboterEmpfehlung {
   slug: string;
   name: string;
   grund: string;
+  /** Führt in den Shop — Produktdetails leben dort (Meeting 12.08.2026). */
   href: string;
 }
 
@@ -326,25 +331,25 @@ export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): Rob
       slug: 'husqvarna-305',
       name: 'Husqvarna Automower 305',
       grund: 'Der bewährte Einstieg für kompakte Gärten bis 600 m² — leise und zuverlässig.',
-      href: '/produkte/husqvarna-305',
+      href: SHOP_URL,
     },
     'kress-kr136e': {
       slug: 'kress-kr136e',
       name: 'Kress KR136E',
       grund: 'RTK-Satellitennavigation ohne Begrenzungsdraht, bis 1.500 m², 45 % Steigung, 53 dB.',
-      href: '/produkte/kress-kr136e',
+      href: SHOP_URL,
     },
     'kress-kr173e': {
       slug: 'kress-kr173e',
       name: 'Kress KR173E',
       grund: 'Wie der KR136E, ausgelegt bis 2.200 m² — für große Flächen ohne Kabelverlegung.',
-      href: '/produkte/kress-kr173e',
+      href: SHOP_URL,
     },
     'husqvarna-430x-nera': {
       slug: 'husqvarna-430x-nera',
       name: 'Husqvarna Automower 430X NERA',
       grund: 'EPOS-Satellitennavigation ohne Draht, bis 3.200 m² und 45 % Steigung.',
-      href: '/produkte/husqvarna-430x-nera',
+      href: SHOP_URL,
     },
   };
 

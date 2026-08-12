@@ -119,19 +119,30 @@ function TrefferListe({ treffer }: { treffer: Treffer[] }) {
 
       {links.length > 0 && (
         <div className="space-y-1.5">
-          {links.map((t) => (
-            <Link
-              key={t.art === 'produkt' ? t.href : `${t.art}-${(t as { href: string }).href}`}
-              href={(t as { href: string }).href}
-              data-cursor="hover"
-              className="flex items-baseline justify-between gap-3 border border-mist px-3.5 py-2.5 text-sm transition-colors hover:border-ink/40"
-            >
-              <span className="font-medium">{t.art === 'produkt' ? t.name : (t as { label: string }).label}</span>
-              <span className="font-mono shrink-0 text-[10px] uppercase tracking-[0.14em] text-ink/50">
-                {t.art === 'produkt' ? (t as { brand: string }).brand : (t as { note: string }).note}
-              </span>
-            </Link>
-          ))}
+          {links.map((t, i) => {
+            const klasse =
+              'flex items-baseline justify-between gap-3 border border-mist px-3.5 py-2.5 text-sm transition-colors hover:border-ink/40';
+            const inhalt = (
+              <>
+                <span className="font-medium">
+                  {t.art === 'produkt' ? t.name : (t as { label: string }).label}
+                </span>
+                <span className="font-mono shrink-0 text-[10px] uppercase tracking-[0.14em] text-ink/50">
+                  {t.art === 'produkt' ? `${(t as { brand: string }).brand} · Shop ↗` : (t as { note: string }).note}
+                </span>
+              </>
+            );
+            // Produkte führen in den Shop (Meeting 12.08.2026) — externe Links.
+            return t.art === 'produkt' ? (
+              <a key={`p-${t.name}`} href={t.href} target="_blank" rel="noopener noreferrer" data-cursor="hover" className={klasse}>
+                {inhalt}
+              </a>
+            ) : (
+              <Link key={`s-${(t as { href: string }).href}-${i}`} href={(t as { href: string }).href} data-cursor="hover" className={klasse}>
+                {inhalt}
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>
@@ -207,9 +218,11 @@ function RoboterFinder({ zurueck }: { zurueck: () => void }) {
           <p className="eyebrow mb-3">Unsere Empfehlung</p>
           <div className="space-y-2">
             {empfehlung.map((e, i) => (
-              <Link
+              <a
                 key={e.slug}
                 href={e.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-cursor="hover"
                 className={cn(
                   'block border px-4 py-3 transition-colors hover:border-ink/40',
@@ -225,7 +238,7 @@ function RoboterFinder({ zurueck }: { zurueck: () => void }) {
                   )}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-ink/70">{e.grund}</p>
-              </Link>
+              </a>
             ))}
           </div>
           <p className="mt-3 text-xs leading-relaxed text-ink/55">

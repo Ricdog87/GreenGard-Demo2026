@@ -58,7 +58,6 @@ export function Footer() {
                   Lagerverkauf
                 </dt>
                 <dd className="num">{OEFFNUNG.lager}</dd>
-                <dd className="num text-linen/55">{OEFFNUNG.samstag}</dd>
               </div>
             </dl>
             <p className="mt-4 text-[13px] leading-relaxed text-linen/55">{OEFFNUNG.anfahrt}</p>
@@ -75,7 +74,7 @@ export function Footer() {
               {categories.map((c) => (
                 <li key={c.slug}>
                   <Link
-                    href={`/produkte?cat=${c.slug}`}
+                    href={`/produkte#${c.slug}`}
                     data-cursor="hover"
                     className="transition-colors hover:text-bronze"
                   >

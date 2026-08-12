@@ -208,7 +208,7 @@ export function BewaesserungsRechner() {
                 </span>
               </div>
               <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-linen/50">
-                {priceLabel(mode)} · ohne Montage · Endpreis nach der Systemplanung
+                {priceLabel(mode)} · unverbindlicher Richtwert, kein Angebot · ohne Montage und Erdarbeiten
               </p>
             </div>
 
@@ -240,7 +240,7 @@ export function BewaesserungsRechner() {
               className="mt-8 border-t border-linen/15 pt-6"
             >
               <p className="eyebrow mb-3 text-linen/60 [&>span:first-child]:bg-linen/30">
-                Plan per Mail · kostenfrei
+                Plan per Mail
               </p>
               {sent ? (
                 <p className="text-sm text-bronze">Wir senden den Plan an {email}.</p>

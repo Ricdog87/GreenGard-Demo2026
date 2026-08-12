@@ -30,7 +30,7 @@ export function CategoryGrid() {
             return (
               <Link
                 key={c.slug}
-                href={`/produkte?cat=${c.slug}`}
+                href={`/produkte#${c.slug}`}
                 data-cursor="view"
                 data-reveal
                 className={cn('group block', isWide && 'sm:col-span-2')}
@@ -64,9 +64,7 @@ export function CategoryGrid() {
                   <span className="mt-1 font-mono text-xs">→</span>
                 </div>
                 <p className="mt-3 max-w-[42ch] text-sm text-ink/70">{c.blurb}</p>
-                <p className="num font-mono mt-3 text-[11px] uppercase tracking-[0.18em] text-ink/50">
-                  ab {c.abPreis.toFixed(2).replace('.', ',')} €
-                </p>
+                {/* Kein ab-Preis mehr — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
               </Link>
             );
           })}

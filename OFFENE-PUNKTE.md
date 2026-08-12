@@ -1,12 +1,17 @@
 # Offene Punkte — was noch von Green Gard kommen muss
 
-Stand: 03.08.2026 · Ansprechpartner: Jan Leifermann
+Stand: **12.08.2026, nach dem Meeting mit Jan** · Die Punkte aus dem Meeting sind unten eingearbeitet.
 
-Die Demo läuft vollständig mit Platzhaltern, wo echte Inhalte fehlen. Jede Zeile
-hier zeigt auf die Stelle im Code, an der der finale Inhalt eingesetzt wird —
-tauschen heißt in fast allen Fällen: eine Datei ersetzen, kein Umbau.
+## Aus dem Meeting vom 12.08.2026 — Jans Lieferungen
 
----
+| # | Punkt | Für |
+|---|---|---|
+| M1 | **Msoft-API prüfen** (offene API für Bestellungen/Rechnungen) | Bestellhistorie im Dashboard automatisch statt Demo-Daten |
+| M2 | **YouTube-Kanal-Link** mit den Trainingsvideos | Learning Center, Videos einbetten |
+| M3 | **Bestellbestätigungen (Alt-Daten)** bereitstellen | Historienanzeige für Pilotkunden |
+| M4 | **5–10 Pilotkunden** auswählen (gemeinsam) | VIP-Freischaltung, Feedback, Konditions-Zuweisung validieren |
+| M5 | **Social-Media-Links** (Instagram, LinkedIn) | Footer — aktuell Platzhalter |
+| M6 | **Fotos + Highlight-Infos** für die Sortimentpräsentation | /produkte-Schaufenster |
 
 ## A · Blockiert den Livegang
 
@@ -14,8 +19,8 @@ tauschen heißt in fast allen Fällen: eine Datei ersetzen, kein Umbau.
 |---|---|---|---|
 | A1 | **Shop-Adresse** | Der Menüpunkt „Shop" zeigt aktuell auf die Hauptdomain. Ohne echte URL läuft der Kaufweg ins Leere. | `lib/links.ts` → `SHOP_URL` |
 | A2 | **Logo als Vektor** (SVG oder AI/EPS) | Wir haben das Logo aus dem Bildmaterial nachgebaut. Für Druckschärfe auf Retina und im Footer brauchen wir die Originaldatei. | `public/logo-green-gard.svg` |
-| A3 | **Preise Starter Kits** | Die „ab"-Preise der fünf Kits sind geschätzt. Falsche Preise auf einer Live-Seite sind ein rechtliches Thema. | `data/starter-kits.json` → `abPreis` |
-| A4 | **Montagekosten** | Der Planungsrechner weist bisher nur Material aus (400 € + 2,50 €/m² aus eurer Liste). Ohne Montagesatz bleibt die Endsumme unvollständig. | `lib/preise.ts` |
+| A3 | ~~Preise Starter Kits~~ | **Hinfällig** (Meeting 12.08.2026): Die Website zeigt keine Produkt- und Paketpreise mehr — Preise pflegt allein der Shop. |
+| A4 | **Montagekosten** | Der Rechner nennt jetzt ausdrücklich einen *unverbindlichen Material-Richtwert* mit Disclaimer (Meeting 12.08.2026). Ein Montagesatz ist damit optional — falls gewünscht, liefert Jan den Satz. | `lib/preise.ts` |
 
 ## B · Inhalte
 
@@ -71,3 +76,11 @@ tauschen heißt in fast allen Fällen: eine Datei ersetzen, kein Umbau.
   erreichbar.
 - **Kein Produktverkauf über die Seite.** Der Warenkorb ist ausschließlich für
   Schulungen da, alles andere führt in den Shop.
+
+## Neu aus dem Meeting — noch offen auf unserer Seite
+
+| # | Punkt |
+|---|---|
+| R1 | **Office-365-Anbindung** für E-Mail-Empfang der Formulare — braucht Zugangsdaten/Setup von Green Gard (alternativ Resend, siehe C3). |
+| R2 | **CRM-/Lead-Tracking** (Interesse an Kategorien tracken, Abbruch-Mails): Konzept besprochen, Umsetzung nach Livegang und nur mit Datenschutz-Klärung. |
+| R3 | **Anreiz-System** (Geschenke/Vorteile ab Umsatzziel, z. B. 10.000 €): Idee von Jan fürs Dashboard — braucht die Msoft-Daten (M1) als Grundlage. |

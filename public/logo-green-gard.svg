@@ -15,9 +15,18 @@
     TODO: durch die Original-Vektordatei ersetzen, sobald sie vorliegt — die
     Buchstaben sind hier gesetzter Text, keine Pfade.
   -->
+  <!-- Meeting 12.08.2026: Bögen nebeneinander (Überlappung war ein Fehler) und
+       automatisch animiert — sie schwenken sanft wie ein Regner. Der <style>
+       bleibt isoliert, weil das SVG als <img> geladen wird. -->
+  <style>
+    .bogen { transform-origin: 380px 138px; animation: schwenk 7s ease-in-out infinite alternate; }
+    .bogen-hell { animation-delay: -3.5s; }
+    @keyframes schwenk { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+    @media (prefers-reduced-motion: reduce) { .bogen { animation: none; } }
+  </style>
   <g>
-    <path fill="#16A75B" d="M300 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
-    <path fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+    <path class="bogen bogen-hell" fill="#16A75B" d="M380 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
+    <path class="bogen" fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
   </g>
 
   <text x="10" y="248"

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getHighlightProducts } from '@/lib/data';
+import { SHOP_URL } from '@/lib/links';
 import { Eyebrow } from '@/components/Eyebrow';
-import { HighlightPrice } from '@/components/HighlightPrice';
 
 /**
  * Kuratierte Highlights. Reihenfolge und Auswahl kommen aus data/highlights.json —
@@ -28,7 +28,7 @@ export function Highlights() {
             data-cursor="hover"
             className="font-mono inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] hover:text-bronze"
           >
-            Alle Produkte <ArrowRight className="h-3 w-3" />
+            Das Sortiment <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
       </div>
@@ -43,8 +43,10 @@ export function Highlights() {
             key={p.slug}
             className="snap-item group w-[78vw] shrink-0 sm:w-[52vw] lg:w-auto"
           >
-            <Link
-              href={`/produkte/${p.slug}`}
+            <a
+              href={SHOP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="view"
               className="relative block aspect-[4/3] overflow-hidden bg-paper"
             >
@@ -58,18 +60,21 @@ export function Highlights() {
               <span className="font-mono absolute left-3 top-3 bg-bronze px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-linen">
                 Neu
               </span>
-            </Link>
+            </a>
             <div className="mt-5 flex items-start justify-between gap-4 border-t border-mist pt-4">
               <div>
                 <p className="eyebrow text-ink/50">{p.brand}</p>
                 <h3 className="font-display mt-1 text-xl leading-tight tracking-tight">
-                  <Link href={`/produkte/${p.slug}`} data-cursor="hover" className="hover:text-bronze">
+                  <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
                     {p.name}
-                  </Link>
+                  </a>
                 </h3>
-                <HighlightPrice netPrice={p.netPrice} />
+                {/* Kein Preis — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
+                <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                  Preis im Shop
+                </p>
               </div>
-              <span className="mt-1 font-mono text-xs">→</span>
+              <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-ink/40" />
             </div>
           </article>
         ))}

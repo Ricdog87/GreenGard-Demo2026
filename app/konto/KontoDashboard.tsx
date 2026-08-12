@@ -2,23 +2,25 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { BookOpen, LayoutGrid, LogIn, Package, Tag, Zap } from 'lucide-react';
+import { ArrowUpRight, BookOpen, LayoutGrid, LogIn, Package, Zap } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { KontoUebersicht } from '@/components/konto/KontoUebersicht';
 import { KontoBestellungen } from '@/components/konto/KontoBestellungen';
-import { KontoPreise } from '@/components/konto/KontoPreise';
 import { KontoSchnellbestellung } from '@/components/konto/KontoSchnellbestellung';
 import { KontoProjekte } from '@/components/konto/KontoProjekte';
 import { useCart } from '@/store/cart';
 import { DEMO_KONTO } from '@/lib/konto-daten';
+import { SHOP_URL } from '@/lib/links';
 import { cn } from '@/lib/utils';
 
+// Meeting 12.08.2026: keine Preise im Dashboard — Ihre Konditionen und alle
+// Preise stehen im Shop. Der Bereich "Ihre EK-Preise" ist deshalb raus,
+// stattdessen führt ein prominenter Link in den Shop.
 const BEREICHE = [
   { id: 'uebersicht', label: 'Übersicht', icon: LayoutGrid },
   { id: 'schnellbestellung', label: 'Schnellbestellung', icon: Zap },
   { id: 'bestellungen', label: 'Bestellungen', icon: Package },
-  { id: 'preise', label: 'Ihre EK-Preise', icon: Tag },
   { id: 'projekte', label: 'Projekte & Planungen', icon: BookOpen },
 ] as const;
 
@@ -99,9 +101,16 @@ export function KontoDashboard() {
               Kundennummer {DEMO_KONTO.kundennummer} · {DEMO_KONTO.ansprechpartner}
             </p>
           </div>
-          <Button variant="outline" size="sm" onClick={abmelden}>
-            Abmelden
-          </Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button asChild variant="primary" size="sm">
+              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+                Bestellen im Shop <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </Button>
+            <Button variant="outline" size="sm" onClick={abmelden}>
+              Abmelden
+            </Button>
+          </div>
         </div>
 
         {/* Bereichswahl */}
@@ -132,7 +141,6 @@ export function KontoDashboard() {
           {bereich === 'uebersicht' && <KontoUebersicht />}
           {bereich === 'schnellbestellung' && <KontoSchnellbestellung />}
           {bereich === 'bestellungen' && <KontoBestellungen />}
-          {bereich === 'preise' && <KontoPreise />}
           {bereich === 'projekte' && <KontoProjekte />}
         </div>
 

@@ -40,16 +40,17 @@ Steigung     45 %
 Geräusch     53 dB
 Steuerung    RTK-GNSS`}
           </pre>
+          {/* Kein Preis — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
           <p className="mt-2">
             <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/85">
               Preis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <span className="price text-lg">ab 1.290 €</span>
+            <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/60">im Shop</span>
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild variant="accent" size="lg">
-              <Link href="/produkte/kress-kr136e">Produkt ansehen →</Link>
+              <Link href="/produkte#maehroboter">Zur Robotik →</Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="text-linen hover:bg-linen/10">
               <Link href="/starter-kits#maehroboter-kit">Mähroboter Kit</Link>

@@ -1,7 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials } from '@/lib/data';
@@ -56,6 +55,10 @@ function Stars({ rating, className }: { rating: number; className?: string }) {
 export function TestimonialSlider() {
   const [filter, setFilter] = useState<Filter>('alle');
   const [i, setI] = useState(0);
+  // Meeting 12.08.2026: die Stimmen sollen automatisch rotieren. Pausiert,
+  // solange der Zeiger über der Sektion steht, und respektiert
+  // prefers-reduced-motion — dann blättert nur noch der Pfeil.
+  const [pausiert, setPausiert] = useState(false);
 
   const list = useMemo(() => {
     if (filter === 'alle') return testimonials;
@@ -71,8 +74,21 @@ export function TestimonialSlider() {
     setI(0);
   }
 
+  useEffect(() => {
+    if (pausiert || len < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setInterval(() => setI((cur) => (cur + 1) % len), 6000);
+    return () => window.clearInterval(timer);
+  }, [pausiert, len]);
+
   return (
-    <section className="bg-bark py-28 text-linen md:py-36">
+    <section
+      className="bg-bark py-28 text-linen md:py-36"
+      onPointerEnter={() => setPausiert(true)}
+      onPointerLeave={() => setPausiert(false)}
+      onFocusCapture={() => setPausiert(true)}
+      onBlurCapture={() => setPausiert(false)}
+    >
       <div className="container">
         <div data-reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>

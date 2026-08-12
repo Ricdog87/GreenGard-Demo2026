@@ -47,7 +47,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     links: [
             { href: '/profi', label: 'Konditionen anfragen', note: 'Netto und Rechnungskauf' },
       { href: '/planung', label: 'Systemplanung starten', note: 'Stückliste in vier Schritten' },
-      { href: '/produkte', label: 'Sortiment mit Nettopreisen', note: '31 Artikel ab Lager' },
+      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Preise im Shop' },
     ],
     vorteile: [
       'Vor-Ort-Service: Unsere Leute helfen auf Wunsch bei der Montage',
@@ -69,8 +69,8 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     gewerbe: 'sonstiges',
     links: [
       { href: '/planung', label: 'Bewässerung berechnen', note: 'Drei Fragen, ein Richtpreis' },
-      { href: '/starter-kits', label: 'Starter Kits', note: 'ab 899 € inkl. Planung' },
-      { href: '/produkte', label: 'Produkte ansehen', note: 'Bewässerung bis Pool' },
+      { href: '/starter-kits', label: 'Starter Kits', note: 'Bewährte Zusammenstellungen' },
+      { href: '/produkte', label: 'Sortiment ansehen', note: 'Bewässerung bis Pool' },
     ],
     vorteile: [
       'Fachberatung und Konzeption für Ihr Grundstück',
@@ -92,7 +92,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     gewerbe: 'fachhandel',
     links: [
             { href: '/profi', label: 'Händlerkonditionen', note: 'Individuell nach Vereinbarung' },
-      { href: '/produkte', label: 'Sortiment und Nettopreise', note: 'Lagerbestand je Artikel' },
+      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Bestellung im Shop' },
       { href: '/beratung#schulungen', label: 'Produktschulungen', note: 'Für Ihr Verkaufsteam' },
     ],
     vorteile: [

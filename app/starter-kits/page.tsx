@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Check, Minus } from 'lucide-react';
 import { KitCard } from '@/components/KitCard';
-import { KitPriceCell } from '@/components/KitPriceCell';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { starterKits } from '@/lib/data';
@@ -9,7 +8,7 @@ import { starterKits } from '@/lib/data';
 export const metadata = {
   title: 'Starter Kits · Green-Gard',
   description:
-    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit ab-Preis und passender Systemplanung.',
+    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit passender Systemplanung. Preise im Shop.',
 };
 
 const COMPARE_ROWS: { label: string; values: string[] }[] = [
@@ -71,9 +70,9 @@ export default function StarterKitsPage() {
             Vier Kits. <em className="italic">Ein Ausgangspunkt.</em>
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70">
-            Zusammenstellungen, die sich in hunderten Projekten bewährt haben. Wir nennen
-            bewusst „ab“-Preise: Wasserdruck, Leitungswege und Gartenschnitt verändern die
-            Stückliste — der Endpreis steht nach der Systemplanung.
+            Zusammenstellungen, die sich in hunderten Projekten bewährt haben. Was am Ende
+            verbaut wird, entscheidet die Systemplanung — die Preise finden Sie tagesaktuell
+            im Shop.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button asChild variant="primary" size="lg">
@@ -135,16 +134,8 @@ export default function StarterKitsPage() {
                     ))}
                   </tr>
                 ))}
-                <tr>
-                  <th scope="row" className="py-5 text-left font-medium text-ink/80">
-                    Richtwert
-                  </th>
-                  {list.map((k) => (
-                    <td key={k.slug} className="py-5 pl-6">
-                      <KitPriceCell netPrice={k.abPreis} />
-                    </td>
-                  ))}
-                </tr>
+                {/* Richtwert-Zeile entfernt — Preise pflegt allein der Shop
+                    (Meeting 12.08.2026). */}
               </tbody>
             </table>
           </div>

@@ -5,10 +5,8 @@ import {
   DEMO_KONTO,
   STATUS_LABEL,
   PROJEKT_LABEL,
-  bestellwert,
   type Bestellung,
 } from '@/lib/konto-daten';
-import { formatEUR } from '@/lib/utils';
 
 /**
  * ISO-Datum rein als Zeichenkette umdrehen (2026-07-22 → 22.07.2026).
@@ -39,9 +37,7 @@ export function KontoUebersicht() {
   const bezugsjahr = bestellungen
     .reduce((juengstes, b) => (b.datum > juengstes ? b.datum : juengstes), '')
     .slice(0, 4);
-  const jahresvolumen = bestellungen
-    .filter((b) => b.datum.startsWith(bezugsjahr))
-    .reduce((summe, b) => summe + bestellwert(b), 0);
+  const bestellungenImJahr = bestellungen.filter((b) => b.datum.startsWith(bezugsjahr)).length;
 
   // Jüngste zuerst — ISO-Datumsangaben lassen sich direkt als Zeichenkette sortieren.
   const zuletztBestellt = [...bestellungen]
@@ -55,7 +51,8 @@ export function KontoUebersicht() {
   const kennzahlen: { label: string; wert: string; klein?: boolean }[] = [
     { label: 'Offene Bestellungen', wert: String(offeneBestellungen) },
     { label: 'Laufende Projekte', wert: String(laufendeProjekte) },
-    { label: `Bestellwert ${bezugsjahr}`, wert: formatEUR(jahresvolumen), klein: true },
+    // Bestellwert entfernt — keine Preise im Dashboard (Meeting 12.08.2026).
+    { label: `Bestellungen ${bezugsjahr}`, wert: String(bestellungenImJahr), klein: false },
     { label: 'Zahlungsziel', wert: zahlungsziel, klein: true },
   ];
 
@@ -110,14 +107,15 @@ export function KontoUebersicht() {
                   {deDatum(b.datum)}
                 </span>
                 <Badge variant={STATUS_VARIANT[b.status]}>{STATUS_LABEL[b.status]}</Badge>
-                <span className="price ml-auto whitespace-nowrap text-lg">
-                  {formatEUR(bestellwert(b))}
+                {/* Kein Bestellwert — Preise stehen im Shop (Meeting 12.08.2026). */}
+                <span className="num font-mono ml-auto whitespace-nowrap text-[11px] uppercase tracking-[0.14em] text-ink/45">
+                  {b.positionen.length} {b.positionen.length === 1 ? 'Position' : 'Positionen'}
                 </span>
               </li>
             ))}
           </ul>
           <p className="font-mono mt-4 text-[10px] uppercase tracking-[0.16em] text-ink/40">
-            Alle Preise netto zzgl. MwSt.
+            Preise und Konditionen finden Sie im Shop.
           </p>
         </div>
 

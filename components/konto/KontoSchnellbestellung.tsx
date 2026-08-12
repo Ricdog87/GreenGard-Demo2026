@@ -6,10 +6,10 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { DEMO_KONTO, ekPreisFuer } from '@/lib/konto-daten';
+import { DEMO_KONTO } from '@/lib/konto-daten';
+import { CONTACT } from '@/lib/contact';
 import { findeArtikel, katalogArtikel, type KatalogArtikel } from '@/lib/katalog-daten';
-import { useCart } from '@/store/cart';
-import { formatEUR, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 /**
  * Schnellbestellung über Bestellnummern.
@@ -26,8 +26,6 @@ interface Zeile {
 }
 
 const START_ZEILEN = 5;
-/** Katalogartikel haben kein eigenes Bild — die Bereichsgrafik reicht im Warenkorb. */
-const PLATZHALTER_BILD = '/img/cat/bewaesserung.svg';
 
 function leereZeilen(anzahl: number, ab = 0): Zeile[] {
   return Array.from({ length: anzahl }, (_, i) => ({ id: ab + i, nummer: '', menge: '' }));
@@ -59,8 +57,6 @@ interface AufgeloesteZeile {
   zeile: Zeile;
   artikel?: KatalogArtikel;
   menge: number;
-  einzelpreis: number;
-  summe: number;
   leer: boolean;
   fehler: boolean;
 }
@@ -69,8 +65,6 @@ export function KontoSchnellbestellung() {
   const [zeilen, setZeilen] = useState<Zeile[]>(() => leereZeilen(START_ZEILEN));
   const [listeText, setListeText] = useState('');
   const [hinweis, setHinweis] = useState<string | null>(null);
-  const addItem = useCart((s) => s.addItem);
-  const openDrawer = useCart((s) => s.openDrawer);
 
 
   const aufgeloest: AufgeloesteZeile[] = useMemo(
@@ -80,23 +74,14 @@ export function KontoSchnellbestellung() {
         const artikel = leer ? undefined : findeArtikel(z.nummer);
         const gemeldet = Number.parseInt(z.menge, 10);
         const menge = Number.isFinite(gemeldet) && gemeldet > 0 ? gemeldet : 1;
-        // Preis aus der Konditionsvereinbarung; ohne Hinterlegung Listenpreis.
-        const einzelpreis = artikel ? (ekPreisFuer(artikel.bestellnummer) ?? artikel.preisVE) : 0;
-        return {
-          zeile: z,
-          artikel,
-          menge,
-          einzelpreis,
-          summe: einzelpreis * menge,
-          leer,
-          fehler: !leer && !artikel,
-        };
+        // Meeting 12.08.2026: keine Preise im Dashboard — die Liste geht als
+        // Bestellanfrage raus, die Preise stehen im Shop bzw. in der AB.
+        return { zeile: z, artikel, menge, leer, fehler: !leer && !artikel };
       }),
     [zeilen]
   );
 
   const gueltige = aufgeloest.filter((a) => a.artikel);
-  const netto = gueltige.reduce((s, a) => s + a.summe, 0);
 
   function setzeFeld(id: number, feld: 'nummer' | 'menge', wert: string) {
     setHinweis(null);
@@ -139,25 +124,21 @@ export function KontoSchnellbestellung() {
     });
   }
 
-  function inDenWarenkorb() {
+  function bestellungSenden() {
     if (gueltige.length === 0) {
       setHinweis('Noch keine gültige Position. Bitte Bestellnummer prüfen.');
       return;
     }
-    gueltige.forEach((a) => {
-      const art = a.artikel!;
-      addItem({
-        slug: `kat-${art.bestellnummer}`,
-        name: art.beschreibung,
-        brand: art.hersteller,
-        image: PLATZHALTER_BILD,
-        netPrice: a.einzelpreis,
-        qty: a.menge,
-      });
-    });
-    openDrawer();
-    setZeilen(leereZeilen(START_ZEILEN));
-    setHinweis(`${anzahlText(gueltige.length, 'Position', 'Positionen')} in den Warenkorb gelegt.`);
+    const zeilenText = gueltige.map(
+      (a) => `${a.artikel!.bestellnummer} × ${a.menge} — ${a.artikel!.beschreibung}`
+    );
+    const body = encodeURIComponent(
+      `Bestellung:\n\n${zeilenText.join('\n')}\n\nKundennummer: ${DEMO_KONTO.kundennummer}\nLieferung: wie vereinbart`
+    );
+    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
+      `Bestellung Kundennummer ${DEMO_KONTO.kundennummer}`
+    )}&body=${body}`;
+    setHinweis(`${anzahlText(gueltige.length, 'Position', 'Positionen')} als Bestellung vorbereitet — Ihr Mailprogramm öffnet sich.`);
   }
 
   return (
@@ -169,8 +150,8 @@ export function KontoSchnellbestellung() {
         </h2>
         <p className="mt-5 max-w-2xl text-sm text-ink/70" data-reveal>
           Sie kennen Ihre Bestellnummern — dann brauchen Sie den Katalog nicht. Tippen Sie die
-          Positionen ein oder fügen Sie Ihre Liste aus der Kalkulation ein. Preise sind Ihre
-          Einkaufspreise, netto.
+          Positionen ein oder fügen Sie Ihre Liste aus der Kalkulation ein. Die Preise stehen
+          in Ihrer Auftragsbestätigung bzw. im Shop.
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
@@ -239,7 +220,7 @@ export function KontoSchnellbestellung() {
                           <span className="font-mono num block text-[10px] uppercase tracking-[0.14em] text-moss">
                             {a.artikel.hersteller}
                             {a.artikel.modell ? ` · ${a.artikel.modell}` : ''} ·{' '}
-                            {a.artikel.verpackungseinheit} · {a.menge} × {formatEUR(a.einzelpreis)}
+                            {a.artikel.verpackungseinheit} · Menge {a.menge}
                           </span>
                         </>
                       ) : a.fehler ? (
@@ -258,12 +239,18 @@ export function KontoSchnellbestellung() {
                       )}
                     </div>
 
-                    <div className="price num text-sm md:text-right">
+                    <div className="num text-sm md:text-right">
                       {/* Auf 375px fehlt der Spaltenkopf — deshalb hier ein eigenes Label. */}
                       <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.16em] text-ink/50 md:hidden">
                         Position
                       </span>
-                      {a.artikel ? formatEUR(a.summe) : <span className="text-ink/25">—</span>}
+                      {a.artikel ? (
+                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-moss">
+                          erfasst
+                        </span>
+                      ) : (
+                        <span className="text-ink/25">—</span>
+                      )}
                     </div>
 
                     <div className="md:text-right">
@@ -286,19 +273,20 @@ export function KontoSchnellbestellung() {
                   <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                   Zeile hinzufügen
                 </Button>
+                {/* Keine Summen — Preise stehen in AB und Shop (Meeting 12.08.2026). */}
                 <div className="text-right">
                   <span className="font-mono block text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                    Summe netto · <span className="num">{gueltige.length}</span> Positionen
+                    Bereit zum Senden
                   </span>
-                  <span className="price block text-2xl">{formatEUR(netto)}</span>
+                  <span className="num font-display block text-2xl">{gueltige.length} Positionen</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-4">
-              <Button type="button" variant="accent" size="lg" onClick={inDenWarenkorb}>
+              <Button type="button" variant="accent" size="lg" onClick={bestellungSenden}>
                 <ShoppingBag className="h-4 w-4" aria-hidden="true" />
-                In den Warenkorb
+                Als Bestellung senden
               </Button>
               {/* Live-Region dauerhaft im DOM, sonst liest der Screenreader den
                   Hinweis nicht vor, wenn er erst beim Klick eingehängt wird. */}
@@ -319,7 +307,7 @@ export function KontoSchnellbestellung() {
               <p id="sb-liste-hinweis" className="mt-2 text-sm text-ink/70">
                 Eine Position je Zeile, im Format <span className="font-mono">Nummer;Menge</span>{' '}
                 oder <span className="font-mono">Nummer Menge</span>. So wandert Ihre Kalkulation
-                ohne Abtippen in den Warenkorb.
+                ohne Abtippen in die Bestellung.
               </p>
               <label
                 htmlFor="sb-liste"

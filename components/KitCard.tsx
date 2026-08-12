@@ -9,9 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { useCart } from '@/store/cart';
-import { priceFor, priceLabel } from '@/lib/pricing';
-import { formatEURRound, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import type { StarterKit } from '@/lib/data';
 
 /**
@@ -19,7 +17,6 @@ import type { StarterKit } from '@/lib/data';
  * "In den Warenkorb". Der Weg führt in die Planung oder in eine Anfrage.
  */
 export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal?: boolean }) {
-  const mode = useCart((s) => s.mode);
   const [askOpen, setAskOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [email, setEmail] = useState('');
@@ -76,25 +73,15 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
         </ul>
 
         <div className={cn('mt-8 border-t pt-6', dark ? 'border-linen/15' : 'border-mist')}>
-          <div className="flex items-baseline gap-2">
-            <span
-              className={cn(
-                'font-mono text-[11px] uppercase tracking-[0.18em]',
-                dark ? 'text-linen/60' : 'text-ink/50'
-              )}
-            >
-              ab
-            </span>
-            <span className="price text-4xl">{formatEURRound(priceFor(kit.abPreis, mode))}</span>
-            <span
-              className={cn(
-                'font-mono text-[10px] uppercase tracking-[0.18em]',
-                dark ? 'text-linen/60' : 'text-ink/50'
-              )}
-            >
-              {priceLabel(mode)}
-            </span>
-          </div>
+          {/* Kein ab-Preis mehr — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
+          <p
+            className={cn(
+              'font-mono text-[11px] uppercase tracking-[0.18em]',
+              dark ? 'text-linen/70' : 'text-ink/60'
+            )}
+          >
+            Preis tagesaktuell im Shop
+          </p>
           <p className={cn('mt-3 text-xs leading-relaxed', dark ? 'text-linen/60' : 'text-ink/55')}>
             {kit.note}
           </p>

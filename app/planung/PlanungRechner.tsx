@@ -39,6 +39,10 @@ export function PlanungRechner() {
   // Bewusst NICHT als Rechner-Schritt (V2: einfach halten), sondern als
   // Ankreuzfelder am Ergebnis — sie wandern nur in die Anfrage.
   const [extras, setExtras] = useState<string[]>([]);
+  // Meeting 12.08.2026: Kunden sollen Bauplaene direkt mitschicken koennen —
+  // das spart die Rueckfrage nach der Skizze. Demo: Dateien werden erfasst und
+  // angezeigt; der echte Upload folgt mit Supabase Storage (Bucket "plaene").
+  const [plaene, setPlaene] = useState<File[]>([]);
 
   function toggleExtra(v: string) {
     setExtras((cur) => (cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v]));
@@ -298,23 +302,10 @@ export function PlanungRechner() {
                     die sonst die Grid-Spalte über den Viewport hinaus aufzieht. */}
                 <div className="mt-12 grid gap-10 lg:grid-cols-12">
                   <div className="min-w-0 border-t border-mist pt-6 lg:col-span-7">
-                    <p className="eyebrow mb-4">Stückliste · Orientierung</p>
-                    <div className="space-y-3 text-sm">
-                      {empf.positionen.map((p) => (
-                        <div
-                          key={p.label}
-                          className="flex justify-between gap-4 border-b border-mist pb-3"
-                        >
-                          <span>{p.label}</span>
-                          <span className="num font-mono whitespace-nowrap text-xs uppercase tracking-[0.12em] text-ink/60">
-                            {p.menge}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
+                    {/* Stückliste entfernt (Meeting 12.08.2026) — Komponenten
+                        gehören ins Angebot, nicht auf die Website. */}
                     {/* Kosten nach der Preisliste von Green-Gard */}
-                    <div className="mt-8 border-t border-mist pt-6">
+                    <div className="border-t-0 pt-0">
                       <p className="eyebrow mb-4">Materialkosten</p>
                       <div className="space-y-3 text-sm">
                         {empf.kosten.map((k) => (
@@ -335,7 +326,13 @@ export function PlanungRechner() {
                           </span>
                         </div>
                         <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/50">
-                          {priceLabel(mode)} · {empf.zonen} Zonen · ohne Montage und Erdarbeiten
+                          {priceLabel(mode)} · {empf.zonen} Zonen
+                        </p>
+                        {/* Meeting 12.08.2026: klarer Disclaimer zur Unverbindlichkeit. */}
+                        <p className="mt-3 border-l-2 border-copper/60 bg-linen/70 py-2.5 pl-3 text-xs leading-relaxed normal-case tracking-normal text-ink/70">
+                          Unverbindlicher Richtwert für das Material — ohne Montage und
+                          Erdarbeiten, kein Angebot. Den verbindlichen Preis erhalten Sie
+                          mit der Planung.
                         </p>
                       </div>
                     </div>
@@ -412,10 +409,39 @@ export function PlanungRechner() {
                         </Link>
                       </Button>
 
+                      {/* Bauplan-Upload (Meeting 12.08.2026) */}
+                      <div className="mt-2 border-t border-linen/15 pt-4">
+                        <label
+                          htmlFor="plan-upload"
+                          data-cursor="hover"
+                          className="font-mono block cursor-pointer border border-dashed border-linen/35 px-4 py-3 text-center text-[11px] uppercase tracking-[0.16em] text-linen/70 transition-colors hover:border-linen/70 hover:text-linen"
+                        >
+                          Bauplan oder Skizze anhängen (PDF, Foto)
+                        </label>
+                        <input
+                          id="plan-upload"
+                          type="file"
+                          multiple
+                          accept=".pdf,image/*,.dwg,.dxf"
+                          className="sr-only"
+                          onChange={(e) => setPlaene(Array.from(e.target.files ?? []))}
+                        />
+                        {plaene.length > 0 && (
+                          <ul className="mt-2 space-y-1 text-xs text-linen/70">
+                            {plaene.map((f) => (
+                              <li key={f.name} className="truncate">
+                                ✓ {f.name}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+
                       <form
                         onSubmit={(e) => {
                           e.preventDefault();
-                          // TODO: Plan als PDF generieren und über Resend versenden.
+                          // TODO: Plan als PDF generieren und über Resend versenden;
+                          // Bauplaene nach Supabase Storage (Bucket "plaene") laden.
                           console.info('[green-gard mock] Plan per Mail', {
                             email,
                             kit: empf.kitSlug,
@@ -424,16 +450,23 @@ export function PlanungRechner() {
                             bereiche,
                             steuerung,
                             extras,
+                            plaene: plaene.map((f) => f.name),
                           });
                           setSent(true);
                         }}
-                        className="mt-2 border-t border-linen/15 pt-4"
+                        className="mt-4 border-t border-linen/15 pt-4"
                       >
                         <p className="font-mono mb-2 text-[11px] uppercase tracking-[0.18em] text-linen/60">
                           Plan per Mail
                         </p>
                         {sent ? (
-                          <p className="text-sm text-bronze">Gesendet an {email}.</p>
+                          <p className="text-sm text-bronze">
+                            Gesendet an {email}
+                            {plaene.length > 0
+                              ? ` — mit ${plaene.length} ${plaene.length > 1 ? 'Anhängen' : 'Anhang'}`
+                              : ''}
+                            .
+                          </p>
                         ) : (
                           <div className="flex gap-2">
                             <input

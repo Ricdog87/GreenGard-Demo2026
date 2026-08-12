@@ -1,5 +1,5 @@
 {
-  "_comment": "Learning Center von https://www.green-gard.de/learningcenter, abgerufen 03.08.2026. Fragen und Antworten sind 1:1 uebernommen — Wortlaut, Reihenfolge und auch die Tippfehler des Originals bleiben unveraendert. Die Positionen 5 und 36 fehlen bereits auf der Kundenseite. Das Feld \"kategorie\" ist eine Ergaenzung von uns fuer den Themenfilter und aendert keinen Text. Eintrag 85 traegt auf der Kundenseite versehentlich die Antwort von Eintrag 84 als Frage — siehe OFFENE-PUNKTE.md, Jan muss die richtige Frage nachliefern.",
+  "_comment": "Learning Center von https://www.green-gard.de/learningcenter, abgerufen 03.08.2026. Fragen und Antworten sind 1:1 uebernommen — Wortlaut, Reihenfolge und auch die Tippfehler des Originals bleiben unveraendert. Die Positionen 5 und 36 fehlen bereits auf der Kundenseite. Das Feld \"kategorie\" ist eine Ergaenzung von uns fuer den Themenfilter und aendert keinen Text. Eintrag 85 traegt auf der Kundenseite versehentlich die Antwort von Eintrag 84 als Frage — siehe OFFENE-PUNKTE.md, Jan muss die richtige Frage nachliefern. KORREKTUREN aus dem Meeting mit Jan Leifermann am 12.08.2026: Lieferzeit von 1-3 auf 2-3 Werktage geaendert; der Eintrag zur Samstagsoeffnung wurde entfernt (veraltet). Damit ist die Datei nicht mehr strikt 1:1 zur alten Seite — die Abweichungen sind vom Kunden beauftragt.",
   "quelle": "https://www.green-gard.de/learningcenter",
   "titel": "Learning Center",
   "untertitel": "Hier finden Sie Antworten auf Ihre Fragen",
@@ -32,7 +32,7 @@
       "position": 4,
       "frage": "Wie lange ist die Lieferzeit bei Lagerware?",
       "antwort": [
-        "Die Lieferzeit beträgt in der Regel 1-3 Werktage."
+        "Die Lieferzeit beträgt in der Regel 2-3 Werktage."
       ],
       "kategorie": "unternehmen"
     },
@@ -62,14 +62,6 @@
       "kategorie": "unternehmen"
     },
     {
-      "position": 9,
-      "frage": "Haben sie samstags geöffnet?",
-      "antwort": [
-        "Ja. Während der Hauptsaison von Mai - September ist unser Lager samstags von 8:00 - 12:00 Uhr geöffnet."
-      ],
-      "kategorie": "unternehmen"
-    },
-    {
       "position": 10,
       "frage": "Erstellen Sie professionelle Bewässerungspläne für meinen Garten?",
       "antwort": [
@@ -81,7 +73,7 @@
       "position": 11,
       "frage": "Wie lange dauert eine Bewässerungsplanung für meinen Garten?",
       "antwort": [
-        "Wenn Sie uns alle für eine Planung notwendigen Informationen zukommen lassen, wird Ihre Planung innerhalb von 1-3 Werktagen erstellt."
+        "Wenn Sie uns alle für eine Planung notwendigen Informationen zukommen lassen, wird Ihre Planung innerhalb von 2-3 Werktagen erstellt."
       ],
       "kategorie": "planung"
     },

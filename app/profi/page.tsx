@@ -32,7 +32,7 @@ const USPS = [
   {
     icon: Truck,
     title: 'Lieferung auf die Baustelle',
-    body: 'Lagerware in der Regel in 1 – 3 Werktagen — per Paketdienst oder Direktfahrt im Umkreis von Wiesbaden.',
+    body: 'Lagerware in der Regel in 2 – 3 Werktagen — per Paketdienst oder Direktfahrt im Umkreis von Wiesbaden.',
   },
   {
     icon: GraduationCap,

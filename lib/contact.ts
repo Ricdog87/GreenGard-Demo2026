@@ -30,15 +30,16 @@ export const CONTACT = {
  * Der Lagerverkauf hat andere Zeiten als die Telefonzentrale; das stand vorher
  * nirgends auf der neuen Seite und ist für Abholer die wichtigste Information.
  */
+// Meeting 12.08.2026: Samstagszeiten sind veraltet und wurden entfernt;
+// Lieferzeit laut Jan 2-3 Werktage.
 export const OEFFNUNG = {
   telefon: 'Mo – Fr · 7:30 – 17:00 Uhr',
   lager: 'Mo – Fr · 8:00 – 16:30 Uhr',
-  samstag: 'Sa · 8:00 – 12:00 Uhr (Hauptsaison Mai – September)',
   anfahrt: 'Parkplätze direkt vor dem Gebäude.',
 } as const;
 
 export const LIEFERUNG = {
-  lagerware: '1 – 3 Werktage',
+  lagerware: '2 – 3 Werktage',
   wege: 'Paketdienst oder Direktfahrt im Umkreis von Wiesbaden — auch auf die Baustelle.',
   abholung: 'Abholung im Lagerverkauf, Mo – Fr 8:00 – 16:30 Uhr.',
   /**

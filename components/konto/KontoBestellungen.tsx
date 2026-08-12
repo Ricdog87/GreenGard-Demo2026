@@ -5,14 +5,9 @@ import { ChevronDown, RotateCcw } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  DEMO_KONTO,
-  STATUS_LABEL,
-  bestellwert,
-  type Bestellung,
-} from '@/lib/konto-daten';
-import { useCart } from '@/store/cart';
-import { cn, formatEUR } from '@/lib/utils';
+import { DEMO_KONTO, STATUS_LABEL, type Bestellung } from '@/lib/konto-daten';
+import { CONTACT } from '@/lib/contact';
+import { cn } from '@/lib/utils';
 
 /**
  * ISO-Datum rein als Zeichenkette umdrehen (2026-07-22 → 22.07.2026).
@@ -49,9 +44,6 @@ export function KontoBestellungen() {
   const [filter, setFilter] = useState<Filter>('alle');
   const [offen, setOffen] = useState<string[]>([]);
 
-  const addItem = useCart((s) => s.addItem);
-  const openDrawer = useCart((s) => s.openDrawer);
-
   // Jüngste zuerst — ISO-Datumsangaben sortieren sich als Zeichenkette korrekt.
   const alle = useMemo(
     () => [...DEMO_KONTO.bestellungen].sort((a, b) => b.datum.localeCompare(a.datum)),
@@ -64,22 +56,18 @@ export function KontoBestellungen() {
       prev.includes(nummer) ? prev.filter((n) => n !== nummer) : [...prev, nummer]
     );
 
-  // Kernfunktion der Seite: alle Positionen einer Bestellung in einem Klick
-  // in den Warenkorb legen und diesen sofort öffnen.
+  // Meeting 12.08.2026: Produktbestellungen laufen über den Shop, nicht über
+  // den Warenkorb der Website. "Erneut bestellen" erzeugt deshalb eine
+  // vorbefüllte Nachbestell-Mail mit der Positionsliste — ohne Preise.
+  // TODO: durch Shop-Deeplink ersetzen, sobald die Msoft-API steht.
   const erneutBestellen = (b: Bestellung) => {
-    b.positionen.forEach((p) => {
-      addItem({
-        slug: p.bestellnummer,
-        name: p.bezeichnung,
-        brand: 'Nachbestellung',
-        image: '/img/prod/zubehoer.svg',
-        netPrice: p.einzelpreis,
-        qty: p.menge,
-      });
-    });
-    openDrawer();
+    const zeilen = b.positionen.map((p) => `${p.bestellnummer} × ${p.menge} — ${p.bezeichnung}`);
+    const body = encodeURIComponent(
+      `Bitte erneut liefern (wie Bestellung ${b.nummer}):\n\n${zeilen.join('\n')}\n\nKundennummer: ${DEMO_KONTO.kundennummer}`
+    );
+    const subject = encodeURIComponent(`Nachbestellung zu ${b.nummer}`);
+    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
   };
-
   return (
     <section className="py-4">
       <div data-reveal>
@@ -164,8 +152,9 @@ export function KontoBestellungen() {
                     </span>
                   )}
                   <Badge variant={STATUS_VARIANT[b.status]}>{STATUS_LABEL[b.status]}</Badge>
-                  <span className="price ml-auto whitespace-nowrap text-lg">
-                    {formatEUR(bestellwert(b))}
+                  {/* Kein Bestellwert mehr — Preise stehen im Shop (Meeting 12.08.2026). */}
+                  <span className="num font-mono ml-auto whitespace-nowrap text-[11px] uppercase tracking-[0.14em] text-ink/45">
+                    {b.positionen.length} {b.positionen.length === 1 ? 'Position' : 'Positionen'}
                   </span>
                 </button>
 
@@ -175,7 +164,7 @@ export function KontoBestellungen() {
                   onClick={() => erneutBestellen(b)}
                   // Ohne Zusatz lesen Screenreader in der Liste nur mehrfach
                   // "Erneut bestellen" — die Bestellnummer macht es eindeutig.
-                  aria-label={`Bestellung ${b.nummer} erneut in den Warenkorb legen`}
+                  aria-label={`Nachbestellung zu ${b.nummer} anfragen`}
                   className="self-start sm:shrink-0 sm:self-auto"
                 >
                   <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" />
@@ -201,12 +190,6 @@ export function KontoBestellungen() {
                           <th scope="col" className="px-4 py-3 text-right font-normal">
                             Menge
                           </th>
-                          <th scope="col" className="px-4 py-3 text-right font-normal">
-                            Einzelpreis
-                          </th>
-                          <th scope="col" className="px-4 py-3 text-right font-normal">
-                            Summe
-                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -217,25 +200,10 @@ export function KontoBestellungen() {
                             </td>
                             <td className="px-4 py-3 text-sm text-ink">{p.bezeichnung}</td>
                             <td className="num px-4 py-3 text-right text-sm">{p.menge}</td>
-                            <td className="num px-4 py-3 text-right text-sm whitespace-nowrap">
-                              {formatEUR(p.einzelpreis)}
-                            </td>
-                            <td className="price px-4 py-3 text-right text-[15px] whitespace-nowrap">
-                              {formatEUR(p.einzelpreis * p.menge)}
-                            </td>
                           </tr>
                         ))}
                       </tbody>
-                      <tfoot>
-                        <tr className="border-t border-mist">
-                          <td colSpan={4} className="font-mono px-4 py-3 text-[10px] uppercase tracking-[0.16em] text-ink/45">
-                            Nettowert
-                          </td>
-                          <td className="price px-4 py-3 text-right text-base whitespace-nowrap">
-                            {formatEUR(bestellwert(b))}
-                          </td>
-                        </tr>
-                      </tfoot>
+                      {/* Nettowert-Fuß entfernt — Preise pflegt allein der Shop. */}
                     </table>
                   </div>
                 </div>

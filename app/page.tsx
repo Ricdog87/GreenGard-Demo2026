@@ -32,6 +32,7 @@ export default function LandingPage() {
       <AudienceVorteile />
       <CategoryGrid />
       <Highlights />
+      <TestimonialSlider />
       <SaisonModul />
       <BewaesserungsRechner />
 
@@ -48,8 +49,8 @@ export default function LandingPage() {
             </div>
             <p className="max-w-md text-ink/70">
               Zusammenstellungen, die sich in hunderten Projekten bewährt haben — als
-              Orientierung mit „ab“-Preis. Was am Ende verbaut wird, entscheidet die
-              Systemplanung.
+              Orientierung. Was am Ende verbaut wird, entscheidet die Systemplanung —
+              Preise stehen tagesaktuell im Shop.
             </p>
           </div>
           <div data-reveal-group className="grid gap-6 lg:grid-cols-3">
@@ -65,14 +66,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <PullQuote attribution="Jan Leifermann · Geschäftsführer">
+      <PullQuote attribution="Jan Leifermann · Vertriebsleiter">
         Luxus im Garten ist nicht das, was man sieht. Es ist das, was man nie wieder tun muss.
       </PullQuote>
 
       <FeaturedSystem />
       <BrandWall />
       <Stats />
-      <TestimonialSlider />
       <CTABanner />
       <FAQ />
     </>
