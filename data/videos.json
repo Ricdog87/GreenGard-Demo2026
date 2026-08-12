@@ -1,86 +1,33 @@
 {
-  "_todo": "PLATZHALTER — alle youtubeId-Werte sind Dummy-IDs. Die echten YouTube-IDs der Erklaervideos liefert Green-Gard (Jan Leifermann, Termin 31.07.2026). Sobald die Liste da ist, nur hier eintragen — am Code ist nichts zu aendern.",
+  "_quelle": "Echte Videos vom YouTube-Kanal des Kunden (youtube.com/@green-gardgmbh7663, abgerufen 12.08.2026). Der Kanal führt aktuell genau diese drei Videos — alle zur Kress-Robotik. Titel und Laufzeiten unverändert; die Beschreibungen sind unsere, weil die Videos auf YouTube keine tragen. Kommen neue Videos dazu, nur hier eintragen — am Code ist nichts zu ändern.",
   "_felder": "category: bewaesserung | steuerung | pumpentechnik | beleuchtung | maehroboter | pool | zubehoer — level: Grundlagen | Praxis | Profi",
+  "kanal": "https://www.youtube.com/@green-gardgmbh7663",
   "videos": [
     {
-      "slug": "magnetventil-tauschen",
-      "title": "Magnetventil tauschen — in 8 Minuten erklärt",
-      "description": "Ventil undicht oder Zone bleibt trocken? Wir zeigen Schritt für Schritt, wie Sie das Magnetventil ausbauen, die Dichtung prüfen und den Ventilkasten wieder sauber verschließen — ohne die ganze Anlage zu entleeren.",
-      "category": "bewaesserung",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "8:24",
-      "level": "Praxis"
-    },
-    {
-      "slug": "hydrawise-zonen-wetterautomatik",
-      "title": "Hydrawise: Zonen anlegen und Wetterautomatik einrichten",
-      "description": "Zonen benennen, Laufzeiten setzen und die Wetterautomatik so konfigurieren, dass die Anlage bei Regen von selbst aussetzt. Danach richten Sie eine neue Anlage in unter zehn Minuten ein.",
-      "category": "steuerung",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "11:47",
-      "level": "Praxis"
-    },
-    {
-      "slug": "regner-einmessen-duesenwahl",
-      "title": "Regner einmessen: Düsenwahl und Wurfweite ohne trockene Ecken",
-      "description": "Überlappung, Wurfweite und Niederschlagsspende an einem echten Vorgarten erklärt. So vermeiden Sie trockene Ecken und Pfützen bereits bei der Planung.",
-      "category": "bewaesserung",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "6:12",
-      "level": "Grundlagen"
-    },
-    {
-      "slug": "hauswasserwerk-vordruck-entlueften",
-      "title": "Hauswasserwerk: entlüften und Vordruck richtig einstellen",
-      "description": "Vordruck am Membrankessel prüfen, Pumpe entlüften, Druckschalter justieren. Verhindert das ständige Takten — die häufigste Reklamation bei Hauswasserwerken.",
-      "category": "pumpentechnik",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "9:05",
-      "level": "Praxis"
-    },
-    {
-      "slug": "in-lite-trafo-dimensionieren",
-      "title": "In-Lite: Trafo dimensionieren und Spannungsabfall vermeiden",
-      "description": "Trafoleistung, Kabelquerschnitt und Leitungslänge im Zusammenspiel — mit Rechenbeispiel für eine 40-Meter-Zuleitung. Damit die letzte Leuchte genauso hell leuchtet wie die erste.",
-      "category": "beleuchtung",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "12:38",
-      "level": "Profi"
-    },
-    {
-      "slug": "kress-rtk-antenne-ausrichten",
-      "title": "Kress RTK: Antenne setzen und virtuelle Begrenzung anlegen",
-      "description": "Antennenstandort wählen, Empfang prüfen und die Flächen per App aufziehen. Inklusive der Stellen im Garten, an denen RTK erfahrungsgemäß zickt — und was dagegen hilft.",
+      "slug": "kress-nano-101e-installation",
+      "title": "Installation Kress Nano 101e",
+      "description": "Die komplette Installation des Kress Nano 101e — vom Auspacken bis zur ersten Mahd. Das meistgesehene Video des Kanals.",
       "category": "maehroboter",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "14:20",
-      "level": "Profi"
-    },
-    {
-      "slug": "bayrol-poolmanager-sonden-kalibrieren",
-      "title": "Bayrol Poolmanager: pH- und Redox-Sonde kalibrieren",
-      "description": "Sonden reinigen, mit Pufferlösung kalibrieren und Messwerte auf Plausibilität prüfen. Zwei Mal im Jahr gemacht, erspart es teure Fehldosierungen und trübes Wasser.",
-      "category": "pool",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "7:36",
+      "youtubeId": "_LTgS4HcK-U",
+      "duration": "2:52",
       "level": "Praxis"
     },
     {
-      "slug": "anlage-winterfest-ausblasen",
-      "title": "Anlage winterfest machen: zonenweise ausblasen mit dem Kompressor",
-      "description": "Welcher Druck, welche Reihenfolge, wie lange je Zone. Der Klassiker gegen Frostschäden an Ventilen, Regnern und Verteilern — in einem Durchgang gezeigt.",
-      "category": "bewaesserung",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "10:03",
-      "level": "Grundlagen"
+      "slug": "kress-ladestation-installation",
+      "title": "Wie wird eine Kress Ladestation installiert?",
+      "description": "Standortwahl, Ausrichtung und Anschluss der Ladestation — die häufigsten Fehler passieren hier, nicht beim Mäher.",
+      "category": "maehroboter",
+      "youtubeId": "q1KRfBDt9z0",
+      "duration": "4:18",
+      "level": "Praxis"
     },
     {
-      "slug": "kabelverbindung-erdreich-verbinder",
-      "title": "Wasserdichte Kabelverbindungen im Erdreich richtig setzen",
-      "description": "Gelverbinder und Kabelklemmen fachgerecht verarbeiten, Zugentlastung inklusive. Die meisten Ventilstörungen im Frühjahr kommen von der Verbindung, nicht vom Ventil.",
-      "category": "zubehoer",
-      "youtubeId": "dQw4w9WgXcQ",
-      "duration": "5:48",
+      "slug": "kress-rtk-erklaert",
+      "title": "Kress RTK",
+      "description": "Wie die RTK-Satellitennavigation funktioniert und warum der Mäher damit ohne Begrenzungskabel auskommt.",
+      "category": "maehroboter",
+      "youtubeId": "2mAjXUSNZbs",
+      "duration": "1:33",
       "level": "Grundlagen"
     }
   ]

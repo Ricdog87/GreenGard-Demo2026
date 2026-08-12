@@ -31,7 +31,9 @@ export interface LearningVideo {
 // Aus JSON leitet TypeScript nur `string` ab — der Cast hält die Unions oben gültig.
 const VIDEOS = videosJson.videos as LearningVideo[];
 
-const CATEGORIES: { id: VideoCategory; label: string }[] = [
+// Nur Rubriken und Stufen anbieten, zu denen es Videos gibt — leere Chips
+// sähen aus wie kaputte Filter. Wachsen die Videos, wachsen die Chips mit.
+const ALLE_CATEGORIES: { id: VideoCategory; label: string }[] = [
   { id: 'bewaesserung', label: 'Bewässerung' },
   { id: 'steuerung', label: 'Steuerung' },
   { id: 'pumpentechnik', label: 'Pumpentechnik' },
@@ -40,8 +42,13 @@ const CATEGORIES: { id: VideoCategory; label: string }[] = [
   { id: 'pool', label: 'Pool' },
   { id: 'zubehoer', label: 'Zubehör' },
 ];
+const VORHANDEN = new Set(VIDEOS.map((v) => v.category));
+const CATEGORIES = ALLE_CATEGORIES.filter((c) => VORHANDEN.has(c.id));
 
-const LEVELS: VideoLevel[] = ['Grundlagen', 'Praxis', 'Profi'];
+const VORHANDENE_LEVEL = new Set(VIDEOS.map((v) => v.level));
+const LEVELS = (['Grundlagen', 'Praxis', 'Profi'] as VideoLevel[]).filter((l) =>
+  VORHANDENE_LEVEL.has(l)
+);
 
 const CAT_LABEL = new Map(CATEGORIES.map((c) => [c.id, c.label]));
 
@@ -228,6 +235,15 @@ export function LearningGrid() {
                   Filter zurücksetzen
                 </button>
               )}
+              <a
+                href={videosJson.kanal}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="font-mono border-b border-mist text-[11px] uppercase tracking-[0.18em] text-ink/55 transition-colors hover:border-ink hover:text-ink"
+              >
+                Alle Videos auf YouTube ↗
+              </a>
             </div>
           </div>
         </div>
@@ -262,12 +278,19 @@ export function LearningGrid() {
                   aria-label={`Video öffnen: ${v.title}. Laufzeit ${gesprocheneLaufzeit(v.duration)}, Stufe ${v.level}.`}
                   className="group flex h-full w-full flex-col border border-mist bg-paper text-left transition-colors hover:border-ink/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/40"
                 >
-                  {/* Thumbnail-Platzhalter: rein CSS, damit keine externe Bilddomain
-                      in next.config.mjs freigeschaltet werden muss. */}
+                  {/* Echtes YouTube-Thumbnail (i.ytimg.com braucht kein next/image
+                      — schlichtes img mit lazy loading genügt für eine Kachel). */}
                   <span className="relative flex aspect-video w-full items-center justify-center overflow-hidden bg-forest">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg`}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform [transition-duration:1200ms] group-hover:scale-[1.04]"
+                    />
                     <span
                       aria-hidden
-                      className="absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_0%,rgba(92,122,94,0.45),transparent_65%)]"
+                      className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-ink/25"
                     />
                     <span
                       aria-hidden

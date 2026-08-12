@@ -7,7 +7,7 @@ Stand: **12.08.2026, nach dem Meeting mit Jan** · Die Punkte aus dem Meeting si
 | # | Punkt | Für |
 |---|---|---|
 | M1 | **Msoft-API prüfen** (offene API für Bestellungen/Rechnungen) | Bestellhistorie im Dashboard automatisch statt Demo-Daten |
-| M2 | **YouTube-Kanal-Link** mit den Trainingsvideos | Learning Center, Videos einbetten |
+| M2 | ~~YouTube-Kanal-Link~~ | **Erledigt** (12.08.2026): Kanal gefunden und alle drei Videos eingebettet (Kress Nano 101e, Ladestation, RTK) — samt echten Thumbnails und Kanal-Link. Neue Videos: ein Eintrag in `data/videos.json`. |
 | M3 | **Bestellbestätigungen (Alt-Daten)** bereitstellen | Historienanzeige für Pilotkunden |
 | M4 | **5–10 Pilotkunden** auswählen (gemeinsam) | VIP-Freischaltung, Feedback, Konditions-Zuweisung validieren |
 | M5 | **Social-Media-Links** (Instagram, LinkedIn) | Footer — aktuell Platzhalter |
@@ -29,7 +29,7 @@ Stand: **12.08.2026, nach dem Meeting mit Jan** · Die Punkte aus dem Meeting si
 | B1 | **Teamfotos in Originalauflösung** | Wir haben die sechs Porträts von green-gard.de übernommen (ca. 900 px). Für die großen Kacheln wären die Originaldateien besser. Zwei Bilder sind S/W, vier in Farbe — die Seite zieht sie deshalb einheitlich in Graustufen. Wenn ihr das anders wollt: kurz sagen. |
 | B2 | **Katalog, restliche 7 Abschnitte** | Von acht Abschnitten ist einer als Daten eingepflegt („Bewässerung — Tropf & Mikro", `knowledge/green-gard/`). Der Rest ist im Blätterkatalog sichtbar, aber nicht durchsuchbar. |
 | B3 | ~~Rainworks-Text~~ | **Erledigt.** Wortlaut 1:1 von green-gard.de/rainworks übernommen, eigene Seite unter `/rainworks`, Karte und Struktur-Diagramm inklusive. Offen bleibt nur: Gibt es die beiden Grafiken als Vektor oder in höherer Auflösung? Sie stammen aus dem Web-Export (1600 px). |
-| B4 | **Erklärvideos** (YouTube-IDs) | Learning Center und die geschützte Projektseite zeigen Kacheln ohne Video. Es genügen die YouTube-Links. Die 139 ausgeschriebenen Antworten von eurer Seite sind bereits übernommen. |
+| B4 | **Erklärvideos** | Die drei Kanal-Videos sind eingebettet (siehe M2). Für die übrigen Themen (Ventil, Hydrawise, Vordruck …) fehlen weiterhin Aufnahmen — sobald ihr dreht, tragen wir nur die ID ein. |
 | B8 | **Learning Center, Eintrag Nr. 85** | Auf eurer Seite steht dort als *Frage* die Antwort der vorherigen Frage („Verschleißteile sind alle dichtenden und rotierenden Elemente …"). Die Antwort darunter erklärt die Gleitringdichtung. Wir haben es unverändert übernommen — sagt kurz, wie die Frage lauten soll, dann korrigieren wir sie. |
 | B5 | **Schulungen: Termine, Dauer, Plätze** | Angebot und Preise sind jetzt von eurer Trainingsseite übernommen (Fachschulung 159 €, Schulung im eigenen Betrieb 599 € ab sechs Personen, Expertentraining bei Köln/Stuttgart/Wiesbaden/München). Was fehlt: die konkreten Termine, die Dauer je Schulung und die Platzzahl. Solange die fehlen, steht auf der Seite „Termine auf Anfrage" — wir erfinden keine Daten neben echten Preisen. `data/schulungen.json` |
 | B6 | **Bildrechte und Herstellerfreigaben** | Wir haben die Fotos von eurer Seite übernommen: sechs Disziplinbilder, 23 Produktbilder, acht Partnerlogos. Ein Teil davon ist Herstellermaterial (In-Lite, Husqvarna, Kress, Rain Bird, Pedrollo). Ihr zeigt es als autorisierter Händler bereits, trotzdem: Falls für einzelne Marken eine schriftliche Freigabe nötig ist oder ihr euch bei einem Bild unsicher seid, sagt Bescheid — dann tauschen wir es. Für den Livegang wären eigene Aufnahmen aus euren Projekten ohnehin stärker als Katalogbilder. |

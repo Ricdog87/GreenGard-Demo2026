@@ -11,7 +11,7 @@ import faqJson from '@/data/faq.json';
 export const metadata = {
   title: 'Learning Center · Green-Gard',
   description:
-    'Erklärvideos und 139 ausgeschriebene Antworten zu Bewässerung, Hydrawise, Pumpentechnik, Gartenbeleuchtung, Mährobotern und Poolpflege — praxisnah und auf dem Handy an der Baustelle abrufbar.',
+    'Erklärvideos vom Green-Gard-Kanal und ausgeschriebene Antworten zu Bewässerung, Hydrawise, Pumpentechnik, Gartenbeleuchtung, Mährobotern und Poolpflege — praxisnah und auf dem Handy abrufbar.',
 };
 
 const VIDEO_COUNT = videosJson.videos.length;
@@ -26,7 +26,7 @@ const PRINZIPIEN = [
   {
     icon: Wrench,
     title: 'Handgriffe statt Hochglanz',
-    body: 'Aufgenommen an echten Anlagen, von den Leuten, die sie sonst montieren. Jedes Video beantwortet genau eine Frage.',
+    body: 'Aufgenommen an echten Geräten, von den Leuten, die sie täglich beraten. Jedes Video beantwortet genau eine Frage.',
   },
   {
     icon: PhoneCall,
@@ -65,13 +65,13 @@ export default function LearningCenterPage() {
             Erst schauen. Dann <em className="italic">anrufen</em>.
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70">
-            <span className="num">{VIDEO_COUNT}</span> Erklärvideos zu den Fragen, die bei uns
-            am häufigsten am Telefon landen: Ventil, Zonenplan, Trafo, Vordruck, Kalibrierung.
-            Fünf bis fünfzehn Minuten, ein Thema pro Video, keine Werbung dazwischen. Darunter{' '}
+            <span className="num">{VIDEO_COUNT}</span> Erklärvideos von unserem YouTube-Kanal —
+            aktuell rund um Kress-Robotik, vom meistgesehenen Installationsvideo bis zur
+            RTK-Navigation. Dazu{' '}
             <a href="#fragen" data-cursor="hover" className="border-b border-mist hover:border-ink">
               <span className="num">{FAQ_COUNT}</span> ausgeschriebene Antworten
             </a>{' '}
-            zum Nachlesen.
+            zu allem, was sonst am Telefon landet: Ventil, Vordruck, Zisterne, Einwinterung.
           </p>
 
           <div
