@@ -333,10 +333,30 @@ export default function GiessBertPanel() {
             )}
             {treffer.length > 0 && <TrefferListe treffer={treffer} />}
             {nichtsGefunden && (
-              <p className="text-sm leading-relaxed text-ink/70">
-                Dazu steht hier noch nichts — schreiben Sie uns, wir antworten persönlich und
-                nehmen die Frage mit auf.
-              </p>
+              <div className="space-y-4">
+                <p className="text-sm leading-relaxed text-ink/70">
+                  Dazu steht hier noch nichts — schreiben Sie uns über „Frage senden“, wir
+                  antworten persönlich und nehmen die Frage mit auf.
+                </p>
+                <div className="space-y-1.5">
+                  {[
+                    { label: 'Alle 139 Antworten durchsuchen', note: 'Learning Center', href: '/learning-center#fragen' },
+                    { label: 'Beratungstermin buchen', note: '30 Min., kostenfrei', href: '/beratung' },
+                  ].map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      data-cursor="hover"
+                      className="flex items-baseline justify-between gap-3 border border-mist px-3.5 py-2.5 text-sm transition-colors hover:border-ink/40"
+                    >
+                      <span className="font-medium">{l.label}</span>
+                      <span className="font-mono shrink-0 text-[10px] uppercase tracking-[0.14em] text-ink/50">
+                        {l.note}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             )}
           </div>
         )}

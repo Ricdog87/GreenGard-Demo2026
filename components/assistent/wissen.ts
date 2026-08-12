@@ -66,18 +66,63 @@ function woerter(s: string): string[] {
     .filter((w) => w.length >= 3 && !STOPP.has(w));
 }
 
+/**
+ * Schreibweisen, die Kunden real tippen, auf die Katalog-Schreibweise erweitert.
+ * Schlüssel sind bereits normalisiert (kleingeschrieben, ohne Bindestrich).
+ */
+const SYNONYME: Record<string, string> = {
+  inlite: 'lite beleuchtung licht',
+  rainbird: 'rain bird regner',
+  hydrawise: 'hunter steuerung wlan',
+  wlan: 'hydrawise smart steuerung app',
+  app: 'hydrawise steuerung smart',
+  licht: 'beleuchtung leuchte',
+  lampe: 'beleuchtung leuchte licht',
+  lampen: 'beleuchtung leuchten licht',
+  leuchten: 'beleuchtung licht',
+  roboter: 'maehroboter rasenroboter automower',
+  maeher: 'maehroboter rasenmaeher',
+  rasenroboter: 'maehroboter automower',
+  sprinkler: 'regner bewaesserung versenkregner',
+  sprenger: 'regner bewaesserung',
+  tropf: 'tropfrohr tropfschlauch tropfbewaesserung',
+  giessen: 'bewaessern bewaesserung waessern',
+  preisliste: 'katalog preise konditionen',
+  angebot: 'planung angebot beratung',
+  // Wortstämme, damit „reparieren“, „repariert“ und „Reparatur“ alle treffen.
+  kaputt: 'reparier defekt garantie reklamation',
+  defekt: 'reparier garantie reklamation',
+  reparatur: 'reparier',
+  automower: 'maehroboter husqvarna',
+};
+
+/** Suchwörter um bekannte Schreibvarianten erweitern. */
+function erweitere(qw: string[]): string[] {
+  const out = new Set(qw);
+  for (const w of qw) {
+    const syn = SYNONYME[w];
+    if (syn) for (const s of syn.split(' ')) out.add(s);
+  }
+  return [...out];
+}
+
+/** „in lite“ → „inlite“: fängt Bindestrich-Marken, egal wie sie getippt werden. */
+function kompakt(s: string): string {
+  return s.replace(/ /g, '');
+}
+
 // ── Vorberechnete Indizes ───────────────────────────────────────────────────
 
-const FAQ_INDEX = FAQ.map((e) => ({
-  e,
-  frageNorm: normalize(e.frage),
-  antwortNorm: normalize(e.antwort.join(' ')),
-}));
+const FAQ_INDEX = FAQ.map((e) => {
+  const frageNorm = normalize(e.frage);
+  const antwortNorm = normalize(e.antwort.join(' '));
+  return { e, frageNorm, antwortNorm, kompaktNorm: kompakt(`${frageNorm} ${antwortNorm}`) };
+});
 
-const PRODUKT_INDEX = products.map((p) => ({
-  p,
-  haystack: normalize([p.name, p.brand, p.shortDesc, p.category].join(' ')),
-}));
+const PRODUKT_INDEX = products.map((p) => {
+  const haystack = normalize([p.name, p.brand, p.shortDesc, p.category].join(' '));
+  return { p, haystack, haystackKompakt: kompakt(haystack) };
+});
 
 const KAT_NAME = new Map(categories.map((c) => [c.slug, c.name]));
 
@@ -158,31 +203,36 @@ export const FAKTEN: Fakt[] = [
 // ── Suche ───────────────────────────────────────────────────────────────────
 
 export function sucheFakten(query: string): Fakt[] {
-  const qw = woerter(query);
+  const qw = erweitere(woerter(query));
   if (!qw.length) return [];
   return FAKTEN.filter((f) => qw.some((w) => f.ausloeser.includes(w)));
 }
 
 export function suche(query: string): Treffer[] {
   const qNorm = normalize(query);
-  const qw = woerter(query);
+  const qw = erweitere(woerter(query));
   if (!qw.length && qNorm.length < 3) return [];
 
   const treffer: Treffer[] = [];
 
-  for (const { e, frageNorm, antwortNorm } of FAQ_INDEX) {
+  for (const { e, frageNorm, antwortNorm, kompaktNorm } of FAQ_INDEX) {
     let score = 0;
     for (const w of qw) {
       if (frageNorm.includes(w)) score += 3;
       else if (antwortNorm.includes(w)) score += 1;
+      // „inlite“ trifft „in lite“ — nur für längere Wörter, sonst rauscht es.
+      else if (w.length >= 5 && kompaktNorm.includes(w)) score += 1;
     }
     if (qw.length > 1 && frageNorm.includes(qNorm)) score += 4;
     if (score > 0) treffer.push({ art: 'faq', frage: e.frage, antwort: e.antwort, score });
   }
 
-  for (const { p, haystack } of PRODUKT_INDEX) {
+  for (const { p, haystack, haystackKompakt } of PRODUKT_INDEX) {
     let score = 0;
-    for (const w of qw) if (haystack.includes(w)) score += 2;
+    for (const w of qw) {
+      if (haystack.includes(w)) score += 2;
+      else if (w.length >= 5 && haystackKompakt.includes(w)) score += 2;
+    }
     if (score > 0)
       treffer.push({
         art: 'produkt',
