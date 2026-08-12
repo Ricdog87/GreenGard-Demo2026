@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 316" role="img" aria-label="GREEN-GARD — Technik für Gärten und Grünflächen">
-  <!-- Variante mit Claim, für Footer und Druckansicht. Siehe logo-green-gard.svg. -->
-  <g>
-    <path fill="#16A75B" d="M380 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
-    <path fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="GREEN-GARD — Technik für Gärten und Grünflächen">
+  <!-- Variante mit Claim, für Footer und Druckansicht. Geometrie und Farben
+       wie logo-green-gard.svg (pixelvermessen nach der Originaldatei),
+       bewusst ohne Animation — im Druck gibt es kein CSS. -->
+  <path fill="#009353" d="M556 126 A107 107 0 0 1 770 126 L722 126 A59 59 0 0 0 604 126 Z" />
+  <path fill="#006943" d="M389 126 A107 107 0 0 1 603 126 L555 126 A59 59 0 0 0 437 126 Z" />
 
-  <text x="10" y="248"
+  <text x="60" y="304"
         font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-weight="800" font-size="118"
-        textLength="740" lengthAdjust="spacingAndGlyphs">
-    <tspan fill="#0B7A45">GREEN-</tspan><tspan fill="#16A75B">GARD</tspan>
+        font-weight="800" font-size="170"
+        textLength="1037" lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#006943">GREEN-</tspan><tspan fill="#009353">GARD</tspan>
   </text>
 
-  <text x="12" y="298"
+  <text x="62" y="368"
         font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-weight="500" font-size="29" fill="#5C7A5E"
-        textLength="736" lengthAdjust="spacingAndGlyphs">TECHNIK FÜR GÄRTEN UND GRÜNFLÄCHEN</text>
+        font-weight="500" font-size="42" fill="#5C7A5E"
+        textLength="1033" lengthAdjust="spacingAndGlyphs">TECHNIK FÜR GÄRTEN UND GRÜNFLÄCHEN</text>
 </svg>

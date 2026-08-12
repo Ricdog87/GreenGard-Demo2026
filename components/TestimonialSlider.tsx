@@ -84,8 +84,10 @@ export function TestimonialSlider() {
   return (
     <section
       className="bg-bark py-28 text-linen md:py-36"
-      onPointerEnter={() => setPausiert(true)}
-      onPointerLeave={() => setPausiert(false)}
+      // Nur die Maus pausiert: Auf Touch-Geräten gibt es kein "Verlassen" —
+      // ein Tipp würde die Rotation sonst dauerhaft stoppen.
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setPausiert(true)}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && setPausiert(false)}
       onFocusCapture={() => setPausiert(true)}
       onBlurCapture={() => setPausiert(false)}
     >

@@ -1,38 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 262" role="img" aria-label="GREEN-GARD">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 326" role="img" aria-label="GREEN-GARD">
   <!--
-    Green-Gard Wortmarke mit Doppelbogen-Signet, nachgebaut nach der Vorlage des
-    Kunden (31.07.2026): zwei ineinanderlaufende Bögen — links dunkelgrün, rechts
-    heller, der dunkle liegt oben.
+    Green-Gard Wortmarke, nachgebaut nach der Originaldatei des Kunden
+    ("Green Gard Logo ohne grau", pixelvermessen am 12.08.2026):
 
-    Zwei Eigenheiten, die hier bewusst so gelöst sind:
-    1. Farben als Attribute statt <style>: CSS in einem inline eingebundenen SVG
-       gilt dokumentweit und färbte sonst andere Grafiken mit.
-    2. Ein einziges <text> mit tspans plus textLength: Als <img> geladen kennt
-       das SVG die Webfont der Seite nicht und fällt auf Arial zurück. Zwei
-       getrennt positionierte Textblöcke würden dann kollidieren; textLength
-       zwingt die Wortmarke unabhängig von der Schrift auf dieselbe Breite.
+    - Zwei VERZAHNTE Bögen: der linke Fuß des hellen Bogens sitzt exakt hinter
+      dem rechten Fuß des dunklen (Mittenabstand = R + r = 107 + 59), dunkel
+      liegt oben. Die Überlappung ist also gewollt — nur Maß und Lage müssen
+      stimmen.
+    - Farben aus dem Original: Dunkelgrün #006943, Hellgrün #009353.
+    - Wortmarke: "GREEN-" dunkel (inkl. Bindestrich), "GARD" hell.
 
-    TODO: durch die Original-Vektordatei ersetzen, sobald sie vorliegt — die
-    Buchstaben sind hier gesetzter Text, keine Pfade.
+    Technik-Eigenheiten:
+    1. Farben als Attribute, <style> nur für die Animation — als <img> geladen
+       bleibt das CSS isoliert.
+    2. Ein <text> mit tspans plus textLength: als <img> kennt das SVG die
+       Webfont nicht; textLength hält die Laufweite in jeder Rückfallschrift.
+
+    Meeting 12.08.2026: Logo animiert — die Bögen schwenken automatisch sanft
+    wie ein Regner; bei prefers-reduced-motion stehen sie still.
+
+    TODO: durch die Original-Vektordatei ersetzen, sobald sie vorliegt.
   -->
-  <!-- Meeting 12.08.2026: Bögen nebeneinander (Überlappung war ein Fehler) und
-       automatisch animiert — sie schwenken sanft wie ein Regner. Der <style>
-       bleibt isoliert, weil das SVG als <img> geladen wird. -->
   <style>
-    .bogen { transform-origin: 380px 138px; animation: schwenk 7s ease-in-out infinite alternate; }
-    .bogen-hell { animation-delay: -3.5s; }
-    @keyframes schwenk { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
-    @media (prefers-reduced-motion: reduce) { .bogen { animation: none; } }
+    .bogen-d { transform-origin: 496px 126px; animation: schwenk 7s ease-in-out infinite alternate; }
+    .bogen-h { transform-origin: 663px 126px; animation: schwenk 7s ease-in-out infinite alternate; animation-delay: -3.5s; }
+    @keyframes schwenk { from { transform: rotate(-3.5deg); } to { transform: rotate(3.5deg); } }
+    @media (prefers-reduced-motion: reduce) { .bogen-d, .bogen-h { animation: none; } }
   </style>
-  <g>
-    <path class="bogen bogen-hell" fill="#16A75B" d="M380 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
-    <path class="bogen" fill="#0B7A45" d="M192 138 a94 94 0 0 1 188 0 h-52 a42 42 0 0 0 -84 0 Z" />
-  </g>
 
-  <text x="10" y="248"
+  <!-- heller Bogen hinten -->
+  <path class="bogen-h" fill="#009353"
+        d="M556 126 A107 107 0 0 1 770 126 L722 126 A59 59 0 0 0 604 126 Z" />
+  <!-- dunkler Bogen vorn -->
+  <path class="bogen-d" fill="#006943"
+        d="M389 126 A107 107 0 0 1 603 126 L555 126 A59 59 0 0 0 437 126 Z" />
+
+  <text x="60" y="304"
         font-family="'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-weight="800" font-size="118"
-        textLength="740" lengthAdjust="spacingAndGlyphs">
-    <tspan fill="#0B7A45">GREEN-</tspan><tspan fill="#16A75B">GARD</tspan>
+        font-weight="800" font-size="170"
+        textLength="1037" lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#006943">GREEN-</tspan><tspan fill="#009353">GARD</tspan>
   </text>
 </svg>

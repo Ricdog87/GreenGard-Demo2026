@@ -31,8 +31,8 @@ export default function LandingPage() {
       <ManifestIntro />
       <AudienceVorteile />
       <CategoryGrid />
-      <Highlights />
       <TestimonialSlider />
+      <Highlights />
       <SaisonModul />
       <BewaesserungsRechner />
 
