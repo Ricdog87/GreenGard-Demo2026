@@ -75,17 +75,36 @@ export function BeratungBooking() {
   const [thema, setThema] = useState<string>(THEMEN[0]);
   const [done, setDone] = useState<FormValues | null>(null);
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormValues>({ resolver: zodResolver(schema) });
+
   useEffect(() => {
     const next = buildDates();
     setDates(next);
     setDate((cur) => cur || next[0].iso);
-  }, []);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
+    // Kommt jemand aus dem Planungsrechner mit Cross-Sell-Häkchen
+    // (?extras=beleuchtung,maehroboter), landet das vorbefüllt in der
+    // Nachricht — der Vertrieb sieht sofort, was ins Angebot soll.
+    // window.location statt useSearchParams: die Seite bleibt statisch.
+    const extras = new URLSearchParams(window.location.search).get('extras');
+    if (extras) {
+      const LABEL: Record<string, string> = {
+        beleuchtung: 'Gartenbeleuchtung',
+        maehroboter: 'Mähroboter',
+        pool: 'Poolpflege',
+      };
+      const namen = extras.split(',').map((e) => LABEL[e]).filter(Boolean);
+      if (namen.length) {
+        setValue('message', `Bitte ins Angebot mit aufnehmen: ${namen.join(', ')}.\n`);
+        setThema('Bewässerung');
+      }
+    }
+  }, [setValue]);
 
   const chosen = BERATER.find((b) => b.email === berater)!;
   const dateLabel = dates.find((d) => d.iso === date);

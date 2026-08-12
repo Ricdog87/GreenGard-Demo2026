@@ -34,6 +34,15 @@ export function PlanungRechner() {
   const [steuerung, setSteuerung] = useState<Steuerung>('smart');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
+  // Cross-Sell wie auf green-gard.de/planungstool angeboten: „Wir fügen Ihnen
+  // auf Wunsch einen Mähroboter oder ein Lichtkonzept dem Angebot hinzu.“
+  // Bewusst NICHT als Rechner-Schritt (V2: einfach halten), sondern als
+  // Ankreuzfelder am Ergebnis — sie wandern nur in die Anfrage.
+  const [extras, setExtras] = useState<string[]>([]);
+
+  function toggleExtra(v: string) {
+    setExtras((cur) => (cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v]));
+  }
 
   const empf = useMemo(
     () => berechneEmpfehlung({ flaecheQm: flaeche, quelle, bereiche, rasenQm, beetQm, steuerung }),
@@ -347,9 +356,48 @@ export function PlanungRechner() {
                     <h3 className="font-display mt-3 text-2xl tracking-tight">
                       Wie möchten Sie fortfahren?
                     </h3>
+
+                    {/* Cross-Sell: fließt in Terminanfrage und Plan-Mail ein. */}
+                    <div className="mt-6 border-t border-linen/15 pt-5">
+                      <p className="font-mono mb-3 text-[11px] uppercase tracking-[0.18em] text-linen/60">
+                        Ins Angebot mit aufnehmen?
+                      </p>
+                      <div className="space-y-2">
+                        {[
+                          { id: 'beleuchtung', label: 'Gartenbeleuchtung', note: 'In-Lite 12V-Konzept' },
+                          { id: 'maehroboter', label: 'Mähroboter', note: 'Kress oder Husqvarna' },
+                          { id: 'pool', label: 'Poolpflege', note: 'Bayrol und Beatbot' },
+                        ].map((x) => (
+                          <label
+                            key={x.id}
+                            data-cursor="hover"
+                            className={cn(
+                              'flex cursor-pointer items-center justify-between gap-3 border px-3.5 py-2.5 text-sm transition-colors',
+                              extras.includes(x.id)
+                                ? 'border-bronze bg-linen/10'
+                                : 'border-linen/20 hover:border-linen/45'
+                            )}
+                          >
+                            <span className="flex items-center gap-3">
+                              <input
+                                type="checkbox"
+                                checked={extras.includes(x.id)}
+                                onChange={() => toggleExtra(x.id)}
+                                className="h-4 w-4 accent-[#C77B3F]"
+                              />
+                              {x.label}
+                            </span>
+                            <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-linen/50">
+                              {x.note}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="mt-6 space-y-3">
                       <Button asChild variant="accent" size="lg" className="w-full justify-between">
-                        <Link href="/beratung">
+                        <Link href={extras.length ? `/beratung?extras=${extras.join(',')}` : '/beratung'}>
                           Termin für Systemplanung <ArrowRight className="h-4 w-4" />
                         </Link>
                       </Button>
@@ -375,6 +423,7 @@ export function PlanungRechner() {
                             quelle,
                             bereiche,
                             steuerung,
+                            extras,
                           });
                           setSent(true);
                         }}

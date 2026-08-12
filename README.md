@@ -308,6 +308,15 @@ hier mit einer Aufgabe: Kundenfragen beantworten, bevor jemand zum Hörer greift
 Dateien: `components/assistent/` (`wissen.ts` = Suche und Regeln,
 `GiessBertPanel.tsx` = Oberfläche, `GiessBert.tsx` = Knopf und Dialog).
 
+### Umsatz-Features
+
+| Feature | Hebel |
+|---|---|
+| **Gießbert-Richtpreis** — „was kostet bewässerung für 800 qm" → sofort ≈ 2.400 € netto (Jans Liste: 400 € + 2,50 €/m²), Zuschläge Zisterne/Brunnen, CTA in die Planung | Die Kauffrage Nr. 1 bekommt eine Zahl statt „lässt sich pauschal nicht beantworten" |
+| **Cross-Sell am Planungsergebnis** — Ankreuzfelder Beleuchtung/Mähroboter/Pool wandern in Termin-Link (`?extras=…`) und vorbefüllte Nachricht auf `/beratung` | Durchschnittsbon; deckt sich mit dem Angebot der alten Planungstool-Seite |
+| **Saison-Modul** auf der Landing — Inhalt nach Monat (Frühjahr Planung · Sommer Gießwissen · Herbst Einwinterung + Winterservice 235 € · Winter Werkstatt), hydration-sicher per Swap nach Mount | Füllt die Wintersaison, Seite wirkt betreut ohne Pflege |
+| **CSV-Export der EK-Preise** im Profi-Dashboard — Semikolon + BOM + Dezimalkomma (deutsches Excel), nur Artikel mit vereinbartem Preis | Lock-in: Green-Gard-Konditionen wandern in die Kalkulationssoftware der Betriebe |
+
 ### Bildbestand
 
 | Stelle | Echtes Kundenfoto | Weiterhin Illustration |

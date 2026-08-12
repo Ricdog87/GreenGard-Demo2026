@@ -7,15 +7,17 @@ import { cn } from '@/lib/utils';
 import {
   suche,
   sucheFakten,
-  FAKTEN,
   FINDER_FLAECHEN,
   empfehleRoboter,
   mailtoFuer,
+  richtpreisFuer,
   KONTAKT,
   type FinderFlaeche,
   type Treffer,
   type Fakt,
+  type Richtpreis,
 } from './wissen';
+import { formatEURRound } from '@/lib/utils';
 
 /**
  * Der Inhalt des Assistenten. Wird per dynamic() erst beim ersten Öffnen
@@ -23,12 +25,40 @@ import {
  */
 
 const SCHNELL = [
+  { label: 'Was kostet Bewässerung für 800 m²?', frage: 'was kostet bewässerung für 800 qm' },
   { label: 'Öffnungszeiten', frage: 'öffnungszeiten' },
   { label: 'Lieferzeit', frage: 'lieferzeit' },
   { label: 'Auf Rechnung kaufen?', frage: 'rechnung' },
-  { label: 'Was kostet die Planung?', frage: 'was kostet die planung' },
   { label: 'Bewässerung winterfest', frage: 'winterfest' },
 ] as const;
+
+function RichtpreisKarte({ r }: { r: Richtpreis }) {
+  return (
+    <div className="border-l-2 border-copper bg-linen/70 px-4 py-3">
+      <p className="font-display text-base tracking-tight">
+        Richtwert für <span className="num">{r.qm.toLocaleString('de-DE')} m²</span>
+      </p>
+      <p className="mt-2 flex items-baseline gap-2">
+        <span className="price text-2xl">≈ {formatEURRound(r.materialNetto)}</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink/50">
+          Material netto · Hauswasseranschluss
+        </span>
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-ink/70">
+        Mit Zisterne + {formatEURRound(r.zisterneNetto)} Technik, mit Brunnen +{' '}
+        {formatEURRound(r.brunnenNetto)}. Ohne Montage und Erdarbeiten — den verbindlichen
+        Preis liefert die Planung{r.ueberListe ? '; Flächen dieser Größe legen wir ohnehin individuell aus' : ''}.
+      </p>
+      <Link
+        href="/planung"
+        data-cursor="hover"
+        className="mt-2 inline-flex items-center gap-1.5 border-b border-mist text-sm hover:border-ink"
+      >
+        Planung starten — 1–3 Werktage <ArrowRight className="h-3.5 w-3.5" />
+      </Link>
+    </div>
+  );
+}
 
 function FaktKarte({ f }: { f: Fakt }) {
   return (
@@ -215,8 +245,10 @@ export default function GiessBertPanel() {
 
   const fakten = useMemo(() => (frage.trim() ? sucheFakten(frage) : []), [frage]);
   const treffer = useMemo(() => (frage.trim() ? suche(frage) : []), [frage]);
+  const richtpreis = useMemo(() => (frage.trim() ? richtpreisFuer(frage) : null), [frage]);
   const roboterAbsicht = /rasenrobot|m(ä|a)hrobot|automower|rasenm(ä|a)her/i.test(frage);
-  const nichtsGefunden = frage.trim().length >= 3 && fakten.length === 0 && treffer.length === 0;
+  const nichtsGefunden =
+    frage.trim().length >= 3 && fakten.length === 0 && treffer.length === 0 && !richtpreis;
 
   return (
     <div className="flex h-full flex-col">
@@ -284,6 +316,7 @@ export default function GiessBertPanel() {
           </div>
         ) : (
           <div className="space-y-5">
+            {richtpreis && <RichtpreisKarte r={richtpreis} />}
             {fakten.map((f) => (
               <FaktKarte key={f.id} f={f} />
             ))}

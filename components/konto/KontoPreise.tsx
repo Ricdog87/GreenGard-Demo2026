@@ -1,8 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Download, Search } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { DEMO_KONTO, ekPreisFuer } from '@/lib/konto-daten';
@@ -52,6 +53,38 @@ function prozent(anteil: number): string {
   const wert = Math.round(anteil * 1000) / 10;
   const text = Number.isInteger(wert) ? String(wert) : wert.toFixed(1).replace('.', ',');
   return `${text} %`;
+}
+
+/**
+ * Preisliste als CSV — für die Kalkulationssoftware der Betriebe.
+ * Semikolon-getrennt mit BOM und Dezimalkomma: so öffnet deutsches Excel die
+ * Datei ohne Import-Dialog. Nur Artikel mit vereinbartem Preis werden
+ * exportiert — „auf Anfrage“ gehört nicht in eine Kalkulationsgrundlage.
+ */
+function exportiereCsv() {
+  const zeilen = [
+    ['Bestellnummer', 'Hersteller', 'Beschreibung', 'VE', 'EK netto (EUR)'],
+    ...katalogArtikel
+      .map((a) => ({ a, ek: ekPreisFuer(a.bestellnummer) }))
+      .filter((x): x is { a: KatalogArtikel; ek: number } => x.ek !== null)
+      .map(({ a, ek }) => [
+        a.bestellnummer,
+        a.hersteller,
+        a.beschreibung,
+        a.verpackungseinheit,
+        ek.toFixed(2).replace('.', ','),
+      ]),
+  ];
+  const csv = zeilen
+    .map((z) => z.map((f) => (/[;"\n]/.test(f) ? `"${f.replace(/"/g, '""')}"` : f)).join(';'))
+    .join('\r\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `green-gard-ek-preise-${DEMO_KONTO.kundennummer}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 export function KontoPreise() {
@@ -108,14 +141,20 @@ export function KontoPreise() {
               />
             </div>
           </div>
-          {/* Trefferzahl als Live-Region: Die Suche filtert ohne Absenden. */}
-          <p
-            role="status"
-            aria-live="polite"
-            className="font-mono num shrink-0 text-[10px] uppercase tracking-[0.16em] text-ink/45"
-          >
-            {treffer.length} von {katalogArtikel.length} Artikeln
-          </p>
+          <div className="flex shrink-0 items-center gap-5">
+            {/* Trefferzahl als Live-Region: Die Suche filtert ohne Absenden. */}
+            <p
+              role="status"
+              aria-live="polite"
+              className="font-mono num text-[10px] uppercase tracking-[0.16em] text-ink/45"
+            >
+              {treffer.length} von {katalogArtikel.length} Artikeln
+            </p>
+            {/* CSV für die Kalkulation — der stillste Lock-in, den es gibt. */}
+            <Button variant="outline" size="sm" onClick={exportiereCsv}>
+              <Download className="h-3.5 w-3.5" /> Als CSV
+            </Button>
+          </div>
         </div>
 
         {/* Breite Tabelle: eigener Scroll-Container, damit die Seite auf 375px steht.

@@ -10,6 +10,7 @@ import faqJson from '@/data/faq.json';
 import { products, categories } from '@/lib/data';
 import { CONTACT, OEFFNUNG, LIEFERUNG, AUSFUEHRUNG } from '@/lib/contact';
 import { PLANUNGSGEBUEHR, PLANUNGSDAUER } from '@/lib/planungspakete';
+import { materialkostenNetto, ueberListe, QUELLE_ZUSCHLAG } from '@/lib/preise';
 
 export interface FaqTreffer {
   art: 'faq';
@@ -200,6 +201,52 @@ export function suche(query: string): Treffer[] {
   }
 
   return treffer.sort((a, b) => b.score - a.score);
+}
+
+// ── Richtpreis ──────────────────────────────────────────────────────────────
+//
+// Die häufigste Kauffrage („Was kostet das?“) beantwortet das Learning Center
+// mit „lässt sich pauschal nicht beantworten“. Wir können es besser: Jans
+// Preisliste (400 € + 2,50 €/m²) liegt in lib/preise.ts. Nennt jemand eine
+// Fläche, rechnet Gießbert den Materialrichtwert sofort aus — mit denselben
+// Einschränkungen, die auch der Rechner nennt: ohne Montage, netto.
+
+export interface Richtpreis {
+  qm: number;
+  materialNetto: number;
+  zisterneNetto: number;
+  brunnenNetto: number;
+  ueberListe: boolean;
+}
+
+/** Fläche aus einer frei formulierten Frage ziehen: „800 qm“, „1.200 m²“, „ca. 950m2“. */
+export function flaecheAus(query: string): number | null {
+  const m = query
+    .replace(/\./g, '')
+    .match(/(\d{2,5})\s*(?:qm|m2|m²|quadratmeter)/i);
+  if (!m) return null;
+  const qm = parseInt(m[1], 10);
+  return qm >= 20 && qm <= 20000 ? qm : null;
+}
+
+const PREIS_ABSICHT = /kost|preis|teuer|budget|euro|€|richtwert|ungef/i;
+const BEWAESSERUNG_ABSICHT = /bew(ä|a)sser|beregnung|regner|sprinkler|garten|rasen|anlage/i;
+
+/**
+ * Richtpreis, wenn die Frage nach Kosten UND einer Fläche klingt.
+ * Eine Flächenangabe allein genügt auch („bewässerung 800 qm“).
+ */
+export function richtpreisFuer(query: string): Richtpreis | null {
+  const qm = flaecheAus(query);
+  if (qm === null) return null;
+  if (!PREIS_ABSICHT.test(query) && !BEWAESSERUNG_ABSICHT.test(query)) return null;
+  return {
+    qm,
+    materialNetto: materialkostenNetto(qm),
+    zisterneNetto: QUELLE_ZUSCHLAG.zisterne?.netto ?? 0,
+    brunnenNetto: QUELLE_ZUSCHLAG.brunnen?.netto ?? 0,
+    ueberListe: ueberListe(qm),
+  };
 }
 
 // ── Mähroboter-Finder ───────────────────────────────────────────────────────

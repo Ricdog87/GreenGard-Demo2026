@@ -4,6 +4,7 @@ import { AudienceBar } from '@/components/AudienceBar';
 import { ManifestIntro } from '@/components/ManifestIntro';
 import { CategoryGrid } from '@/components/CategoryGrid';
 import { AudienceVorteile } from '@/components/AudienceVorteile';
+import { SaisonModul } from '@/components/SaisonModul';
 import { Highlights } from '@/components/Highlights';
 import { BewaesserungsRechner } from '@/components/BewaesserungsRechner';
 import { KitCard } from '@/components/KitCard';
@@ -31,6 +32,7 @@ export default function LandingPage() {
       <AudienceVorteile />
       <CategoryGrid />
       <Highlights />
+      <SaisonModul />
       <BewaesserungsRechner />
 
       <section className="border-t border-mist py-28 md:py-40">
