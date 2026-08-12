@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
+import { GiessBert } from '@/components/assistent/GiessBert';
 import { Toaster } from '@/components/ui/toast';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { ScrollFx } from '@/components/ScrollFx';
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <CartDrawer />
+        <GiessBert />
         <Toaster />
       </body>
     </html>

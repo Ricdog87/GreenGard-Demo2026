@@ -287,6 +287,27 @@ Beim Übertragen korrigiert:
 - **Lagerverkaufszeiten** fehlten ganz. Telefon und Lager haben
   unterschiedliche Zeiten, dazu die Samstagsöffnung in der Hauptsaison.
 
+### Gießbert — der Sofort-Assistent
+
+Unten rechts auf jeder Seite sitzt Gießbert, das Maskottchen von green-gard.de —
+hier mit einer Aufgabe: Kundenfragen beantworten, bevor jemand zum Hörer greift.
+
+- **Wissensbasis statt Chatbot:** Gießbert durchsucht die 139 echten Antworten
+  aus dem Learning Center, das Sortiment und die Serviceregeln aus
+  `lib/contact.ts`. Deterministisch, ohne API, ohne Halluzination — er kann
+  nichts erfinden, und er antwortet in Millisekunden.
+- **Sofort-Fakten:** Öffnungszeiten, Lieferzeit, Zahlungsregel, Planungskosten
+  und die Einbau-Frage kommen aus derselben Quelle wie Footer und Profi-Seite.
+- **Mähroboter-Finder:** zwei Fragen (Fläche, Kabel ja/nein) → Modellempfehlung
+  mit Begründung, Logik wie am Telefon.
+- **Ehrlicher Ausstieg:** Unbekanntes wird nicht umschifft — der Mail-Link
+  übernimmt die gestellte Frage in den Betreff, die Telefonnummer steht daneben.
+- **Kostet die Seite nichts:** Das Panel samt Wissen (~57 KB) lädt per
+  `dynamic()` erst beim ersten Öffnen.
+
+Dateien: `components/assistent/` (`wissen.ts` = Suche und Regeln,
+`GiessBertPanel.tsx` = Oberfläche, `GiessBert.tsx` = Knopf und Dialog).
+
 ### Bildbestand
 
 | Stelle | Echtes Kundenfoto | Weiterhin Illustration |
