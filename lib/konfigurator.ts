@@ -9,6 +9,7 @@
 import {
   MATERIAL_TABLE_MAX_QM,
   QUELLE_ZUSCHLAG,
+  SMART_ZUSCHLAG,
   beetZuschlagNetto,
   materialkostenNetto,
   ueberListe,
@@ -109,6 +110,11 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
       netto: beetZuschlagNetto(beetQm),
       note: 'Tropfschlauch, Druckminderer und Filter für die Beetzonen.',
     });
+  }
+  // Smart kostet mehr als manuell (18.08.2026): WLAN-Steuergerät + Regensensor
+  // als eigene Zeile — vorher änderte die Wahl nur die Stückliste, nicht den Preis.
+  if (steuerung === 'smart') {
+    kosten.push({ label: SMART_ZUSCHLAG.label, netto: SMART_ZUSCHLAG.netto });
   }
   const zuschlag = QUELLE_ZUSCHLAG[quelle];
   if (zuschlag) {

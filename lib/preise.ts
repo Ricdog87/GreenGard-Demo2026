@@ -59,6 +59,17 @@ export function materialkostenNetto(qm: number): number {
 }
 
 /**
+ * Smart-Zuschlag (18.08.2026, Ricardo): Die WLAN-Steuerung muss teurer sein
+ * als die manuelle — mindestens 50 €. Angesetzt sind 150 € netto: WLAN-
+ * Steuergerät statt Basisgerät (~ +80 €) plus Funk-Regensensor (~ +70 €).
+ * TODO: Betrag von Jan bestätigen lassen.
+ */
+export const SMART_ZUSCHLAG = {
+  netto: 150,
+  label: 'Smart-Steuerung (WLAN + Regensensor)',
+} as const;
+
+/**
  * Beet-Zuschlag (Meeting 18.08.2026, Vorgabe von Jan): Tropfbewässerung für
  * Beete kostet je nach Größe 300 – 500 € netto zusätzlich. Vorher ging die
  * Beetfläche nur in die m²-Pauschale ein — die Auswahl „Beetfläche“ bewegte
