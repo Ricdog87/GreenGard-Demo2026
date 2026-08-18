@@ -326,7 +326,7 @@ export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): Rob
     'husqvarna-405ve-nera': {
       slug: 'husqvarna-405ve-nera',
       name: 'Husqvarna Automower 405VE NERA',
-      grund: 'NERA-Serie bis 900 m² — leise, mit EdgeCut-Kantenschnitt; virtuelle Grenzen per EPOS Plug-in nachrüstbar.',    },
+      grund: 'NERA-Serie mit 900 / 600 m² Flächenleistung — leise, mit EdgeCut-Kantenschnitt; virtuelle Grenzen per EPOS Plug-in nachrüstbar.',    },
     'kress-kr136e': {
       slug: 'kress-kr136e',
       name: 'Kress KR136E',
@@ -347,6 +347,27 @@ export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): Rob
   return [alle['husqvarna-430x-nera'], alle['kress-kr173e']];
 }
 
+// ── Betriebszeiten ──────────────────────────────────────────────────────────
+//
+// Beschluss aus dem Meeting vom 18.08.2026: Gießbert ist nur zu den
+// Geschäftszeiten aktiv — Mo–Fr 7:30–17:00 (Europe/Berlin), Sa/So offline.
+// Außerhalb zeigt das Panel den Offline-Zustand mit Kontaktweg.
+
+export function giessbertOnline(jetzt: Date = new Date()): boolean {
+  const teile = new Intl.DateTimeFormat('de-DE', {
+    timeZone: 'Europe/Berlin',
+    weekday: 'short',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  }).formatToParts(jetzt);
+  const wert = (typ: string) => teile.find((t) => t.type === typ)?.value ?? '';
+  const wochentag = wert('weekday');
+  if (/^(Sa|So)/.test(wochentag)) return false;
+  const minuten = parseInt(wert('hour'), 10) * 60 + parseInt(wert('minute'), 10);
+  return minuten >= 7 * 60 + 30 && minuten < 17 * 60;
+}
+
 // ── Kontakt-Ausstieg ────────────────────────────────────────────────────────
 
 export function mailtoFuer(frage: string): string {
@@ -357,5 +378,6 @@ export function mailtoFuer(frage: string): string {
 export const KONTAKT = {
   telefon: CONTACT.phoneDisplay,
   telefonHref: CONTACT.phoneHref,
+  email: CONTACT.email,
   zeiten: OEFFNUNG.telefon,
 } as const;

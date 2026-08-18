@@ -1,14 +1,15 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ChevronDown, Mail, Phone, Search, Undo2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, Clock, Mail, Phone, Search, Undo2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   suche,
   sucheFakten,
   FINDER_FLAECHEN,
   empfehleRoboter,
+  giessbertOnline,
   mailtoFuer,
   richtpreisFuer,
   KONTAKT,
@@ -261,6 +262,47 @@ export default function GiessBertPanel() {
   const nichtsGefunden =
     frage.trim().length >= 3 && fakten.length === 0 && treffer.length === 0 && !richtpreis;
 
+  // Betriebszeiten (Meeting 18.08.2026): Mo–Fr 7:30–17:00, Sa/So offline.
+  // Erst nach dem Mount prüfen — im statischen HTML steckt sonst die Bauzeit
+  // und der Server-Zustand passt nicht zur Uhr des Besuchers (Hydration).
+  const [online, setOnline] = useState<boolean | null>(null);
+  useEffect(() => {
+    setOnline(giessbertOnline());
+    const timer = setInterval(() => setOnline(giessbertOnline()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (online === false) {
+    return (
+      <div className="flex h-full flex-col items-start justify-center gap-4 px-6 py-8">
+        <span className="grid h-12 w-12 place-items-center rounded-full bg-linen text-moss">
+          <Clock className="h-5 w-5" aria-hidden />
+        </span>
+        <p className="font-display text-2xl tracking-tight">Gerade außerhalb der Zeiten.</p>
+        <p className="text-sm leading-relaxed text-ink/70">
+          Gießbert ist <span className="font-medium">Mo–Fr von 7:30–17:00</span> für Sie da.
+          Schreiben Sie uns gern — wir antworten am nächsten Werktag.
+        </p>
+        <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          <a
+            href={`mailto:${KONTAKT.email}`}
+            data-cursor="hover"
+            className="inline-flex items-center gap-1.5 border-b border-mist pb-0.5 transition-colors hover:border-ink"
+          >
+            <Mail className="h-3.5 w-3.5" /> {KONTAKT.email}
+          </a>
+          <Link
+            href="/beratung"
+            data-cursor="hover"
+            className="inline-flex items-center gap-1.5 border-b border-mist pb-0.5 transition-colors hover:border-ink"
+          >
+            Termin anfragen <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-full flex-col">
       {/* Eingabe */}
@@ -321,8 +363,8 @@ export default function GiessBertPanel() {
             </div>
             <p className="text-sm leading-relaxed text-ink/60">
               Gießbert kennt die <span className="num">139</span> Antworten aus unserem Learning
-              Center, das Sortiment und unsere Serviceregeln — und antwortet sofort, rund um die
-              Uhr.
+              Center, das Sortiment und unsere Serviceregeln — und antwortet sofort, Mo–Fr von
+              7:30 bis 17:00 Uhr.
             </p>
           </div>
         ) : (

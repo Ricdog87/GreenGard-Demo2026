@@ -39,7 +39,7 @@ export function B2BSwitch({ className }: { className?: string }) {
             : 'border-mist text-ink/60 hover:bg-linen'
         )}
       >
-        <LogIn className="h-3 w-3" /> Profi
+        <LogIn className="h-3 w-3" /> Profi-Login
       </Link>
     </div>
   );

@@ -426,7 +426,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="min-w-0">
                   <label className="eyebrow mb-2 block" htmlFor="pk-name">
-                    Ansprechpartner / Name
+                    Ansprechpartner / Name <span aria-hidden className="text-red-700">*</span>
                   </label>
                   <Input
                     id="pk-name"
@@ -439,7 +439,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                 </div>
                 <div className="min-w-0">
                   <label className="eyebrow mb-2 block" htmlFor="pk-email">
-                    E-Mail
+                    E-Mail <span aria-hidden className="text-red-700">*</span>
                   </label>
                   <Input
                     id="pk-email"
@@ -614,7 +614,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                 <Paperclip aria-hidden className="h-5 w-5 shrink-0 text-moss" />
                 <span className="min-w-0">
                   <span className="font-display block text-lg tracking-tight">
-                    Projektplan anhängen
+                    Projektplan anhängen <span aria-hidden className="text-red-700">*</span>
                   </span>
                   <span className="mt-1 block text-xs text-ink/55">
                     PDF, JPG oder PNG · mehrere Dateien möglich · Pflichtfeld
@@ -627,6 +627,12 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                   die Anfrage nicht bearbeiten.
                 </p>
               )}
+              {/* mailto kann keine Anhänge übertragen — der Besucher muss die
+                  Dateien selbst in die sich öffnende Mail ziehen.
+                  TODO: Direktversand via Office 365/SMTP nach Domain-Umzug. */}
+              <p className="mt-2 text-xs text-ink/55">
+                Bitte hängen Sie die Projektpläne der sich öffnenden E-Mail an.
+              </p>
               {/* TODO: Demo-Modus — es wird nichts hochgeladen, wir zeigen nur die
                   Dateinamen. Später Supabase Storage (Bucket „projektanhaenge“). */}
               <input

@@ -62,15 +62,23 @@ function ladeIcs(
   URL.revokeObjectURL(url);
 }
 
-/** Mo–Fr, die nächsten zehn Werktage — frühestens übermorgen.
+/** Mo–Fr, die nächsten zehn Werktage — frühestens in zwei WERKTAGEN.
  *  Zwei Tage Vorlauf sind Jans Bedingung für die Online-Buchung
- *  (Meeting 18.08.2026): so bleibt Zeit, den Termin intern zu bestätigen. */
-const VORLAUF_TAGE = 2;
+ *  (Meeting 18.08.2026): so bleibt Zeit, den Termin intern zu bestätigen.
+ *  Werktage statt Kalendertage, damit auch über das Wochenende hinweg immer
+ *  zwei Arbeitstage dazwischen liegen (Fr → Di, nicht Fr → Mo). */
+const VORLAUF_WERKTAGE = 2;
 
 function buildDates() {
   const out: { iso: string; day: string; date: string }[] = [];
   const cursor = new Date();
-  cursor.setDate(cursor.getDate() + VORLAUF_TAGE - 1);
+  // Erst die Vorlauf-Werktage abzählen, dann sammeln.
+  let vorlauf = 0;
+  while (vorlauf < VORLAUF_WERKTAGE - 1) {
+    cursor.setDate(cursor.getDate() + 1);
+    const wd = cursor.getDay();
+    if (wd !== 0 && wd !== 6) vorlauf++;
+  }
   while (out.length < 10) {
     cursor.setDate(cursor.getDate() + 1);
     const wd = cursor.getDay();
@@ -276,7 +284,10 @@ export function BeratungBooking() {
                 ))}
               </div>
               <p className="font-mono mt-3 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                Buchbar mit mindestens {VORLAUF_TAGE} Tagen Vorlauf
+                Termine mit {VORLAUF_WERKTAGE} Tagen Vorlauf — für dringende Fälle:{' '}
+                <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink hover:text-ink">
+                  {CONTACT.phoneDisplay}
+                </a>
               </p>
             </div>
 
