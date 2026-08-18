@@ -1,8 +1,9 @@
 {
-  "_comment": "Kuratierte Highlight-Produkte für die Landing. Reihenfolge = Anzeigereihenfolge. Slugs müssen zu data/products.json passen — Kunde kann hier jederzeit tauschen.",
+  "_comment": "Top-Seller fuer die Landing (Meeting-Add-on 12.08.2026). Reihenfolge = Anzeige. Slugs muessen zu data/products.json passen — Kunde tauscht hier jederzeit.",
   "slugs": [
-    "beatbot-aquasense-pro",
-    "kress-kr136e",
-    "hunter-hydrawise-hc-12"
+    "beatbot-aquasense-2-pro",
+    "hunter-hpc-hydrawise",
+    "husqvarna-405ve-nera",
+    "in-lite-breeze"
   ]
 }

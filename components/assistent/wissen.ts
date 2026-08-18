@@ -327,10 +327,10 @@ export type FinderFlaeche = (typeof FINDER_FLAECHEN)[number]['id'];
 
 export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): RoboterEmpfehlung[] {
   const alle: Record<string, RoboterEmpfehlung> = {
-    'husqvarna-305': {
-      slug: 'husqvarna-305',
-      name: 'Husqvarna Automower 305',
-      grund: 'Der bewährte Einstieg für kompakte Gärten bis 600 m² — leise und zuverlässig.',
+    'husqvarna-405ve-nera': {
+      slug: 'husqvarna-405ve-nera',
+      name: 'Husqvarna Automower 405VE NERA',
+      grund: 'NERA-Serie bis 900 m² — leise, mit EdgeCut-Kantenschnitt; virtuelle Grenzen per EPOS Plug-in nachrüstbar.',
       href: SHOP_URL,
     },
     'kress-kr136e': {
@@ -353,7 +353,7 @@ export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): Rob
     },
   };
 
-  if (flaeche === 'klein') return ohneKabel ? [alle['kress-kr136e'], alle['husqvarna-305']] : [alle['husqvarna-305'], alle['kress-kr136e']];
+  if (flaeche === 'klein') return ohneKabel ? [alle['kress-kr136e'], alle['husqvarna-405ve-nera']] : [alle['husqvarna-405ve-nera'], alle['kress-kr136e']];
   if (flaeche === 'mittel') return [alle['kress-kr136e'], alle['kress-kr173e']];
   if (flaeche === 'gross') return [alle['kress-kr173e'], alle['husqvarna-430x-nera']];
   return [alle['husqvarna-430x-nera'], alle['kress-kr173e']];

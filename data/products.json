@@ -15,7 +15,8 @@
       "Sektor": "50° – 360°",
       "Wurfhöhe": "100 mm",
       "Anschluss": "3/4'' IG"
-    }
+    },
+    "_hinweis": "Top-Seller (12.08.2026): vier Platzhalter durch echte Modelle ersetzt (AquaSense 2 Pro, HPC Hydrawise, 405VE NERA, BREEZE) — Bilder unter /products/. netPrice wird NIRGENDS gerendert (Meeting 12.08.: keine Preise, Shop fuehrt die Preise); Werte sind UVP-Groessenordnung, TODO mit Jan bestaetigen. 405VE: Flaeche laut husqvarna.com/de 900 m², nicht 600."
   },
   {
     "slug": "rainbird-3504-pc",
@@ -101,21 +102,20 @@
     }
   },
   {
-    "slug": "hunter-hydrawise-hc-12",
-    "name": "Hunter Hydrawise HC 12 Zonen WLAN",
+    "slug": "hunter-hpc-hydrawise",
+    "name": "Hunter HPC Hydrawise WiFi-Steuerung",
     "brand": "Hunter",
     "category": "steuerung",
-    "shortDesc": "Cloud-Steuergerät mit Wetter-Intelligenz und Verbrauchs-Reporting.",
-    "longDesc": "Hydrawise reduziert Wasserverbrauch durch Wetter-API automatisch um bis zu 50%. App-Steuerung, Push-Alarme, Multi-User-Zugriff. Ideal für Profis, die Anlagen ihrer Kunden remote managen.",
-    "netPrice": 389,
-    "image": "/img/foto/produkt/hunter-hydrawise-hc-12.jpg",
-    "stock": 22,
+    "shortDesc": "Smarte Bewässerungssteuerung mit Hydrawise-App, Touchscreen und Predictive Watering — modular erweiterbar.",
+    "longDesc": "Die HPC bringt Hydrawise an die Wand: lokale Wettersteuerung, Predictive Watering und die App, mit der Betriebe alle Anlagen ihrer Kunden aus dem Büro betreuen. Modular erweiterbar, für Innen- und Außenmontage.",
+    "netPrice": 289,
+    "image": "/products/hunter-hpc-hydrawise.webp",
     "bestseller": true,
     "specs": {
-      "Zonen": "12 (erweiterbar auf 54)",
-      "WLAN": "integriert",
-      "App": "Hydrawise iOS/Android",
-      "Wetter": "automatische Anpassung"
+      "Stationen": "modular erweiterbar",
+      "App": "Hydrawise",
+      "Wetter": "Predictive Watering",
+      "Montage": "Innen/Außen"
     }
   },
   {
@@ -199,20 +199,20 @@
     }
   },
   {
-    "slug": "in-lite-fusion",
-    "name": "In-Lite FUSION Wegeleuchte 12V",
+    "slug": "in-lite-breeze",
+    "name": "In-Lite BREEZE Gartenleuchte",
     "brand": "In-Lite",
     "category": "beleuchtung",
-    "shortDesc": "Schlanke Wegeleuchte aus Aluminium, blendfrei mit warmweißem Licht.",
-    "longDesc": "Premium 12V-Outdoor-Beleuchtung. Steckersystem ohne Elektriker, blendfreies warmweißes Licht, hochwertige Aluminium-Verarbeitung. 5 Jahre Garantie.",
-    "netPrice": 89,
-    "image": "/img/foto/produkt/in-lite-fusion.jpg",
-    "stock": 64,
+    "shortDesc": "Filigrane 12-V-Stableuchte für Beete und Gräser — warmweißes Licht mit sanftem Breathing-Effekt.",
+    "longDesc": "Die BREEZE verschmilzt mit der Bepflanzung: eine schmale Lichtlinie im Smoked-Glass-Look, 360°-Lichtwirkung, werkzeuglos per Erdspieß im 12-V-System installiert. In zwei Höhen, Smart-kompatibel.",
+    "netPrice": 129,
+    "image": "/products/in-lite-breeze.webp",
+    "bestseller": true,
     "specs": {
-      "Spannung": "12V",
-      "Lichtfarbe": "2700 K warmweiß",
-      "Material": "Aluminium anthrazit",
-      "Schutzart": "IP44"
+      "System": "12 V In-Lite",
+      "Lichtfarbe": "warmweiß",
+      "Montage": "Erdspieß, werkzeuglos",
+      "Smart": "In-Lite Smart-kompatibel"
     }
   },
   {
@@ -298,35 +298,38 @@
     }
   },
   {
-    "slug": "husqvarna-305",
-    "name": "Husqvarna Automower 305",
+    "slug": "husqvarna-405ve-nera",
+    "name": "Husqvarna Automower 405VE NERA",
     "brand": "Husqvarna",
     "category": "maehroboter",
-    "shortDesc": "Einsteigermodell für kleine Gärten bis 600 m².",
-    "longDesc": "Kompakter Mähroboter für kleinere, klar abgegrenzte Rasenflächen. Begrenzungsdraht erforderlich.",
-    "netPrice": 899,
-    "image": "/img/foto/produkt/husqvarna-305.jpg",
-    "stock": 14,
+    "shortDesc": "Leiser NERA-Mähroboter mit virtuellen Grenzen (EPOS Plug-in), EdgeCut-Kantenschnitt und AI-Kamera.",
+    "longDesc": "Die NERA-Serie mäht systematisch und auf Wunsch ganz ohne Begrenzungskabel: das EPOS Plug-in setzt virtuelle Grenzen per Satellit. EdgeCut übernimmt die Rasenkante, die AI-Kamera erkennt Objekte. Für Flächen bis 900 m².",
+    "netPrice": 1799,
+    "image": "/products/husqvarna-405ve-nera.webp",
+    "bestseller": true,
     "specs": {
-      "Fläche": "bis 600 m²"
+      "Fläche": "bis 900 m²",
+      "Steigung": "40 %",
+      "Geräusch": "ca. 56 dB",
+      "EPOS": "Plug-in-fähig",
+      "EdgeCut": "ja"
     }
   },
   {
-    "slug": "beatbot-aquasense-pro",
-    "name": "Beatbot AquaSense Pro Poolroboter",
+    "slug": "beatbot-aquasense-2-pro",
+    "name": "Beatbot AquaSense 2 Pro",
     "brand": "Beatbot",
     "category": "pool",
-    "shortDesc": "Autonomer Poolroboter für Boden, Wand, Wasserlinie und Oberfläche.",
-    "longDesc": "Reinigt in fünf Modi vollautomatisch: Boden, Wände, Wasserlinie, Wasseroberfläche und Wasserklärung. Kabellos mit App-Steuerung, Oberflächen-Parkposition zur einfachen Entnahme und intelligenter Routenplanung.",
-    "netPrice": 1799,
-    "image": "/img/prod/pool.svg",
-    "stock": 6,
+    "shortDesc": "Kabelloser Premium-Poolroboter mit 5-in-1-Reinigung: Boden, Wände, Wasserlinie, Oberfläche und Wasserklärung.",
+    "longDesc": "Der AquaSense 2 Pro reinigt Boden, Wände, Wasserlinie und Oberfläche und klärt zusätzlich das Wasser — als erster seiner Klasse. Kabellos, mit App-Steuerung, systematischer Navigation und selbstständigem Andocken an der Oberfläche.",
+    "netPrice": 2299,
+    "image": "/products/beatbot-aquasense-2-pro.webp",
     "bestseller": true,
     "specs": {
-      "Reinigung": "Boden, Wand, Wasserlinie, Oberfläche",
-      "Akkulaufzeit": "bis 240 min",
-      "Steuerung": "App + Fernbedienung",
-      "Poolgröße": "bis 150 m²"
+      "Reinigung": "5-in-1 inkl. Wasserlinie",
+      "Laufzeit": "bis 4 Std.",
+      "Steuerung": "App",
+      "Dock": "inklusive"
     }
   },
   {

@@ -18,9 +18,9 @@ export function Highlights() {
       <div className="container">
         <div data-reveal className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <Eyebrow number="03">Highlights</Eyebrow>
+            <Eyebrow number="03">Top-Seller</Eyebrow>
             <h2 className="h-display mt-6 text-4xl md:text-6xl">
-              Neu im <em className="italic">Sortiment</em>.
+              Unsere <em className="italic">Top-Seller</em>.
             </h2>
           </div>
           <Link
@@ -37,7 +37,7 @@ export function Highlights() {
           Kein negatives Margin — das würde auf 375px den Body überbreit machen. */}
       {/* max-w exakt wie .container (1280 inkl. Padding) — alles darüber läuft
           auf 1280-px-Displays aus dem Viewport heraus. */}
-      <div data-reveal-group className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1280px] lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
+      <div data-reveal-group className="snap-row flex gap-5 overflow-x-auto px-5 pb-2 lg:mx-auto lg:grid lg:max-w-[1280px] lg:grid-cols-4 lg:gap-6 lg:overflow-visible">
         {items.map((p) => (
           <article
             key={p.slug}
@@ -48,17 +48,19 @@ export function Highlights() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="view"
-              className="relative block aspect-[4/3] overflow-hidden bg-paper"
+              className="relative block aspect-[4/5] overflow-hidden border border-mist bg-white"
             >
+              {/* object-contain: die vier Formate (quadratisch, quer, hoch)
+                  bleiben unbeschnitten — Freisteller auf Weiß. */}
               <Image
                 src={p.image}
                 alt={p.name}
                 fill
-                sizes="(max-width: 1024px) 78vw, 33vw"
-                className="object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.04]"
+                sizes="(max-width: 1024px) 78vw, 25vw"
+                className="object-contain p-6 transition-transform [transition-duration:1200ms] group-hover:scale-[1.03]"
               />
               <span className="font-mono absolute left-3 top-3 bg-bronze px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-linen">
-                Neu
+                Top-Seller
               </span>
             </a>
             <div className="mt-5 flex items-start justify-between gap-4 border-t border-mist pt-4">
