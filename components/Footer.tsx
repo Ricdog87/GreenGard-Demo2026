@@ -3,7 +3,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { ViewSwitchLink } from '@/components/ViewSwitchLink';
 import { CONTACT, OEFFNUNG } from '@/lib/contact';
 import { categories } from '@/lib/data';
-import { IRRISKETCH_URL, SOCIAL } from '@/lib/links';
+import { IRRISKETCH_URL, RAINWORKS_URL, SOCIAL } from '@/lib/links';
 
 export function Footer() {
   return (
@@ -134,6 +134,18 @@ export function Footer() {
                   Rainworks
                 </Link>
               </li>
+              <li>
+                {/* Externer Link zur Rainworks-Website — Meeting 18.08.2026. */}
+                <a
+                  href={RAINWORKS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="transition-colors hover:text-bronze"
+                >
+                  rainworks.eu ↗
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -172,11 +184,7 @@ export function Footer() {
                   LinkedIn
                 </a>
               </li>
-              <li>
-                <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
-                  Facebook
-                </a>
-              </li>
+              {/* Facebook raus — Beschluss 18.08.2026: nur LinkedIn, Instagram, YouTube. */}
               <li>
                 <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
                   YouTube

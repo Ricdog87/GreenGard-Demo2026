@@ -58,6 +58,20 @@ export function materialkostenNetto(qm: number): number {
   return MATERIAL_BASE + MATERIAL_PER_QM * flaeche;
 }
 
+/**
+ * Beet-Zuschlag (Meeting 18.08.2026, Vorgabe von Jan): Tropfbewässerung für
+ * Beete kostet je nach Größe 300 – 500 € netto zusätzlich. Vorher ging die
+ * Beetfläche nur in die m²-Pauschale ein — die Auswahl „Beetfläche“ bewegte
+ * den Preis dadurch kaum (± 3 €), was unrealistisch ist: Tropfschlauch,
+ * Druckminderer und Filter kommen als eigene Technik obendrauf.
+ */
+export function beetZuschlagNetto(beetQm: number): number {
+  if (beetQm <= 0) return 0;
+  if (beetQm <= 100) return 300;
+  if (beetQm <= 250) return 400;
+  return 500;
+}
+
 /** true, sobald wir über die belegte Liste hinaus fortschreiben. */
 export function ueberListe(qm: number): boolean {
   return qm > MATERIAL_TABLE_MAX_QM;

@@ -1,33 +1,132 @@
 {
-  "_quelle": "Echte Videos vom YouTube-Kanal des Kunden (youtube.com/@green-gardgmbh7663, abgerufen 12.08.2026). Der Kanal führt aktuell genau diese drei Videos — alle zur Kress-Robotik. Titel und Laufzeiten unverändert; die Beschreibungen sind unsere, weil die Videos auf YouTube keine tragen. Kommen neue Videos dazu, nur hier eintragen — am Code ist nichts zu ändern.",
+  "_quelle": "Echte Videos vom richtigen YouTube-Kanal des Kunden (youtube.com/@Green-GardGmbH, abgerufen 18.08.2026 — Korrektur aus dem Meeting: vorher war ein falscher Kanal verlinkt). Titel und Laufzeiten wie auf YouTube; nur ein Tippfehler ist geglättet („intstallieren“ → „installieren“) und ein Doppel-Upload von „Hydrawise am Gerät programmieren“ (B8G6zt4_UqA) ist weggelassen. Die Beschreibungen sind unsere, weil die Videos auf YouTube keine tragen. Kommen neue Videos dazu, nur hier eintragen — am Code ist nichts zu ändern.",
   "_felder": "category: bewaesserung | steuerung | pumpentechnik | beleuchtung | maehroboter | pool | zubehoer — level: Grundlagen | Praxis | Profi",
-  "kanal": "https://www.youtube.com/@green-gardgmbh7663",
+  "kanal": "https://www.youtube.com/@Green-GardGmbH",
   "videos": [
     {
-      "slug": "kress-nano-101e-installation",
-      "title": "Installation Kress Nano 101e",
-      "description": "Die komplette Installation des Kress Nano 101e — vom Auspacken bis zur ersten Mahd. Das meistgesehene Video des Kanals.",
-      "category": "maehroboter",
-      "youtubeId": "_LTgS4HcK-U",
-      "duration": "2:52",
+      "slug": "hydrawise-testen-stationen",
+      "title": "Hydrawise testen, Stationen ausführen",
+      "description": "Nach der Installation einmal alles durchspielen: Stationen manuell starten und prüfen, ob jede Zone läuft wie geplant.",
+      "category": "steuerung",
+      "youtubeId": "HZvmPF6u6FM",
+      "duration": "1:50",
       "level": "Praxis"
     },
     {
-      "slug": "kress-ladestation-installation",
-      "title": "Wie wird eine Kress Ladestation installiert?",
-      "description": "Standortwahl, Ausrichtung und Anschluss der Ladestation — die häufigsten Fehler passieren hier, nicht beim Mäher.",
-      "category": "maehroboter",
-      "youtubeId": "q1KRfBDt9z0",
-      "duration": "4:18",
+      "slug": "rotationsduesen-einstellen",
+      "title": "Rotationsdüsen richtig einstellen",
+      "description": "Wurfweite und Sektor an der Rotationsdüse sauber einstellen — so bekommt jede Ecke Wasser, ohne den Weg mitzuwässern.",
+      "category": "bewaesserung",
+      "youtubeId": "YVLwW8ZfGfg",
+      "duration": "3:02",
       "level": "Praxis"
     },
     {
-      "slug": "kress-rtk-erklaert",
-      "title": "Kress RTK",
-      "description": "Wie die RTK-Satellitennavigation funktioniert und warum der Mäher damit ohne Begrenzungskabel auskommt.",
-      "category": "maehroboter",
-      "youtubeId": "2mAjXUSNZbs",
-      "duration": "1:33",
+      "slug": "hydrawise-am-geraet-programmieren",
+      "title": "Hydrawise am Gerät programmieren",
+      "description": "Zeitpläne direkt am Steuergerät anlegen — für alle, die ohne App arbeiten wollen oder das WLAN noch nicht steht.",
+      "category": "steuerung",
+      "youtubeId": "05ADaeQicEo",
+      "duration": "5:13",
+      "level": "Praxis"
+    },
+    {
+      "slug": "hydrawise-wlan-einrichten",
+      "title": "Hydrawise WLAN einrichten",
+      "description": "Das Hunter-Steuergerät ins heimische WLAN bringen — Schritt für Schritt bis zur ersten Verbindung mit der App.",
+      "category": "steuerung",
+      "youtubeId": "Z1D6gPrj0g4",
+      "duration": "3:44",
+      "level": "Grundlagen"
+    },
+    {
+      "slug": "hydrawise-zuruecksetzen",
+      "title": "Hydrawise zurücksetzen",
+      "description": "Wenn nichts mehr reagiert: das Steuergerät in 43 Sekunden auf Werkseinstellungen zurücksetzen und neu starten.",
+      "category": "steuerung",
+      "youtubeId": "eHANU3vQtgo",
+      "duration": "0:43",
+      "level": "Grundlagen"
+    },
+    {
+      "slug": "pe-rohr-verbinden",
+      "title": "PE Rohr verbinden",
+      "description": "Klemmverbinder richtig setzen: Rohr entgraten, einstecken, festziehen — die Basis jeder dichten Verlegung.",
+      "category": "bewaesserung",
+      "youtubeId": "Kfxm2Lpl8qw",
+      "duration": "3:14",
+      "level": "Praxis"
+    },
+    {
+      "slug": "regensensor-com-leitung",
+      "title": "Regensensor an COM Leitung anschließen",
+      "description": "Den Regensensor über die COM-Leitung ans Steuergerät klemmen — mit Blick auf die richtige Klemmenbelegung.",
+      "category": "steuerung",
+      "youtubeId": "3Bzls0jDwAY",
+      "duration": "2:08",
+      "level": "Profi"
+    },
+    {
+      "slug": "regensensor-kabelgebunden-verbinden",
+      "title": "Kabelgebundenen Regensensor mit Steuergerät verbinden",
+      "description": "Verkabelung des klassischen Regensensors: welcher Draht wohin gehört und wie Sie die Funktion testen.",
+      "category": "steuerung",
+      "youtubeId": "dLwRAcuiCmY",
+      "duration": "3:02",
+      "level": "Praxis"
+    },
+    {
+      "slug": "amico-d-einstellen",
+      "title": "Amico D einstellen",
+      "description": "Den elektronischen Druckschalter an der Pumpe passend einstellen — für konstanten Druck ohne Takten.",
+      "category": "pumpentechnik",
+      "youtubeId": "0LiPqooJKjU",
+      "duration": "4:06",
+      "level": "Praxis"
+    },
+    {
+      "slug": "nachspeisungsset-erklaert",
+      "title": "Nachspeisungsset erklärt",
+      "description": "Was passiert, wenn die Zisterne leer ist? Das Nachspeisungsset schaltet automatisch auf Trinkwasser um — so funktioniert es.",
+      "category": "pumpentechnik",
+      "youtubeId": "mTSfGXWakyM",
+      "duration": "3:53",
+      "level": "Grundlagen"
+    },
+    {
+      "slug": "wr-clik-hunter-hpc-verkabeln",
+      "title": "Kabellosen Regensensor WR-Clik mit Hunter HPC verkabeln",
+      "description": "Empfänger des WR-Clik am Hunter HPC anschließen und den Funksensor einlernen — inklusive Funktionstest.",
+      "category": "steuerung",
+      "youtubeId": "HBdxtVQwBwk",
+      "duration": "4:27",
+      "level": "Profi"
+    },
+    {
+      "slug": "rain-bird-esp-me3-programmieren",
+      "title": "Rain Bird ESP-ME3 programmieren",
+      "description": "Das Rain Bird ESP-ME3 von Grund auf programmieren: Startzeiten, Laufzeiten und Beregnungstage im Überblick.",
+      "category": "steuerung",
+      "youtubeId": "HbWF0D03ZvQ",
+      "duration": "6:44",
+      "level": "Praxis"
+    },
+    {
+      "slug": "in-lite-leuchte-installieren",
+      "title": "In-Lite Leuchte installieren",
+      "description": "12-Volt-Gartenleuchte von In-Lite anschließen: Kabel verlegen, Verbinder setzen, Leuchte ausrichten — ohne Elektriker.",
+      "category": "beleuchtung",
+      "youtubeId": "5jZn5Erc3Sk",
+      "duration": "2:27",
+      "level": "Praxis"
+    },
+    {
+      "slug": "wassermenge-richtig-messen",
+      "title": "Wassermenge mit Messgerät richtig messen",
+      "description": "Vor jeder Planung steht die Frage: Wie viel Wasser liefert der Anschluss? So messen Sie Durchfluss und Druck korrekt.",
+      "category": "bewaesserung",
+      "youtubeId": "hQir5CyZQig",
+      "duration": "3:04",
       "level": "Grundlagen"
     }
   ]

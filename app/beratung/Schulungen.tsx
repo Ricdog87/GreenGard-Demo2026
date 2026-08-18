@@ -1,18 +1,31 @@
 'use client';
 
+import { useState } from 'react';
 import { Check, MapPin, ShoppingBag, Users } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
-import { CONTACT } from '@/lib/contact';
+import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
+import { oeffneAnfrage } from '@/lib/anfrage';
 import { schulungen, type Schulung } from '@/lib/data';
 
 export function Schulungen() {
   const mode = useCart((s) => s.mode);
   const addItem = useCart((s) => s.addItem);
   const openDrawer = useCart((s) => s.openDrawer);
+
+  // Platz-Vormerkung (Meeting 18.08.2026): Die Termine für 2027 stehen noch
+  // nicht fest — statt eines nackten Mail-Links sammelt ein kleines Formular
+  // die Interessenten strukturiert ein.
+  const [vormerkung, setVormerkung] = useState<Schulung | null>(null);
+  const [gesendet, setGesendet] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [firma, setFirma] = useState('');
+  const [personen, setPersonen] = useState('1');
 
   /**
    * Schulungen sind das Einzige, was über den Warenkorb läuft — Produkte werden
@@ -119,17 +132,19 @@ export function Schulungen() {
                   </>
                 ) : (
                   <>
+                    {/* Meeting 18.08.2026: Termine 2027 als „Bald verfügbar“
+                        kennzeichnen, Interesse über das Vormerk-Formular einsammeln. */}
                     <p className="text-sm text-ink/70">
-                      Termine auf Anfrage — wir melden uns mit den nächsten Terminen zurück.
+                      <span className="font-medium">Termine 2027 — bald verfügbar.</span>{' '}
+                      Merken Sie sich unverbindlich einen Platz vor, wir informieren Sie
+                      zuerst.
                     </p>
-                    <Button asChild variant="primary" className="mt-6 w-full">
-                      <a
-                        href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(
-                          `Schulung: ${s.title}`
-                        )}`}
-                      >
-                        Platz vormerken
-                      </a>
+                    <Button
+                      variant="primary"
+                      className="mt-6 w-full"
+                      onClick={() => setVormerkung(s)}
+                    >
+                      Platz vormerken
                     </Button>
                   </>
                 )}
@@ -144,6 +159,115 @@ export function Schulungen() {
         </p>
       </div>
 
+      <Dialog
+        open={vormerkung !== null}
+        onOpenChange={(o) => {
+          if (!o) {
+            setVormerkung(null);
+            setGesendet(false);
+          }
+        }}
+      >
+        <DialogContent>
+          {gesendet ? (
+            <>
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-forest text-linen">
+                <Check className="h-5 w-5" />
+              </span>
+              <DialogTitle>Platz ist vorgemerkt.</DialogTitle>
+              <DialogDescription>
+                Sobald die Termine für 2027 stehen, melden wir uns zuerst bei Ihnen —
+                unverbindlich und ohne Zahlungspflicht.
+                <span className="font-mono mt-3 block text-[10px] uppercase tracking-[0.18em]">
+                  Bitte die vorbereitete Mail im Mailprogramm absenden.
+                </span>
+              </DialogDescription>
+            </>
+          ) : (
+            vormerkung && (
+              <>
+                <p className="eyebrow">Platz vormerken</p>
+                <DialogTitle>{vormerkung.title}</DialogTitle>
+                <DialogDescription>
+                  Die Termine für 2027 sind bald verfügbar. Wir merken Sie unverbindlich
+                  vor und informieren Sie, sobald die Daten stehen.
+                </DialogDescription>
+                <form
+                  className="mt-2 space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    // Go-Live ohne Backend: Vormerkung als vorbefüllte Mail.
+                    oeffneAnfrage(`Platz-Vormerkung: ${vormerkung.title}`, [
+                      `Vormerkung für die Schulung "${vormerkung.title}" über die Website`,
+                      '',
+                      `Name: ${name}`,
+                      firma && `Firma: ${firma}`,
+                      `Teilnehmer: ${personen}`,
+                      `Rückmeldung an: ${email}`,
+                    ]);
+                    setGesendet(true);
+                  }}
+                >
+                  <div>
+                    <label className="eyebrow mb-2 block" htmlFor="vormerk-name">
+                      Name
+                    </label>
+                    <Input
+                      id="vormerk-name"
+                      required
+                      placeholder="Vor- und Nachname"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="eyebrow mb-2 block" htmlFor="vormerk-mail">
+                      E-Mail
+                    </label>
+                    <Input
+                      id="vormerk-mail"
+                      type="email"
+                      required
+                      placeholder="ihre@email.de"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="eyebrow mb-2 block" htmlFor="vormerk-firma">
+                        Firma (optional)
+                      </label>
+                      <Input
+                        id="vormerk-firma"
+                        placeholder="Firma"
+                        value={firma}
+                        onChange={(e) => setFirma(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <label className="eyebrow mb-2 block" htmlFor="vormerk-personen">
+                        Teilnehmer
+                      </label>
+                      <Input
+                        id="vormerk-personen"
+                        type="number"
+                        min={1}
+                        max={20}
+                        value={personen}
+                        onChange={(e) => setPersonen(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <Button type="submit" variant="primary" className="w-full">
+                    Unverbindlich vormerken →
+                  </Button>
+                </form>
+              </>
+            )
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

@@ -139,6 +139,9 @@ const DEFAULTS: DefaultValues<FormValues> = {
 export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
   // Im Demo-Modus merken wir uns nur die Dateinamen — hochgeladen wird nichts.
   const [dateien, setDateien] = useState<string[]>([]);
+  // Pflichtfeld seit dem Meeting 18.08.2026: Ohne Projektplan keine belastbare
+  // Auslegung — deshalb blockt das Formular ohne Anhang.
+  const [dateiFehler, setDateiFehler] = useState(false);
   const [gesendet, setGesendet] = useState<{
     values: FormValues;
     standort: Standort;
@@ -175,11 +178,13 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
     if (!list) return;
     const namen = Array.from(list).map((f) => f.name);
     setDateien((cur) => [...cur, ...namen.filter((n) => !cur.includes(n))]);
+    setDateiFehler(false);
   }
 
   function neuesProjekt() {
     reset(DEFAULTS);
     setDateien([]);
+    setDateiFehler(false);
     setGesendet(null);
   }
 
@@ -283,6 +288,12 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             // eine Kostenstelle nicht mehr kennt.
             const gewaehlt = STANDORTE.find((s) => s.kst === values.kst);
             if (!gewaehlt) return;
+            // Pflichtfeld (Meeting 18.08.2026): ohne Projektplan geht nichts raus.
+            if (dateien.length === 0) {
+              setDateiFehler(true);
+              document.getElementById('pk-dateien-block')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              return;
+            }
             // Go-Live ohne Backend: Projektanfrage als vorbefüllte Mail an die
             // Zentrale. Anhänge kann mailto nicht mitnehmen — die Mail bittet
             // darum, die gewählten Dateien anzuhängen.
@@ -584,25 +595,34 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             <div className="lg:col-span-4">
               <h3 className="eyebrow">IV · Anhänge</h3>
               <p className="mt-4 text-sm leading-relaxed text-ink/60">
-                Ein Lageplan oder ein paar Fotos ersparen den Ortstermin.
+                Ohne Projektplan können wir nicht belastbar auslegen — der Plan ist
+                deshalb Pflicht. Fotos helfen zusätzlich.
               </p>
             </div>
-            <div className="min-w-0 lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8" id="pk-dateien-block">
               <label
                 htmlFor="pk-dateien"
                 data-cursor="hover"
-                className="flex cursor-pointer items-center gap-4 border border-dashed border-mist px-6 py-8 transition-colors hover:border-ink/40"
+                className={`flex cursor-pointer items-center gap-4 border border-dashed px-6 py-8 transition-colors hover:border-ink/40 ${
+                  dateiFehler ? 'border-red-700' : 'border-mist'
+                }`}
               >
                 <Paperclip aria-hidden className="h-5 w-5 shrink-0 text-moss" />
                 <span className="min-w-0">
                   <span className="font-display block text-lg tracking-tight">
-                    Plan oder Fotos anhängen
+                    Projektplan anhängen
                   </span>
                   <span className="mt-1 block text-xs text-ink/55">
-                    PDF, JPG oder PNG · mehrere Dateien möglich · optional
+                    PDF, JPG oder PNG · mehrere Dateien möglich · Pflichtfeld
                   </span>
                 </span>
               </label>
+              {dateiFehler && (
+                <p className="mt-2 text-xs text-red-700">
+                  Bitte hängen Sie mindestens einen Projektplan an — ohne Plan können wir
+                  die Anfrage nicht bearbeiten.
+                </p>
+              )}
               {/* TODO: Demo-Modus — es wird nichts hochgeladen, wir zeigen nur die
                   Dateinamen. Später Supabase Storage (Bucket „projektanhaenge“). */}
               <input

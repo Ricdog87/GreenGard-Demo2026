@@ -35,15 +35,20 @@ export const KATALOG_EPAPER_URL = 'https://dbma.1kcloud.com/ep161f99b00442a3/';
  */
 export const SHOP_URL = 'https://www.green-gard.de';
 
-/** YouTube-Kanal mit den Erklärvideos fürs Learning Center. */
-export const YOUTUBE_URL = 'https://www.youtube.com/@green-gard';
+/** YouTube-Kanal mit den Erklärvideos fürs Learning Center.
+ *  Korrektur 18.08.2026: vorher war ein falscher Kanal verlinkt — das hier
+ *  ist der richtige (von Jan im Meeting bestätigt). */
+export const YOUTUBE_URL = 'https://www.youtube.com/@Green-GardGmbH';
 
-/** Social Media — im Termin als sinnvoll bestätigt. */
-// Echte Profile aus dem Footer von green-gard.de (12.08.2026) — die vorherigen
-// Handles waren geraten und führten ins Leere.
+/** Social Media — Beschluss 18.08.2026: nur LinkedIn, Instagram und YouTube,
+ *  andere Kanäle (Facebook) sind raus. YouTube auf den richtigen Kanal
+ *  korrigiert. */
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/green_gard.gmbh/',
   linkedin: 'https://www.linkedin.com/company/36716186/',
-  facebook: 'https://www.facebook.com/profile.php?id=100090187459046',
-  youtube: 'https://www.youtube.com/@green-gardgmbh7663',
+  youtube: 'https://www.youtube.com/@Green-GardGmbH',
 } as const;
+
+/** Rainworks-Website — Link gehört laut Meeting 18.08.2026 in den unteren
+ *  Seitenbereich (Footer) und in die Rainworks-Abschnitte. */
+export const RAINWORKS_URL = 'https://www.rainworks.eu/de/startseite/';

@@ -9,6 +9,7 @@
 import {
   MATERIAL_TABLE_MAX_QM,
   QUELLE_ZUSCHLAG,
+  beetZuschlagNetto,
   materialkostenNetto,
   ueberListe,
 } from '@/lib/preise';
@@ -100,6 +101,15 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
       netto: materialkostenNetto(bewaesserteFlaeche),
     },
   ];
+  // Beete schlagen als eigene Technik zu Buche (Meeting 18.08.2026): 300–500 €
+  // je nach Größe — vorher bewegte die Beet-Auswahl den Preis kaum (± 3 €).
+  if (beetQm > 0) {
+    kosten.push({
+      label: `Tropfbewässerung Beete (${beetQm} m²)`,
+      netto: beetZuschlagNetto(beetQm),
+      note: 'Tropfschlauch, Druckminderer und Filter für die Beetzonen.',
+    });
+  }
   const zuschlag = QUELLE_ZUSCHLAG[quelle];
   if (zuschlag) {
     kosten.push({ label: zuschlag.label, netto: zuschlag.netto, note: zuschlag.note });

@@ -1,9 +1,27 @@
 # Übergabe & Go-Live — Green-Gard Website
 
-Stand: **12.08.2026** · Go-Live geplant: **13.08.2026**
+Stand: **18.08.2026**
 Live-Stand: https://green-gard-demo2026.vercel.app
 
 ---
+
+## Status der Meeting-Punkte vom 18.08. (Ricardo)
+
+| Punkt | Status |
+|---|---|
+| Privat-Button entfernen, Profi-Button für Logins | ✅ erledigt — Profi führt zum Login bzw. ins Konto |
+| Shop-Buttons „Bald verfügbar", Verlinkung deaktiviert | ✅ erledigt — überall, Reaktivierung über `lib/links.ts` |
+| YouTube: richtiger Kanal (@Green-GardGmbH) | ✅ erledigt — 14 echte Anleitungsvideos im Learning Center |
+| Terminbuchung mit 2 Tagen Vorlauf | ✅ erledigt — erster wählbarer Termin frühestens übermorgen |
+| Schulungstermine 2027 „Bald verfügbar" + Vormerk-Formular | ✅ erledigt |
+| Kalkulator: Beetfläche 300–500 € je nach Größe | ✅ erledigt (bis 100 m² = 300 €, bis 250 m² = 400 €, darüber 500 €) |
+| Team: Titel Thomas (Geschäftsführer) + Assistenz | ✅ erledigt — übrige weiterhin ohne Titel |
+| Rainworks-Link (rainworks.eu) | ✅ erledigt — Footer + /rainworks |
+| Social nur LinkedIn/Instagram/YouTube | ✅ erledigt — Facebook entfernt |
+| Pflanzenkölle: Name, E-Mail, Plan-Upload Pflicht | ✅ erledigt |
+| Sortiment nach neuen Screenshots | ⏳ wartet auf Screenshots (Ricardo) |
+| Bilder neue Produkte + Beatbots | ⏳ liefert Jan |
+| Office-365-/E-Mail-Weiterleitung | ⏳ braucht Zugangsdaten (siehe „Formulare" unten) |
 
 ## Status der Meeting-Punkte vom 12.08. (Ricardo)
 

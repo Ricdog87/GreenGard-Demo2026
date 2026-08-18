@@ -1,11 +1,12 @@
 {
-  "_comment": "Namen, Funktionen, Mailadressen und Porträts von green-gard.de/team (abgerufen 03.08.2026). Reihenfolge wie auf der Kundenseite. Rollen sind hinterlegt, werden aber bewusst NICHT angezeigt (Kundenwunsch aus dem Termin 28.07.2026). Die Porträts liegen lokal unter public/team/ — im Original gemischt (zwei S/W, vier Studio in Farbe), deshalb rendert die Teamsektion sie einheitlich in Graustufen. TODO: Originaldateien in voller Auflösung beim Kunden anfragen.",
+  "_comment": "Namen, Funktionen, Mailadressen und Porträts von green-gard.de/team (abgerufen 03.08.2026). Reihenfolge wie auf der Kundenseite. Rollen sind hinterlegt; angezeigt werden seit dem Meeting 18.08.2026 nur die Titel der Geschäftsführung (zeigeRolle: Thomas = Geschäftsführer, Natascha = Assistenz der Geschäftsführung, mit Ricardo abgestimmt) — die übrigen bleiben ohne Titel (Kundenwunsch 28.07.2026). Die Porträts liegen lokal unter public/team/ — im Original gemischt (zwei S/W, vier Studio in Farbe), deshalb rendert die Teamsektion sie einheitlich in Graustufen. TODO: Originaldateien in voller Auflösung beim Kunden anfragen.",
   "_gruppenfoto": "/team/team-2025.jpg",
   "members": [
     {
       "first": "Thomas",
       "last": "Gerhardt",
       "rolle": "Geschäftsführer",
+      "zeigeRolle": true,
       "email": "t.gerhardt@green-gard.de",
       "photo": "/team/thomas-gerhardt.jpg"
     },
@@ -13,6 +14,7 @@
       "first": "Natascha",
       "last": "Gerhardt",
       "rolle": "Assistenz der Geschäftsführung",
+      "zeigeRolle": true,
       "email": "n.gerhardt@green-gard.de",
       "photo": "/team/natascha-gerhardt.jpg"
     },

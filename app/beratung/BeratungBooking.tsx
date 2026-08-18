@@ -61,10 +61,15 @@ function ladeIcs(
   URL.revokeObjectURL(url);
 }
 
-/** Mo–Fr, die nächsten zehn Werktage. */
+/** Mo–Fr, die nächsten zehn Werktage — frühestens übermorgen.
+ *  Zwei Tage Vorlauf sind Jans Bedingung für die Online-Buchung
+ *  (Meeting 18.08.2026): so bleibt Zeit, den Termin intern zu bestätigen. */
+const VORLAUF_TAGE = 2;
+
 function buildDates() {
   const out: { iso: string; day: string; date: string }[] = [];
   const cursor = new Date();
+  cursor.setDate(cursor.getDate() + VORLAUF_TAGE - 1);
   while (out.length < 10) {
     cursor.setDate(cursor.getDate() + 1);
     const wd = cursor.getDay();
@@ -271,6 +276,9 @@ export function BeratungBooking() {
                   </button>
                 ))}
               </div>
+              <p className="font-mono mt-3 text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                Buchbar mit mindestens {VORLAUF_TAGE} Tagen Vorlauf
+              </p>
             </div>
 
             <div>

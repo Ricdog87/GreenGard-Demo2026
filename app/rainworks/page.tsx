@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/lib/contact';
+import { RAINWORKS_URL } from '@/lib/links';
 import { rainworks as rw } from '@/lib/data';
 
 // Inhalte kommen 1:1 von green-gard.de/rainworks (data/rainworks.json).
@@ -143,6 +144,12 @@ export default function RainworksPage() {
           <div className="flex flex-wrap gap-4 md:col-span-5 md:justify-end">
             <Button asChild>
               <Link href="/warum-green-gard">Warum Green-Gard</Link>
+            </Button>
+            {/* Externer Link zur Rainworks-Website — Meeting 18.08.2026. */}
+            <Button asChild variant="outline">
+              <a href={RAINWORKS_URL} target="_blank" rel="noopener noreferrer">
+                rainworks.eu ↗
+              </a>
             </Button>
             <Button asChild variant="outline">
               <a href={`mailto:${CONTACT.email}`}>Kontakt aufnehmen</a>
