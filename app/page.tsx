@@ -15,8 +15,8 @@ import { CTABanner } from '@/components/CTABanner';
 import { FAQ } from '@/components/FAQ';
 
 export default function LandingPage() {
-  // Kits-Teaser 18.08.2026 auf Kundenwunsch von der Landing entfernt —
-  // die Kits leben weiter auf /starter-kits (Rechner-Empfehlung, Footer).
+  // Starter Kits 18.08.2026 auf Kundenwunsch KOMPLETT entfernt (Seite,
+  // Teaser, Links) — /starter-kits leitet auf /planung um.
   return (
     <>
       <Hero />

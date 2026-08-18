@@ -63,13 +63,13 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     kicker: 'II',
     title: 'Privat',
     claim: 'Lösungen für Ihren Garten',
-    detail: 'Bruttopreise, fertige Starter Kits und eine Planung, die mit dem Material verrechnet wird.',
+    detail: 'Bruttopreise und eine Planung, die mit dem Material verrechnet wird.',
     image: '/img/gate/privat.svg',
     mode: 'privat',
     gewerbe: 'sonstiges',
     links: [
       { href: '/planung', label: 'Bewässerung berechnen', note: 'Drei Fragen, ein Richtpreis' },
-      { href: '/starter-kits', label: 'Starter Kits', note: 'Bewährte Zusammenstellungen' },
+      { href: '/beratung', label: 'Beratung buchen', note: '30 Minuten, kostenfrei' },
       { href: '/produkte', label: 'Sortiment ansehen', note: 'Bewässerung bis Pool' },
     ],
     vorteile: [

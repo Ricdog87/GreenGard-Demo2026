@@ -10,19 +10,18 @@ import { CONTACT } from '@/lib/contact';
 const ITEMS = [
   {
     q: 'Wie schnell wird geliefert?',
-    a: 'Lagerware versenden wir innerhalb von 24 Stunden. Lieferung deutschlandweit in 1–3 Werktagen. Im Großraum Wiesbaden bieten wir auf Wunsch eine Direktfahrt am selben Tag.',
+    // Lieferzeit 2–3 Werktage (Meeting 12.08.2026).
+    a: 'Lagerware versenden wir innerhalb von 24 Stunden. Lieferung deutschlandweit in 2–3 Werktagen. Im Großraum Wiesbaden bieten wir auf Wunsch eine Direktfahrt am selben Tag.',
   },
-  {
-    q: 'Warum stehen bei den Starter Kits nur "ab"-Preise?',
-    a: 'Weil jeder Garten anders ist. Wasserdruck, Leitungswege, Pumpenbedarf und Gartenschnitt verändern die Stückliste deutlich. Wir nennen deshalb einen belastbaren Richtwert und den Endpreis nach der Systemplanung — statt eines Festpreises, der später korrigiert werden müsste. Die Planung selbst kostet 120 € und wird mit dem Material verrechnet.',
-  },
+  // Starter-Kits-Eintrag entfernt — die Kits sind seit 18.08.2026 komplett raus.
   {
     q: 'Wer übernimmt die Installation?',
     a: 'Für die Installation empfehlen wir einen unserer Partnerbetriebe. Wer selbst Hand anlegt, bekommt von uns einen vollständigen Verlegeplan und telefonische Unterstützung.',
   },
   {
     q: 'Was kostet die Beratung?',
-    a: 'Die Systemplanung ist kostenfrei. Kommt es zum Auftrag, ist sie ohnehin Teil des Projekts — kommt es nicht dazu, behalten Sie den Plan trotzdem.',
+    // Regel aus dem Meeting: Gespräch kostenfrei, ausgearbeiteter Plan 120 €.
+    a: 'Das Beratungsgespräch ist kostenfrei. Der ausgearbeitete Bewässerungsplan kostet 120 € und wird beim Kauf mit dem Material verrechnet.',
   },
   {
     q: 'Funktioniert ein Mähroboter wirklich ohne Begrenzungsdraht?',

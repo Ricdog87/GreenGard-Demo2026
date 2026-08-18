@@ -14,7 +14,7 @@ const nextConfig = {
     return [
       { source: '/kollektion', destination: '/produkte', permanent: true },
       { source: '/kollektion/:slug', destination: '/produkte', permanent: true },
-      { source: '/systeme', destination: '/starter-kits', permanent: true },
+      { source: '/systeme', destination: '/planung', permanent: true },
       { source: '/atelier', destination: '/beratung', permanent: true },
       { source: '/manifest', destination: '/warum-green-gard', permanent: true },
       { source: '/handwerk', destination: '/profi', permanent: true },
@@ -24,7 +24,10 @@ const nextConfig = {
       // Routen aus der allerersten Fassung (vor dem Editorial-Refactor)
       { source: '/shop', destination: '/produkte', permanent: true },
       { source: '/shop/:slug', destination: '/produkte', permanent: true },
-      { source: '/pakete', destination: '/starter-kits', permanent: true },
+      { source: '/pakete', destination: '/planung', permanent: true },
+      // Starter Kits komplett entfernt (Kundenwunsch 18.08.2026) — alte
+      // Links landen in der Planung.
+      { source: '/starter-kits', destination: '/planung', permanent: true },
       { source: '/konfigurator', destination: '/planung', permanent: true },
       { source: '/b2b', destination: '/profi', permanent: true },
     ];

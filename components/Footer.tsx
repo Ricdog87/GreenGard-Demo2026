@@ -110,11 +110,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/starter-kits" data-cursor="hover" className="transition-colors hover:text-bronze">
-                  Starter Kits
-                </Link>
-              </li>
-              <li>
                 <Link href="/beratung" data-cursor="hover" className="transition-colors hover:text-bronze">
                   Beratung &amp; Schulungen
                 </Link>

@@ -19,6 +19,7 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 | Rainworks-Link (rainworks.eu) | ✅ erledigt — Footer + /rainworks |
 | Social nur LinkedIn/Instagram/YouTube | ✅ erledigt — Facebook entfernt |
 | Pflanzenkölle: Name, E-Mail, Plan-Upload Pflicht | ✅ erledigt |
+| Starter Kits komplett entfernt | ✅ erledigt (Seite, Teaser, Links; /starter-kits → /planung; Rechner-Empfehlung heißt jetzt „…-System") |
 | Sortiment nach neuen Screenshots | ⏳ wartet auf Screenshots (Ricardo) |
 | Bilder neue Produkte + Beatbots | ⏳ liefert Jan |
 | Office-365-/E-Mail-Weiterleitung | ⏳ braucht Zugangsdaten (siehe „Formulare" unten) |

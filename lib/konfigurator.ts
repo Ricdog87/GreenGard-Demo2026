@@ -79,15 +79,17 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   const beetZonen = tropfLfm > 0 ? 1 : 0;
   const zonen = Math.max(1, rasenZonen + beetZonen);
 
-  // Kit-Wahl: Komfort sobald Smart-Steuerung gewünscht ist, die Fläche über
+  // System-Wahl: Komfort sobald Smart-Steuerung gewünscht ist, die Fläche über
   // 300 m² liegt oder Rasen und Beete zusammen laufen sollen.
+  // „Kit“ sagt die Website seit 18.08.2026 nicht mehr — die Starter Kits sind
+  // komplett entfernt, die Empfehlung heißt jetzt System.
   const brauchtKomfort =
     steuerung === 'smart' || bewaesserteFlaeche > 300 || zonen > 4 || bereiche.length > 1;
 
   const kitSlug: Empfehlung['kitSlug'] = brauchtKomfort
     ? 'bewaesserung-komfort'
     : 'bewaesserung-starter';
-  const kitName = brauchtKomfort ? 'Bewässerung Komfort Kit' : 'Bewässerung Starter Kit';
+  const kitName = brauchtKomfort ? 'Bewässerung Komfort-System' : 'Bewässerung Starter-System';
 
   // --- Kosten nach Jans Liste ---
   // Jans Liste nennt den Grundbetrag für den Hauswasseranschluss; Zisterne und

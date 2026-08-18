@@ -446,7 +446,7 @@ export function PlanungRechner() {
                             '',
                             `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
                             `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
-                            `Empfohlenes Kit: ${empf.kitName}`,
+                            `Empfohlenes System: ${empf.kitName}`,
                             extras.length ? `Ins Angebot aufnehmen: ${extras.join(', ')}` : false,
                             `Rückmeldung an: ${email}`,
                             '',

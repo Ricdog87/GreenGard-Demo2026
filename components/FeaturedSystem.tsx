@@ -62,12 +62,13 @@ Navigation        EPOS-fähig (virtuelle Grenzen)`}
             <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/60">bald im Shop</span>
           </p>
 
+          {/* „Mähroboter Kit“ entfernt — Starter Kits sind seit 18.08.2026 komplett raus. */}
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild variant="accent" size="lg">
               <Link href="/produkte#maehroboter">Zur Robotik →</Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="text-linen hover:bg-linen/10">
-              <Link href="/starter-kits#maehroboter-kit">Mähroboter Kit</Link>
+              <Link href="/beratung">Beraten lassen</Link>
             </Button>
           </div>
         </div>

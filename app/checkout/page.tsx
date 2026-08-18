@@ -74,8 +74,8 @@ export default function CheckoutPage() {
           Noch <em className="italic">leer</em>.
         </h1>
         <p className="mx-auto mt-6 max-w-md text-ink/70">
-          Hier buchen Sie Schulungsplätze. Produkte und Starter Kits bestellen Sie
-          künftig in unserem neuen Shop — er ist bald verfügbar.
+          Hier buchen Sie Schulungsplätze. Produkte bestellen Sie künftig in unserem
+          neuen Shop — er ist bald verfügbar.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
                     <Button asChild variant="primary" size="lg">
