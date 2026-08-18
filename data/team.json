@@ -1,5 +1,5 @@
 {
-  "_comment": "Namen, Funktionen, Mailadressen und Porträts von green-gard.de/team (abgerufen 03.08.2026). Reihenfolge wie auf der Kundenseite. Rollen sind hinterlegt; angezeigt werden seit dem Meeting 18.08.2026 nur die Titel der Geschäftsführung (zeigeRolle: Thomas = Geschäftsführer, Natascha = Assistenz der Geschäftsführung, mit Ricardo abgestimmt) — die übrigen bleiben ohne Titel (Kundenwunsch 28.07.2026). Die Porträts liegen lokal unter public/team/ — im Original gemischt (zwei S/W, vier Studio in Farbe), deshalb rendert die Teamsektion sie einheitlich in Graustufen. TODO: Originaldateien in voller Auflösung beim Kunden anfragen.",
+  "_comment": "Namen, Funktionen, Mailadressen und Porträts von green-gard.de/team (abgerufen 03.08.2026). Reihenfolge wie auf der Kundenseite. Seit 18.08.2026 werden alle Titel angezeigt (zeigeRolle) — Wortlaut der vier Fachrollen von Ricardo vorgegeben, Geschäftsführung im Meeting beschlossen. Die Porträts liegen lokal unter public/team/ — im Original gemischt (zwei S/W, vier Studio in Farbe), deshalb rendert die Teamsektion sie einheitlich in Graustufen. TODO: Originaldateien in voller Auflösung beim Kunden anfragen.",
   "_gruppenfoto": "/team/team-2025.jpg",
   "members": [
     {
@@ -21,21 +21,24 @@
     {
       "first": "Jan",
       "last": "Leifermann",
-      "rolle": "Vertriebsleiter · Beleuchtung (In-Lite)",
+      "rolle": "Vertriebsleiter",
+      "zeigeRolle": true,
       "email": "j.leifermann@green-gard.de",
       "photo": "/team/jan-leifermann.jpg"
     },
     {
       "first": "Nicolas",
       "last": "Ohl",
-      "rolle": "Fachberater Vertrieb · Bewässerung (Hunter Hydrawise)",
+      "rolle": "Fachberater Vertrieb",
+      "zeigeRolle": true,
       "email": "n.ohl@green-gard.de",
       "photo": "/team/nicolas-ohl.jpg"
     },
     {
       "first": "Jakob",
       "last": "Serti",
-      "rolle": "Lager und Logistik",
+      "rolle": "Lager/Logistik",
+      "zeigeRolle": true,
       "email": "j.serti@green-gard.de",
       "photo": "/team/jakob-serti.jpg"
     },
@@ -43,6 +46,7 @@
       "first": "Martin",
       "last": "Dolligkeit",
       "rolle": "Einkauf",
+      "zeigeRolle": true,
       "email": "m.dolligkeit@green-gard.de",
       "photo": "/team/martin-dolligkeit.jpg"
     }

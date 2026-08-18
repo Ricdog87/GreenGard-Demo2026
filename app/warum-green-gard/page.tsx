@@ -149,8 +149,7 @@ export default function WarumGreenGardPage() {
                   <h3 className="font-display text-xl tracking-tight">
                     {m.first} {m.last}
                   </h3>
-                  {/* Nur Geschäftsführungs-Titel (Meeting 18.08.2026) — die
-                      übrigen Rollen bleiben bewusst unsichtbar. */}
+                  {/* Positionsbezeichnungen im Kunden-Wortlaut (18.08.2026). */}
                   {m.zeigeRolle && m.rolle && (
                     <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.14em] text-ink/55">
                       {m.rolle}

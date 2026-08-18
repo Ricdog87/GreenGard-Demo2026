@@ -70,10 +70,9 @@ export interface Testimonial {
 export interface TeamMember {
   first: string;
   last: string;
-  /** Funktion laut green-gard.de. */
+  /** Positionsbezeichnung — Wortlaut vom Kunden (18.08.2026). */
   rolle?: string;
-  /** Seit Meeting 18.08.2026: nur die Geschäftsführungs-Titel werden gezeigt
-   *  (Thomas, Natascha) — die übrigen bleiben ohne Titel (Kundenwunsch 28.07.). */
+  /** Steuert die Anzeige des Titels auf der Team-Seite. */
   zeigeRolle?: boolean;
   email: string;
   photo: string;
