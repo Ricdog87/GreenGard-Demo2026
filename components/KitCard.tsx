@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
-import { SHOP_URL } from '@/lib/links';
+import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -81,7 +80,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
               dark ? 'text-linen/70' : 'text-ink/60'
             )}
           >
-            Preis tagesaktuell im Shop
+            Preise bald im neuen Shop
           </p>
           <p className={cn('mt-3 text-xs leading-relaxed', dark ? 'text-linen/60' : 'text-ink/55')}>
             {kit.note}
@@ -100,11 +99,14 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
             >
               Kit anfragen
             </Button>
-            {/* Gekauft wird im Shop — die Website plant nur (Entscheidung 31.07.2026). */}
-            <Button asChild variant={dark ? 'ghost' : 'link'} className={dark ? 'text-linen/70 hover:bg-linen/10' : 'text-ink/60'}>
-              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                Im Shop <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
+            {/* Gekauft wird künftig im neuen Shop — bis zum Start ohne Link (18.08.2026). */}
+            <Button
+              variant={dark ? 'ghost' : 'link'}
+              className={dark ? 'text-linen/70' : 'text-ink/60'}
+              disabled
+              title="Der neue Green-Gard Shop ist bald verfügbar"
+            >
+              Shop — bald verfügbar
             </Button>
           </div>
         </div>

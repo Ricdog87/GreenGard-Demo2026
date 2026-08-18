@@ -128,15 +128,16 @@ function TrefferListe({ treffer }: { treffer: Treffer[] }) {
                   {t.art === 'produkt' ? t.name : (t as { label: string }).label}
                 </span>
                 <span className="font-mono shrink-0 text-[10px] uppercase tracking-[0.14em] text-ink/50">
-                  {t.art === 'produkt' ? `${(t as { brand: string }).brand} · Shop ↗` : (t as { note: string }).note}
+                  {t.art === 'produkt' ? `${(t as { brand: string }).brand} · Bald im Shop` : (t as { note: string }).note}
                 </span>
               </>
             );
-            // Produkte führen in den Shop (Meeting 12.08.2026) — externe Links.
+            // Produkte: der neue Shop ist noch nicht live — Treffer informieren,
+            // verlinken aber nicht (18.08.2026).
             return t.art === 'produkt' ? (
-              <a key={`p-${t.name}`} href={t.href} target="_blank" rel="noopener noreferrer" data-cursor="hover" className={klasse}>
+              <div key={`p-${t.name}`} className={klasse.replace(' hover:border-ink/40', '')}>
                 {inhalt}
-              </a>
+              </div>
             ) : (
               <Link key={`s-${(t as { href: string }).href}-${i}`} href={(t as { href: string }).href} data-cursor="hover" className={klasse}>
                 {inhalt}
@@ -217,15 +218,12 @@ function RoboterFinder({ zurueck }: { zurueck: () => void }) {
         <div>
           <p className="eyebrow mb-3">Unsere Empfehlung</p>
           <div className="space-y-2">
+            {/* Ohne Link: der neue Shop ist noch nicht live (18.08.2026). */}
             {empfehlung.map((e, i) => (
-              <a
+              <div
                 key={e.slug}
-                href={e.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="hover"
                 className={cn(
-                  'block border px-4 py-3 transition-colors hover:border-ink/40',
+                  'block border px-4 py-3',
                   i === 0 ? 'border-forest bg-linen/70' : 'border-mist'
                 )}
               >
@@ -238,7 +236,7 @@ function RoboterFinder({ zurueck }: { zurueck: () => void }) {
                   )}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-ink/70">{e.grund}</p>
-              </a>
+              </div>
             ))}
           </div>
           <p className="mt-3 text-xs leading-relaxed text-ink/55">

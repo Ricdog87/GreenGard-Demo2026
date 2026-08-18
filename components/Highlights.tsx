@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getHighlightProducts } from '@/lib/data';
-import { SHOP_URL } from '@/lib/links';
 import { Eyebrow } from '@/components/Eyebrow';
 
 /**
@@ -43,13 +42,8 @@ export function Highlights() {
             key={p.slug}
             className="snap-item group w-[78vw] shrink-0 sm:w-[52vw] lg:w-auto"
           >
-            <a
-              href={SHOP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="view"
-              className="relative block aspect-[4/5] overflow-hidden border border-mist bg-white"
-            >
+            {/* Kein Link mehr: der neue Shop ist noch nicht live (18.08.2026). */}
+            <div className="relative block aspect-[4/5] overflow-hidden border border-mist bg-white">
               {/* object-contain: die vier Formate (quadratisch, quer, hoch)
                   bleiben unbeschnitten — Freisteller auf Weiß. */}
               <Image
@@ -62,21 +56,14 @@ export function Highlights() {
               <span className="font-mono absolute left-3 top-3 bg-bronze px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-linen">
                 Top-Seller
               </span>
-            </a>
-            <div className="mt-5 flex items-start justify-between gap-4 border-t border-mist pt-4">
-              <div>
-                <p className="eyebrow text-ink/50">{p.brand}</p>
-                <h3 className="font-display mt-1 text-xl leading-tight tracking-tight">
-                  <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
-                    {p.name}
-                  </a>
-                </h3>
-                {/* Kein Preis — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
-                <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                  Preis im Shop
-                </p>
-              </div>
-              <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-ink/40" />
+            </div>
+            <div className="mt-5 border-t border-mist pt-4">
+              <p className="eyebrow text-ink/50">{p.brand}</p>
+              <h3 className="font-display mt-1 text-xl leading-tight tracking-tight">{p.name}</h3>
+              {/* Kein Preis — Preise pflegt allein der Shop (Meeting 12.08.2026). */}
+              <p className="font-mono mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                Bald im Shop verfügbar
+              </p>
             </div>
           </article>
         ))}

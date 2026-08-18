@@ -151,7 +151,7 @@ export function KontoSchnellbestellung() {
         <p className="mt-5 max-w-2xl text-sm text-ink/70" data-reveal>
           Sie kennen Ihre Bestellnummern — dann brauchen Sie den Katalog nicht. Tippen Sie die
           Positionen ein oder fügen Sie Ihre Liste aus der Kalkulation ein. Die Preise stehen
-          in Ihrer Auftragsbestätigung bzw. im Shop.
+          in Ihrer Auftragsbestätigung.
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">

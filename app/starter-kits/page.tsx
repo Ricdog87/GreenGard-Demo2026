@@ -8,7 +8,7 @@ import { starterKits } from '@/lib/data';
 export const metadata = {
   title: 'Starter Kits · Green-Gard',
   description:
-    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit passender Systemplanung. Preise im Shop.',
+    'Vier bewährte Zusammenstellungen für Bewässerung, Beleuchtung und Robotik — mit passender Systemplanung. Der neue Shop folgt in Kürze.',
 };
 
 const COMPARE_ROWS: { label: string; values: string[] }[] = [
@@ -71,8 +71,8 @@ export default function StarterKitsPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-ink/70">
             Zusammenstellungen, die sich in hunderten Projekten bewährt haben. Was am Ende
-            verbaut wird, entscheidet die Systemplanung — die Preise finden Sie tagesaktuell
-            im Shop.
+            verbaut wird, entscheidet die Systemplanung — die Preise folgen in unserem
+            neuen Shop.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button asChild variant="primary" size="lg">

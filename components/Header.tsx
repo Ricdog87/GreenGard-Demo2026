@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Menu, ShoppingBag, X } from 'lucide-react';
+import { Menu, ShoppingBag, X } from 'lucide-react';
 import { B2BSwitch } from '@/components/B2BSwitch';
 import { useCart } from '@/store/cart';
 import { isProfi } from '@/lib/audience';
-import { SHOP_URL } from '@/lib/links';
 import { cn } from '@/lib/utils';
 
 // Für Privatkunden bleibt /profi aus der Hauptnavigation (Kundenwunsch).
@@ -79,16 +78,17 @@ export function Header() {
               </Link>
             );
           })}
-          {/* Produkte werden im bestehenden Shop verkauft, nicht hier. */}
-          <a
-            href={SHOP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="hover"
-            className="font-mono inline-flex items-center gap-1 whitespace-nowrap text-[11px] uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-bronze 2xl:tracking-[0.16em]"
+          {/* Der neue Shop wird parallel gebaut — bis zum Start bewusst ohne Link
+              (Kundenwunsch 18.08.2026). */}
+          <span
+            title="Der neue Green-Gard Shop ist bald verfügbar"
+            className="font-mono inline-flex cursor-default items-center gap-1.5 whitespace-nowrap text-[11px] uppercase tracking-[0.12em] text-ink/40 2xl:tracking-[0.16em]"
           >
-            Shop <ArrowUpRight className="h-3 w-3" />
-          </a>
+            Shop
+            <span className="border border-mist px-1.5 py-0.5 text-[9px] tracking-[0.12em] text-ink/45">
+              Bald verfügbar
+            </span>
+          </span>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -141,15 +141,12 @@ export function Header() {
                 Konditionen für Profis →
               </Link>
             )}
-                        <a
-              href={SHOP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="font-display flex items-center gap-2 border-b border-mist py-3 text-2xl tracking-tight"
-            >
-              Shop <ArrowUpRight className="h-4 w-4" />
-            </a>
+            <span className="font-display flex items-center gap-3 border-b border-mist py-3 text-2xl tracking-tight text-ink/40">
+              Shop
+              <span className="font-mono border border-mist px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                Bald verfügbar
+              </span>
+            </span>
             <Link
               href="/login"
               onClick={() => setMobileOpen(false)}
@@ -157,9 +154,8 @@ export function Header() {
             >
               Anmelden →
             </Link>
-            <div className="mt-4">
-              <B2BSwitch />
-            </div>
+            {/* Kein zweiter Profi-Knopf hier: „Konditionen für Profis“ bzw. der
+                Nav-Eintrag „Konditionen“ decken den Weg im Mobilmenü bereits ab. */}
           </div>
         </div>
       )}

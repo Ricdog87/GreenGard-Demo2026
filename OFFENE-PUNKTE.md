@@ -17,7 +17,7 @@ Stand: **12.08.2026, nach dem Meeting mit Jan** · Die Punkte aus dem Meeting si
 
 | # | Punkt | Warum nötig | Landet in |
 |---|---|---|---|
-| A1 | **Shop-Adresse** | Der Menüpunkt „Shop" zeigt aktuell auf die Hauptdomain. Ohne echte URL läuft der Kaufweg ins Leere. | `lib/links.ts` → `SHOP_URL` |
+| A1 | **Shop-Adresse** | Entschärft (Meeting 18.08.2026): Alle Shop-Buttons stehen bis zum Shop-Start bewusst ohne Link auf „Bald verfügbar". Sobald der Shop live ist: Adresse eintragen und Buttons wieder verlinken. | `lib/links.ts` → `SHOP_URL` |
 | A2 | **Logo als Vektor** (SVG oder AI/EPS) | Wir haben das Logo aus dem Bildmaterial nachgebaut. Für Druckschärfe auf Retina und im Footer brauchen wir die Originaldatei. | `public/logo-green-gard.svg` |
 | A3 | ~~Preise Starter Kits~~ | **Hinfällig** (Meeting 12.08.2026): Die Website zeigt keine Produkt- und Paketpreise mehr — Preise pflegt allein der Shop. |
 | A4 | **Montagekosten** | Der Rechner nennt jetzt ausdrücklich einen *unverbindlichen Material-Richtwert* mit Disclaimer (Meeting 12.08.2026). Ein Montagesatz ist damit optional — falls gewünscht, liefert Jan den Satz. | `lib/preise.ts` |

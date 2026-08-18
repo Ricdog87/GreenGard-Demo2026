@@ -74,8 +74,10 @@ ist die einzige Stelle).
   Echte Zugänge kommen mit Supabase + Pilotkunden.
 - **Schulungen:** „Termine auf Anfrage“, bis Jan Termine liefert — dann wird
   die Buchung über den Warenkorb aktiv (nur JSON-Eintrag).
-- **SHOP_URL** zeigt auf green-gard.de, bis der neue Shop live ist
-  (`lib/links.ts`).
+- **Shop noch nicht live** (Meeting 18.08.2026): Alle Shop-Buttons stehen
+  bewusst ohne Link auf „Bald verfügbar". Zum Shop-Start die Adresse in
+  `lib/links.ts` (`SHOP_URL`) eintragen und die Buttons wieder verlinken —
+  die Suche nach „bald verfügbar“ findet alle Stellen.
 - **Datenschutzerklärung** ist 1:1 von der alten Seite übernommen. Sie passt
   weitgehend, sollte aber auf die neue Technik durchgesehen werden (kein
   Cookie-Tracking mehr, YouTube-nocookie-Embeds, Vercel-Hosting). Kein

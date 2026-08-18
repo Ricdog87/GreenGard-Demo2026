@@ -24,12 +24,14 @@ export const IRRISKETCH_URL =
 export const KATALOG_EPAPER_URL = 'https://dbma.1kcloud.com/ep161f99b00442a3/';
 
 /**
- * Bestehender Online-Shop. Produkte, Starter Kits und Zubehör werden dort verkauft —
- * die Website leitet nur dorthin weiter, damit Bestellungen nicht in zwei Systemen
- * auflaufen.
+ * Neuer Online-Shop — wird parallel zur Website gebaut und ist noch nicht live.
  *
- * TODO: echte Shop-Adresse von Jan eintragen. Bis dahin zeigt der Link auf die
- * Hauptdomain, damit kein toter Link entsteht.
+ * Beschluss aus dem Meeting vom 18.08.2026: Bis zum Start gibt es KEINE
+ * Shop-Links auf der Website. Alle Shop-Buttons stehen deaktiviert auf
+ * „Bald verfügbar“ — das signalisiert aktive Entwicklung statt ins Leere zu
+ * führen. Sobald der Shop live ist: echte Adresse hier eintragen und die
+ * deaktivierten Buttons wieder verlinken (die Suche nach „bald verfügbar“
+ * findet alle Stellen).
  */
 export const SHOP_URL = 'https://www.green-gard.de';
 

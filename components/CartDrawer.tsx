@@ -36,7 +36,7 @@ export function CartDrawer() {
             <div className="py-12 text-center">
                             <p className="mb-8 text-base text-ink/60">
                 Über diesen Weg buchen Sie Schulungsplätze. Produkte und Starter Kits
-                bestellen Sie in unserem Shop.
+                bestellen Sie künftig in unserem neuen Shop — er ist bald verfügbar.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <SheetClose asChild>

@@ -3,7 +3,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { ViewSwitchLink } from '@/components/ViewSwitchLink';
 import { CONTACT, OEFFNUNG } from '@/lib/contact';
 import { categories } from '@/lib/data';
-import { IRRISKETCH_URL, SHOP_URL, SOCIAL } from '@/lib/links';
+import { IRRISKETCH_URL, SOCIAL } from '@/lib/links';
 
 export function Footer() {
   return (
@@ -150,16 +150,11 @@ export function Footer() {
                   Anmelden
                 </Link>
               </li>
-                            <li>
-                <a
-                  href={SHOP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="hover"
-                  className="transition-colors hover:text-bronze"
-                >
-                  Zum Shop ↗
-                </a>
+              <li>
+                {/* Der neue Shop ist noch nicht live — bewusst ohne Link (18.08.2026). */}
+                <span className="cursor-default text-linen/50" title="Der neue Green-Gard Shop ist bald verfügbar">
+                  Shop — bald verfügbar
+                </span>
               </li>
               <li>
                 <ViewSwitchLink />

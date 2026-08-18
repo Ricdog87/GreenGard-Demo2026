@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/data';
 import { markenFuer } from '@/lib/marken';
-import { SHOP_URL } from '@/lib/links';
 
 /**
  * Sortiment als Schaufenster — bewusst ohne Artikel und ohne Preise.
@@ -19,7 +17,7 @@ import { SHOP_URL } from '@/lib/links';
 export const metadata = {
   title: 'Sortiment · Green-Gard',
   description:
-    'Sieben Disziplinen für den Garten: Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik, Pool und Zubehör. Preise und Bestellung im Shop, Planung und Beratung hier.',
+    'Sieben Disziplinen für den Garten: Bewässerung, Steuerung, Pumpentechnik, Beleuchtung, Robotik, Pool und Zubehör. Planung und Beratung hier — der neue Shop folgt in Kürze.',
 };
 
 export default function SortimentPage() {
@@ -32,14 +30,13 @@ export default function SortimentPage() {
             Sieben Disziplinen. <em className="italic">Ein Garten.</em>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70">
-            Hier sehen Sie, was wir können — Preise und Bestellung finden Sie tagesaktuell
-            in unserem Shop, die Planung und Beratung bei uns.
+            Hier sehen Sie, was wir können — Planung und Beratung finden Sie bei uns.
+            Der neue Shop für Preise und Bestellung ist bald verfügbar.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button asChild variant="accent" size="lg">
-              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                Zum Shop <ArrowUpRight className="h-4 w-4" />
-              </a>
+            {/* Der neue Shop ist noch nicht live — Button bewusst ohne Link (18.08.2026). */}
+            <Button variant="accent" size="lg" disabled title="Der neue Green-Gard Shop ist bald verfügbar">
+              Shop — bald verfügbar
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/planung">Planung starten</Link>
@@ -108,13 +105,11 @@ export default function SortimentPage() {
                 )}
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button asChild size="sm">
-                    <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                      Im Shop ansehen <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  </Button>
                   <Button asChild variant="outline" size="sm">
                     <Link href="/beratung">Beraten lassen</Link>
+                  </Button>
+                  <Button size="sm" variant="ghost" disabled title="Der neue Green-Gard Shop ist bald verfügbar">
+                    Shop — bald verfügbar
                   </Button>
                 </div>
               </div>

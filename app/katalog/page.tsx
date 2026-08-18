@@ -1,9 +1,7 @@
-import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { EPaperKatalog } from '@/components/katalog/EPaperKatalog';
-import { SHOP_URL } from '@/lib/links';
 
 /**
  * Katalog — nur noch Blättern und Herunterladen.
@@ -17,7 +15,7 @@ import { SHOP_URL } from '@/lib/links';
 export const metadata = {
   title: 'Katalog · Green-Gard',
   description:
-    'Der Green-Gard Katalog zum Durchblättern und Herunterladen. Tagesaktuelle Preise und Bestellung im Shop.',
+    'Der Green-Gard Katalog zum Durchblättern und Herunterladen. Der neue Shop für Preise und Bestellung folgt in Kürze.',
 };
 
 export default function KatalogPage() {
@@ -31,14 +29,12 @@ export default function KatalogPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70">
             Hier finden Sie den kompletten Katalog als Blätterausgabe. Tagesaktuelle Preise
-            und Bestellung finden Sie im Shop — so ist keine Zahl doppelt gepflegt und keine
-            veraltet.
+            und Bestellung übernimmt künftig unser neuer Shop — er ist bald verfügbar.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button asChild variant="accent" size="lg">
-              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                Preise im Shop <ArrowUpRight className="h-4 w-4" />
-              </a>
+            {/* Der neue Shop ist noch nicht live — Button bewusst ohne Link (18.08.2026). */}
+            <Button variant="accent" size="lg" disabled title="Der neue Green-Gard Shop ist bald verfügbar">
+              Shop — bald verfügbar
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/produkte">Sortiment im Überblick</Link>

@@ -9,7 +9,6 @@
 import faqJson from '@/data/faq.json';
 import { products, categories } from '@/lib/data';
 import { CONTACT, OEFFNUNG, LIEFERUNG, AUSFUEHRUNG } from '@/lib/contact';
-import { SHOP_URL } from '@/lib/links';
 import { PLANUNGSGEBUEHR, PLANUNGSDAUER } from '@/lib/planungspakete';
 import { materialkostenNetto, ueberListe, QUELLE_ZUSCHLAG } from '@/lib/preise';
 
@@ -23,9 +22,8 @@ export interface ProduktTreffer {
   art: 'produkt';
   name: string;
   brand: string;
-  /** Führt in den Shop — Produktdetails leben dort (Meeting 12.08.2026). */
-  href: string;
-  extern: true;
+  // Bewusst ohne Link: Produktdetails leben im neuen Shop, und der ist noch
+  // nicht live (18.08.2026) — Treffer informieren nur.
   score: number;
 }
 export interface SeitenTreffer {
@@ -136,7 +134,7 @@ const SEITEN: { label: string; note: string; href: string; stichworte: string }[
   { label: 'Schulungen ansehen', note: 'Fachschulung, Expertentraining, Inhouse', href: '/beratung#schulungen', stichworte: 'schulung training kurs fortbildung expertentraining lernen' },
   { label: 'Learning Center', note: '139 Antworten und Videos', href: '/learning-center', stichworte: 'learning center video anleitung hilfe wissen fragen' },
   { label: 'Katalog blättern', note: 'Blätterausgabe und Download', href: '/katalog', stichworte: 'katalog blaetterkatalog preisliste sortiment' },
-  { label: 'Sortiment ansehen', note: 'Überblick, Preise im Shop', href: '/produkte', stichworte: 'produkte sortiment artikel kaufen shop bestellen' },
+  { label: 'Sortiment ansehen', note: 'Sieben Disziplinen im Überblick', href: '/produkte', stichworte: 'produkte sortiment artikel kaufen shop bestellen' },
   { label: 'Konditionen für Profis', note: 'GaLaBau, Architekten, Händler', href: '/profi', stichworte: 'profi konditionen netto galabau haendler rechnung gewerblich partner' },
   { label: 'Mein Konto', note: 'Bestellungen und Projekte', href: '/konto', stichworte: 'konto login anmelden dashboard bestellung projekt zugang' },
   { label: 'Warum Green-Gard', note: 'Team, Geschichte, Rainworks', href: '/warum-green-gard', stichworte: 'team ueber uns geschichte wer seid ihr ansprechpartner mitarbeiter' },
@@ -241,8 +239,6 @@ export function suche(query: string): Treffer[] {
         art: 'produkt',
         name: p.name,
         brand: `${p.brand} · ${KAT_NAME.get(p.category) ?? p.category}`,
-        href: SHOP_URL,
-        extern: true,
         score,
       });
   }
@@ -308,12 +304,12 @@ export function richtpreisFuer(query: string): Richtpreis | null {
 // Drei Antworten genügen, um aus den vier Modellen das richtige zu nennen —
 // die Logik entspricht der Telefonberatung: Fläche zuerst, dann Draht ja/nein.
 
+// Bewusst ohne Link: Produktdetails folgen im neuen Shop, der noch nicht live
+// ist (18.08.2026) — die Empfehlung nennt Modell und Grund, gekauft wird später.
 export interface RoboterEmpfehlung {
   slug: string;
   name: string;
   grund: string;
-  /** Führt in den Shop — Produktdetails leben dort (Meeting 12.08.2026). */
-  href: string;
 }
 
 export const FINDER_FLAECHEN = [
@@ -330,27 +326,19 @@ export function empfehleRoboter(flaeche: FinderFlaeche, ohneKabel: boolean): Rob
     'husqvarna-405ve-nera': {
       slug: 'husqvarna-405ve-nera',
       name: 'Husqvarna Automower 405VE NERA',
-      grund: 'NERA-Serie bis 900 m² — leise, mit EdgeCut-Kantenschnitt; virtuelle Grenzen per EPOS Plug-in nachrüstbar.',
-      href: SHOP_URL,
-    },
+      grund: 'NERA-Serie bis 900 m² — leise, mit EdgeCut-Kantenschnitt; virtuelle Grenzen per EPOS Plug-in nachrüstbar.',    },
     'kress-kr136e': {
       slug: 'kress-kr136e',
       name: 'Kress KR136E',
-      grund: 'RTK-Satellitennavigation ohne Begrenzungsdraht, bis 1.500 m², 45 % Steigung, 53 dB.',
-      href: SHOP_URL,
-    },
+      grund: 'RTK-Satellitennavigation ohne Begrenzungsdraht, bis 1.500 m², 45 % Steigung, 53 dB.',    },
     'kress-kr173e': {
       slug: 'kress-kr173e',
       name: 'Kress KR173E',
-      grund: 'Wie der KR136E, ausgelegt bis 2.200 m² — für große Flächen ohne Kabelverlegung.',
-      href: SHOP_URL,
-    },
+      grund: 'Wie der KR136E, ausgelegt bis 2.200 m² — für große Flächen ohne Kabelverlegung.',    },
     'husqvarna-430x-nera': {
       slug: 'husqvarna-430x-nera',
       name: 'Husqvarna Automower 430X NERA',
-      grund: 'EPOS-Satellitennavigation ohne Draht, bis 3.200 m² und 45 % Steigung.',
-      href: SHOP_URL,
-    },
+      grund: 'EPOS-Satellitennavigation ohne Draht, bis 3.200 m² und 45 % Steigung.',    },
   };
 
   if (flaeche === 'klein') return ohneKabel ? [alle['kress-kr136e'], alle['husqvarna-405ve-nera']] : [alle['husqvarna-405ve-nera'], alle['kress-kr136e']];

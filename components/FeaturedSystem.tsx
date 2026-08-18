@@ -45,7 +45,7 @@ Steuerung    RTK-GNSS`}
             <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/85">
               Preis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/60">im Shop</span>
+            <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-linen/60">bald im Shop</span>
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">

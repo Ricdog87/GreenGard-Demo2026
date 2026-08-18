@@ -47,7 +47,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     links: [
             { href: '/profi', label: 'Konditionen anfragen', note: 'Netto und Rechnungskauf' },
       { href: '/planung', label: 'Systemplanung starten', note: 'Stückliste in vier Schritten' },
-      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Preise im Shop' },
+      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Shop bald verfügbar' },
     ],
     vorteile: [
       'Vor-Ort-Service: Unsere Leute helfen auf Wunsch bei der Montage',
@@ -92,7 +92,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     gewerbe: 'fachhandel',
     links: [
             { href: '/profi', label: 'Händlerkonditionen', note: 'Individuell nach Vereinbarung' },
-      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Bestellung im Shop' },
+      { href: '/produkte', label: 'Sortiment im Überblick', note: 'Shop bald verfügbar' },
       { href: '/beratung#schulungen', label: 'Produktschulungen', note: 'Für Ihr Verkaufsteam' },
     ],
     vorteile: [

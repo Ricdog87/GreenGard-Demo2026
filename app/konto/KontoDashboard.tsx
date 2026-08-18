@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, BookOpen, LayoutGrid, LogIn, Package, Zap } from 'lucide-react';
+import { BookOpen, LayoutGrid, LogIn, Package, Zap } from 'lucide-react';
 import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { KontoUebersicht } from '@/components/konto/KontoUebersicht';
@@ -11,7 +11,6 @@ import { KontoSchnellbestellung } from '@/components/konto/KontoSchnellbestellun
 import { KontoProjekte } from '@/components/konto/KontoProjekte';
 import { useCart } from '@/store/cart';
 import { DEMO_KONTO } from '@/lib/konto-daten';
-import { SHOP_URL } from '@/lib/links';
 import { cn } from '@/lib/utils';
 
 // Meeting 12.08.2026: keine Preise im Dashboard — Ihre Konditionen und alle
@@ -102,10 +101,10 @@ export function KontoDashboard() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Button asChild variant="primary" size="sm">
-              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                Bestellen im Shop <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
+            {/* Der neue Shop ist noch nicht live — Button bewusst ohne Link (18.08.2026).
+                Bestellt wird solange per Schnellbestellung bzw. „Erneut bestellen“. */}
+            <Button variant="primary" size="sm" disabled title="Der neue Green-Gard Shop ist bald verfügbar">
+              Shop — bald verfügbar
             </Button>
             <Button variant="outline" size="sm" onClick={abmelden}>
               Abmelden

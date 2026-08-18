@@ -115,7 +115,7 @@ export function KontoUebersicht() {
             ))}
           </ul>
           <p className="font-mono mt-4 text-[10px] uppercase tracking-[0.16em] text-ink/40">
-            Preise und Konditionen finden Sie im Shop.
+            Preise und Konditionen folgen im neuen Shop — bald verfügbar.
           </p>
         </div>
 

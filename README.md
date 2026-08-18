@@ -14,7 +14,7 @@ Shop als externer Reiter.
 
 | Entscheidung | Umsetzung |
 |---|---|
-| **Keine Produktverkäufe** — Doppelbestellungen in zwei Systemen vermeiden | Produkt- und Kit-Karten verlinken in den Shop (`SHOP_URL`), kein „In den Warenkorb" mehr, Shop als eigener Reiter in Navigation und Footer |
+| **Keine Produktverkäufe** — Doppelbestellungen in zwei Systemen vermeiden | Kein „In den Warenkorb" mehr; der neue Shop ist noch nicht live, deshalb stehen alle Shop-Buttons deaktiviert auf „Bald verfügbar" (Meeting 18.08.2026) |
 | **Warenkorb bleibt für Schulungen** | „Platz buchen" legt Schulung samt Termin in den Warenkorb, Kasse ist auf Teilnehmerdaten und Schulungsort umgestellt (kein Versand) |
 | **Planungstool IRRISketch einbinden** | `/planung` startet mit dem Tool: Sechs-Schritte-Ablauf, 24–48 h Zusage, Button auch im Hero und im Footer. Reiner Link, keine API — jeder Aufruf startet ein neues Projekt |
 | **Learning Center gegen Support-Anrufe** | `/learning-center` mit filter- und durchsuchbarer Videothek, Dialog-Player, für die Baustelle aufs Handy ausgelegt |
@@ -173,7 +173,7 @@ Neu erzeugen lässt sich das mit den ffmpeg-Befehlen aus dem V2-Briefing.
 - **Team** — echte Namen, Fotos und Mailadressen (`data/team.json`, aktuell 6 Platzhalter)
 - **Rainworks** — finaler Text für die Partnerschafts-Section
 - **Rufnummer** — bestätigen, dass `+49 6122 95895-30` die richtige Sammelnummer ist (abgeleitet aus Jans Durchwahl -34)
-- **Shop-Adresse** — `SHOP_URL` in `lib/links.ts` zeigt vorläufig auf die Hauptdomain
+- **Shop-Adresse** — der neue Shop ist noch nicht live; Shop-Buttons stehen auf „Bald verfügbar", bis `SHOP_URL` in `lib/links.ts` gesetzt und wieder verlinkt wird
 - **YouTube-IDs** — `data/videos.json` trägt Platzhalter; der Dialog zeigt solange einen Hinweis statt fremder Inhalte
 - **Zuständigkeiten** — welches Thema geht intern an wen (Beleuchtung → Jan, Bewässerung → Nick, …)
 - **Logo-Vektordatei** — die Wortmarke ist derzeit gesetzter Text, keine Pfade

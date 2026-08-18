@@ -50,7 +50,7 @@ export default function LandingPage() {
             <p className="max-w-md text-ink/70">
               Zusammenstellungen, die sich in hunderten Projekten bewährt haben — als
               Orientierung. Was am Ende verbaut wird, entscheidet die Systemplanung —
-              Preise stehen tagesaktuell im Shop.
+              Preise folgen in unserem neuen Shop.
             </p>
           </div>
           <div data-reveal-group className="grid gap-6 lg:grid-cols-3">
