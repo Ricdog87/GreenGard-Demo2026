@@ -75,11 +75,12 @@ export const SMART_ZUSCHLAG = {
  * Beetfläche nur in die m²-Pauschale ein — die Auswahl „Beetfläche“ bewegte
  * den Preis dadurch kaum (± 3 €), was unrealistisch ist: Tropfschlauch,
  * Druckminderer und Filter kommen als eigene Technik obendrauf.
+ * Staffelgrenzen 20/50 m² laut Kundenvorgabe (Master-Prompt 18.08.).
  */
 export function beetZuschlagNetto(beetQm: number): number {
   if (beetQm <= 0) return 0;
-  if (beetQm <= 100) return 300;
-  if (beetQm <= 250) return 400;
+  if (beetQm <= 20) return 300;
+  if (beetQm <= 50) return 400;
   return 500;
 }
 
