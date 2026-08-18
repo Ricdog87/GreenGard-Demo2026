@@ -116,9 +116,12 @@ export function PlanungRechner() {
                       const val = v[0];
                       setFlaeche(val);
                       // Vorbelegung der Teilflächen mitziehen, solange nichts
-                      // manuell justiert wurde.
-                      setRasenQm(Math.round(val * 0.75));
-                      setBeetQm(Math.round(val * 0.25));
+                      // manuell justiert wurde. Rasen als Differenz, damit
+                      // beide Teilflächen zusammen exakt die Gartenfläche
+                      // ergeben (getrennt gerundet wird aus 450 sonst 451).
+                      const beet = Math.round(val * 0.25);
+                      setRasenQm(val - beet);
+                      setBeetQm(beet);
                     }}
                     aria-label="Grundstücksfläche"
                   />

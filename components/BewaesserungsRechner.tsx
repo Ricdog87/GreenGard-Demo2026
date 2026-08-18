@@ -38,12 +38,17 @@ export function BewaesserungsRechner() {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
 
-  // Aufteilung der Gesamtfläche: Rasen dominiert, Beete bekommen ein Viertel.
+  // Aufteilung der Gesamtfläche wie im Planungs-Assistenten: Beete ~25 %,
+  // der Rest Rasen — gezählt wird nur, was bewässert werden soll. Der Rasen
+  // ist die Differenz statt eigener Rundung, sonst summieren sich die
+  // Teilflächen nicht zur Gartenfläche (450 → „451 m² bewässert“). Und wer
+  // nur Beete wählt, bekommt den Beet-Anteil berechnet, nicht das ganze
+  // Grundstück — genau wie die Vorbelegung auf /planung.
   const { rasenQm, beetQm } = useMemo(() => {
-    const both = bereiche.length === 2;
+    const beet = Math.round(flaeche * 0.25);
     return {
-      rasenQm: bereiche.includes('rasen') ? Math.round(flaeche * (both ? 0.75 : 1)) : 0,
-      beetQm: bereiche.includes('beete') ? Math.round(flaeche * (both ? 0.25 : 1)) : 0,
+      rasenQm: bereiche.includes('rasen') ? flaeche - beet : 0,
+      beetQm: bereiche.includes('beete') ? beet : 0,
     };
   }, [flaeche, bereiche]);
 
@@ -60,7 +65,12 @@ export function BewaesserungsRechner() {
     [flaeche, quelle, bereiche, rasenQm, beetQm, steuerung]
   );
 
-  const quellenHinweis = empf.hinweise.find((h) => h.startsWith('Pumpe') || h.includes('nicht enthalten'));
+  // Auf der Karte erklären, was die Zahlen bedeuten: Pumpen-Hinweis der
+  // Wasserquelle plus „berechnet auf die bewässerte Fläche“, sobald nicht das
+  // ganze Grundstück bewässert wird — sonst wirken 337 von 450 m² wie ein Fehler.
+  const kartenHinweise = empf.hinweise.filter(
+    (h) => h.startsWith('Pumpe') || h.includes('nicht enthalten') || h.startsWith('Berechnet auf')
+  );
 
   function toggleBereich(v: Flaechentyp) {
     setBereiche((cur) => {
@@ -213,11 +223,11 @@ export function BewaesserungsRechner() {
               </p>
             </div>
 
-            {quellenHinweis && (
-              <p className="mt-4 border-l-2 border-bronze/60 pl-3 text-xs leading-relaxed text-linen/65">
-                {quellenHinweis}
+            {kartenHinweise.map((h) => (
+              <p key={h} className="mt-4 border-l-2 border-bronze/60 pl-3 text-xs leading-relaxed text-linen/65">
+                {h}
               </p>
-            )}
+            ))}
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="accent">
