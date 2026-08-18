@@ -17,6 +17,7 @@ import {
 import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
+import { oeffneAnfrage } from '@/lib/anfrage';
 
 // V2: nur noch 3 Kernfragen + WLAN — Mähroboter- und Beleuchtungs-Add-ons sind
 // bewusst raus, die laufen über die eigenen Kits.
@@ -440,18 +441,23 @@ export function PlanungRechner() {
                       <form
                         onSubmit={(e) => {
                           e.preventDefault();
-                          // TODO: Plan als PDF generieren und über Resend versenden;
-                          // Bauplaene nach Supabase Storage (Bucket "plaene") laden.
-                          console.info('[green-gard mock] Plan per Mail', {
-                            email,
-                            kit: empf.kitSlug,
-                            flaeche,
-                            quelle,
-                            bereiche,
-                            steuerung,
-                            extras,
-                            plaene: plaene.map((f) => f.name),
-                          });
+                          // Go-Live ohne Backend: Planungsanfrage als vorbefüllte
+                          // Mail. Anhänge kann mailto nicht mitnehmen — die Mail
+                          // bittet darum, die gewählten Dateien anzuhängen.
+                          // TODO: Resend/Supabase Storage (UEBERGABE.md).
+                          oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
+                            'Planungsanfrage aus dem Rechner',
+                            '',
+                            `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
+                            `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
+                            `Empfohlenes Kit: ${empf.kitName}`,
+                            extras.length ? `Ins Angebot aufnehmen: ${extras.join(', ')}` : false,
+                            `Rückmeldung an: ${email}`,
+                            '',
+                            plaene.length
+                              ? `WICHTIG: Bitte die gewählten Pläne an diese Mail anhängen (${plaene.map((f) => f.name).join(', ')}).`
+                              : 'Ein Bauplan oder eine Skizze als Anhang beschleunigt die Planung.',
+                          ]);
                           setSent(true);
                         }}
                         className="mt-4 border-t border-linen/15 pt-4"
@@ -461,11 +467,8 @@ export function PlanungRechner() {
                         </p>
                         {sent ? (
                           <p className="text-sm text-bronze">
-                            Gesendet an {email}
-                            {plaene.length > 0
-                              ? ` — mit ${plaene.length} ${plaene.length > 1 ? 'Anhängen' : 'Anhang'}`
-                              : ''}
-                            .
+                            Mail vorbereitet — bitte im Mailprogramm senden
+                            {plaene.length > 0 ? ' und die gewählten Pläne anhängen' : ''}.
                           </p>
                         ) : (
                           <div className="flex gap-2">

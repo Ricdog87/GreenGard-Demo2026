@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
 import { PLANUNGSGEBUEHR } from '@/lib/planungspakete';
+import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
 import { team } from '@/lib/data';
 
 // Nur wer tatsächlich berät: Jan (Vertrieb, Beleuchtung) und Nicolas
@@ -22,6 +23,43 @@ const BERATER_MAILS = ['j.leifermann@green-gard.de', 'n.ohl@green-gard.de'];
 const BERATER = BERATER_MAILS.map((mail) => team.find((m) => m.email === mail)).filter(
   (m): m is (typeof team)[number] => Boolean(m)
 );
+
+/**
+ * Echte ICS-Datei für den vorgemerkten Termin — lokale Zeit, 30 Minuten.
+ * "Vorgemerkt", weil die Bestätigung noch aussteht.
+ */
+function ladeIcs(
+  d: { iso: string; day: string; date: string } | undefined,
+  time: string,
+  berater: { first: string; last: string }
+) {
+  if (!d) return;
+  const [h, m] = time.split(':').map(Number);
+  const start = d.iso.replace(/-/g, '') + `T${String(h).padStart(2, '0')}${String(m).padStart(2, '0')}00`;
+  const endeMin = h * 60 + m + 30;
+  const ende = d.iso.replace(/-/g, '') + `T${String(Math.floor(endeMin / 60)).padStart(2, '0')}${String(endeMin % 60).padStart(2, '0')}00`;
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Green-Gard//Beratung//DE',
+    'BEGIN:VEVENT',
+    `UID:beratung-${d.iso}-${time.replace(':', '')}@green-gard.de`,
+    `DTSTART:${start}`,
+    `DTEND:${ende}`,
+    `SUMMARY:Beratung Green-Gard (vorgemerkt) — ${berater.first} ${berater.last}`,
+    'LOCATION:Green Gard GmbH\, Max-Planck-Ring 11\, 65205 Wiesbaden',
+    'DESCRIPTION:Terminanfrage über die Website — Bestätigung folgt per Mail.',
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ].join('\r\n');
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `green-gard-beratung-${d.iso}.ics`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 /** Mo–Fr, die nächsten zehn Werktage. */
 function buildDates() {
@@ -74,6 +112,8 @@ export function BeratungBooking() {
     const [time, setTime] = useState(TIMES[2]);
   const [thema, setThema] = useState<string>(THEMEN[0]);
   const [done, setDone] = useState<FormValues | null>(null);
+  // Fallback-Link, falls das Gerät kein Mailprogramm öffnet.
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
   const {
     register,
@@ -117,29 +157,30 @@ export function BeratungBooking() {
           Danke, <em className="italic">{done.name.split(' ')[0]}</em>.
         </h1>
         <p className="mt-6 text-lg text-ink/70">
-          Wir haben{' '}
+          Ihre Anfrage für{' '}
           <span className="font-medium">
             {dateLabel?.day}, {dateLabel?.date} · {time}
           </span>{' '}
-          mit{' '}
+          bei{' '}
           <span className="font-medium">
             {chosen.first} {chosen.last}
           </span>{' '}
-          reserviert. Die Bestätigung geht an {done.email}.
+          ist vorbereitet. {ANFRAGE_HINWEIS} Wir bestätigen den Termin persönlich.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Button
-            variant="primary"
-            onClick={() => alert('Demo: hier würde die ICS-Datei heruntergeladen.')}
-          >
-            <Download className="h-4 w-4" /> Termin im Kalender speichern
+          <Button variant="primary" onClick={() => ladeIcs(dateLabel, time, chosen)}>
+            <Download className="h-4 w-4" /> Termin im Kalender vormerken
           </Button>
           <Button variant="outline" onClick={() => setDone(null)}>
             Weiteren Termin vereinbaren
           </Button>
         </div>
-        <p className="font-mono mt-8 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-          Demo · es wurde keine Mail versendet
+        <p className="mt-8 text-sm text-ink/60">
+          Kein Mailfenster aufgegangen?{' '}
+          <a href={mailtoUrl} data-cursor="hover" className="border-b border-mist hover:border-ink">
+            Anfrage-Mail erneut öffnen
+          </a>{' '}
+          oder anrufen: <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink">{CONTACT.phoneDisplay}</a>
         </p>
       </div>
     );
@@ -259,15 +300,26 @@ export function BeratungBooking() {
 
           <form
             onSubmit={handleSubmit((values) => {
-              // TODO: Termin in Supabase ablegen + Bestätigungsmail (Resend).
-                            // Geht bewusst an die zentrale Adresse — intern wird nach Thema verteilt.
-              console.info('[green-gard mock] Beratungsanfrage an ' + CONTACT.email, {
-                ...values,
-                thema,
-                berater,
-                date,
-                time,
-              });
+              // Go-Live ohne Backend: Anfrage als vorbefüllte Mail an die
+              // Zentrale — intern wird nach Thema verteilt. TODO: durch
+              // Office-365-/Resend-Versand ersetzen (UEBERGABE.md).
+              const d = dates.find((x) => x.iso === date);
+              const b = BERATER.find((x) => x.email === berater);
+              const url = oeffneAnfrage(`Beratungstermin: ${d?.date ?? date} ${time} Uhr`, [
+                'Terminanfrage über die Website',
+                '',
+                `Wunschtermin: ${d?.day ?? ''}, ${d?.date ?? date} um ${time} Uhr`,
+                `Ansprechpartner: ${b ? `${b.first} ${b.last}` : ''}`,
+                `Thema: ${thema}`,
+                '',
+                `Name: ${values.name}`,
+                `Telefon: ${values.phone}`,
+                `E-Mail: ${values.email}`,
+                values.flaeche ? `Gartenfläche: ${values.flaeche}` : false,
+                '',
+                values.message ? `Nachricht:\n${values.message}` : false,
+              ]);
+              setMailtoUrl(url);
               setDone(values);
             })}
             className="space-y-6 border-mist lg:col-span-7 lg:border-l lg:pl-12"

@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useCart } from '@/store/cart';
+import { oeffneAnfrage } from '@/lib/anfrage';
 import { lineTotal, priceFor, VAT_RATE } from '@/lib/pricing';
 import { formatEUR, cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
@@ -46,9 +47,19 @@ export default function CheckoutPage() {
   const grossTotal = mode === 'privat' ? subtotal : subtotal * (1 + VAT_RATE);
   const vat = mode === 'privat' ? grossTotal - grossTotal / (1 + VAT_RATE) : subtotal * VAT_RATE;
 
-  function onSubmit(_values: FormValues) {
-    // TODO: Stripe Payment Intent hier — STRIPE_SECRET_KEY env var.
-    // Für die Demo öffnen wir ein Success-Modal und leeren den Warenkorb.
+  function onSubmit(values: FormValues) {
+    // Go-Live ohne Backend: Anmeldung als vorbefüllte Mail — der Platz wird
+    // per Rechnung bzw. Zahlungslink bestätigt (kein Stripe nötig, siehe
+    // UEBERGABE.md). TODO: Server-Versand, sobald Office 365/Resend steht.
+    oeffneAnfrage('Schulungsanmeldung', [
+      'Schulungsanmeldung über die Website',
+      '',
+      ...items.map((l) => `${l.qty} × ${l.name}${l.termin ? ` — Termin ${l.termin}` : ''}`),
+      '',
+      `Name: ${values.name}`,
+      `Anschrift: ${values.street}, ${values.zip} ${values.city}`,
+      `E-Mail: ${values.email}`,
+    ]);
     setSuccessOpen(true);
   }
 
@@ -256,11 +267,9 @@ export default function CheckoutPage() {
           </div>
                     <DialogTitle>Platz ist reserviert.</DialogTitle>
           <DialogDescription>
-            Wir senden die Anmeldebestätigung per E-Mail, den Zahlungslink separat. Erst
-            danach ist der Platz verbindlich gebucht.
-            <span className="font-mono mt-2 block text-[10px] uppercase tracking-[0.18em]">
-              Demo — es wurde keine Zahlung durchgeführt.
-            </span>
+            Ihr Mailprogramm öffnet sich mit der fertigen Anmeldung — bitte dort auf
+            Senden tippen. Wir bestätigen den Platz per E-Mail und senden die Rechnung
+            bzw. den Zahlungslink separat. Erst danach ist der Platz verbindlich gebucht.
           </DialogDescription>
           <div className="mt-4 flex flex-wrap gap-3">
             <Button asChild variant="primary">

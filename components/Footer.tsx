@@ -177,6 +177,16 @@ export function Footer() {
                   LinkedIn
                 </a>
               </li>
+              <li>
+                <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="hover:text-bronze">
+                  YouTube
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -188,14 +198,11 @@ export function Footer() {
             © {new Date().getFullYear()} {CONTACT.company} · Est. {CONTACT.foundedYear}
           </p>
           <div className="flex gap-6">
-            <Link href="#" data-cursor="hover" className="hover:text-linen">
+            <Link href="/impressum" data-cursor="hover" className="hover:text-linen">
               Impressum
             </Link>
-            <Link href="#" data-cursor="hover" className="hover:text-linen">
+            <Link href="/datenschutz" data-cursor="hover" className="hover:text-linen">
               Datenschutz
-            </Link>
-            <Link href="#" data-cursor="hover" className="hover:text-linen">
-              AGB
             </Link>
           </div>
         </div>

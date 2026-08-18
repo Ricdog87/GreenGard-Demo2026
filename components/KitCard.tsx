@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { oeffneAnfrage } from '@/lib/anfrage';
 import type { StarterKit } from '@/lib/data';
 
 /**
@@ -127,7 +128,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                 Wir melden uns innerhalb von zwei Werktagen zum {kit.name} und klären die
                 offenen Punkte — Fläche, Wasserdruck, Zeitrahmen.
                 <span className="font-mono mt-3 block text-[10px] uppercase tracking-[0.18em]">
-                  Demo: es wurde keine Mail versendet.
+                  Bitte die vorbereitete Mail im Mailprogramm absenden.
                 </span>
               </DialogDescription>
             </>
@@ -142,8 +143,12 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                 className="mt-2 space-y-4"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  // TODO: Supabase leads-Insert + Email-Trigger (Resend).
-                  console.info('[green-gard mock] Kit-Anfrage', { kit: kit.slug, email });
+                  // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
+                  oeffneAnfrage(`Kit-Anfrage: ${kit.name}`, [
+                    `Anfrage zum Starter Kit "${kit.name}" über die Website`,
+                    '',
+                    `Rückmeldung an: ${email}`,
+                  ]);
                   setSent(true);
                 }}
               >

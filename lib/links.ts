@@ -37,7 +37,11 @@ export const SHOP_URL = 'https://www.green-gard.de';
 export const YOUTUBE_URL = 'https://www.youtube.com/@green-gard';
 
 /** Social Media — im Termin als sinnvoll bestätigt. */
+// Echte Profile aus dem Footer von green-gard.de (12.08.2026) — die vorherigen
+// Handles waren geraten und führten ins Leere.
 export const SOCIAL = {
-  instagram: 'https://www.instagram.com/greengard.de/',
-  linkedin: 'https://www.linkedin.com/company/green-gard/',
+  instagram: 'https://www.instagram.com/green_gard.gmbh/',
+  linkedin: 'https://www.linkedin.com/company/36716186/',
+  facebook: 'https://www.facebook.com/profile.php?id=100090187459046',
+  youtube: 'https://www.youtube.com/@green-gardgmbh7663',
 } as const;

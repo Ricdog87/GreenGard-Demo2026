@@ -113,6 +113,14 @@ export function KontoDashboard() {
           </div>
         </div>
 
+        {/* Pilotphase: Solange Supabase nicht verbunden ist, zeigt das Konto
+            Beispieldaten. Ohne diesen Hinweis hielte ein echter Besucher die
+            Musterbau-Daten für einen fremden Zugang. */}
+        <p className="font-mono mt-6 border-l-2 border-copper/60 bg-linen px-4 py-3 text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/60">
+          Pilotphase · Dieses Konto zeigt Beispieldaten. Ihr persönlicher Zugang mit
+          echten Bestellungen folgt mit der Freischaltung durch Green-Gard.
+        </p>
+
         {/* Bereichswahl */}
         <nav aria-label="Kontobereiche" className="mt-8 overflow-x-auto">
           <div className="flex min-w-max gap-2">

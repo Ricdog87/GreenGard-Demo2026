@@ -111,6 +111,12 @@ export function LoginForm({
           {hint}
         </p>
       )}
+
+      {/* Pilotphase: Zugänge vergibt Green-Gard — der Login zeigt bis zur
+          Supabase-Anbindung ein Konto mit Beispieldaten. */}
+      <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/45">
+        Pilotphase · Zugänge werden von Green-Gard persönlich freigeschaltet
+      </p>
     </form>
   );
 }

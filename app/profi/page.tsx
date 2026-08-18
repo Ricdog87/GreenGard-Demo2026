@@ -11,6 +11,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitLead, type GewerbeArt } from '@/lib/supabase';
+import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
 import { CONTACT } from '@/lib/contact';
 import { AUDIENCES } from '@/lib/audience';
 import { useCart } from '@/store/cart';
@@ -81,6 +82,7 @@ export default function ProfiPage() {
   const [gewerbe, setGewerbe] = useState<GewerbeArt>(AUDIENCES[audience].gewerbe);
   const [touched, setTouched] = useState(false);
   const [done, setDone] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
   // Nachziehen, wenn der Store hydriert ist — solange niemand selbst geklickt hat.
   useEffect(() => {
@@ -240,13 +242,11 @@ export default function ProfiPage() {
                   <Check className="h-5 w-5" />
                 </span>
                 <p className="font-display mt-5 text-3xl tracking-tight">
-                  Ihr Konditionskatalog ist unterwegs.
+                  Ihre Anfrage ist vorbereitet.
                 </p>
                 <p className="mt-3 text-ink/70">
-                  Wir haben Ihre Anfrage aufgenommen und melden uns innerhalb von zwei
-                  Werktagen. In der Zwischenzeit können Sie die Preisansicht oben rechts
-                  auf <span className="font-medium">Profi</span> stellen — dann sehen Sie
-                  im Shop bereits Nettopreise.
+                  {ANFRAGE_HINWEIS} Wir melden uns innerhalb von zwei Werktagen mit dem
+                  Konditionskatalog und besprechen Ihre persönlichen Konditionen.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild variant="primary">
@@ -256,16 +256,30 @@ export default function ProfiPage() {
                     <Link href="/beratung#schulungen">Schulungstermine</Link>
                   </Button>
                 </div>
-                <p className="font-mono mt-8 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                  Demo · es wurde keine Mail versendet
+                <p className="mt-8 text-sm text-ink/60">
+                  Kein Mailfenster aufgegangen?{' '}
+                  <a href={mailtoUrl} data-cursor="hover" className="border-b border-mist hover:border-ink">
+                    Anfrage-Mail erneut öffnen
+                  </a>
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit(async (values) => {
-                  // TODO: Supabase leads-Tabelle + Email-Trigger (Resend) —
-                  // solange keine Keys gesetzt sind, landet das im Mock-Zweig.
+                  // Go-Live ohne Backend: Lead als vorbefüllte Mail. Supabase-
+                  // Insert bleibt parallel (Mock-Zweig ohne Keys, echt sobald
+                  // verbunden) — dann übernimmt der Server den Versand.
                   await submitLead({ ...values, gewerbe_art: gewerbe });
+                  const url = oeffneAnfrage(`Konditionskatalog: ${values.firma}`, [
+                    'Anfrage Konditionskatalog über die Website',
+                    '',
+                    `Firma: ${values.firma}`,
+                    `Gewerbe: ${gewerbe}`,
+                    `Ansprechpartner: ${values.name}`,
+                    `Telefon: ${values.telefon}`,
+                    `E-Mail: ${values.email}`,
+                  ]);
+                  setMailtoUrl(url);
                   setDone(true);
                 })}
                 className="space-y-6 border border-mist p-8 md:p-10"

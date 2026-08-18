@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
+import { oeffneAnfrage } from '@/lib/anfrage';
 import standorteJson from '@/data/pflanzenkoelle-standorte.json';
 
 export interface Standort {
@@ -254,7 +255,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             </Button>
           </div>
           <p className="font-mono mt-8 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-            Demo · es wurde keine E-Mail versendet
+            Bitte die vorbereitete Mail im Mailprogramm absenden — Anhänge dort anfügen
           </p>
         </div>
       </section>
@@ -282,14 +283,27 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             // eine Kostenstelle nicht mehr kennt.
             const gewaehlt = STANDORTE.find((s) => s.kst === values.kst);
             if (!gewaehlt) return;
-            // TODO: Anbindung — Anfrage per Resend an CONTACT.email zustellen und
-            // parallel in Supabase ablegen (Projekt, Standort, Anhänge).
-            console.info('[green-gard mock] Projektanfrage Pflanzenkölle', {
-              kundennummer,
-              ...values,
-              standort: gewaehlt,
-              dateien,
-            });
+            // Go-Live ohne Backend: Projektanfrage als vorbefüllte Mail an die
+            // Zentrale. Anhänge kann mailto nicht mitnehmen — die Mail bittet
+            // darum, die gewählten Dateien anzuhängen.
+            // TODO: Resend + Supabase (Projekt, Standort, Anhänge).
+            oeffneAnfrage(
+              `Pflanzenkölle-Projekt: ${gewaehlt.ort} (KST ${gewaehlt.kst})`,
+              [
+                'Projektanfrage Pflanzenkölle über die geschützte Projektseite',
+                '',
+                `Standort: ${gewaehlt.ort} · KST ${gewaehlt.kst} · Adress-Nr. ${gewaehlt.adressNr}`,
+                kundennummer ? `Kundennummer: ${kundennummer}` : false,
+                '',
+                ...Object.entries(values)
+                  .filter(([k, v]) => v && k !== 'kst')
+                  .map(([k, v]) => `${k}: ${v}`),
+                '',
+                dateien.length
+                  ? `WICHTIG: Bitte die gewählten Dateien an diese Mail anhängen (${dateien.join(', ')}).`
+                  : false,
+              ]
+            );
             setGesendet({ values, standort: gewaehlt, dateien });
           })}
           className="mt-16 space-y-12"

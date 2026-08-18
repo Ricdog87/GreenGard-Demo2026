@@ -15,6 +15,7 @@ import {
   type Steuerung,
 } from '@/lib/konfigurator';
 import { useCart } from '@/store/cart';
+import { oeffneAnfrage } from '@/lib/anfrage';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
 
@@ -234,8 +235,17 @@ export function BewaesserungsRechner() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                // TODO: Email-Versand über Resend, Lead in Supabase ablegen.
-                if (email) setSent(true);
+                if (!email) return;
+                // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
+                // TODO: Resend + Supabase-Lead (UEBERGABE.md).
+                oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
+                  'Planungsanfrage von der Startseite',
+                  '',
+                  `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
+                  `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
+                  `Rückmeldung an: ${email}`,
+                ]);
+                setSent(true);
               }}
               className="mt-8 border-t border-linen/15 pt-6"
             >
@@ -243,7 +253,7 @@ export function BewaesserungsRechner() {
                 Plan per Mail
               </p>
               {sent ? (
-                <p className="text-sm text-bronze">Wir senden den Plan an {email}.</p>
+                <p className="text-sm text-bronze">Mail vorbereitet — bitte im Mailprogramm senden.</p>
               ) : (
                 <div className="flex gap-3">
                   <input
