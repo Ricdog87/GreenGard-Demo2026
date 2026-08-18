@@ -39,6 +39,10 @@ export const SHOP_URL = 'https://www.green-gard.de';
  *  Korrektur 18.08.2026: vorher war ein falscher Kanal verlinkt — das hier
  *  ist der richtige (von Jan im Meeting bestätigt). */
 export const YOUTUBE_URL = 'https://www.youtube.com/@Green-GardGmbH';
+/** Kanal-ID zu @Green-GardGmbH (aus dem Kanal-HTML extrahiert, Feed mit den
+ *  15 Anleitungsvideos verifiziert). Achtung: die ID UCMwgscNQGCHRsof5NJ8hVJQ
+ *  aus älteren Notizen gehört zum FALSCHEN Kanal (3 Kress-Videos). */
+export const YOUTUBE_CHANNEL_ID = 'UCZYApIlWT-RIL1Vtkr-_AMw';
 
 /** Social Media — Beschluss 18.08.2026: nur LinkedIn, Instagram und YouTube,
  *  andere Kanäle (Facebook) sind raus. YouTube auf den richtigen Kanal

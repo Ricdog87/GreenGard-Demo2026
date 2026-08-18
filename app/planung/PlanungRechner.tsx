@@ -404,16 +404,7 @@ export function PlanungRechner() {
                           Termin für Systemplanung <ArrowRight className="h-4 w-4" />
                         </Link>
                       </Button>
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="lg"
-                        className="w-full justify-between text-linen hover:bg-linen/10"
-                      >
-                        <Link href={`/starter-kits#${empf.kitSlug}`}>
-                          Kit ansehen <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      </Button>
+                      {/* „Kit ansehen“ entfernt (Kundenfeedback 18.08.2026). */}
 
                       {/* Bauplan-Upload (Meeting 12.08.2026) */}
                       <div className="mt-2 border-t border-linen/15 pt-4">

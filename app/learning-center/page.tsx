@@ -65,9 +65,9 @@ export default function LearningCenterPage() {
             Erst schauen. Dann <em className="italic">anrufen</em>.
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink/70">
-            <span className="num">{VIDEO_COUNT}</span> Erklärvideos von unserem YouTube-Kanal —
-            aktuell rund um Kress-Robotik, vom meistgesehenen Installationsvideo bis zur
-            RTK-Navigation. Dazu{' '}
+            <span className="num">{VIDEO_COUNT}</span> Anleitungsvideos von unserem YouTube-Kanal —
+            von der Hydrawise-Einrichtung über Regensensoren und PE-Rohr bis zur
+            In-Lite-Leuchte. Dazu{' '}
             <a href="#fragen" data-cursor="hover" className="border-b border-mist hover:border-ink">
               <span className="num">{FAQ_COUNT}</span> ausgeschriebene Antworten
             </a>{' '}

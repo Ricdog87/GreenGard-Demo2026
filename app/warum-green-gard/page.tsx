@@ -4,6 +4,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { PullQuote } from '@/components/PullQuote';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/lib/contact';
+import { RAINWORKS_URL } from '@/lib/links';
 import { rainworks, team, teamGruppenfoto } from '@/lib/data';
 
 export const metadata = {
@@ -187,7 +188,7 @@ export default function WarumGreenGardPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-10">
+        <p className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
           <Link
             href="/rainworks"
             data-cursor="hover"
@@ -195,6 +196,16 @@ export default function WarumGreenGardPage() {
           >
             Die Allianz im Detail →
           </Link>
+          {/* Externer Link zur Rainworks-Website — Meeting 18.08.2026. */}
+          <a
+            href={RAINWORKS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="hover"
+            className="border-b border-mist text-lg hover:border-ink"
+          >
+            rainworks.eu ↗
+          </a>
         </p>
       </section>
 

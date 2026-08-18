@@ -226,7 +226,8 @@ weil beide dieselbe Codebasis nutzen.
    Kein Kontaktzwang, kein PDF-Download.
 4. **„ab“-Preise statt Festpreise** — nennt eine belastbare Größenordnung und führt
    in die kostenlose Systemplanung, statt später nachverhandeln zu müssen.
-5. **Drei Ausstiege am Planungsende** — Termin, Plan per Mail, Kit ansehen. Deckt
+5. **Zwei Ausstiege am Planungsende** — Termin und Plan per Mail („Kit ansehen"
+   entfernt, Kundenfeedback 18.08.2026). Deckt
    heiße, warme und kalte Interessenten ab.
 6. **Lead-Gate `/profi`** — Konditionskatalog gegen Firmendaten inkl. Gewerbe-Art,
    damit der Außendienst vorqualifiziert anruft.

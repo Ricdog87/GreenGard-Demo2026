@@ -231,16 +231,11 @@ export function BewaesserungsRechner() {
               </p>
             ))}
 
+            {/* „Kit ansehen“ entfernt (Kundenfeedback 18.08.2026) — der Weg
+                führt in die Planung, nicht zu den Kits. */}
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="accent">
                 <Link href="/planung">Vollständige Planung →</Link>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="text-linen hover:bg-linen/10"
-              >
-                <Link href={`/starter-kits#${empf.kitSlug}`}>Kit ansehen</Link>
               </Button>
             </div>
 

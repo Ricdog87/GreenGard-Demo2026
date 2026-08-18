@@ -14,7 +14,7 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 | YouTube: richtiger Kanal (@Green-GardGmbH) | ✅ erledigt — 14 echte Anleitungsvideos im Learning Center |
 | Terminbuchung mit 2 Tagen Vorlauf | ✅ erledigt — erster wählbarer Termin frühestens übermorgen |
 | Schulungstermine 2027 „Bald verfügbar" + Vormerk-Formular | ✅ erledigt |
-| Kalkulator: Beetfläche 300–500 € je nach Größe | ✅ erledigt (bis 100 m² = 300 €, bis 250 m² = 400 €, darüber 500 €) |
+| Kalkulator: Beetfläche 300–500 € je nach Größe | ✅ erledigt (bis 20 m² = 300 €, bis 50 m² = 400 €, darüber 500 €) |
 | Team: Titel Thomas (Geschäftsführer) + Assistenz | ✅ erledigt — übrige weiterhin ohne Titel |
 | Rainworks-Link (rainworks.eu) | ✅ erledigt — Footer + /rainworks |
 | Social nur LinkedIn/Instagram/YouTube | ✅ erledigt — Facebook entfernt |
