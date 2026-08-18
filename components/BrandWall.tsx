@@ -2,9 +2,12 @@ import Image from 'next/image';
 import { Eyebrow } from '@/components/Eyebrow';
 
 /**
- * Logos, die auf green-gard.de als Partner geführt werden. Die Laufschrift
- * darüber bleibt die Bühne; die Logos darunter sind der Beleg — ein GaLaBauer
- * erkennt sie im Vorbeiscrollen, ohne lesen zu müssen.
+ * Logos, die auf green-gard.de als Partner geführt werden.
+ *
+ * Umbau 18.08.2026 (Kundenwunsch): Die große Namens-Laufschrift ist raus —
+ * stattdessen laufen die Original-Logos selbst als Karussell automatisch
+ * durch, ohne dass jemand klicken muss. Bei reduzierter Bewegung steht der
+ * Streifen still (globals.css schaltet animate-marquee ab).
  *
  * TODO: Nutzungsfreigabe je Hersteller bestätigen (OFFENE-PUNKTE B6).
  */
@@ -19,23 +22,6 @@ const LOGOS = [
   { slug: 'rainworks', name: 'Rainworks' },
 ];
 
-// Bayrol und Beatbot sind mit dem Pool-Sortiment dazugekommen.
-// Markennamen Bayrol/Beatbot final mit Kunde verifizieren.
-const BRANDS = [
-  'Rainbird',
-  'Hunter',
-  'Netafim',
-  'Rain',
-  'Pedrollo',
-  'Speck',
-  'Grundfos',
-  'Kress',
-  'Husqvarna',
-  'In-Lite',
-  'Bayrol',
-  'Beatbot',
-];
-
 export function BrandWall() {
   return (
     <section className="overflow-hidden border-t border-mist bg-paper py-24 md:py-32">
@@ -48,37 +34,23 @@ export function BrandWall() {
         </div>
       </div>
 
+      {/* Logo-Karussell: Liste doppelt, Animation fährt exakt -50 % — nahtlose
+          Schleife. Abstand als margin an der Kachel (nicht als flex-gap), damit
+          die halbe Streifenbreite genau auf einer Kachelgrenze liegt.
+          Die Logodateien des Kunden haben keinen Alphakanal — der weiße Grund
+          wird zur Kachel, einheitliche Geometrie statt acht Freisteller. */}
       <div className="mt-16 overflow-hidden" aria-hidden>
-        <div className="animate-marquee flex gap-16 whitespace-nowrap">
-          {[...BRANDS, ...BRANDS].map((b, i) => (
-            <span
-              key={i}
-              className="font-display text-[76px] leading-none tracking-tight text-ink/90 md:text-[110px]"
-            >
-              {b}
-              <span className="text-bronze">·</span>
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="container">
-        {/* Die Logodateien des Kunden haben keinen Alphakanal. Statt gegen den
-            weißen Grund zu arbeiten, wird er zur Kachel — einheitliche
-            Geometrie, ruhiger als acht verschieden große Freisteller. */}
-        <div
-          data-reveal-group
-          className="mt-16 grid grid-cols-2 gap-3 border-t border-mist pt-12 sm:grid-cols-4 lg:grid-cols-8"
-        >
-          {LOGOS.map((l) => (
+        <div className="animate-marquee flex w-max">
+          {[...LOGOS, ...LOGOS].map((l, i) => (
             <div
-              key={l.slug}
-              className="group relative aspect-[5/2] overflow-hidden border border-mist bg-white"
+              key={`${l.slug}-${i}`}
+              className="group relative mr-3 aspect-[5/2] w-40 shrink-0 overflow-hidden border border-mist bg-white sm:w-48"
             >
               <Image
                 src={`/img/foto/marke/${l.slug}.png`}
-                alt={l.name}
+                alt=""
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 12vw"
+                sizes="192px"
                 className="object-contain p-3 grayscale transition duration-500 group-hover:grayscale-0"
               />
             </div>
@@ -87,7 +59,7 @@ export function BrandWall() {
       </div>
 
       <p className="sr-only">
-        Partnermarken: {BRANDS.join(', ')}.
+        Partnermarken: {LOGOS.map((l) => l.name).join(', ')}.
       </p>
     </section>
   );
