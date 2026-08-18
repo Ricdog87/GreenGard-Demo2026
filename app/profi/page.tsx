@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitLead, type GewerbeArt } from '@/lib/supabase';
 import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { CONTACT } from '@/lib/contact';
 import { AUDIENCES } from '@/lib/audience';
 import { useCart } from '@/store/cart';
@@ -256,12 +257,7 @@ export default function ProfiPage() {
                     <Link href="/beratung#schulungen">Schulungstermine</Link>
                   </Button>
                 </div>
-                <p className="mt-8 text-sm text-ink/60">
-                  Kein Mailfenster aufgegangen?{' '}
-                  <a href={mailtoUrl} data-cursor="hover" className="border-b border-mist hover:border-ink">
-                    Anfrage-Mail erneut öffnen
-                  </a>
-                </p>
+                <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />
               </div>
             ) : (
               <form

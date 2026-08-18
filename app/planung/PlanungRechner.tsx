@@ -18,6 +18,7 @@ import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 
 // V2: nur noch 3 Kernfragen + WLAN — Mähroboter- und Beleuchtungs-Add-ons sind
 // bewusst raus, die laufen über die eigenen Kits.
@@ -35,6 +36,7 @@ export function PlanungRechner() {
   const [steuerung, setSteuerung] = useState<Steuerung>('smart');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
   // Cross-Sell wie auf green-gard.de/planungstool angeboten: „Wir fügen Ihnen
   // auf Wunsch einen Mähroboter oder ein Lichtkonzept dem Angebot hinzu.“
   // Bewusst NICHT als Rechner-Schritt (V2: einfach halten), sondern als
@@ -448,7 +450,7 @@ export function PlanungRechner() {
                           // Mail. Anhänge kann mailto nicht mitnehmen — die Mail
                           // bittet darum, die gewählten Dateien anzuhängen.
                           // TODO: Resend/Supabase Storage (UEBERGABE.md).
-                          oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
+                          const url = oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
                             'Planungsanfrage aus dem Rechner',
                             '',
                             `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
@@ -461,6 +463,7 @@ export function PlanungRechner() {
                               ? `WICHTIG: Bitte die gewählten Pläne an diese Mail anhängen (${plaene.map((f) => f.name).join(', ')}).`
                               : 'Ein Bauplan oder eine Skizze als Anhang beschleunigt die Planung.',
                           ]);
+                          setMailtoUrl(url);
                           setSent(true);
                         }}
                         className="mt-4 border-t border-linen/15 pt-4"
@@ -469,10 +472,13 @@ export function PlanungRechner() {
                           Plan per Mail
                         </p>
                         {sent ? (
-                          <p className="text-sm text-bronze">
-                            Mail vorbereitet — bitte im Mailprogramm senden
-                            {plaene.length > 0 ? ' und die gewählten Pläne anhängen' : ''}.
-                          </p>
+                          <div className="space-y-3">
+                            <p className="text-sm text-bronze">
+                              Mail vorbereitet — bitte im Mailprogramm senden
+                              {plaene.length > 0 ? ' und die gewählten Pläne anhängen' : ''}.
+                            </p>
+                            <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                          </div>
                         ) : (
                           <div className="flex gap-2">
                             <input

@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import type { StarterKit } from '@/lib/data';
 
 /**
@@ -20,6 +21,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
   const [askOpen, setAskOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [email, setEmail] = useState('');
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
   const dark = Boolean(kit.highlight);
 
@@ -133,6 +135,7 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                   Bitte die vorbereitete Mail im Mailprogramm absenden.
                 </span>
               </DialogDescription>
+              <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />
             </>
           ) : (
             <>
@@ -146,11 +149,12 @@ export function KitCard({ kit, showIdeal = false }: { kit: StarterKit; showIdeal
                 onSubmit={(e) => {
                   e.preventDefault();
                   // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
-                  oeffneAnfrage(`Kit-Anfrage: ${kit.name}`, [
+                  const url = oeffneAnfrage(`Kit-Anfrage: ${kit.name}`, [
                     `Anfrage zum Starter Kit "${kit.name}" über die Website`,
                     '',
                     `Rückmeldung an: ${email}`,
                   ]);
+                  setMailtoUrl(url);
                   setSent(true);
                 }}
               >

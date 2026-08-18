@@ -72,7 +72,15 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 Es gibt **noch keinen Server-Mailversand** (Office 365/Resend offen). Damit
 trotzdem keine Anfrage verloren geht, öffnen alle Formulare eine **fertig
 vorbefüllte E-Mail** im Mailprogramm des Besuchers — Empfänger info@,
-strukturierter Inhalt, der Besucher tippt nur auf Senden:
+strukturierter Inhalt, der Besucher tippt nur auf Senden.
+
+**Neu (18.08.):** Öffnet sich kein Mailfenster (kein Mailprogramm mit dem
+Browser verknüpft — beim Übergabe-Test passiert), zeigt jeder
+Erfolgsbildschirm zusätzlich: **Mit Gmail senden**, **Mit Outlook senden**
+(Web-Compose im Browser, fertig vorbefüllt) und **Text kopieren** — damit
+kommt die Anfrage von jedem Gerät durch (`components/AnfrageFallback.tsx`).
+
+Die Formulare im Einzelnen:
 
 - Beratungstermin (inkl. echter Kalenderdatei zum Vormerken)
 - Konditionskatalog-Anfrage (/profi)

@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { DEMO_KONTO } from '@/lib/konto-daten';
-import { CONTACT } from '@/lib/contact';
+import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { findeArtikel, katalogArtikel, type KatalogArtikel } from '@/lib/katalog-daten';
 import { cn } from '@/lib/utils';
 
@@ -65,6 +66,7 @@ export function KontoSchnellbestellung() {
   const [zeilen, setZeilen] = useState<Zeile[]>(() => leereZeilen(START_ZEILEN));
   const [listeText, setListeText] = useState('');
   const [hinweis, setHinweis] = useState<string | null>(null);
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
 
   const aufgeloest: AufgeloesteZeile[] = useMemo(
@@ -132,12 +134,15 @@ export function KontoSchnellbestellung() {
     const zeilenText = gueltige.map(
       (a) => `${a.artikel!.bestellnummer} × ${a.menge} — ${a.artikel!.beschreibung}`
     );
-    const body = encodeURIComponent(
-      `Bestellung:\n\n${zeilenText.join('\n')}\n\nKundennummer: ${DEMO_KONTO.kundennummer}\nLieferung: wie vereinbart`
-    );
-    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-      `Bestellung Kundennummer ${DEMO_KONTO.kundennummer}`
-    )}&body=${body}`;
+    const url = oeffneAnfrage(`Bestellung Kundennummer ${DEMO_KONTO.kundennummer}`, [
+      'Bestellung:',
+      '',
+      ...zeilenText,
+      '',
+      `Kundennummer: ${DEMO_KONTO.kundennummer}`,
+      'Lieferung: wie vereinbart',
+    ]);
+    setMailtoUrl(url);
     setHinweis(`${anzahlText(gueltige.length, 'Position', 'Positionen')} als Bestellung vorbereitet — Ihr Mailprogramm öffnet sich.`);
   }
 
@@ -298,6 +303,7 @@ export function KontoSchnellbestellung() {
                 {hinweis}
               </p>
             </div>
+            {mailtoUrl && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-4" />}
           </div>
 
           {/* Liste einfügen + Nummernhilfe */}

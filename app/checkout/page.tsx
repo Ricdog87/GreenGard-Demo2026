@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useCart } from '@/store/cart';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { lineTotal, priceFor, VAT_RATE } from '@/lib/pricing';
 import { formatEUR, cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
@@ -36,6 +37,7 @@ export default function CheckoutPage() {
 
     const [payment, setPayment] = useState<'card' | 'sepa' | 'invoice' | 'prepay'>('card');
   const [successOpen, setSuccessOpen] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
   const {
     register,
@@ -51,7 +53,7 @@ export default function CheckoutPage() {
     // Go-Live ohne Backend: Anmeldung als vorbefüllte Mail — der Platz wird
     // per Rechnung bzw. Zahlungslink bestätigt (kein Stripe nötig, siehe
     // UEBERGABE.md). TODO: Server-Versand, sobald Office 365/Resend steht.
-    oeffneAnfrage('Schulungsanmeldung', [
+    const url = oeffneAnfrage('Schulungsanmeldung', [
       'Schulungsanmeldung über die Website',
       '',
       ...items.map((l) => `${l.qty} × ${l.name}${l.termin ? ` — Termin ${l.termin}` : ''}`),
@@ -60,6 +62,7 @@ export default function CheckoutPage() {
       `Anschrift: ${values.street}, ${values.zip} ${values.city}`,
       `E-Mail: ${values.email}`,
     ]);
+    setMailtoUrl(url);
     setSuccessOpen(true);
   }
 
@@ -271,6 +274,7 @@ export default function CheckoutPage() {
             Senden tippen. Wir bestätigen den Platz per E-Mail und senden die Rechnung
             bzw. den Zahlungslink separat. Erst danach ist der Platz verbindlich gebucht.
           </DialogDescription>
+          <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />
           <div className="mt-4 flex flex-wrap gap-3">
             <Button asChild variant="primary">
               <Link href="/">Zur Startseite</Link>

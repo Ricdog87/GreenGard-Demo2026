@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import standorteJson from '@/data/pflanzenkoelle-standorte.json';
 
 export interface Standort {
@@ -142,6 +143,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
   // Pflichtfeld seit dem Meeting 18.08.2026: Ohne Projektplan keine belastbare
   // Auslegung — deshalb blockt das Formular ohne Anhang.
   const [dateiFehler, setDateiFehler] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
   const [gesendet, setGesendet] = useState<{
     values: FormValues;
     standort: Standort;
@@ -233,6 +235,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             </a>{' '}
             und wird dort unter Kundennummer <span className="num">{kundennummer}</span> geführt.
           </p>
+          <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-6 max-w-2xl" />
 
           <div className="mt-12 border-t border-mist">
             <p className="eyebrow mt-6">Übermittelte Angaben</p>
@@ -298,7 +301,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             // Zentrale. Anhänge kann mailto nicht mitnehmen — die Mail bittet
             // darum, die gewählten Dateien anzuhängen.
             // TODO: Resend + Supabase (Projekt, Standort, Anhänge).
-            oeffneAnfrage(
+            const url = oeffneAnfrage(
               `Pflanzenkölle-Projekt: ${gewaehlt.ort} (KST ${gewaehlt.kst})`,
               [
                 'Projektanfrage Pflanzenkölle über die geschützte Projektseite',
@@ -315,6 +318,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                   : false,
               ]
             );
+            setMailtoUrl(url);
             setGesendet({ values, standort: gewaehlt, dateien });
           })}
           className="mt-16 space-y-12"

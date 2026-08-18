@@ -6,7 +6,8 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { DEMO_KONTO, STATUS_LABEL, type Bestellung } from '@/lib/konto-daten';
-import { CONTACT } from '@/lib/contact';
+import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { cn } from '@/lib/utils';
 
 /**
@@ -60,13 +61,17 @@ export function KontoBestellungen() {
   // den Warenkorb der Website. "Erneut bestellen" erzeugt deshalb eine
   // vorbefüllte Nachbestell-Mail mit der Positionsliste — ohne Preise.
   // TODO: durch Shop-Deeplink ersetzen, sobald die Msoft-API steht.
+  const [mailtoUrl, setMailtoUrl] = useState('');
   const erneutBestellen = (b: Bestellung) => {
     const zeilen = b.positionen.map((p) => `${p.bestellnummer} × ${p.menge} — ${p.bezeichnung}`);
-    const body = encodeURIComponent(
-      `Bitte erneut liefern (wie Bestellung ${b.nummer}):\n\n${zeilen.join('\n')}\n\nKundennummer: ${DEMO_KONTO.kundennummer}`
-    );
-    const subject = encodeURIComponent(`Nachbestellung zu ${b.nummer}`);
-    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+    const url = oeffneAnfrage(`Nachbestellung zu ${b.nummer}`, [
+      `Bitte erneut liefern (wie Bestellung ${b.nummer}):`,
+      '',
+      ...zeilen,
+      '',
+      `Kundennummer: ${DEMO_KONTO.kundennummer}`,
+    ]);
+    setMailtoUrl(url);
   };
   return (
     <section className="py-4">
@@ -112,6 +117,8 @@ export function KontoBestellungen() {
           {sichtbar.length} von {alle.length} Bestellungen
         </p>
       </div>
+
+      {mailtoUrl && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-6" />}
 
       {/* Liste */}
       <ul data-reveal-group className="mt-2">

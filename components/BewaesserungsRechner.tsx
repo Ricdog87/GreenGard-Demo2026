@@ -16,6 +16,7 @@ import {
 } from '@/lib/konfigurator';
 import { useCart } from '@/store/cart';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
 
@@ -37,6 +38,7 @@ export function BewaesserungsRechner() {
   const [steuerung, setSteuerung] = useState<Steuerung>('smart');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
 
   // Aufteilung der Gesamtfläche wie im Planungs-Assistenten: Beete ~25 %,
   // der Rest Rasen — gezählt wird nur, was bewässert werden soll. Der Rasen
@@ -248,13 +250,14 @@ export function BewaesserungsRechner() {
                 if (!email) return;
                 // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
                 // TODO: Resend + Supabase-Lead (UEBERGABE.md).
-                oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
+                const url = oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
                   'Planungsanfrage von der Startseite',
                   '',
                   `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
                   `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
                   `Rückmeldung an: ${email}`,
                 ]);
+                setMailtoUrl(url);
                 setSent(true);
               }}
               className="mt-8 border-t border-linen/15 pt-6"
@@ -263,7 +266,10 @@ export function BewaesserungsRechner() {
                 Plan per Mail
               </p>
               {sent ? (
-                <p className="text-sm text-bronze">Mail vorbereitet — bitte im Mailprogramm senden.</p>
+                <div className="space-y-3">
+                  <p className="text-sm text-bronze">Mail vorbereitet — bitte im Mailprogramm senden.</p>
+                  <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                </div>
               ) : (
                 <div className="flex gap-3">
                   <input

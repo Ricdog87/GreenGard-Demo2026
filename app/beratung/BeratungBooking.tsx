@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
 import { PLANUNGSGEBUEHR } from '@/lib/planungspakete';
 import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { team } from '@/lib/data';
 
 // Nur wer tatsächlich berät: Jan (Vertrieb, Beleuchtung) und Nicolas
@@ -180,12 +181,10 @@ export function BeratungBooking() {
             Weiteren Termin vereinbaren
           </Button>
         </div>
-        <p className="mt-8 text-sm text-ink/60">
-          Kein Mailfenster aufgegangen?{' '}
-          <a href={mailtoUrl} data-cursor="hover" className="border-b border-mist hover:border-ink">
-            Anfrage-Mail erneut öffnen
-          </a>{' '}
-          oder anrufen: <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink">{CONTACT.phoneDisplay}</a>
+        <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />
+        <p className="mt-3 text-sm text-ink/60">
+          Oder rufen Sie uns an:{' '}
+          <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink">{CONTACT.phoneDisplay}</a>
         </p>
       </div>
     );

@@ -10,6 +10,7 @@ import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
 import { oeffneAnfrage } from '@/lib/anfrage';
+import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { schulungen, type Schulung } from '@/lib/data';
 
 export function Schulungen() {
@@ -22,6 +23,7 @@ export function Schulungen() {
   // die Interessenten strukturiert ein.
   const [vormerkung, setVormerkung] = useState<Schulung | null>(null);
   const [gesendet, setGesendet] = useState(false);
+  const [mailtoUrl, setMailtoUrl] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [firma, setFirma] = useState('');
@@ -182,6 +184,7 @@ export function Schulungen() {
                   Bitte die vorbereitete Mail im Mailprogramm absenden.
                 </span>
               </DialogDescription>
+              <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />
             </>
           ) : (
             vormerkung && (
@@ -197,7 +200,7 @@ export function Schulungen() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     // Go-Live ohne Backend: Vormerkung als vorbefüllte Mail.
-                    oeffneAnfrage(`Platz-Vormerkung: ${vormerkung.title}`, [
+                    const url = oeffneAnfrage(`Platz-Vormerkung: ${vormerkung.title}`, [
                       `Vormerkung für die Schulung "${vormerkung.title}" über die Website`,
                       '',
                       `Name: ${name}`,
@@ -205,6 +208,7 @@ export function Schulungen() {
                       `Teilnehmer: ${personen}`,
                       `Rückmeldung an: ${email}`,
                     ]);
+                    setMailtoUrl(url);
                     setGesendet(true);
                   }}
                 >
