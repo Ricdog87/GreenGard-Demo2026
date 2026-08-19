@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/Eyebrow';
-import { ViewSwitchLink } from '@/components/ViewSwitchLink';
 import { CONTACT, OEFFNUNG } from '@/lib/contact';
 import { categories } from '@/lib/data';
 import { IRRISKETCH_URL, RAINWORKS_URL, SOCIAL } from '@/lib/links';
@@ -163,9 +162,8 @@ export function Footer() {
                   Shop — bald verfügbar
                 </span>
               </li>
-              <li>
-                <ViewSwitchLink />
-              </li>
+              {/* „Ansicht wechseln“ raus (18.08.2026): Standard ist Privat,
+                  Profis kommen über den Profi-Login im Header. */}
             </ul>
             <p className="eyebrow mt-6 text-linen/60 [&>span:first-child]:bg-linen/30">Sozial</p>
             <ul className="mt-3 space-y-2">

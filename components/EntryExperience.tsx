@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { AudienceGate } from '@/components/AudienceGate';
+import { useEffect, useState } from 'react';
 import { Loader } from '@/components/Loader';
 import { useCart } from '@/store/cart';
 import { useUI } from '@/store/ui';
@@ -9,27 +8,27 @@ import { useUI } from '@/store/ui';
 /**
  * Entscheidet, was beim Laden über der Seite liegt:
  *
- *   ohne Auswahl        → Entry-Fenster (Zielgruppe + Login), ersetzt den Loader
- *   mit Auswahl         → Editorial-Loader, einmal pro Session
+ *   erster Besuch      → Editorial-Loader, einmal pro Session
  *   Loader schon gehabt → nichts, Hero startet sofort
  *
- * Bis der persistierte Store hydriert ist, liegt eine neutrale Linen-Fläche
- * darüber. Sie sieht wie Fenster und Loader aus, deshalb ist der Wechsel
- * unsichtbar — und es blitzt kein falsches Overlay auf.
+ * Das frühere Entry-Fenster (Zielgruppe wählen) ist seit 18.08.2026 raus:
+ * Die Standardansicht ist Privat, Profis kommen über den Profi-Login im
+ * Header. Wer die Seite zum ersten Mal besucht, wird still auf „privat“
+ * gesetzt — ohne Abfrage.
  *
- * Setzt der Nutzer die Ansicht später zurück ("wechseln" in Bar oder Footer),
- * erscheint das Entry-Fenster erneut.
+ * Bis der persistierte Store hydriert ist, liegt eine neutrale Linen-Fläche
+ * darüber, damit kein falscher Zustand aufblitzt.
  */
 export function EntryExperience() {
-  const audienceChosen = useCart((s) => s.audienceChosen);
   const finishEntry = useUI((s) => s.finishEntry);
   const [hydrated, setHydrated] = useState(false);
   const [loaderSeen, setLoaderSeen] = useState(false);
-  /** true, solange dieselbe Gate-Runde noch nachwirkt (Exit-Animation). */
-  const gateSettled = useRef(false);
 
   useEffect(() => {
     const markHydrated = () => {
+      // Ohne gespeicherte Wahl: still auf Privat setzen (Standardansicht).
+      const store = useCart.getState();
+      if (!store.audienceChosen) store.chooseAudience('privat');
       setHydrated(true);
       try {
         if (sessionStorage.getItem('gg_loader_done')) setLoaderSeen(true);
@@ -51,13 +50,8 @@ export function EntryExperience() {
     };
   }, []);
 
-  // Auswahl zurückgesetzt → das Fenster darf erneut erscheinen.
-  useEffect(() => {
-    if (!audienceChosen) gateSettled.current = false;
-  }, [audienceChosen]);
-
   // Liegt nichts mehr über der Seite, darf der Hero-Reveal starten.
-  const nothingOverlaying = hydrated && (audienceChosen || gateSettled.current) && loaderSeen;
+  const nothingOverlaying = hydrated && loaderSeen;
   useEffect(() => {
     if (nothingOverlaying) finishEntry();
   }, [nothingOverlaying, finishEntry]);
@@ -75,18 +69,7 @@ export function EntryExperience() {
     return <div aria-hidden className="fixed inset-0 z-[95] bg-linen" />;
   }
 
-  if (!audienceChosen && !gateSettled.current) {
-    return (
-      <AudienceGate
-        onDone={() => {
-          gateSettled.current = true;
-          markSessionSeen();
-        }}
-      />
-    );
-  }
-
-  if (!loaderSeen && !gateSettled.current) {
+  if (!loaderSeen) {
     return <Loader onDone={markSessionSeen} />;
   }
 

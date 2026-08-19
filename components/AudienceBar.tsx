@@ -6,13 +6,13 @@ import { useCart } from '@/store/cart';
 import { AUDIENCES } from '@/lib/audience';
 
 /**
- * Schnelleinstiege direkt unter dem Hero — passend zur Auswahl aus dem
- * Entry-Fenster. GaLaBau landet bei Konditionen, Architekten bei der Planung,
- * Privatkunden bei Kits und Rechner.
+ * Schnelleinstiege direkt unter dem Hero. Standardansicht ist Privat;
+ * wer über den Profi-Login kommt, sieht die Profi-Einstiege (Konditionen,
+ * Planung). Der frühere „Ansicht wechseln“-Knopf ist raus (18.08.2026) —
+ * es gibt kein Entry-Fenster mehr, das er öffnen könnte.
  */
 export function AudienceBar() {
   const audience = useCart((s) => s.audience);
-  const resetAudience = useCart((s) => s.resetAudience);
   const a = AUDIENCES[audience];
 
   return (
@@ -20,15 +20,7 @@ export function AudienceBar() {
       <div className="container py-5">
         <div data-reveal className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-linen/60">
-            Ansicht: <span className="text-linen">{a.title}</span>
-            <button
-              type="button"
-              data-cursor="hover"
-              onClick={resetAudience}
-              className="ml-3 border-b border-linen/30 pb-0.5 transition-colors hover:border-bronze hover:text-bronze"
-            >
-              wechseln
-            </button>
+            Schnelleinstieg
           </p>
 
           <div className="grid gap-3 sm:grid-cols-3 lg:flex lg:items-center lg:gap-8">

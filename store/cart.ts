@@ -66,7 +66,9 @@ export const useCart = create<CartState>()(
       eingeloggt: false,
       // Anmeldung schaltet zugleich die Profi-Preisansicht frei.
       anmelden: () => set({ eingeloggt: true, audience: 'profi', mode: 'profi', audienceChosen: true }),
-      abmelden: () => set({ eingeloggt: false }),
+      // Beim Abmelden zurück in die Standardansicht (Privat) — einen
+      // manuellen Umschalter gibt es seit 18.08.2026 nicht mehr.
+      abmelden: () => set({ eingeloggt: false, audience: 'privat', mode: 'privat' }),
 
       items: [],
       drawerOpen: false,
