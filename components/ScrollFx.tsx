@@ -30,12 +30,15 @@ export function ScrollFx() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      // Premium-Pass 18.08.2026: power4-Easing statt power3 — die Bewegung
+      // startet zügig und läuft butterweich aus, das wirkt teurer als ein
+      // gleichmäßiges Abbremsen.
       gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
         gsap.from(el, {
-          y: 28,
+          y: 32,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
+          duration: 1.2,
+          ease: 'power4.out',
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
         });
       });
@@ -44,34 +47,40 @@ export function ScrollFx() {
         const items = Array.from(group.children) as HTMLElement[];
         if (items.length === 0) return;
         gsap.from(items, {
-          y: 34,
+          y: 36,
           scale: 0.985,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.09,
+          duration: 1.2,
+          ease: 'power4.out',
+          stagger: 0.08,
           scrollTrigger: { trigger: group, start: 'top 86%', once: true },
         });
       });
 
-      gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
-        const amount = parseFloat(el.dataset.parallax || '6');
-        gsap.fromTo(
-          el,
-          { yPercent: -amount, scale: 1.12 },
-          {
-            yPercent: amount,
-            scale: 1.12,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: el.parentElement ?? el,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            },
-          }
-        );
-      });
+      // Parallax nur auf großen Screens mit Maus: auf dem Handy kostet der
+      // Scrub Bildrate und die Vergrößerung Schärfe — natives Scrollen ohne
+      // Drift fühlt sich dort hochwertiger an.
+      const darfParallax = window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches;
+      if (darfParallax) {
+        gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
+          const amount = parseFloat(el.dataset.parallax || '6');
+          gsap.fromTo(
+            el,
+            { yPercent: -amount, scale: 1.12 },
+            {
+              yPercent: amount,
+              scale: 1.12,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.parentElement ?? el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
     });
 
     // Nach spät ladenden Bildern die Trigger-Positionen nachjustieren.

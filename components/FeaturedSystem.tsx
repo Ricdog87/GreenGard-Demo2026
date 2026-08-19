@@ -21,12 +21,13 @@ export function FeaturedSystem() {
               weicher Bodenschatten, damit das helle Gerät auf dem dunklen
               Grund sauber freisteht — nichts wird beschnitten. */}
           <div className="relative aspect-[4/3] p-4 md:p-10">
+            {/* Bewusst OHNE Parallax: der drop-shadow-Filter würde sonst bei
+                jedem Scroll-Frame neu gerastert — das kostet Bildrate. */}
             <Image
               src="/products/husqvarna-405ve-nera.webp"
               alt="Husqvarna Automower 405VE NERA Mähroboter"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              data-parallax="6"
               className="object-contain drop-shadow-[0_28px_36px_rgba(0,0,0,0.35)]"
               data-cursor="view"
             />

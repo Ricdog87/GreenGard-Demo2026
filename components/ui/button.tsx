@@ -5,8 +5,11 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+// active:scale — Buttons geben beim Drücken minimal nach (Premium-Pass
+// 18.08.2026): das taktile Feedback fühlt sich hochwertiger an als ein
+// statischer Klick, besonders auf Touch-Geräten.
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {

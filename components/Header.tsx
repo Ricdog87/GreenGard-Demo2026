@@ -47,11 +47,11 @@ export function Header() {
   return (
     <header
       className={cn(
-                // Kein backdrop-blur: der Weichzeichner müsste bei jedem Scroll-Frame
-        // neu berechnet werden und kostete messbar Bildrate. Beim Scrollen wird
-        // der Grund deckend, ungescrollt bleibt er leicht transparent.
+        // Kein backdrop-blur — auch nicht im Ruhezustand: der Weichzeichner
+        // müsste bei jedem Scroll-Frame neu berechnet werden und kostete
+        // messbar Bildrate (Premium-Pass 18.08.2026 vollständig entfernt).
         'sticky top-0 z-40 border-b border-mist transition-[background-color,box-shadow] duration-300',
-        scrolled ? 'bg-paper shadow-[0_12px_32px_-24px_rgba(10,15,12,0.45)]' : 'bg-paper/92 backdrop-blur-sm'
+        scrolled ? 'bg-paper shadow-[0_12px_32px_-24px_rgba(10,15,12,0.45)]' : 'bg-paper/95'
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4">
@@ -120,7 +120,8 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-mist bg-paper xl:hidden">
+        /* Sanft einblenden statt hart aufklappen (Premium-Pass 18.08.2026). */
+        <div className="animate-[fade-up_0.35s_ease-out] border-t border-mist bg-paper xl:hidden">
           <div className="container flex flex-col gap-1 py-6">
             {nav.map((n) => (
               <Link

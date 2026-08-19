@@ -17,13 +17,15 @@ export function SmoothScroll() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-        // Kürzere Nachlaufzeit als zuvor (1,15 s): das Scrollen folgt der Hand
-    // direkter, statt spürbar nachzulaufen.
+    // Premium-Pass 18.08.2026: längere Nachlaufzeit (1,15 s) mit Expo-Easing —
+    // das Scrollen gleitet aus, statt hart zu stoppen. Multiplier 1.0 hält
+    // die Geschwindigkeit ruhig; Touch bleibt nativ (das fühlt sich auf dem
+    // Handy immer am besten an).
     const lenis = new Lenis({
-      duration: 0.9,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.05,
+      wheelMultiplier: 1.0,
     });
 
     lenis.on('scroll', ScrollTrigger.update);
