@@ -45,7 +45,9 @@ export default function WarumGreenGardPage() {
         </p>
       </section>
 
-      <PullQuote attribution="Jan Leifermann">
+      {/* Kein persönliches Zitat — niemandem erfundene Worte zuschreiben
+          (Kundenfeedback 18.08.2026). */}
+      <PullQuote attribution="Green Gard · Wiesbaden">
         Wir verkaufen keine Regner. Wir verkaufen die Ruhe eines Gartens, der sich um sich selbst kümmert.
       </PullQuote>
 
@@ -209,23 +211,27 @@ export default function WarumGreenGardPage() {
         </p>
       </section>
 
+      {/* Vorher „Brief des Geschäftsführers“, unterschrieben mit Jan Leifermann —
+          doppelt falsch: Jan ist Vertriebsleiter, und der Text legte einer
+          echten Person erfundene Worte in den Mund (Kundenfeedback 18.08.2026).
+          Jetzt ein Versprechen des Hauses, ohne persönliche Unterschrift. */}
       <section className="border-y border-mist bg-forest py-24 text-linen md:py-32">
         <div className="container max-w-3xl">
           <Eyebrow number="IV" className="text-linen/70 [&>span:first-child]:bg-linen/30">
-            Brief des Geschäftsführers
+            Unser Anspruch
           </Eyebrow>
           <h2 className="h-display mb-10 mt-6 text-balance text-4xl md:text-5xl">
             An die, die das hier lesen.
           </h2>
           <p className="text-lg leading-[1.7] text-linen/85">
-            Wenn Sie planen, in den nächsten Jahren etwas Festes anzulegen — sei es der
-            erste Smart-Garden oder die Aufrüstung einer bestehenden Anlage — sprechen Sie
-            mit uns. Wir empfehlen, was zu Ihrer Situation passt, auch wenn das bedeutet,
-            weniger zu verkaufen. Wir sind Händler, ja. Aber vor allem sind wir Gärtner — und das färbt ab.
+            Wenn Sie in den nächsten Jahren etwas Bleibendes für Ihren Garten planen —
+            die erste smarte Bewässerung oder die Erweiterung einer bestehenden Anlage —,
+            dann sprechen Sie mit uns. Wir empfehlen, was zu Ihrem Garten passt. Auch
+            dann, wenn das für uns weniger Umsatz bedeutet. Denn wer einmal gut beraten
+            wurde, kommt wieder — darauf bauen wir seit 2006.
           </p>
-          <p className="font-display mt-12 text-2xl italic text-linen">Jan Leifermann</p>
-          <p className="font-mono mt-1 text-[10px] uppercase tracking-[0.18em] text-linen/60">
-            Geschäftsführer · {CONTACT.company}
+          <p className="font-mono mt-12 text-[10px] uppercase tracking-[0.18em] text-linen/60">
+            Das Team von {CONTACT.company} · Wiesbaden
           </p>
         </div>
       </section>

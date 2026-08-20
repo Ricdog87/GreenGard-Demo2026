@@ -29,7 +29,9 @@ export default function LandingPage() {
       <SaisonModul />
       <BewaesserungsRechner />
 
-      <PullQuote attribution="Jan Leifermann · Vertriebsleiter">
+      {/* Kein persönliches Zitat mehr: niemandem erfundene Worte zuschreiben
+          (Kundenfeedback 18.08.2026) — das Leitmotiv gehört dem Haus. */}
+      <PullQuote attribution="Das Green-Gard-Prinzip · seit 2006">
         Luxus im Garten ist nicht das, was man sieht. Es ist das, was man nie wieder tun muss.
       </PullQuote>
 
