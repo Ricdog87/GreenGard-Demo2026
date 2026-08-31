@@ -3,36 +3,28 @@
     Green-Gard Wortmarke, nachgebaut nach der Originaldatei des Kunden
     ("Green Gard Logo ohne grau", pixelvermessen am 12.08.2026):
 
-    - Zwei VERZAHNTE Bögen: der linke Fuß des hellen Bogens sitzt exakt hinter
-      dem rechten Fuß des dunklen (Mittenabstand = R + r = 107 + 59), dunkel
-      liegt oben. Die Überlappung ist also gewollt — nur Maß und Lage müssen
+    - Zwei VERZAHNTE Boegen: der linke Fuss des hellen Bogens sitzt exakt hinter
+      dem rechten Fuss des dunklen (Mittenabstand = R + r = 107 + 59), dunkel
+      liegt oben. Die Ueberlappung ist also gewollt - nur Mass und Lage muessen
       stimmen.
-    - Farben aus dem Original: Dunkelgrün #006943, Hellgrün #009353.
+    - Farben aus dem Original: Dunkelgruen #006943, Hellgruen #009353.
     - Wortmarke: "GREEN-" dunkel (inkl. Bindestrich), "GARD" hell.
+    - Ein <text> mit tspans plus textLength: als <img> geladen kennt das SVG
+      die Webfont nicht; textLength haelt die Laufweite in jeder Rueckfallschrift.
 
-    Technik-Eigenheiten:
-    1. Farben als Attribute, <style> nur für die Animation — als <img> geladen
-       bleibt das CSS isoliert.
-    2. Ein <text> mit tspans plus textLength: als <img> kennt das SVG die
-       Webfont nicht; textLength hält die Laufweite in jeder Rückfallschrift.
-
-    Meeting 12.08.2026: Logo animiert — die Bögen schwenken automatisch sanft
-    wie ein Regner; bei prefers-reduced-motion stehen sie still.
+    18.08.2026: Die Schwenk-Animation ist wieder raus - beim Kippen hoben die
+    flachen Bogenfuesse von der Grundlinie ab und das Logo wirkte
+    "abgeschnitten" (Feedback Jan). Das Logo steht jetzt ruhig, exakt wie die
+    Originaldatei.
 
     TODO: durch die Original-Vektordatei ersetzen, sobald sie vorliegt.
   -->
-  <style>
-    .bogen-d { transform-origin: 496px 126px; animation: schwenk 7s ease-in-out infinite alternate; }
-    .bogen-h { transform-origin: 663px 126px; animation: schwenk 7s ease-in-out infinite alternate; animation-delay: -3.5s; }
-    @keyframes schwenk { from { transform: rotate(-3.5deg); } to { transform: rotate(3.5deg); } }
-    @media (prefers-reduced-motion: reduce) { .bogen-d, .bogen-h { animation: none; } }
-  </style>
 
   <!-- heller Bogen hinten -->
-  <path class="bogen-h" fill="#009353"
+  <path fill="#009353"
         d="M556 126 A107 107 0 0 1 770 126 L722 126 A59 59 0 0 0 604 126 Z" />
   <!-- dunkler Bogen vorn -->
-  <path class="bogen-d" fill="#006943"
+  <path fill="#006943"
         d="M389 126 A107 107 0 0 1 603 126 L555 126 A59 59 0 0 0 437 126 Z" />
 
   <text x="60" y="304"

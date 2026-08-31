@@ -198,15 +198,16 @@ export default function ProfiPage() {
             Was Sie hier nicht finden, besorgen wir. Fast jeden Artikel der
             Bewässerungswelt bekommen wir über unser Einkaufsnetz.
           </p>
-          <div className="mt-12 border-y border-mist py-6">
-            <div className="font-display flex flex-wrap gap-x-10 gap-y-4 text-3xl md:text-4xl">
-              {HERSTELLER.map((p, i) => (
-                <span key={p} className="inline-flex items-center gap-10 text-ink/80">
+          {/* Ruhiges Hairline-Raster statt der großen Serif-Zeile — die brach
+              auf Mobile unschön um (Feedback Jan, 18.08.2026). */}
+          <div data-reveal-group className="mt-12 grid grid-cols-2 gap-px border border-mist bg-mist sm:grid-cols-3 lg:grid-cols-5">
+            {HERSTELLER.map((p) => (
+              <div key={p} className="bg-paper px-4 py-6 text-center">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/75">
                   {p}
-                  {i !== HERSTELLER.length - 1 && <span className="text-bronze">·</span>}
                 </span>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

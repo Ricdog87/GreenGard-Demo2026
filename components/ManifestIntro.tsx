@@ -7,7 +7,9 @@ export function ManifestIntro() {
     <section className="border-t border-mist bg-paper py-28 md:py-40">
       <div className="container grid grid-cols-1 gap-10 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Eyebrow number="01">Haltung</Eyebrow>
+          {/* Vorher „Haltung“ — das Label war erklärungsbedürftig (Feedback
+              Jan, 18.08.2026). */}
+          <Eyebrow number="01">Unser Versprechen</Eyebrow>
           <p className="font-mono mt-12 hidden text-[11px] uppercase tracking-[0.18em] text-moss md:block">
             {CONTACT.city} · {CONTACT.street}
           </p>
