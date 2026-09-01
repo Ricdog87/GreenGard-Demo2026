@@ -120,7 +120,8 @@ export default function ProfiPage() {
           <p className="mt-8 max-w-xl leading-relaxed text-linen/80">
             Wir führen GaLaBau-Betriebe, Installateure und Fachhändler als Partner.
             Sie übernehmen Beratung und Ausführung — wir Beschaffung, Lager und Schulung.
-            Den vollständigen Konditionskatalog senden wir Ihnen zu.
+            Stellen Sie Ihre Konditions-Anfrage, wir senden Ihnen das Konditionsblatt
+            persönlich zu.
           </p>
         </div>
       </section>
@@ -212,19 +213,22 @@ export default function ProfiPage() {
         </div>
       </section>
 
-      {/* Lead-Gate: Konditionskatalog gegen Kontaktdaten */}
+      {/* Konditions-Anfrage (18.08.2026): kein Login, keine Registrierung —
+          Profis stellen eine Anfrage mit vollständigen Kontaktdaten, und
+          Green-Gard sendet das Konditionsblatt persönlich zu. */}
       <section id="katalog" className="border-t border-mist bg-paper py-24 md:py-32">
         <div className="container grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Eyebrow number="04">Konditionskatalog</Eyebrow>
+            <Eyebrow number="04">Konditions-Anfrage</Eyebrow>
             <h2 className="h-display mt-6 text-4xl md:text-5xl">
-              Katalog <em className="italic">anfordern</em>.
+              Konditionen <em className="italic">anfragen</em>.
             </h2>
             <p className="mt-6 text-ink/70">
-              Sie erhalten die vollständige Konditionsübersicht als PDF: Nettopreise je
-              Warengruppe, Lieferbedingungen und Schulungstermine. Ihre persönlichen
-              Konditionen besprechen wir direkt mit Ihnen. Wir melden
-              uns innerhalb von zwei Werktagen persönlich.
+              Kein Login, keine Registrierung: Sie senden uns Ihre Anfrage mit
+              vollständigen Kontaktdaten, und wir senden Ihnen das Konditionsblatt
+              persönlich zu — mit Nettopreisen je Warengruppe und Lieferbedingungen.
+              Ihre individuellen Konditionen besprechen wir direkt mit Ihnen, in der
+              Regel innerhalb von zwei Werktagen.
             </p>
             <p className="font-mono mt-10 text-[10px] uppercase tracking-[0.18em] text-ink/60">
               Lieber direkt sprechen?
@@ -247,12 +251,13 @@ export default function ProfiPage() {
                   Ihre Anfrage ist vorbereitet.
                 </p>
                 <p className="mt-3 text-ink/70">
-                  {ANFRAGE_HINWEIS} Wir melden uns innerhalb von zwei Werktagen mit dem
-                  Konditionskatalog und besprechen Ihre persönlichen Konditionen.
+                  {ANFRAGE_HINWEIS} Wir senden Ihnen das Konditionsblatt innerhalb von
+                  zwei Werktagen persönlich zu und besprechen Ihre individuellen
+                  Konditionen.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild variant="primary">
-                    <Link href="/produkte">Sortiment mit Nettopreisen</Link>
+                    <Link href="/produkte">Sortiment im Überblick</Link>
                   </Button>
                   <Button asChild variant="outline">
                     <Link href="/beratung#schulungen">Schulungstermine</Link>
@@ -267,8 +272,8 @@ export default function ProfiPage() {
                   // Insert bleibt parallel (Mock-Zweig ohne Keys, echt sobald
                   // verbunden) — dann übernimmt der Server den Versand.
                   await submitLead({ ...values, gewerbe_art: gewerbe });
-                  const url = oeffneAnfrage(`Konditionskatalog: ${values.firma}`, [
-                    'Anfrage Konditionskatalog über die Website',
+                  const url = oeffneAnfrage(`Konditions-Anfrage: ${values.firma}`, [
+                    'Konditions-Anfrage über die Website — bitte Konditionsblatt zusenden',
                     '',
                     `Firma: ${values.firma}`,
                     `Gewerbe: ${gewerbe}`,
@@ -347,7 +352,7 @@ export default function ProfiPage() {
                 </fieldset>
 
                 <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
-                  Konditionskatalog anfordern →
+                  Konditionen anfragen →
                 </Button>
                 <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/50">
                   Ihre Daten nutzen wir ausschließlich zur Bearbeitung dieser Anfrage

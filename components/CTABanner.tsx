@@ -19,7 +19,7 @@ export function CTABanner() {
         </div>
         <div className="flex flex-wrap justify-start gap-4 lg:col-span-5 lg:justify-end">
           <Button asChild variant="primary" size="lg">
-            <Link href="/profi">Konditionskatalog anfordern →</Link>
+            <Link href="/profi">Konditionen anfragen →</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/beratung#schulungen">Schulungen</Link>

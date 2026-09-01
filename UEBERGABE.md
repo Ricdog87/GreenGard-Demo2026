@@ -9,7 +9,8 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 
 | Punkt | Status |
 |---|---|
-| Privat-Button entfernen, Profi-Button für Logins | ✅ erledigt — Profi führt zum Login bzw. ins Konto |
+| Privat-Button entfernen | ✅ erledigt — Privat ist stille Standardansicht |
+| Login/Registrierung komplett entfernt (Feedback 18.08. nachmittags) | ✅ erledigt — Profis stellen die Konditions-Anfrage auf /profi (Kontaktdaten Pflicht), Jan sendet das Konditionsblatt manuell zu |
 | Shop-Buttons „Bald verfügbar", Verlinkung deaktiviert | ✅ erledigt — überall, Reaktivierung über `lib/links.ts` |
 | YouTube: richtiger Kanal (@Green-GardGmbH) | ✅ erledigt — 14 echte Anleitungsvideos im Learning Center |
 | Terminbuchung mit 2 Tagen Vorlauf | ✅ erledigt — erster wählbarer Termin frühestens übermorgen |
@@ -46,8 +47,6 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 |---|---|
 | ~~YouTube-Kanal-Link~~ | ✅ selbst gefunden — alle 3 Videos sind eingebettet |
 | Msoft-API prüfen | Bestellhistorie im Dashboard mit echten Daten |
-| Alte Bestellbestätigungen | Historie für Pilotkunden |
-| 5–10 Pilotkunden benennen | Freischaltung der Konten (mit Supabase) |
 | ~~Social-Media-Links~~ | ✅ selbst von der alten Website übernommen (Instagram, LinkedIn, Facebook, YouTube) |
 | Fotos + Highlight-Infos | Sortiment-Schaufenster auf /produkte |
 
@@ -84,9 +83,8 @@ kommt die Anfrage von jedem Gerät durch (`components/AnfrageFallback.tsx`).
 Die Formulare im Einzelnen:
 
 - Beratungstermin (inkl. echter Kalenderdatei zum Vormerken)
-- Konditionskatalog-Anfrage (/profi)
+- Konditions-Anfrage (/profi) — Jan sendet das Konditionsblatt manuell zu
 - Planungsanfrage aus beiden Rechnern (inkl. Bitte, Pläne anzuhängen)
-- Kit-Anfrage, Nachbestellung, Schnellbestellung (Konto)
 - Pflanzenkölle-Projektformular
 - Gießbert („Frage senden“)
 
@@ -96,9 +94,10 @@ ist die einzige Stelle).
 
 ## Bekannte Grenzen (bewusst, nicht vergessen)
 
-- **Login ist Pilotphase:** Jede Anmeldung zeigt das Beispielkonto
-  (Musterbau GmbH) — als solches gekennzeichnet, auf Login und im Dashboard.
-  Echte Zugänge kommen mit Supabase + Pilotkunden.
+- **Kein Login/Konto mehr** (Beschluss 18.08. nachmittags): Der Pilotzugang
+  samt Dashboard ist komplett entfernt. /login und /konto leiten auf /profi
+  um — dort läuft die Konditions-Anfrage, das Konditionsblatt versendet
+  Green-Gard manuell.
 - **Schulungen:** „Termine auf Anfrage“, bis Jan Termine liefert — dann wird
   die Buchung über den Warenkorb aktiv (nur JSON-Eintrag).
 - **Shop noch nicht live** (Meeting 18.08.2026): Alle Shop-Buttons stehen

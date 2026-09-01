@@ -25,7 +25,6 @@ export function Header() {
   const count = useCart((s) => s.items.reduce((sum, l) => sum + l.qty, 0));
   const openDrawer = useCart((s) => s.openDrawer);
     const audience = useCart((s) => s.audience);
-  const eingeloggt = useCart((s) => s.eingeloggt);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,12 +36,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-    // Angemeldete Profis sehen ihr Konto an erster Stelle — dort erledigen sie alles.
-  const nav = eingeloggt
-    ? [{ href: '/konto', label: 'Mein Konto' }, ...BASE_NAV]
-    : isProfi(audience)
-      ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
-      : BASE_NAV;
+  // Kein Login mehr (18.08.2026): Profi-Ansicht ergänzt nur den Konditionen-Link.
+  const nav = isProfi(audience)
+    ? [...BASE_NAV, { href: '/profi', label: 'Konditionen' }]
+    : BASE_NAV;
 
   return (
     <header
@@ -148,13 +145,7 @@ export function Header() {
                 Bald verfügbar
               </span>
             </span>
-            <Link
-              href="/login"
-              onClick={() => setMobileOpen(false)}
-              className="font-mono mt-2 py-2 text-[11px] uppercase tracking-[0.18em] text-moss"
-            >
-              Anmelden →
-            </Link>
+            {/* „Anmelden“ raus — es gibt keinen Login mehr (18.08.2026). */}
             {/* Kein zweiter Profi-Knopf hier: „Konditionen für Profis“ bzw. der
                 Nav-Eintrag „Konditionen“ decken den Weg im Mobilmenü bereits ab. */}
           </div>

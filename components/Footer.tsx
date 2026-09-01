@@ -144,16 +144,13 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">Konto</p>
+            {/* Kein Login/Konto mehr (18.08.2026) — Profis stellen eine
+                Konditions-Anfrage, das Konditionsblatt kommt persönlich. */}
+            <p className="eyebrow text-linen/60 [&>span:first-child]:bg-linen/30">Profis</p>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/konto" data-cursor="hover" className="transition-colors hover:text-bronze">
-                  Mein Konto
-                </Link>
-              </li>
-              <li>
-                <Link href="/login" data-cursor="hover" className="transition-colors hover:text-bronze">
-                  Anmelden
+                <Link href="/profi" data-cursor="hover" className="transition-colors hover:text-bronze">
+                  Konditionen anfragen
                 </Link>
               </li>
               <li>

@@ -28,6 +28,10 @@ const nextConfig = {
       // Starter Kits komplett entfernt (Kundenwunsch 18.08.2026) — alte
       // Links landen in der Planung.
       { source: '/starter-kits', destination: '/planung', permanent: true },
+      // Login/Konto entfernt (18.08.2026) — Profis stellen die
+      // Konditions-Anfrage auf /profi.
+      { source: '/login', destination: '/profi', permanent: true },
+      { source: '/konto', destination: '/profi', permanent: true },
       { source: '/konfigurator', destination: '/planung', permanent: true },
       { source: '/b2b', destination: '/profi', permanent: true },
     ];

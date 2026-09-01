@@ -135,8 +135,7 @@ const SEITEN: { label: string; note: string; href: string; stichworte: string }[
   { label: 'Learning Center', note: '139 Antworten und Videos', href: '/learning-center', stichworte: 'learning center video anleitung hilfe wissen fragen' },
   { label: 'Katalog blättern', note: 'Blätterausgabe und Download', href: '/katalog', stichworte: 'katalog blaetterkatalog preisliste sortiment' },
   { label: 'Sortiment ansehen', note: 'Sieben Disziplinen im Überblick', href: '/produkte', stichworte: 'produkte sortiment artikel kaufen shop bestellen' },
-  { label: 'Konditionen für Profis', note: 'GaLaBau, Architekten, Händler', href: '/profi', stichworte: 'profi konditionen netto galabau haendler rechnung gewerblich partner' },
-  { label: 'Mein Konto', note: 'Bestellungen und Projekte', href: '/konto', stichworte: 'konto login anmelden dashboard bestellung projekt zugang' },
+  { label: 'Konditionen für Profis anfragen', note: 'Konditionsblatt kommt persönlich', href: '/profi', stichworte: 'profi konditionen konditionsblatt netto galabau haendler rechnung gewerblich partner konto login anmelden dashboard zugang' },
   { label: 'Warum Green-Gard', note: 'Team, Geschichte, Rainworks', href: '/warum-green-gard', stichworte: 'team ueber uns geschichte wer seid ihr ansprechpartner mitarbeiter' },
 ];
 

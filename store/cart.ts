@@ -26,15 +26,10 @@ interface CartState {
   /** true, sobald im Entry-Fenster gewählt wurde (persistiert). */
   audienceChosen: boolean;
   chooseAudience: (a: Audience) => void;
-    /** Setzt die Auswahl zurück, das Entry-Fenster erscheint erneut. */
+    /** Setzt die Auswahl zurück (historisch fürs Entry-Fenster). */
   resetAudience: () => void;
-  /**
-   * Angemeldeter Profi-Zugang. Steuert Konto-Link und Zugang zum Dashboard.
-   * TODO: durch die Supabase-Session ersetzen, sobald Auth verbunden ist.
-   */
-  eingeloggt: boolean;
-  anmelden: () => void;
-  abmelden: () => void;
+  // Login/Konto komplett entfernt (18.08.2026): Profis stellen eine
+  // Konditions-Anfrage auf /profi, das Konditionsblatt kommt persönlich.
 
     items: CartLine[];
   drawerOpen: boolean;
@@ -63,12 +58,6 @@ export const useCart = create<CartState>()(
       // Preisansicht setzen.
       chooseAudience: (a) => set({ audience: a, mode: AUDIENCES[a].mode, audienceChosen: true }),
             resetAudience: () => set({ audienceChosen: false }),
-      eingeloggt: false,
-      // Anmeldung schaltet zugleich die Profi-Preisansicht frei.
-      anmelden: () => set({ eingeloggt: true, audience: 'profi', mode: 'profi', audienceChosen: true }),
-      // Beim Abmelden zurück in die Standardansicht (Privat) — einen
-      // manuellen Umschalter gibt es seit 18.08.2026 nicht mehr.
-      abmelden: () => set({ eingeloggt: false, audience: 'privat', mode: 'privat' }),
 
       items: [],
       drawerOpen: false,
@@ -105,7 +94,6 @@ export const useCart = create<CartState>()(
         mode: s.mode,
                 audience: s.audience,
         audienceChosen: s.audienceChosen,
-        eingeloggt: s.eingeloggt,
       }),
       // Wichtig: NICHT automatisch hydrieren. Sonst rendert der Client beim
       // ersten Durchgang schon Profi-Nettopreise, während im statischen HTML
