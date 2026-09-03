@@ -1,7 +1,7 @@
 # Übergabe & Go-Live — Green-Gard Website
 
-Stand: **18.08.2026**
-Live-Stand: https://green-gard-demo2026.vercel.app
+Stand: **03.09.2026 — LIVE auf https://www.green-gard.de**
+Vercel-Adresse (bleibt als Zweitadresse): https://green-gard-demo2026.vercel.app
 
 ---
 
@@ -52,20 +52,18 @@ Live-Stand: https://green-gard-demo2026.vercel.app
 
 ---
 
-## Go-Live morgen — die Schritte
+## Go-Live — erledigt am 03.09.2026
 
-1. **Domain aufschalten** (z. B. `www.green-gard.de` oder Subdomain): In Vercel
-   → Project → Domains hinzufügen, DNS beim Hoster auf Vercel zeigen lassen.
-2. **Env-Variable setzen:** `NEXT_PUBLIC_SITE_URL=https://<domain>` (für
-   robots.txt/sitemap.xml) — dann Redeploy.
-3. **Produktions-Branch absichern:** Aktuell deployt jeder Push auf
-   `claude/green-gard-sales-demo-vY3rg` direkt in Produktion. Nach Go-Live:
-   `main`-Branch anlegen, in Vercel als Production Branch setzen — dann laufen
-   Änderungen erst über eine Preview-URL.
-4. **Google Search Console:** Property anlegen, `sitemap.xml` einreichen.
-5. Alte Website: Weiterleitungen der wichtigsten Pfade auf die neuen Routen
-   (learningcenter → /learning-center, rainworks → /rainworks, team →
-   /warum-green-gard …) beim bisherigen Hoster einrichten.
+| Schritt | Status |
+|---|---|
+| DNS bei IONOS: `A @ → 76.76.21.21`, `CNAME www → cname.vercel-dns.com`, IPv6-Altlast entfernt | ✅ (MX/SPF/DKIM/autodiscover unangetastet — Mail läuft weiter) |
+| Domains in Vercel: `www.green-gard.de` (Production) + `green-gard.de` (308 → www) | ✅ Zertifikat automatisch |
+| Basis-URL für Sitemap/robots im Code auf www.green-gard.de | ✅ |
+| Weiterleitungen aller 24 alten Adressen (learningcenter, team, planungstool, training, Disziplinen, Marken …) | ✅ in `next.config.mjs` |
+| Google Search Console: Property für www.green-gard.de anlegen, `sitemap.xml` einreichen | ⏳ Ricardo/Jan (braucht Google-Zugang) |
+| Vercel zeigt „DNS Change Recommended" | optional — die gesetzten Werte funktionieren; Vercels neue Empfehlung kann später übernommen werden |
+| Alte Website (chocoBRAIN) kündigen | ⏳ Jan — der alte Server wird nicht mehr angesprochen |
+| Produktions-Branch absichern (`main` anlegen, in Vercel als Production Branch setzen) | ⏳ Ricardo — aktuell deployt jeder Push auf `claude/green-gard-sales-demo-vY3rg` direkt live |
 
 ## So funktionieren die Formulare ab Go-Live (wichtig!)
 
