@@ -105,9 +105,6 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
       netto: materialkostenNetto(bewaesserteFlaeche),
     },
   ];
-  // Kein eigener Beet-Zuschlag mehr (Feedback Jan 07.09.2026): Die neue
-  // Preisliste enthält die Tropfbewässerung bereits — die Beetfläche fließt
-  // über die m²-Kosten ein, ein separater Aufschlag würde sie doppelt zählen.
   // Smart kostet mehr als manuell (18.08.2026): WLAN-Steuergerät + Regensensor
   // als eigene Zeile — vorher änderte die Wahl nur die Stückliste, nicht den Preis.
   if (steuerung === 'smart') {
@@ -116,6 +113,19 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   const zuschlag = QUELLE_ZUSCHLAG[quelle];
   if (zuschlag) {
     kosten.push({ label: zuschlag.label, netto: zuschlag.netto, note: zuschlag.note });
+  }
+  // Beetbewässerung (Vorgabe Jan 07.09.2026): Die Tropfbewässerung der Beete
+  // schlägt mit rund 15 % des Gesamtpreises zu Buche. Damit die Beet-Zeile
+  // exakt 15 % der Endsumme ausmacht, rechnen wir sie aus dem übrigen Betrag
+  // hoch: Beet = Rest × 0,15 / 0,85  →  Beet / Gesamt = 15 %.
+  if (beetQm > 0) {
+    const rest = kosten.reduce((s, k) => s + k.netto, 0);
+    const beetNetto = Math.round((rest * 0.15) / 0.85);
+    kosten.push({
+      label: 'Beetbewässerung (Tropf) · ca. 15 %',
+      netto: beetNetto,
+      note: 'Tropfschlauch, Druckminderer und Filter für die Beete — rund 15 % des Gesamtpreises.',
+    });
   }
   const gesamtNetto = kosten.reduce((s, k) => s + k.netto, 0);
 
