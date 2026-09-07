@@ -36,6 +36,10 @@ export function BewaesserungsRechner() {
   const [quelle, setQuelle] = useState<Quelle>('leitung');
   const [bereiche, setBereiche] = useState<Flaechentyp[]>(['rasen']);
   const [steuerung, setSteuerung] = useState<Steuerung>('smart');
+  // Feedback Jan 07.09.2026: mindestens Name und Telefon abfragen, damit
+  // Green-Gard nachfassen kann — nicht nur die E-Mail.
+  const [name, setName] = useState('');
+  const [telefon, setTelefon] = useState('');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
@@ -242,7 +246,7 @@ export function BewaesserungsRechner() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                if (!email) return;
+                if (!name || !telefon || !email) return;
                 // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
                 // TODO: Resend + Supabase-Lead (UEBERGABE.md).
                 const url = oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
@@ -250,7 +254,10 @@ export function BewaesserungsRechner() {
                   '',
                   `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
                   `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
-                  `Rückmeldung an: ${email}`,
+                  '',
+                  `Name: ${name}`,
+                  `Telefon: ${telefon}`,
+                  `E-Mail: ${email}`,
                 ]);
                 setMailtoUrl(url);
                 setSent(true);
@@ -266,23 +273,46 @@ export function BewaesserungsRechner() {
                   <AnfrageFallback mailtoUrl={mailtoUrl} dark />
                 </div>
               ) : (
-                <div className="flex gap-3">
+                <div className="space-y-3">
                   <input
-                    type="email"
+                    type="text"
                     required
-                    placeholder="ihre@email.de"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    aria-label="E-Mail für den Plan"
-                    className="h-10 min-w-0 flex-1 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                    placeholder="Name *"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    aria-label="Ihr Name"
+                    className="h-10 w-full min-w-0 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
                   />
-                  <button
-                    data-cursor="hover"
-                    type="submit"
-                    className="inline-flex h-10 items-center gap-2 bg-bronze px-4 text-sm text-linen transition-colors hover:bg-[#9e6228]"
-                  >
-                    <Mail className="h-3.5 w-3.5" /> Senden
-                  </button>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Telefon *"
+                    value={telefon}
+                    onChange={(e) => setTelefon(e.target.value)}
+                    aria-label="Ihre Telefonnummer"
+                    className="h-10 w-full min-w-0 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                  />
+                  <div className="flex gap-3">
+                    <input
+                      type="email"
+                      required
+                      placeholder="E-Mail *"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      aria-label="E-Mail für den Plan"
+                      className="h-10 min-w-0 flex-1 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                    />
+                    <button
+                      data-cursor="hover"
+                      type="submit"
+                      className="inline-flex h-10 items-center gap-2 bg-bronze px-4 text-sm text-linen transition-colors hover:bg-[#9e6228]"
+                    >
+                      <Mail className="h-3.5 w-3.5" /> Senden
+                    </button>
+                  </div>
+                  <p className="text-[11px] leading-relaxed text-linen/50">
+                    Name und Telefon, damit wir für die Planung persönlich zurückrufen können.
+                  </p>
                 </div>
               )}
             </form>

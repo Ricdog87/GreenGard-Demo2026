@@ -34,6 +34,10 @@ export function PlanungRechner() {
   const [rasenQm, setRasenQm] = useState(350);
   const [beetQm, setBeetQm] = useState(100);
   const [steuerung, setSteuerung] = useState<Steuerung>('smart');
+  // Feedback Jan 07.09.2026: mindestens Name und Telefon abfragen, damit
+  // Green-Gard nachfassen kann — nicht nur die E-Mail.
+  const [name, setName] = useState('');
+  const [telefon, setTelefon] = useState('');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
@@ -437,6 +441,7 @@ export function PlanungRechner() {
                       <form
                         onSubmit={(e) => {
                           e.preventDefault();
+                          if (!name || !telefon || !email) return;
                           // Go-Live ohne Backend: Planungsanfrage als vorbefüllte
                           // Mail. Anhänge kann mailto nicht mitnehmen — die Mail
                           // bittet darum, die gewählten Dateien anzuhängen.
@@ -448,7 +453,10 @@ export function PlanungRechner() {
                             `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
                             `Empfohlenes System: ${empf.kitName}`,
                             extras.length ? `Ins Angebot aufnehmen: ${extras.join(', ')}` : false,
-                            `Rückmeldung an: ${email}`,
+                            '',
+                            `Name: ${name}`,
+                            `Telefon: ${telefon}`,
+                            `E-Mail: ${email}`,
                             '',
                             plaene.length
                               ? `WICHTIG: Bitte die gewählten Pläne an diese Mail anhängen (${plaene.map((f) => f.name).join(', ')}).`
@@ -471,22 +479,45 @@ export function PlanungRechner() {
                             <AnfrageFallback mailtoUrl={mailtoUrl} dark />
                           </div>
                         ) : (
-                          <div className="flex gap-2">
+                          <div className="space-y-2">
                             <input
-                              type="email"
+                              type="text"
                               required
-                              placeholder="ihre@email.de"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              aria-label="E-Mail für den Plan"
-                              className="h-10 min-w-0 flex-1 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                              placeholder="Name *"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              aria-label="Ihr Name"
+                              className="h-10 w-full min-w-0 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
                             />
-                            <button
-                              type="submit"
-                              className="h-10 bg-bronze px-4 text-sm text-linen transition-colors hover:bg-[#9e6228]"
-                            >
-                              Senden
-                            </button>
+                            <input
+                              type="tel"
+                              required
+                              placeholder="Telefon *"
+                              value={telefon}
+                              onChange={(e) => setTelefon(e.target.value)}
+                              aria-label="Ihre Telefonnummer"
+                              className="h-10 w-full min-w-0 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                            />
+                            <div className="flex gap-2">
+                              <input
+                                type="email"
+                                required
+                                placeholder="E-Mail *"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                aria-label="E-Mail für den Plan"
+                                className="h-10 min-w-0 flex-1 border-b border-linen/30 bg-transparent px-1 text-sm text-linen placeholder:text-linen/40 focus:border-linen focus:outline-none"
+                              />
+                              <button
+                                type="submit"
+                                className="h-10 bg-bronze px-4 text-sm text-linen transition-colors hover:bg-[#9e6228]"
+                              >
+                                Senden
+                              </button>
+                            </div>
+                            <p className="text-[11px] leading-relaxed text-linen/50">
+                              Name und Telefon, damit wir für die Planung persönlich zurückrufen können.
+                            </p>
                           </div>
                         )}
                       </form>

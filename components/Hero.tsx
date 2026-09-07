@@ -190,9 +190,30 @@ export function Hero() {
           <p className="hero-reveal font-mono text-[10px] uppercase tracking-[0.22em] text-linen/80">
             Est. {CONTACT.foundedYear} · Wiesbaden
           </p>
-          <p className="hero-reveal hidden font-mono text-[10px] uppercase tracking-[0.22em] text-linen/70 sm:block">
-            Bewässerung · Licht · Robotik · Pool
-          </p>
+          {/* Klickbar (Feedback Jan 07.09.2026): jedes Wort führt direkt zur
+              passenden Disziplin im Sortiment. */}
+          <nav
+            aria-label="Sortiment"
+            className="hero-reveal hidden font-mono text-[10px] uppercase tracking-[0.22em] text-linen/70 sm:flex sm:items-center sm:gap-2"
+          >
+            {[
+              { label: 'Bewässerung', href: '/produkte#bewaesserung' },
+              { label: 'Licht', href: '/produkte#beleuchtung' },
+              { label: 'Robotik', href: '/produkte#maehroboter' },
+              { label: 'Pool', href: '/produkte#pool' },
+            ].map((item, i) => (
+              <span key={item.href} className="flex items-center gap-2">
+                {i > 0 && <span aria-hidden className="text-linen/35">·</span>}
+                <Link
+                  href={item.href}
+                  data-cursor="hover"
+                  className="underline-offset-4 transition-colors hover:text-linen hover:underline"
+                >
+                  {item.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
         </div>
 
         <div className="flex flex-1 items-end pb-4">

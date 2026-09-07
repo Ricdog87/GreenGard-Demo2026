@@ -195,7 +195,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
     const { values: v, standort: st, dateien: anhaenge } = gesendet;
     const zusammenfassung: { label: string; value: string }[] = [
       { label: 'Standort', value: `${st.ort} · KST ${st.kst} · Adress-Nr. ${st.adressNr}` },
-      { label: 'Marktleitung', value: st.ansprechpartner },
+      { label: 'DL-Leitung', value: st.ansprechpartner },
       { label: 'Ansprechpartner', value: v.ansprechpartner },
       { label: 'E-Mail', value: v.email },
       { label: 'Bauvorhaben', value: v.bauvorhaben },
@@ -256,7 +256,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Button variant="primary" size="lg" onClick={neuesProjekt}>
-              Weiteres Projekt melden →
+              Weiteres Projekt anmelden →
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a href={CONTACT.phoneHref}>{CONTACT.phoneDisplay}</a>
@@ -400,7 +400,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                     </div>
                     <div className="min-w-0">
                       <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/55">
-                        Marktleitung
+                        DL-Leitung
                       </dt>
                       <dd className="font-display mt-1 text-xl leading-tight tracking-tight">
                         {standort.ansprechpartner}
@@ -617,7 +617,10 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                     Projektplan anhängen <span aria-hidden className="text-red-700">*</span>
                   </span>
                   <span className="mt-1 block text-xs text-ink/55">
-                    PDF, JPG oder PNG · mehrere Dateien möglich · Pflichtfeld
+                    PDF, JPG oder PNG · Pflichtfeld
+                  </span>
+                  <span className="mt-1 block text-xs font-medium text-moss">
+                    Neu: Sie können mehrere Dokumente auf einmal auswählen und hochladen.
                   </span>
                 </span>
               </label>

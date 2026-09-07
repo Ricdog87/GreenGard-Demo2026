@@ -36,7 +36,7 @@ export default function PflanzenkoellePage() {
             Geschützter Projektbereich
           </Eyebrow>
           <h1 className="hero-h mt-8 max-w-[16ch]">
-            Projekt <em className="italic">melden</em>.
+            Projekt <em className="italic">anmelden</em>.
           </h1>
           <p className="mt-10 max-w-xl leading-relaxed text-linen/80">
             Dieses Formular fragt alles ab, was wir für die Auslegung einer Bewässerung
