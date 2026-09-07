@@ -256,9 +256,10 @@ export function suche(query: string): Treffer[] {
 //
 // Die häufigste Kauffrage („Was kostet das?“) beantwortet das Learning Center
 // mit „lässt sich pauschal nicht beantworten“. Wir können es besser: Jans
-// Preisliste (400 € + 2,50 €/m²) liegt in lib/preise.ts. Nennt jemand eine
-// Fläche, rechnet Gießbert den Materialrichtwert sofort aus — mit denselben
-// Einschränkungen, die auch der Rechner nennt: ohne Montage, netto.
+// Preisliste (Hauswasser-Grundkurve je Fläche, siehe lib/preise.ts) liegt im
+// Code. Nennt jemand eine Fläche, rechnet Gießbert den Materialrichtwert sofort
+// aus — mit denselben Einschränkungen, die auch der Rechner nennt: ohne Montage,
+// netto.
 
 export interface Richtpreis {
   qm: number;
