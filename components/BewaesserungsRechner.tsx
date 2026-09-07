@@ -106,14 +106,14 @@ export function BewaesserungsRechner() {
               <Slider
                 value={[flaeche]}
                 min={50}
-                max={2000}
+                max={1500}
                 step={50}
                 onValueChange={(v) => setFlaeche(v[0])}
                 aria-label="Gartenfläche in Quadratmetern"
               />
               <div className="num font-mono mt-3 flex justify-between text-[10px] uppercase tracking-[0.18em] text-ink/50">
                 <span>50 m²</span>
-                <span>2.000 m²</span>
+                <span>1.500 m²</span>
               </div>
             </div>
 

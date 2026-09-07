@@ -10,9 +10,7 @@ import {
   MATERIAL_TABLE_MAX_QM,
   QUELLE_ZUSCHLAG,
   SMART_ZUSCHLAG,
-  beetZuschlagNetto,
   materialkostenNetto,
-  ueberListe,
 } from '@/lib/preise';
 
 export type Quelle = 'leitung' | 'zisterne' | 'brunnen';
@@ -71,7 +69,10 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   // Nur die Flächen zählen, die auch bewässert werden sollen.
   const rasenQm = bereiche.includes('rasen') ? Math.max(0, input.rasenQm) : 0;
   const beetQm = bereiche.includes('beete') ? Math.max(0, input.beetQm) : 0;
-  const bewaesserteFlaeche = rasenQm + beetQm;
+  // Kalkulator deckt Flächen bis 1.500 m² ab (Vorgabe Jan 07.09.2026) —
+  // größere Projekte kalkulieren wir individuell.
+  const rohFlaeche = rasenQm + beetQm;
+  const bewaesserteFlaeche = Math.min(rohFlaeche, MATERIAL_TABLE_MAX_QM);
 
   const regner = rasenQm > 0 ? Math.max(2, Math.ceil(rasenQm / QM_PRO_REGNER)) : 0;
   const tropfLfm = beetQm > 0 ? Math.ceil((beetQm * LFM_PRO_BEET_QM) / 10) * 10 : 0;
@@ -104,15 +105,9 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
       netto: materialkostenNetto(bewaesserteFlaeche),
     },
   ];
-  // Beete schlagen als eigene Technik zu Buche (Meeting 18.08.2026): 300–500 €
-  // je nach Größe — vorher bewegte die Beet-Auswahl den Preis kaum (± 3 €).
-  if (beetQm > 0) {
-    kosten.push({
-      label: `Tropfbewässerung Beete (${beetQm} m²)`,
-      netto: beetZuschlagNetto(beetQm),
-      note: 'Tropfschlauch, Druckminderer und Filter für die Beetzonen.',
-    });
-  }
+  // Kein eigener Beet-Zuschlag mehr (Feedback Jan 07.09.2026): Die neue
+  // Preisliste enthält die Tropfbewässerung bereits — die Beetfläche fließt
+  // über die m²-Kosten ein, ein separater Aufschlag würde sie doppelt zählen.
   // Smart kostet mehr als manuell (18.08.2026): WLAN-Steuergerät + Regensensor
   // als eigene Zeile — vorher änderte die Wahl nur die Stückliste, nicht den Preis.
   if (steuerung === 'smart') {
@@ -167,9 +162,9 @@ export function berechneEmpfehlung(input: PlanungInput): Empfehlung {
   if (zuschlag?.note) {
     hinweise.push(zuschlag.note);
   }
-  if (ueberListe(bewaesserteFlaeche)) {
+  if (rohFlaeche > MATERIAL_TABLE_MAX_QM) {
     hinweise.push(
-      `Über ${MATERIAL_TABLE_MAX_QM.toLocaleString('de-DE')} m² kalkulieren wir individuell — der Richtwert ist linear fortgeschrieben.`
+      `Der Kalkulator ist bis ${MATERIAL_TABLE_MAX_QM.toLocaleString('de-DE')} m² ausgelegt — größere Projekte kalkulieren wir individuell.`
     );
   }
   if (flaecheQm > bewaesserteFlaeche) {

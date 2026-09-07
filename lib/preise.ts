@@ -127,20 +127,9 @@ export const SMART_ZUSCHLAG = {
   label: 'Smart-Steuerung (WLAN + Regensensor)',
 } as const;
 
-/**
- * Beet-Zuschlag (Meeting 18.08.2026, Vorgabe von Jan): Tropfbewässerung für
- * Beete kostet je nach Größe 300 – 500 € netto zusätzlich. Vorher ging die
- * Beetfläche nur in die m²-Pauschale ein — die Auswahl „Beetfläche“ bewegte
- * den Preis dadurch kaum (± 3 €), was unrealistisch ist: Tropfschlauch,
- * Druckminderer und Filter kommen als eigene Technik obendrauf.
- * Staffelgrenzen 20/50 m² laut Kundenvorgabe (Master-Prompt 18.08.).
- */
-export function beetZuschlagNetto(beetQm: number): number {
-  if (beetQm <= 0) return 0;
-  if (beetQm <= 20) return 300;
-  if (beetQm <= 50) return 400;
-  return 500;
-}
+// Kein Beet-Zuschlag mehr (Feedback Jan 07.09.2026): Die neue Preisliste enthält
+// die Tropfbewässerung bereits, deshalb rechnet der Kalkulator die Beetfläche nur
+// noch über die m²-Kosten ein — kein separater Aufschlag.
 
 /** true, sobald wir über die belegte Liste hinaus fortschreiben. */
 export function ueberListe(qm: number): boolean {

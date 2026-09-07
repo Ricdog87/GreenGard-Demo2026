@@ -116,7 +116,7 @@ export function PlanungRechner() {
                   <Slider
                     value={[flaeche]}
                     min={50}
-                    max={2000}
+                    max={1500}
                     step={50}
                     onValueChange={(v) => {
                       const val = v[0];
@@ -133,7 +133,7 @@ export function PlanungRechner() {
                   />
                   <div className="num font-mono mt-3 flex justify-between text-[10px] uppercase tracking-[0.18em] text-ink/50">
                     <span>50 m²</span>
-                    <span>2.000 m²</span>
+                    <span>1.500 m²</span>
                   </div>
                 </div>
               </>
@@ -218,7 +218,7 @@ export function PlanungRechner() {
                       <Slider
                         value={[rasenQm]}
                         min={0}
-                        max={2000}
+                        max={1500}
                         step={10}
                         onValueChange={(v) => setRasenQm(v[0])}
                         aria-label="Rasenfläche in Quadratmetern"
