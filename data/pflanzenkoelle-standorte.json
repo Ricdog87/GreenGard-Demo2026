@@ -1,7 +1,7 @@
 [
   { "kst": "850", "ort": "Hamburg", "adressNr": "116087", "ansprechpartner": "Hr. Schöniger" },
   { "kst": "868", "ort": "Borgsdorf", "adressNr": "116095", "ansprechpartner": "Hr. West" },
-  { "kst": "870", "ort": "Wildau", "adressNr": "116086", "ansprechpartner": "Hr. Jeschcke" },
+  { "kst": "870", "ort": "Wildau", "adressNr": "116086", "ansprechpartner": "Hr. Jeschke"},
   { "kst": "852", "ort": "Dallgow", "adressNr": "116084", "ansprechpartner": "Hr. Hübscher" },
   { "kst": "869", "ort": "Hoppegarten", "adressNr": "116099", "ansprechpartner": "Hr. Groß" },
   { "kst": "867", "ort": "Teltow", "adressNr": "116078", "ansprechpartner": "Hr. Krüger" },
