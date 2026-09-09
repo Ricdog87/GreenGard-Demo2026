@@ -116,11 +116,25 @@ export async function POST(req: Request) {
     if (res.status === 202) {
       return NextResponse.json({ ok: true });
     }
-    // Fehlerdetails nur ins Server-Log, nicht an den Client.
-    console.error('Graph sendMail fehlgeschlagen', res.status, await res.text().catch(() => ''));
-    return NextResponse.json({ ok: false, error: 'send_failed' }, { status: 502 });
+    // Kurzer Fehlercode von Microsoft (enthält keine Zugangsdaten) hilft der
+    // IT bei der Ursachensuche; der volle Text bleibt im Server-Log.
+    const rohtext = await res.text().catch(() => '');
+    console.error('Graph sendMail fehlgeschlagen', res.status, rohtext);
+    let code = '';
+    try {
+      code = String((JSON.parse(rohtext) as { error?: { code?: string } })?.error?.code ?? '');
+    } catch {
+      /* keine JSON-Antwort */
+    }
+    return NextResponse.json(
+      { ok: false, error: 'send_failed', status: res.status, code },
+      { status: 502 }
+    );
   } catch (err) {
     console.error('Graph-Versand-Fehler', err);
-    return NextResponse.json({ ok: false, error: 'exception' }, { status: 502 });
+    return NextResponse.json(
+      { ok: false, error: 'exception', detail: err instanceof Error ? err.message : '' },
+      { status: 502 }
+    );
   }
 }
