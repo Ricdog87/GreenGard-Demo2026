@@ -11,7 +11,7 @@ import { Eyebrow } from '@/components/Eyebrow';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitLead, type GewerbeArt } from '@/lib/supabase';
-import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
+import { sendeAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { CONTACT } from '@/lib/contact';
 import { AUDIENCES } from '@/lib/audience';
@@ -83,6 +83,7 @@ export default function ProfiPage() {
   const [gewerbe, setGewerbe] = useState<GewerbeArt>(AUDIENCES[audience].gewerbe);
   const [touched, setTouched] = useState(false);
   const [done, setDone] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
 
   // Nachziehen, wenn der Store hydriert ist — solange niemand selbst geklickt hat.
@@ -248,12 +249,12 @@ export default function ProfiPage() {
                   <Check className="h-5 w-5" />
                 </span>
                 <p className="font-display mt-5 text-3xl tracking-tight">
-                  Ihre Anfrage ist vorbereitet.
+                  {serverOk ? 'Ihre Anfrage ist eingegangen.' : 'Ihre Anfrage ist vorbereitet.'}
                 </p>
                 <p className="mt-3 text-ink/70">
-                  {ANFRAGE_HINWEIS} Wir senden Ihnen das Konditionsblatt innerhalb von
-                  zwei Werktagen persönlich zu und besprechen Ihre individuellen
-                  Konditionen.
+                  {!serverOk && `${ANFRAGE_HINWEIS} `}Wir senden Ihnen das Konditionsblatt
+                  innerhalb von zwei Werktagen persönlich zu und besprechen Ihre
+                  individuellen Konditionen.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild variant="primary">
@@ -263,25 +264,29 @@ export default function ProfiPage() {
                     <Link href="/beratung#schulungen">Schulungstermine</Link>
                   </Button>
                 </div>
-                <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />
+                {!serverOk && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />}
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit(async (values) => {
-                  // Go-Live ohne Backend: Lead als vorbefüllte Mail. Supabase-
-                  // Insert bleibt parallel (Mock-Zweig ohne Keys, echt sobald
-                  // verbunden) — dann übernimmt der Server den Versand.
+                  // Lead-Insert bleibt parallel (Mock ohne Keys). Versand läuft
+                  // über Office 365; als Fallback öffnet sich das Mailprogramm.
                   await submitLead({ ...values, gewerbe_art: gewerbe });
-                  const url = oeffneAnfrage(`Konditions-Anfrage: ${values.firma}`, [
-                    'Konditions-Anfrage über die Website — bitte Konditionsblatt zusenden',
-                    '',
-                    `Firma: ${values.firma}`,
-                    `Gewerbe: ${gewerbe}`,
-                    `Ansprechpartner: ${values.name}`,
-                    `Telefon: ${values.telefon}`,
-                    `E-Mail: ${values.email}`,
-                  ]);
+                  const { ok, mailtoUrl: url } = await sendeAnfrage(
+                    `Konditions-Anfrage: ${values.firma}`,
+                    [
+                      'Konditions-Anfrage über die Website — bitte Konditionsblatt zusenden',
+                      '',
+                      `Firma: ${values.firma}`,
+                      `Gewerbe: ${gewerbe}`,
+                      `Ansprechpartner: ${values.name}`,
+                      `Telefon: ${values.telefon}`,
+                      `E-Mail: ${values.email}`,
+                    ],
+                    { replyTo: values.email }
+                  );
                   setMailtoUrl(url);
+                  setServerOk(ok);
                   setDone(true);
                 })}
                 className="space-y-6 border border-mist p-8 md:p-10"

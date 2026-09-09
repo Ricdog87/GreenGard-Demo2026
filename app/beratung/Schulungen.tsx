@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
-import { oeffneAnfrage } from '@/lib/anfrage';
+import { sendeAnfrage } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { schulungen, type Schulung } from '@/lib/data';
 
@@ -23,6 +23,7 @@ export function Schulungen() {
   // die Interessenten strukturiert ein.
   const [vormerkung, setVormerkung] = useState<Schulung | null>(null);
   const [gesendet, setGesendet] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -180,11 +181,13 @@ export function Schulungen() {
               <DialogDescription>
                 Sobald die Termine für 2027 stehen, melden wir uns zuerst bei Ihnen —
                 unverbindlich und ohne Zahlungspflicht.
-                <span className="font-mono mt-3 block text-[10px] uppercase tracking-[0.18em]">
-                  Bitte die vorbereitete Mail im Mailprogramm absenden.
-                </span>
+                {!serverOk && (
+                  <span className="font-mono mt-3 block text-[10px] uppercase tracking-[0.18em]">
+                    Bitte die vorbereitete Mail im Mailprogramm absenden.
+                  </span>
+                )}
               </DialogDescription>
-              <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />
+              {!serverOk && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />}
             </>
           ) : (
             vormerkung && (
@@ -197,18 +200,23 @@ export function Schulungen() {
                 </DialogDescription>
                 <form
                   className="mt-2 space-y-4"
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
-                    // Go-Live ohne Backend: Vormerkung als vorbefüllte Mail.
-                    const url = oeffneAnfrage(`Platz-Vormerkung: ${vormerkung.title}`, [
-                      `Vormerkung für die Schulung "${vormerkung.title}" über die Website`,
-                      '',
-                      `Name: ${name}`,
-                      firma && `Firma: ${firma}`,
-                      `Teilnehmer: ${personen}`,
-                      `Rückmeldung an: ${email}`,
-                    ]);
+                    // Versand über Office 365; Fallback öffnet das Mailprogramm.
+                    const { ok, mailtoUrl: url } = await sendeAnfrage(
+                      `Platz-Vormerkung: ${vormerkung.title}`,
+                      [
+                        `Vormerkung für die Schulung "${vormerkung.title}" über die Website`,
+                        '',
+                        `Name: ${name}`,
+                        firma && `Firma: ${firma}`,
+                        `Teilnehmer: ${personen}`,
+                        `E-Mail: ${email}`,
+                      ],
+                      { replyTo: email }
+                    );
                     setMailtoUrl(url);
+                    setServerOk(ok);
                     setGesendet(true);
                   }}
                 >

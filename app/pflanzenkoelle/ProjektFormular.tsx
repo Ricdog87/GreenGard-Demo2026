@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
-import { oeffneAnfrage } from '@/lib/anfrage';
+import { sendeAnfrage, dateiZuAnhang } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import standorteJson from '@/data/pflanzenkoelle-standorte.json';
 
@@ -138,11 +138,13 @@ const DEFAULTS: DefaultValues<FormValues> = {
 };
 
 export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
-  // Im Demo-Modus merken wir uns nur die Dateinamen — hochgeladen wird nichts.
-  const [dateien, setDateien] = useState<string[]>([]);
+  // Wir halten die echten Dateien, damit sie beim Server-Versand direkt an die
+  // Mail angehängt werden können (kein erneutes Anhängen mehr).
+  const [dateien, setDateien] = useState<File[]>([]);
   // Pflichtfeld seit dem Meeting 18.08.2026: Ohne Projektplan keine belastbare
   // Auslegung — deshalb blockt das Formular ohne Anhang.
   const [dateiFehler, setDateiFehler] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
   const [gesendet, setGesendet] = useState<{
     values: FormValues;
@@ -178,8 +180,8 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
 
   function addDateien(list: FileList | null) {
     if (!list) return;
-    const namen = Array.from(list).map((f) => f.name);
-    setDateien((cur) => [...cur, ...namen.filter((n) => !cur.includes(n))]);
+    const neu = Array.from(list);
+    setDateien((cur) => [...cur, ...neu.filter((f) => !cur.some((c) => c.name === f.name))]);
     setDateiFehler(false);
   }
 
@@ -187,6 +189,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
     reset(DEFAULTS);
     setDateien([]);
     setDateiFehler(false);
+    setServerOk(false);
     setGesendet(null);
   }
 
@@ -235,7 +238,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             </a>{' '}
             und wird dort unter Kundennummer <span className="num">{kundennummer}</span> geführt.
           </p>
-          <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-6 max-w-2xl" />
+          {!serverOk && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-6 max-w-2xl" />}
 
           <div className="mt-12 border-t border-mist">
             <p className="eyebrow mt-6">Übermittelte Angaben</p>
@@ -263,7 +266,9 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
             </Button>
           </div>
           <p className="font-mono mt-8 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-            Bitte die vorbereitete Mail im Mailprogramm absenden — Anhänge dort anfügen
+            {serverOk
+              ? 'Anfrage und Anhänge wurden übermittelt'
+              : 'Bitte die vorbereitete Mail im Mailprogramm absenden — Anhänge dort anfügen'}
           </p>
         </div>
       </section>
@@ -285,7 +290,7 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
         </p>
 
         <form
-          onSubmit={handleSubmit((values) => {
+          onSubmit={handleSubmit(async (values) => {
             // Standort aus den abgeschickten Werten auflösen statt aus dem watch-Wert:
             // so bleibt der Erfolgsfall auch dann typsicher, wenn die Liste einmal
             // eine Kostenstelle nicht mehr kennt.
@@ -297,11 +302,10 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
               document.getElementById('pk-dateien-block')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
               return;
             }
-            // Go-Live ohne Backend: Projektanfrage als vorbefüllte Mail an die
-            // Zentrale. Anhänge kann mailto nicht mitnehmen — die Mail bittet
-            // darum, die gewählten Dateien anzuhängen.
-            // TODO: Resend + Supabase (Projekt, Standort, Anhänge).
-            const url = oeffneAnfrage(
+            // Versand über Office 365: Projektpläne werden direkt angehängt.
+            // Fallback: das Mailprogramm öffnet sich, dann bitte anhängen.
+            const anhaenge = await Promise.all(dateien.map(dateiZuAnhang));
+            const { ok, mailtoUrl: url } = await sendeAnfrage(
               `Pflanzenkölle-Projekt: ${gewaehlt.ort} (KST ${gewaehlt.kst})`,
               [
                 'Projektanfrage Pflanzenkölle über die geschützte Projektseite',
@@ -314,12 +318,14 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                   .map(([k, v]) => `${k}: ${v}`),
                 '',
                 dateien.length
-                  ? `WICHTIG: Bitte die gewählten Dateien an diese Mail anhängen (${dateien.join(', ')}).`
+                  ? `Dateien: ${dateien.map((f) => f.name).join(', ')} (dieser Mail beigefügt — falls sich ein Mailfenster öffnet, bitte anhängen).`
                   : false,
-              ]
+              ],
+              { replyTo: values.email, anhaenge }
             );
             setMailtoUrl(url);
-            setGesendet({ values, standort: gewaehlt, dateien });
+            setServerOk(ok);
+            setGesendet({ values, standort: gewaehlt, dateien: dateien.map((f) => f.name) });
           })}
           className="mt-16 space-y-12"
         >
@@ -630,11 +636,12 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                   die Anfrage nicht bearbeiten.
                 </p>
               )}
-              {/* mailto kann keine Anhänge übertragen — der Besucher muss die
-                  Dateien selbst in die sich öffnende Mail ziehen.
-                  TODO: Direktversand via Office 365/SMTP nach Domain-Umzug. */}
+              {/* Server-Versand über Office 365 hängt die Dateien direkt an.
+                  Nur wenn das nicht klappt, öffnet sich als Fallback das
+                  Mailprogramm — dann müssen die Dateien von Hand angehängt werden. */}
               <p className="mt-2 text-xs text-ink/55">
-                Bitte hängen Sie die Projektpläne der sich öffnenden E-Mail an.
+                Die Dateien werden direkt mit der Anfrage übermittelt. Sollte sich
+                ausnahmsweise ein Mailfenster öffnen, hängen Sie sie dort bitte an.
               </p>
               {/* TODO: Demo-Modus — es wird nichts hochgeladen, wir zeigen nur die
                   Dateinamen. Später Supabase Storage (Bucket „projektanhaenge“). */}
@@ -654,15 +661,15 @@ export function ProjektFormular({ kundennummer }: { kundennummer: string }) {
                 <ul className="mt-5 space-y-2">
                   {dateien.map((d) => (
                     <li
-                      key={d}
+                      key={d.name}
                       className="flex items-center justify-between gap-4 border-b border-mist pb-2"
                     >
-                      <span className="min-w-0 truncate text-sm text-ink/80">{d}</span>
+                      <span className="min-w-0 truncate text-sm text-ink/80">{d.name}</span>
                       <button
                         type="button"
                         data-cursor="hover"
-                        aria-label={`${d} entfernen`}
-                        onClick={() => setDateien((cur) => cur.filter((n) => n !== d))}
+                        aria-label={`${d.name} entfernen`}
+                        onClick={() => setDateien((cur) => cur.filter((n) => n.name !== d.name))}
                         className="shrink-0 text-ink/45 transition-colors hover:text-red-700"
                       >
                         <X aria-hidden className="h-4 w-4" />

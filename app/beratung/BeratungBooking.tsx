@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CONTACT } from '@/lib/contact';
 import { PLANUNGSGEBUEHR } from '@/lib/planungspakete';
-import { oeffneAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
+import { sendeAnfrage, ANFRAGE_HINWEIS } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { team } from '@/lib/data';
 
@@ -126,6 +126,7 @@ export function BeratungBooking() {
     const [time, setTime] = useState(TIMES[2]);
   const [thema, setThema] = useState<string>(THEMEN[0]);
   const [done, setDone] = useState<FormValues | null>(null);
+  const [serverOk, setServerOk] = useState(false);
   // Fallback-Link, falls das Gerät kein Mailprogramm öffnet.
   const [mailtoUrl, setMailtoUrl] = useState('');
 
@@ -179,7 +180,9 @@ export function BeratungBooking() {
           <span className="font-medium">
             {chosen.first} {chosen.last}
           </span>{' '}
-          ist vorbereitet. {ANFRAGE_HINWEIS} Wir bestätigen den Termin persönlich.
+          {serverOk
+            ? 'ist bei uns eingegangen. Wir bestätigen den Termin persönlich.'
+            : `ist vorbereitet. ${ANFRAGE_HINWEIS} Wir bestätigen den Termin persönlich.`}
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button variant="primary" onClick={() => ladeIcs(dateLabel, time, chosen)}>
@@ -189,9 +192,9 @@ export function BeratungBooking() {
             Weiteren Termin vereinbaren
           </Button>
         </div>
-        <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />
+        {!serverOk && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-8" />}
         <p className="mt-3 text-sm text-ink/60">
-          Oder rufen Sie uns an:{' '}
+          {serverOk ? 'Fragen? Rufen Sie uns an:' : 'Oder rufen Sie uns an:'}{' '}
           <a href={CONTACT.phoneHref} className="num border-b border-mist hover:border-ink">{CONTACT.phoneDisplay}</a>
         </p>
       </div>
@@ -317,27 +320,31 @@ export function BeratungBooking() {
           </div>
 
           <form
-            onSubmit={handleSubmit((values) => {
-              // Go-Live ohne Backend: Anfrage als vorbefüllte Mail an die
-              // Zentrale — intern wird nach Thema verteilt. TODO: durch
-              // Office-365-/Resend-Versand ersetzen (UEBERGABE.md).
+            onSubmit={handleSubmit(async (values) => {
+              // Versand über Office 365; als Fallback öffnet sich das
+              // Mailprogramm (lib/anfrage.ts). Intern wird nach Thema verteilt.
               const d = dates.find((x) => x.iso === date);
               const b = BERATER.find((x) => x.email === berater);
-              const url = oeffneAnfrage(`Beratungstermin: ${d?.date ?? date} ${time} Uhr`, [
-                'Terminanfrage über die Website',
-                '',
-                `Wunschtermin: ${d?.day ?? ''}, ${d?.date ?? date} um ${time} Uhr`,
-                `Ansprechpartner: ${b ? `${b.first} ${b.last}` : ''}`,
-                `Thema: ${thema}`,
-                '',
-                `Name: ${values.name}`,
-                `Telefon: ${values.phone}`,
-                `E-Mail: ${values.email}`,
-                values.flaeche ? `Gartenfläche: ${values.flaeche}` : false,
-                '',
-                values.message ? `Nachricht:\n${values.message}` : false,
-              ]);
+              const { ok, mailtoUrl: url } = await sendeAnfrage(
+                `Beratungstermin: ${d?.date ?? date} ${time} Uhr`,
+                [
+                  'Terminanfrage über die Website',
+                  '',
+                  `Wunschtermin: ${d?.day ?? ''}, ${d?.date ?? date} um ${time} Uhr`,
+                  `Ansprechpartner: ${b ? `${b.first} ${b.last}` : ''}`,
+                  `Thema: ${thema}`,
+                  '',
+                  `Name: ${values.name}`,
+                  `Telefon: ${values.phone}`,
+                  `E-Mail: ${values.email}`,
+                  values.flaeche ? `Gartenfläche: ${values.flaeche}` : false,
+                  '',
+                  values.message ? `Nachricht:\n${values.message}` : false,
+                ],
+                { replyTo: values.email }
+              );
               setMailtoUrl(url);
+              setServerOk(ok);
               setDone(values);
             })}
             className="space-y-6 border-mist lg:col-span-7 lg:border-l lg:pl-12"

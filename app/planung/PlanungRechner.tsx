@@ -17,7 +17,7 @@ import {
 import { useCart } from '@/store/cart';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
-import { oeffneAnfrage } from '@/lib/anfrage';
+import { sendeAnfrage, dateiZuAnhang } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 
 // V2: nur noch 3 Kernfragen + WLAN — Mähroboter- und Beleuchtungs-Add-ons sind
@@ -40,6 +40,7 @@ export function PlanungRechner() {
   const [telefon, setTelefon] = useState('');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
   // Cross-Sell wie auf green-gard.de/planungstool angeboten: „Wir fügen Ihnen
   // auf Wunsch einen Mähroboter oder ein Lichtkonzept dem Angebot hinzu.“
@@ -439,30 +440,36 @@ export function PlanungRechner() {
                       </div>
 
                       <form
-                        onSubmit={(e) => {
+                        onSubmit={async (e) => {
                           e.preventDefault();
                           if (!name || !telefon || !email) return;
-                          // Go-Live ohne Backend: Planungsanfrage als vorbefüllte
-                          // Mail. Anhänge kann mailto nicht mitnehmen — die Mail
-                          // bittet darum, die gewählten Dateien anzuhängen.
-                          // TODO: Resend/Supabase Storage (UEBERGABE.md).
-                          const url = oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
-                            'Planungsanfrage aus dem Rechner',
-                            '',
-                            `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
-                            `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
-                            `Empfohlenes System: ${empf.kitName}`,
-                            extras.length ? `Ins Angebot aufnehmen: ${extras.join(', ')}` : false,
-                            '',
-                            `Name: ${name}`,
-                            `Telefon: ${telefon}`,
-                            `E-Mail: ${email}`,
-                            '',
-                            plaene.length
-                              ? `WICHTIG: Bitte die gewählten Pläne an diese Mail anhängen (${plaene.map((f) => f.name).join(', ')}).`
-                              : 'Ein Bauplan oder eine Skizze als Anhang beschleunigt die Planung.',
-                          ]);
+                          // Versand über Office 365: Die Pläne werden direkt
+                          // angehängt (kein erneutes Anhängen mehr). Klappt der
+                          // Server-Versand nicht, öffnet sich das Mailprogramm –
+                          // dann bittet die Mail, die Pläne anzuhängen.
+                          const anhaenge = await Promise.all(plaene.map(dateiZuAnhang));
+                          const { ok, mailtoUrl: url } = await sendeAnfrage(
+                            `Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`,
+                            [
+                              'Planungsanfrage aus dem Rechner',
+                              '',
+                              `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
+                              `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
+                              `Empfohlenes System: ${empf.kitName}`,
+                              extras.length ? `Ins Angebot aufnehmen: ${extras.join(', ')}` : false,
+                              '',
+                              `Name: ${name}`,
+                              `Telefon: ${telefon}`,
+                              `E-Mail: ${email}`,
+                              '',
+                              plaene.length
+                                ? `Pläne: ${plaene.map((f) => f.name).join(', ')} (dieser Mail beigefügt — falls sich das Mailprogramm öffnet, bitte anhängen).`
+                                : 'Ein Bauplan oder eine Skizze als Anhang beschleunigt die Planung.',
+                            ],
+                            { replyTo: email, anhaenge }
+                          );
                           setMailtoUrl(url);
+                          setServerOk(ok);
                           setSent(true);
                         }}
                         className="mt-4 border-t border-linen/15 pt-4"
@@ -472,11 +479,20 @@ export function PlanungRechner() {
                         </p>
                         {sent ? (
                           <div className="space-y-3">
-                            <p className="text-sm text-bronze">
-                              Mail vorbereitet — bitte im Mailprogramm senden
-                              {plaene.length > 0 ? ' und die gewählten Pläne anhängen' : ''}.
-                            </p>
-                            <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                            {serverOk ? (
+                              <p className="text-sm text-bronze">
+                                Anfrage{plaene.length > 0 ? ' inkl. Pläne' : ''} gesendet — wir
+                                melden uns bei Ihnen.
+                              </p>
+                            ) : (
+                              <>
+                                <p className="text-sm text-bronze">
+                                  Mail vorbereitet — bitte im Mailprogramm senden
+                                  {plaene.length > 0 ? ' und die gewählten Pläne anhängen' : ''}.
+                                </p>
+                                <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                              </>
+                            )}
                           </div>
                         ) : (
                           <div className="space-y-2">

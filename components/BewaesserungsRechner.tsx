@@ -15,7 +15,7 @@ import {
   type Steuerung,
 } from '@/lib/konfigurator';
 import { useCart } from '@/store/cart';
-import { oeffneAnfrage } from '@/lib/anfrage';
+import { sendeAnfrage } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { priceFor, priceLabel } from '@/lib/pricing';
 import { formatEURRound, cn } from '@/lib/utils';
@@ -42,6 +42,7 @@ export function BewaesserungsRechner() {
   const [telefon, setTelefon] = useState('');
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
 
   // Aufteilung der Gesamtfläche wie im Planungs-Assistenten: Beete ~25 %,
@@ -244,22 +245,27 @@ export function BewaesserungsRechner() {
             </div>
 
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
                 if (!name || !telefon || !email) return;
-                // Go-Live ohne Backend: Anfrage als vorbefüllte Mail.
-                // TODO: Resend + Supabase-Lead (UEBERGABE.md).
-                const url = oeffneAnfrage(`Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`, [
-                  'Planungsanfrage von der Startseite',
-                  '',
-                  `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
-                  `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
-                  '',
-                  `Name: ${name}`,
-                  `Telefon: ${telefon}`,
-                  `E-Mail: ${email}`,
-                ]);
+                // Versand über Office 365; klappt das nicht, öffnet sich das
+                // Mailprogramm wie bisher (lib/anfrage.ts).
+                const { ok, mailtoUrl: url } = await sendeAnfrage(
+                  `Planungsanfrage: ${flaeche} m², ${QUELLE_LABEL[quelle]}`,
+                  [
+                    'Planungsanfrage von der Startseite',
+                    '',
+                    `Grundstück: ${flaeche} m² (${QUELLE_LABEL[quelle]})`,
+                    `Bereiche: ${bereiche.join(', ')} · Steuerung: ${steuerung}`,
+                    '',
+                    `Name: ${name}`,
+                    `Telefon: ${telefon}`,
+                    `E-Mail: ${email}`,
+                  ],
+                  { replyTo: email }
+                );
                 setMailtoUrl(url);
+                setServerOk(ok);
                 setSent(true);
               }}
               className="mt-8 border-t border-linen/15 pt-6"
@@ -269,8 +275,18 @@ export function BewaesserungsRechner() {
               </p>
               {sent ? (
                 <div className="space-y-3">
-                  <p className="text-sm text-bronze">Mail vorbereitet — bitte im Mailprogramm senden.</p>
-                  <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                  {serverOk ? (
+                    <p className="text-sm text-bronze">
+                      Anfrage gesendet — wir melden uns bei Ihnen.
+                    </p>
+                  ) : (
+                    <>
+                      <p className="text-sm text-bronze">
+                        Mail vorbereitet — bitte im Mailprogramm senden.
+                      </p>
+                      <AnfrageFallback mailtoUrl={mailtoUrl} dark />
+                    </>
+                  )}
                 </div>
               ) : (
                 <div className="space-y-3">

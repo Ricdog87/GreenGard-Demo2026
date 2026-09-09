@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useCart } from '@/store/cart';
-import { oeffneAnfrage } from '@/lib/anfrage';
+import { sendeAnfrage } from '@/lib/anfrage';
 import { AnfrageFallback } from '@/components/AnfrageFallback';
 import { lineTotal, priceFor, VAT_RATE } from '@/lib/pricing';
 import { formatEUR, cn } from '@/lib/utils';
@@ -37,6 +37,7 @@ export default function CheckoutPage() {
 
     const [payment, setPayment] = useState<'card' | 'sepa' | 'invoice' | 'prepay'>('card');
   const [successOpen, setSuccessOpen] = useState(false);
+  const [serverOk, setServerOk] = useState(false);
   const [mailtoUrl, setMailtoUrl] = useState('');
 
   const {
@@ -49,20 +50,24 @@ export default function CheckoutPage() {
   const grossTotal = mode === 'privat' ? subtotal : subtotal * (1 + VAT_RATE);
   const vat = mode === 'privat' ? grossTotal - grossTotal / (1 + VAT_RATE) : subtotal * VAT_RATE;
 
-  function onSubmit(values: FormValues) {
-    // Go-Live ohne Backend: Anmeldung als vorbefüllte Mail — der Platz wird
-    // per Rechnung bzw. Zahlungslink bestätigt (kein Stripe nötig, siehe
-    // UEBERGABE.md). TODO: Server-Versand, sobald Office 365/Resend steht.
-    const url = oeffneAnfrage('Schulungsanmeldung', [
-      'Schulungsanmeldung über die Website',
-      '',
-      ...items.map((l) => `${l.qty} × ${l.name}${l.termin ? ` — Termin ${l.termin}` : ''}`),
-      '',
-      `Name: ${values.name}`,
-      `Anschrift: ${values.street}, ${values.zip} ${values.city}`,
-      `E-Mail: ${values.email}`,
-    ]);
+  async function onSubmit(values: FormValues) {
+    // Versand über Office 365; Fallback öffnet das Mailprogramm. Der Platz
+    // wird per Rechnung bzw. Zahlungslink bestätigt (kein Stripe nötig).
+    const { ok, mailtoUrl: url } = await sendeAnfrage(
+      'Schulungsanmeldung',
+      [
+        'Schulungsanmeldung über die Website',
+        '',
+        ...items.map((l) => `${l.qty} × ${l.name}${l.termin ? ` — Termin ${l.termin}` : ''}`),
+        '',
+        `Name: ${values.name}`,
+        `Anschrift: ${values.street}, ${values.zip} ${values.city}`,
+        `E-Mail: ${values.email}`,
+      ],
+      { replyTo: values.email }
+    );
     setMailtoUrl(url);
+    setServerOk(ok);
     setSuccessOpen(true);
   }
 
@@ -270,11 +275,12 @@ export default function CheckoutPage() {
           </div>
                     <DialogTitle>Platz ist reserviert.</DialogTitle>
           <DialogDescription>
-            Ihr Mailprogramm öffnet sich mit der fertigen Anmeldung — bitte dort auf
-            Senden tippen. Wir bestätigen den Platz per E-Mail und senden die Rechnung
-            bzw. den Zahlungslink separat. Erst danach ist der Platz verbindlich gebucht.
+            {!serverOk &&
+              'Ihr Mailprogramm öffnet sich mit der fertigen Anmeldung — bitte dort auf Senden tippen. '}
+            Wir bestätigen den Platz per E-Mail und senden die Rechnung bzw. den
+            Zahlungslink separat. Erst danach ist der Platz verbindlich gebucht.
           </DialogDescription>
-          <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />
+          {!serverOk && <AnfrageFallback mailtoUrl={mailtoUrl} className="mt-2" />}
           <div className="mt-4 flex flex-wrap gap-3">
             <Button asChild variant="primary">
               <Link href="/">Zur Startseite</Link>
