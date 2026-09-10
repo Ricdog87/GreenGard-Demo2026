@@ -50,6 +50,42 @@ async function graphToken(): Promise<string> {
   return data.access_token;
 }
 
+/**
+ * Temporäre Diagnose (?diagnose=1): zeigt, welche Anwendungsrechte Microsoft
+ * der App im Token tatsächlich mitgibt. Damit lässt sich unterscheiden, ob
+ * "Mail.Send" fehlt (Zustimmung/Berechtigung) oder ob trotz vorhandenem Recht
+ * eine Exchange-Zugriffsrichtlinie das Postfach sperrt. Verschickt nichts und
+ * gibt keine Zugangsdaten preis. Nach der Fehlersuche wieder entfernen.
+ */
+export async function GET(req: Request) {
+  if (new URL(req.url).searchParams.get('diagnose') !== '1') {
+    return NextResponse.json({ ok: false, error: 'method_not_allowed' }, { status: 405 });
+  }
+  if (!TENANT || !CLIENT_ID || !CLIENT_SECRET) {
+    return NextResponse.json({ ok: false, error: 'not_configured' }, { status: 503 });
+  }
+  try {
+    const token = await graphToken();
+    const teil = token.split('.')[1] ?? '';
+    const payload = JSON.parse(
+      Buffer.from(teil.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8')
+    ) as { roles?: string[] };
+    const roles = Array.isArray(payload.roles) ? payload.roles : [];
+    return NextResponse.json({
+      ok: true,
+      sender: SENDER,
+      empfaenger: RECIPIENT,
+      roles,
+      mailSendVorhanden: roles.includes('Mail.Send'),
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { ok: false, error: 'token_failed', detail: err instanceof Error ? err.message : '' },
+      { status: 502 }
+    );
+  }
+}
+
 export async function POST(req: Request) {
   if (!TENANT || !CLIENT_ID || !CLIENT_SECRET) {
     return NextResponse.json({ ok: false, error: 'not_configured' }, { status: 503 });
